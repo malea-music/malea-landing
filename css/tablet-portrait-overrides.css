@@ -1,0 +1,5535 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   MALEA — tablet portrait overrides
+   File: css/tablet-portrait-overrides.css
+   Description: All tablet portrait (761px–1100px, orientation: portrait)
+                composition fixes. Added only to this file.
+   Rule: Do NOT edit css/styles.css.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ─── Stage TP-2A.2: tablet portrait composition correction — 04 / 06 / 08 / 09 / 23 ─── */
+
+/* ========================================================================
+   MAIN TABLET PORTRAIT RANGE
+   ======================================================================== */
+@media (min-width: 761px) and (max-width: 1100px) and (orientation: portrait) {
+
+  /* ──────────────────────────────────────────────────────────────────────
+     1. SCREEN 04 / #philosophy — centered editorial layout
+     ────────────────────────────────────────────────────────────────────── */
+  #philosophy {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #philosophy .philosophy-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 60px 20px;
+  }
+
+  #philosophy .philosophy-left {
+    width: 100%;
+  }
+
+  #philosophy .philosophy-title {
+    text-align: center;
+    font-size: 2.6rem;
+    line-height: 1.2;
+    margin-bottom: 32px;
+  }
+
+  #philosophy .philosophy-right {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* Convert vertical line to a subtle top hairline */
+  #philosophy .philosophy-line {
+    width: 60px;
+    height: 1px;
+    background: rgba(212, 175, 55, 0.4);
+    margin: 0 auto 24px auto;
+    position: static;
+  }
+
+  #philosophy .philosophy-body {
+    max-width: 640px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  #philosophy .philosophy-body p {
+    font-size: 1.05rem;
+    line-height: 1.65;
+    margin-bottom: 16px;
+  }
+
+
+  /* ──────────────────────────────────────────────────────────────────────
+     2. SCREEN 06 / #live-text — logical reorder via CSS
+        visual order: title → photo → rule → manifesto → formats → CTA
+     ────────────────────────────────────────────────────────────────────── */
+  #live-text .live-text-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 40px 20px;
+  }
+
+  /* Make left container transparent to flex, so children become flex items */
+  #live-text .live-text-left {
+    display: contents;
+  }
+
+  /* Hide vertical separator line */
+  #live-text .live-text-line {
+    display: none !important;
+  }
+
+  /* ── Reorder ── */
+  #live-text .live-title {
+    order: 1;
+    text-align: center;
+    margin-bottom: 20px;
+    width: 100%;
+  }
+
+  #live-text .live-mobile-image {
+    order: 2;
+    max-width: 400px;
+    width: 100%;
+    margin: 0 auto 24px auto;
+  }
+
+  #live-text .live-mobile-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
+  }
+
+  #live-text .live-title-rule {
+    order: 3;
+    width: 60px;
+    height: 1px;
+    background: rgba(212, 175, 55, 0.4);
+    margin: 0 auto 20px auto;
+  }
+
+  #live-text .live-manifesto {
+    order: 4;
+    text-align: center;
+    max-width: 580px;
+    margin: 0 auto 24px auto;
+    font-size: 1.05rem;
+    line-height: 1.6;
+  }
+
+  #live-text .live-text-right {
+    order: 5;
+    max-width: 640px;
+    width: 100%;
+    margin: 0 auto 28px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  #live-text .live-formats-label {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    opacity: 0.7;
+    margin-bottom: 4px;
+  }
+
+  #live-text .live-format-row {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+  }
+
+  #live-text .btn {
+    order: 6;
+    width: auto;
+    max-width: max-content;
+    margin: 0 auto;
+    align-self: center;
+  }
+
+
+  /* ──────────────────────────────────────────────────────────────────────
+     3. SCREEN 08 / #player — centered header, no CD, compact tracks
+     ────────────────────────────────────────────────────────────────────── */
+  /* Hide CD side completely */
+  #player .player-cd-side {
+    display: none !important;
+  }
+
+  /* Header — centered, not split */
+  #player .player-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 40px 20px 20px;
+  }
+
+  #player .player-left {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  #player .player-overline {
+    text-align: center;
+    font-size: 0.85rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    opacity: 0.7;
+    margin-bottom: 12px;
+  }
+
+  #player .player-title {
+    text-align: center;
+    font-size: 2.2rem;
+    line-height: 1.2;
+    margin-bottom: 16px;
+  }
+
+  #player .player-rule {
+    width: 60px;
+    height: 1px;
+    background: rgba(212, 175, 55, 0.4);
+    margin: 0 auto 16px auto;
+  }
+
+  #player .player-subtitle {
+    text-align: center;
+    font-size: 1rem;
+    line-height: 1.5;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  /* Track grid — centered rail below header */
+  #player .track-grid {
+    max-width: 680px;
+    width: 100%;
+    margin: 20px auto 0;
+    padding: 0 20px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  #player .track-col {
+    padding: 14px 16px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 8px;
+  }
+
+  #player .track-num {
+    font-size: 0.75rem;
+    opacity: 0.5;
+    margin-bottom: 4px;
+  }
+
+  #player .track-name {
+    font-size: 1.1rem;
+    margin-bottom: 6px;
+  }
+
+  #player .waveform {
+    height: 32px;
+    margin-bottom: 6px;
+  }
+
+  #player .track-desc {
+    font-size: 0.85rem;
+    line-height: 1.5;
+    opacity: 0.7;
+    margin-bottom: 8px;
+  }
+
+  #player .track-bar-wrap {
+    margin-bottom: 6px;
+  }
+
+  #player .track-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  #player .track-btn {
+    width: 36px;
+    height: 36px;
+  }
+
+
+  /* ──────────────────────────────────────────────────────────────────────
+     4. SCREEN 09 / #performance — title in one line
+     ────────────────────────────────────────────────────────────────────── */
+  #performance .perf-title {
+    text-align: center;
+    font-size: 2.2rem;
+    line-height: 1.2;
+  }
+
+  /* Hide <br> inside .perf-title to get "Как это выглядит" in one line */
+  #performance .perf-title br {
+    display: none;
+  }
+
+  #performance .perf-left {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #performance .perf-rule {
+    width: 60px;
+    height: 1px;
+    background: rgba(212, 175, 55, 0.4);
+    margin: 16px auto;
+  }
+
+  #performance .perf-subtitle {
+    text-align: center;
+    font-size: 1.1rem;
+    line-height: 1.5;
+  }
+
+  #performance .perf-desc {
+    text-align: center;
+    max-width: 620px;
+    margin: 0 auto 24px;
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+
+  /* ──────────────────────────────────────────────────────────────────────
+     5. SCREEN 23 / #why-argument — screen 20 style
+        header centered top, argument rows with left title / right text,
+        vertical divider between columns, horizontal dividers between rows
+     ────────────────────────────────────────────────────────────────────── */
+
+  /* Hide mobile image */
+  #why-argument .why-argument-mobile-image {
+    display: none !important;
+  }
+
+  #why-argument .why-argument-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px 20px;
+  }
+
+  /* Header — centered */
+  #why-argument .why-argument-header {
+    text-align: center;
+    margin-bottom: 36px;
+    width: 100%;
+  }
+
+  #why-argument .why-argument-subtitle {
+    font-size: 1.8rem;
+    line-height: 1.25;
+    margin-bottom: 16px;
+  }
+
+  #why-argument .why-argument-rule {
+    width: 60px;
+    height: 1px;
+    background: rgba(212, 175, 55, 0.4);
+    margin: 0 auto;
+  }
+
+  /* List — like .fi-panels rail */
+  #why-argument .why-argument-list {
+    width: 100%;
+    max-width: 740px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-bottom: 32px;
+  }
+
+  /* Each argument item — grid with left title / right text + vertical divider */
+  #why-argument .why-argument-item {
+    padding: 20px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  #why-argument .why-argument-item:last-child {
+    border-bottom: none;
+  }
+
+  #why-argument .why-argument-copy {
+    display: grid;
+    grid-template-columns: 32% 1fr;
+    gap: 0;
+    align-items: start;
+  }
+
+  #why-argument .why-argument-title {
+    grid-column: 1;
+    font-size: 1.05rem;
+    line-height: 1.4;
+    font-weight: 500;
+    padding-right: 20px;
+    margin: 0;
+    color: #d4af37;
+  }
+
+  #why-argument .why-argument-text {
+    grid-column: 2;
+    font-size: 0.9rem;
+    line-height: 1.55;
+    opacity: 0.8;
+    padding-left: 20px;
+    position: relative;
+    margin: 0;
+  }
+
+  /* Vertical divider between title and text */
+  #why-argument .why-argument-text::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 4px;
+    bottom: 4px;
+    width: 1px;
+    background: rgba(212, 175, 55, 0.3);
+  }
+
+  /* CTA — centered bottom */
+  #why-argument .why-cta {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 8px;
+  }
+
+  #why-argument .why-btn {
+    width: auto;
+    max-width: max-content;
+  }
+
+} /* end main tablet portrait media query */
+
+
+/* ========================================================================
+   NARROWER TABLET PORTRAIT (761px – 960px)
+   ======================================================================== */
+@media (min-width: 761px) and (max-width: 960px) and (orientation: portrait) {
+
+  /* ── Screen 04 ── */
+  #philosophy .philosophy-title {
+    font-size: 2.2rem;
+  }
+  #philosophy .philosophy-body {
+    max-width: 560px;
+  }
+  #philosophy .philosophy-body p {
+    font-size: 0.95rem;
+  }
+
+  /* ── Screen 06 ── */
+  #live-text .live-text-inner {
+    max-width: 640px;
+    padding: 32px 16px;
+  }
+  #live-text .live-mobile-image {
+    max-width: 340px;
+  }
+  #live-text .live-manifesto {
+    max-width: 520px;
+    font-size: 0.95rem;
+  }
+  #live-text .live-text-right {
+    max-width: 560px;
+  }
+
+  /* ── Screen 08 ── */
+  #player .player-title {
+    font-size: 1.9rem;
+  }
+  #player .track-grid {
+    max-width: 600px;
+    gap: 12px;
+  }
+  #player .track-col {
+    padding: 12px 14px;
+  }
+  #player .waveform {
+    height: 28px;
+  }
+
+  /* ── Screen 09 ── */
+  #performance .perf-title {
+    font-size: 1.9rem;
+  }
+
+  /* ── Screen 23 ── */
+  #why-argument .why-argument-subtitle {
+    font-size: 1.5rem;
+  }
+  #why-argument .why-argument-copy {
+    grid-template-columns: 30% 1fr;
+  }
+  #why-argument .why-argument-title {
+    font-size: 0.95rem;
+  }
+  #why-argument .why-argument-text {
+    font-size: 0.85rem;
+  }
+
+} /* end narrower tablet portrait */
+
+
+/* ========================================================================
+   WIDER TABLET PORTRAIT (961px – 1100px)
+   ======================================================================== */
+@media (min-width: 961px) and (max-width: 1100px) and (orientation: portrait) {
+
+  /* ── Screen 04 ── */
+  #philosophy .philosophy-title {
+    font-size: 2.8rem;
+  }
+  #philosophy .philosophy-body {
+    max-width: 680px;
+  }
+
+  /* ── Screen 06 ── */
+  #live-text .live-text-inner {
+    max-width: 760px;
+  }
+  #live-text .live-text-right {
+    max-width: 680px;
+  }
+
+  /* ── Screen 08 ── */
+  #player .player-title {
+    font-size: 2.4rem;
+  }
+  #player .track-grid {
+    max-width: 740px;
+  }
+
+  /* ── Screen 09 ── */
+  #performance .perf-title {
+    font-size: 2.4rem;
+  }
+
+  /* ── Screen 23 ── */
+  #why-argument .why-argument-subtitle {
+    font-size: 2rem;
+  }
+
+} /* end wider tablet portrait */
+
+/* ─── Stage TP-2A.3: tablet portrait hotfix — 04 / 06 / 09 / 23 ─── */
+
+/* ========================================================================
+   MAIN TABLET PORTRAIT RANGE — hotfix overrides
+   ======================================================================== */
+@media (min-width: 761px) and (max-width: 1100px) and (orientation: portrait) {
+
+  /* ──────────────────────────────────────────────────────────────────────
+     1. SCREEN 04 / #philosophy — fix: override min-height from styles.css
+        to prevent thick gold rectangle; replace with thin hairline divider
+     ────────────────────────────────────────────────────────────────────── */
+  #philosophy .philosophy-line {
+    width: 48px;
+    height: 1px;
+    min-height: 0 !important;
+    background: rgba(253,224,139,.42);
+    margin: 28px auto;
+    align-self: center;
+  }
+
+  #philosophy .philosophy-inner {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 60px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #philosophy .philosophy-title {
+    text-align: center;
+    font-size: 2.6rem;
+    line-height: 1.2;
+    margin-bottom: 32px;
+  }
+
+  #philosophy .philosophy-body {
+    max-width: 640px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+
+  /* ──────────────────────────────────────────────────────────────────────
+     2. SCREEN 06 / #live-text — expand photo, widen container, center text
+     ────────────────────────────────────────────────────────────────────── */
+  #live-text .live-text-inner {
+    max-width: 820px;
+    padding-left: clamp(32px, 6vw, 72px);
+    padding-right: clamp(32px, 6vw, 72px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+  }
+
+  #live-text .live-mobile-image {
+    width: min(86vw, 620px);
+    max-width: 620px;
+    margin: 0 auto 24px auto;
+  }
+
+  #live-text .live-mobile-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
+  }
+
+  #live-text .live-manifesto {
+    max-width: 640px;
+    text-align: center;
+    margin: 0 auto 24px auto;
+    font-size: 1.05rem;
+    line-height: 1.6;
+  }
+
+  #live-text .live-text-right {
+    width: 100%;
+    max-width: 680px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 28px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  #live-text .live-formats-label {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    opacity: 0.7;
+    margin-bottom: 4px;
+  }
+
+  #live-text .live-format-row {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+  }
+
+  #live-text .btn {
+    width: auto;
+    max-width: max-content;
+    margin-left: auto;
+    margin-right: auto;
+    align-self: center;
+  }
+
+
+  /* ──────────────────────────────────────────────────────────────────────
+     3. SCREEN 09 / #performance — safe br fix for "Как это выглядит"
+        Use br::after instead of display:none to preserve word spacing
+     ────────────────────────────────────────────────────────────────────── */
+  #performance .perf-title br {
+    display: inline;
+  }
+
+  #performance .perf-title br::after {
+    content: " ";
+  }
+
+
+  /* ──────────────────────────────────────────────────────────────────────
+     4. SCREEN 23 / #why-argument — fix title colour to white (not gold)
+     ────────────────────────────────────────────────────────────────────── */
+  #why-argument .why-argument-title {
+    color: var(--text-100) !important;
+  }
+
+  #why-argument .why-argument-item-text {
+    color: var(--text-65);
+  }
+
+} /* end main tablet portrait hotfix MQ */
+
+
+/* ========================================================================
+   NARROWER TABLET PORTRAIT (761px – 960px) — hotfix adjustments
+   ======================================================================== */
+@media (min-width: 761px) and (max-width: 960px) and (orientation: portrait) {
+
+  /* ── Screen 04 ── */
+  #philosophy .philosophy-title {
+    font-size: 2.2rem;
+  }
+  #philosophy .philosophy-body {
+    max-width: 560px;
+  }
+
+  /* ── Screen 06 ── */
+  #live-text .live-text-inner {
+    max-width: 640px;
+    padding-left: clamp(24px, 4vw, 48px);
+    padding-right: clamp(24px, 4vw, 48px);
+  }
+  #live-text .live-mobile-image {
+    width: min(80vw, 480px);
+    max-width: 480px;
+  }
+  #live-text .live-manifesto {
+    max-width: 520px;
+    font-size: 0.95rem;
+  }
+  #live-text .live-text-right {
+    max-width: 560px;
+  }
+
+} /* end narrower tablet portrait hotfix */
+
+
+/* ========================================================================
+   WIDER TABLET PORTRAIT (961px – 1100px) — hotfix adjustments
+   ======================================================================== */
+@media (min-width: 961px) and (max-width: 1100px) and (orientation: portrait) {
+
+  /* ── Screen 04 ── */
+  #philosophy .philosophy-title {
+    font-size: 2.8rem;
+  }
+  #philosophy .philosophy-body {
+    max-width: 680px;
+  }
+
+  /* ── Screen 06 ── */
+  #live-text .live-text-inner {
+    max-width: 820px;
+  }
+  #live-text .live-mobile-image {
+    width: min(86vw, 620px);
+    max-width: 620px;
+  }
+  #live-text .live-text-right {
+    max-width: 680px;
+  }
+
+} /* end wider tablet portrait hotfix */
+
+
+/* ─── Stage TP-2A.4: tablet portrait refinement — 04 / 06 / 19 / 20 / 27 ─── */
+
+/* ========================================================================
+   MAIN TABLET PORTRAIT RANGE
+   ======================================================================== */
+@media (min-width: 761px) and (max-width: 1100px) and (orientation: portrait) {
+
+  /* ──────────────────────────────────────────────────────────────────────
+     1. SCREEN 04 / #philosophy — remove decorative line, tighten gap
+        between heading and body
+     ────────────────────────────────────────────────────────────────────── */
+  #philosophy .philosophy-line {
+    display: none !important;
+  }
+
+  #philosophy .philosophy-title {
+    margin-bottom: 16px;
+  }
+
+  #philosophy .philosophy-right {
+    margin-top: 0;
+    padding-top: 0;
+  }
+
+  #philosophy .philosophy-body {
+    margin-top: 0;
+    padding-top: 0;
+  }
+
+
+  /* ──────────────────────────────────────────────────────────────────────
+     2. SCREEN 06 / #live-text — smaller one-line title, wider photo,
+        harmonious editorial block
+     ────────────────────────────────────────────────────────────────────── */
+  #live-text .live-title {
+    text-align: center;
+    white-space: nowrap;
+    font-size: clamp(44px, 5vw, 64px);
+    line-height: 1.06;
+  }
+
+  /* Neutralise <br> inside .live-title to get one-line "Живой звуковой перформанс" */
+  #live-text .live-title br {
+    display: inline;
+  }
+
+  #live-text .live-title br::after {
+    content: " ";
+  }
+
+  /* Widen photo to match ~2-column video width of screen 09 */
+  #live-text .live-mobile-image {
+    width: min(86vw, 900px);
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  #live-text .live-mobile-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
+  }
+
+  /* Manifesto — centred, readable width */
+  #live-text .live-manifesto {
+    max-width: 620px;
+    text-align: center;
+    line-height: 1.7;
+    margin: 20px auto 28px;
+  }
+
+  /* Formats block — wider rail, centred */
+  #live-text .live-text-right {
+    max-width: 760px;
+    width: 100%;
+    margin: 0 auto 28px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  /* Increase gap between format rows for better rhythm */
+  #live-text .live-format-row {
+    gap: 18px;
+  }
+
+  /* CTA — centred */
+  #live-text .btn {
+    width: auto;
+    max-width: max-content;
+    margin: 0 auto;
+    align-self: center;
+  }
+
+
+  /* ──────────────────────────────────────────────────────────────────────
+     5. SCREEN 27 / #final-experience — widen image to match screen 06
+     ────────────────────────────────────────────────────────────────────── */
+  #final-experience .final-experience-image {
+    width: min(86vw, 900px);
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  #final-experience .final-experience-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+} /* end main tablet portrait (TP-2A.4) */
+
+
+/* ========================================================================
+   WIDER TABLET PORTRAIT (961px – 1100px) — format-list grid fix
+   ======================================================================== */
+@media (min-width: 961px) and (max-width: 1100px) and (orientation: portrait) {
+
+  /* ──────────────────────────────────────────────────────────────────────
+     3. SCREEN 19 / #formats-list — stable grid, no overhang
+     ────────────────────────────────────────────────────────────────────── */
+  #formats-list .format-line {
+    grid-template-columns: minmax(300px, 40%) minmax(0, 1fr);
+    column-gap: clamp(32px, 3.6vw, 48px);
+    padding: clamp(38px, 4.4vh, 54px) 0;
+    align-items: start;
+  }
+
+  #formats-list .format-line-media {
+    aspect-ratio: 3 / 2;
+    overflow: hidden;
+    width: 100%;
+  }
+
+  #formats-list .format-line-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  #formats-list .format-line-content {
+    min-width: 0;
+    display: grid;
+    grid-template-columns: 32px minmax(0, 1fr);
+    column-gap: 16px;
+    align-items: start;
+  }
+
+  #formats-list .format-line-label {
+    font-size: clamp(18px, 1.8vw, 24px);
+    margin-bottom: 8px;
+    max-width: none;
+    line-height: 1.25;
+  }
+
+  #formats-list .format-line-summary {
+    max-width: none;
+    font-size: clamp(12px, 0.9vw, 14px);
+    line-height: 1.65;
+    margin-bottom: clamp(16px, 1.8vw, 22px);
+  }
+
+  #formats-list .format-line-specs {
+    max-width: none;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  #formats-list .format-line-spec {
+    display: grid;
+    grid-template-columns: minmax(110px, 0.28fr) minmax(0, 1fr);
+    gap: 12px;
+    padding: 8px 0;
+    align-items: baseline;
+  }
+
+  #formats-list .format-line-spec span {
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    white-space: nowrap;
+  }
+
+  #formats-list .format-line-spec p {
+    font-size: clamp(12px, 0.85vw, 13px);
+    line-height: 1.5;
+  }
+
+  /* ──────────────────────────────────────────────────────────────────────
+     4. SCREEN 20 / #formats-integration — consistent vertical rhythm
+        between title and supporting text across all panels
+     ────────────────────────────────────────────────────────────────────── */
+  #formats-integration .fi-panel {
+    align-items: start;
+  }
+
+  #formats-integration .fi-title {
+    margin-bottom: 12px;
+    font-size: clamp(18px, 2vw, 24px);
+  }
+
+  #formats-integration .fi-desc {
+    margin-top: 0;
+    padding-top: 0;
+    font-size: clamp(13px, 1vw, 14px);
+    line-height: 1.65;
+  }
+
+  #formats-integration .fi-tag {
+    margin-top: auto;
+    font-size: 10px;
+  }
+
+} /* end wider tablet portrait (TP-2A.4) */
+
+
+/* ========================================================================
+   NARROWER TABLET PORTRAIT (761px – 960px) — format-list soft stack
+   ======================================================================== */
+@media (min-width: 761px) and (max-width: 960px) and (orientation: portrait) {
+
+  /* ──────────────────────────────────────────────────────────────────────
+     3. SCREEN 19 / #formats-list — wider stack, no collisions
+     ────────────────────────────────────────────────────────────────────── */
+  #formats-list .formats-list-inner {
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  #formats-list .format-line {
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    padding: clamp(30px, 3.8vh, 44px) 0;
+    text-align: center;
+  }
+
+  #formats-list .format-line-media {
+    max-width: 540px;
+    width: 100%;
+    aspect-ratio: 3 / 2;
+    overflow: hidden;
+    margin-bottom: 22px;
+  }
+
+  #formats-list .format-line-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  #formats-list .format-line-content {
+    width: 100%;
+    max-width: 540px;
+    display: grid;
+    grid-template-columns: 28px minmax(0, 1fr);
+    column-gap: 14px;
+    align-items: start;
+    text-align: left;
+  }
+
+  #formats-list .format-line-label {
+    font-size: clamp(18px, 2.8vw, 24px);
+    margin-bottom: 8px;
+    max-width: none;
+    line-height: 1.25;
+  }
+
+  #formats-list .format-line-summary {
+    max-width: none;
+    font-size: clamp(12px, 1.6vw, 13px);
+    line-height: 1.65;
+    margin-bottom: clamp(14px, 2vw, 20px);
+  }
+
+  #formats-list .format-line-specs {
+    max-width: none;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  #formats-list .format-line-spec {
+    display: grid;
+    grid-template-columns: minmax(100px, 0.26fr) minmax(0, 1fr);
+    gap: 10px;
+    padding: 8px 0;
+    align-items: baseline;
+  }
+
+  #formats-list .format-line-spec span {
+    font-size: 9px;
+    letter-spacing: 0.16em;
+    white-space: nowrap;
+  }
+
+  #formats-list .format-line-spec p {
+    font-size: clamp(12px, 1.4vw, 13px);
+    line-height: 1.5;
+  }
+
+
+  /* ──────────────────────────────────────────────────────────────────────
+     4. SCREEN 20 / #formats-integration — consistent vertical rhythm
+     ────────────────────────────────────────────────────────────────────── */
+  #formats-integration .fi-panel {
+    align-items: start;
+  }
+
+  #formats-integration .fi-title {
+    margin-bottom: 10px;
+    font-size: clamp(17px, 2.4vw, 22px);
+  }
+
+  #formats-integration .fi-desc {
+    margin-top: 0;
+    padding-top: 0;
+    font-size: clamp(12px, 1.5vw, 13px);
+    line-height: 1.65;
+  }
+
+  #formats-integration .fi-tag {
+    margin-top: auto;
+    font-size: 10px;
+  }
+
+} /* end narrower tablet portrait (TP-2A.4) */
+
+
+/* ─── Stage TP-2A.5: tablet portrait hotfix — screen 09 title one line ─── */
+@media (min-width: 761px) and (max-width: 1100px) and (orientation: portrait) {
+
+  /* ──────────────────────────────────────────────────────────────────────
+     SCREEN 09 / #performance — visual text replacement for one-line title
+     Hide original text via font-size:0, show "Как это выглядит" via ::before
+     ────────────────────────────────────────────────────────────────────── */
+  #performance .perf-title {
+    font-size: 0 !important;
+    line-height: 1 !important;
+    text-align: center !important;
+    white-space: nowrap !important;
+  }
+
+  #performance .perf-title br {
+    display: none !important;
+  }
+
+  #performance .perf-title::before {
+    content: "Как это выглядит";
+    display: block;
+    font-family: var(--font-d);
+    font-weight: 400;
+    font-size: clamp(34px, 4.6vw, 52px);
+    line-height: 1.08;
+    letter-spacing: .04em;
+    color: var(--text-100);
+    white-space: nowrap;
+  }
+
+}
+
+/* ─── Stage TP-2A.6: tablet portrait unified image width by screen 14 slider ─── */
+
+/* ========================================================================
+   CSS variable — image rail width based on screen 14 / #reviews
+   .photo-carousel-wrap width: 100%; max-width: 720px (from styles.css)
+   ======================================================================== */
+:root {
+  --tp-image-rail: min(86vw, 720px);
+}
+
+
+/* ========================================================================
+   MAIN TABLET PORTRAIT RANGE — unified image widths
+   ======================================================================== */
+@media (min-width: 761px) and (max-width: 1100px) and (orientation: portrait) {
+
+  /* ──────────────────────────────────────────────────────────────────────
+      SCREEN 14 / #reviews — set carousel container to image rail
+      Does NOT change JS carousel mechanics (slides are 100% of container)
+      ────────────────────────────────────────────────────────────────────── */
+  #reviews .photo-carousel-wrap {
+    width: var(--tp-image-rail);
+    max-width: var(--tp-image-rail);
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+
+  /* ──────────────────────────────────────────────────────────────────────
+      SCREEN 06 / #live-text — image width = --tp-image-rail
+      ────────────────────────────────────────────────────────────────────── */
+  #live-text .live-mobile-image {
+    width: var(--tp-image-rail) !important;
+    max-width: var(--tp-image-rail) !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  #live-text .live-mobile-image img {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    display: block !important;
+    object-fit: cover !important;
+  }
+
+
+  /* ──────────────────────────────────────────────────────────────────────
+      SCREEN 19 / #formats-list — vertical card layout with image = rail
+      Convert to clean vertical card: image top → content bottom
+      ────────────────────────────────────────────────────────────────────── */
+  #formats-list .format-line {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    width: var(--tp-image-rail) !important;
+    max-width: var(--tp-image-rail) !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding: clamp(30px, 3.8vh, 44px) 0;
+    text-align: center;
+  }
+
+  #formats-list .format-line-media {
+    width: 100% !important;
+    max-width: 100% !important;
+    aspect-ratio: 3 / 2;
+    overflow: hidden;
+    margin-bottom: 22px;
+  }
+
+  #formats-list .format-line-media img {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    display: block !important;
+  }
+
+  #formats-list .format-line-content {
+    width: 100%;
+    max-width: 100%;
+    display: grid;
+    grid-template-columns: 28px minmax(0, 1fr);
+    column-gap: 14px;
+    align-items: start;
+    text-align: left;
+  }
+
+  #formats-list .format-line-label {
+    font-size: clamp(18px, 2.8vw, 24px);
+    margin-bottom: 8px;
+    max-width: none;
+    line-height: 1.25;
+  }
+
+  #formats-list .format-line-summary {
+    max-width: none;
+    font-size: clamp(12px, 1.6vw, 13px);
+    line-height: 1.65;
+    margin-bottom: clamp(14px, 2vw, 20px);
+  }
+
+  #formats-list .format-line-specs {
+    max-width: none;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  #formats-list .format-line-spec {
+    display: grid;
+    grid-template-columns: minmax(100px, 0.26fr) minmax(0, 1fr);
+    gap: 10px;
+    padding: 8px 0;
+    align-items: baseline;
+  }
+
+  #formats-list .format-line-spec span {
+    font-size: 9px;
+    letter-spacing: 0.16em;
+    white-space: nowrap;
+  }
+
+  #formats-list .format-line-spec p {
+    font-size: clamp(12px, 1.4vw, 13px);
+    line-height: 1.5;
+  }
+
+
+  /* ──────────────────────────────────────────────────────────────────────
+      SCREEN 27 / #final-experience — image width = --tp-image-rail
+      ────────────────────────────────────────────────────────────────────── */
+  #final-experience .final-experience-image {
+    width: var(--tp-image-rail) !important;
+    max-width: var(--tp-image-rail) !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  #final-experience .final-experience-image img {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    display: block !important;
+    object-fit: cover !important;
+  }
+
+} /* end Stage TP-2A.6 main MQ */
+
+
+/* ========================================================================
+   NARROWER TABLET PORTRAIT (761px – 960px) — override narrower-specific
+   rules that would otherwise conflict with --tp-image-rail
+   ======================================================================== */
+@media (min-width: 761px) and (max-width: 960px) and (orientation: portrait) {
+
+  #live-text .live-mobile-image {
+    width: var(--tp-image-rail) !important;
+    max-width: var(--tp-image-rail) !important;
+  }
+
+  #formats-list .format-line {
+    width: var(--tp-image-rail) !important;
+    max-width: var(--tp-image-rail) !important;
+  }
+
+  #final-experience .final-experience-image {
+    width: var(--tp-image-rail) !important;
+    max-width: var(--tp-image-rail) !important;
+  }
+
+} /* end narrower tablet portrait (TP-2A.6) */
+
+
+/* ========================================================================
+   WIDER TABLET PORTRAIT (961px – 1100px) — override wider-specific rules
+   ======================================================================== */
+@media (min-width: 961px) and (max-width: 1100px) and (orientation: portrait) {
+
+  #live-text .live-mobile-image {
+    width: var(--tp-image-rail) !important;
+    max-width: var(--tp-image-rail) !important;
+  }
+
+  #formats-list .format-line {
+    width: var(--tp-image-rail) !important;
+    max-width: var(--tp-image-rail) !important;
+  }
+
+  #final-experience .final-experience-image {
+    width: var(--tp-image-rail) !important;
+    max-width: var(--tp-image-rail) !important;
+  }
+
+} /* end wider tablet portrait (TP-2A.6) */
+
+
+/* ─── Stage TP-PLAYER-1: tablet player waveform/name separation hotfix ─── */
+
+@media (min-width: 761px) and (max-width: 1100px) and (orientation: portrait) {
+
+  #player .track-col {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    min-width: 0;
+    box-sizing: border-box;
+    overflow: hidden;
+    padding-top: 18px;
+    padding-bottom: 18px;
+  }
+
+  #player .track-num {
+    position: relative;
+    z-index: 2;
+    display: block;
+    flex: 0 0 auto;
+  }
+
+  #player .track-name {
+    position: relative;
+    z-index: 2;
+    display: block;
+    flex: 0 0 auto;
+    margin-bottom: 12px;
+    line-height: 1.2;
+  }
+
+  #player .waveform {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: flex-end;
+    flex: 0 0 auto;
+    width: 100%;
+    height: 46px;
+    max-height: 46px;
+    overflow: hidden;
+    margin-top: 0;
+    margin-bottom: 12px;
+  }
+
+  #player .waveform .wf-bar,
+  #player .wf-bar {
+    max-height: 100% !important;
+    min-height: 2px;
+  }
+
+  #player .track-desc {
+    position: relative;
+    z-index: 2;
+    display: block;
+    flex: 0 0 auto;
+    margin-top: 0;
+    margin-bottom: 12px;
+  }
+
+  #player .track-bar-wrap {
+    position: relative;
+    z-index: 2;
+    flex: 0 0 auto;
+    margin-top: 0;
+    margin-bottom: 10px;
+  }
+
+  #player .track-footer {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex: 0 0 auto;
+  }
+
+  #player .track-btn {
+    flex: 0 0 auto;
+  }
+
+}
+
+@media (min-width: 761px) and (max-width: 1366px) and (orientation: landscape) {
+
+  #player .track-col {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    min-width: 0;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+
+  #player .track-num {
+    position: relative;
+    z-index: 2;
+    display: block;
+    flex: 0 0 auto;
+  }
+
+  #player .track-name {
+    position: relative;
+    z-index: 2;
+    display: block;
+    flex: 0 0 auto;
+    margin-bottom: 12px;
+    line-height: 1.18;
+  }
+
+  #player .waveform {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: flex-end;
+    flex: 0 0 auto;
+    width: 100%;
+    height: 52px;
+    max-height: 52px;
+    overflow: hidden;
+    margin-top: 0;
+    margin-bottom: 14px;
+  }
+
+  #player .waveform .wf-bar,
+  #player .wf-bar {
+    max-height: 100% !important;
+    min-height: 2px;
+  }
+
+  #player .track-desc {
+    position: relative;
+    z-index: 2;
+    display: block;
+    flex: 0 0 auto;
+    margin-top: 0;
+    margin-bottom: 14px;
+  }
+
+  #player .track-bar-wrap {
+    position: relative;
+    z-index: 2;
+    flex: 0 0 auto;
+    margin-top: 0;
+    margin-bottom: 10px;
+  }
+
+  #player .track-footer {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex: 0 0 auto;
+  }
+
+  #player .track-btn {
+    flex: 0 0 auto;
+  }
+
+}
+
+/* ─── Stage TP-19.1: tablet portrait formats-list caption redesign ─── */
+
+@media (min-width: 761px) and (max-width: 1100px) and (orientation: portrait) {
+
+  #formats-list {
+    --tp-image-rail: min(86vw, 720px);
+  }
+
+  #formats-list .formats-list-inner {
+    width: 100%;
+    max-width: none;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  #formats-list .formats-list {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #formats-list .format-line {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    width: var(--tp-image-rail) !important;
+    max-width: var(--tp-image-rail) !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding: clamp(36px, 4.8vh, 58px) 0 0;
+    text-align: left;
+    box-sizing: border-box;
+  }
+
+  #formats-list .format-line-media {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 auto;
+    aspect-ratio: auto;
+    overflow: hidden;
+  }
+
+  #formats-list .format-line-media img {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    display: block !important;
+    object-fit: cover !important;
+  }
+
+  #formats-list .format-line-content {
+    position: relative;
+    display: grid !important;
+    grid-template-columns: minmax(0, 34%) minmax(0, 66%) !important;
+    column-gap: clamp(22px, 4vw, 42px);
+    align-items: start;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    padding-top: clamp(28px, 4vw, 42px);
+    padding-bottom: clamp(28px, 4vw, 42px);
+    border-bottom: 1px solid rgba(253,224,139,.12);
+    box-sizing: border-box;
+    text-align: left;
+  }
+
+  #formats-list .format-line-content::before {
+    content: "";
+    position: absolute;
+    top: clamp(28px, 4vw, 42px);
+    bottom: clamp(28px, 4vw, 42px);
+    left: calc(34% + (clamp(22px, 4vw, 42px) / 2));
+    width: 1px;
+    background: rgba(253,224,139,.14);
+    pointer-events: none;
+  }
+
+  #formats-list .format-line-num {
+    grid-column: 1;
+    grid-row: 1;
+    display: block;
+    margin-bottom: 14px;
+    font-size: clamp(11px, 1.35vw, 12px);
+    line-height: 1;
+    letter-spacing: .14em;
+    color: var(--gold-70);
+  }
+
+  #formats-list .format-line-copy {
+    display: contents;
+  }
+
+  #formats-list .format-line-head {
+    display: block;
+    grid-column: 1;
+    grid-row: 2;
+    min-width: 0;
+  }
+
+  #formats-list .format-line-label {
+    display: block;
+    margin-bottom: 14px;
+    max-width: none;
+    font-family: var(--font-d);
+    color: var(--text-100);
+    font-size: clamp(24px, 3vw, 34px);
+    line-height: 1.16;
+  }
+
+  #formats-list .format-line-summary,
+  #formats-list .format-line-summary-group {
+    grid-column: 1;
+    max-width: 260px;
+  }
+
+  #formats-list .format-line-summary-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  #formats-list .format-line-summary {
+    margin: 0;
+    color: var(--text-65);
+    font-size: clamp(13px, 1.5vw, 15px);
+    line-height: 1.65;
+  }
+
+  #formats-list .format-line-specs {
+    grid-column: 2;
+    grid-row: 1 / span 4;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: none;
+    min-width: 0;
+  }
+
+  #formats-list .format-line-spec {
+    display: grid;
+    grid-template-columns: minmax(120px, 34%) minmax(0, 66%);
+    column-gap: 20px;
+    align-items: baseline;
+    padding: 12px 0;
+    border-top: 1px solid rgba(253,224,139,.10);
+    min-width: 0;
+  }
+
+  #formats-list .format-line-spec span,
+  #formats-list .format-line-spec > :first-child {
+    min-width: 0;
+    font-family: var(--font-b);
+    color: var(--gold-70);
+    font-size: 10px;
+    line-height: 1.35;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    white-space: normal;
+  }
+
+  #formats-list .format-line-spec p,
+  #formats-list .format-line-spec > :last-child {
+    min-width: 0;
+    margin: 0;
+    color: var(--text-65);
+    font-size: clamp(13px, 1.35vw, 15px);
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+  }
+
+}
+
+@media (min-width: 761px) and (max-width: 860px) and (orientation: portrait) {
+
+  #formats-list .format-line-content {
+    grid-template-columns: 1fr !important;
+    column-gap: 0;
+  }
+
+  #formats-list .format-line-content::before {
+    display: none;
+  }
+
+  #formats-list .format-line-num,
+  #formats-list .format-line-head,
+  #formats-list .format-line-label,
+  #formats-list .format-line-summary,
+  #formats-list .format-line-summary-group,
+  #formats-list .format-line-specs {
+    grid-column: 1;
+  }
+
+  #formats-list .format-line-specs {
+    grid-row: auto;
+    margin-top: 22px;
+  }
+
+  #formats-list .format-line-summary,
+  #formats-list .format-line-summary-group {
+    max-width: 100%;
+  }
+
+  #formats-list .format-line-spec {
+    grid-template-columns: minmax(128px, 34%) minmax(0, 66%);
+    column-gap: 18px;
+  }
+
+}
+
+/* ─── Stage TP-19.2: tablet portrait formats-list caption compacting ─── */
+
+@media (min-width: 761px) and (max-width: 1100px) and (orientation: portrait) {
+
+  #formats-list {
+    --tp-image-rail: min(86vw, 720px);
+  }
+
+  #formats-list .formats-list-inner {
+    width: 100%;
+    max-width: none;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  #formats-list .formats-list {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #formats-list .format-line {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    width: var(--tp-image-rail) !important;
+    max-width: var(--tp-image-rail) !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    margin-bottom: clamp(34px, 5vw, 56px);
+    padding: 0;
+    text-align: left;
+    box-sizing: border-box;
+  }
+
+  #formats-list .format-line-media {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 auto;
+    aspect-ratio: auto;
+    overflow: hidden;
+  }
+
+  #formats-list .format-line-media img {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    display: block !important;
+    object-fit: cover !important;
+  }
+
+  #formats-list .format-line-content {
+    display: grid !important;
+    grid-template-columns: minmax(0, 34%) minmax(0, 66%) !important;
+    column-gap: clamp(24px, 4vw, 42px);
+    align-items: start;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    padding-top: clamp(24px, 3.4vw, 34px);
+    padding-bottom: clamp(26px, 3.8vw, 38px);
+    border-bottom: 1px solid rgba(253,224,139,.12);
+    box-sizing: border-box;
+    text-align: left;
+  }
+
+  #formats-list .format-line-num,
+  #formats-list .format-line-label,
+  #formats-list .format-line-summary {
+    grid-column: 1;
+  }
+
+  #formats-list .format-line-num {
+    margin-bottom: 10px;
+    line-height: 1;
+  }
+
+  #formats-list .format-line-label {
+    margin-bottom: 12px;
+    max-width: none;
+    font-size: clamp(23px, 2.8vw, 32px);
+    line-height: 1.12;
+  }
+
+  #formats-list .format-line-summary {
+    margin-bottom: 0;
+    max-width: 260px;
+    line-height: 1.55;
+  }
+
+  #formats-list .format-line-specs {
+    grid-column: 2;
+    grid-row: 1 / span 3;
+    align-self: start;
+    width: 100%;
+    max-width: none;
+    min-width: 0;
+    margin-top: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  #formats-list .format-line-spec {
+    display: grid;
+    grid-template-columns: minmax(120px, 34%) minmax(0, 66%);
+    column-gap: 18px;
+    align-items: baseline;
+    padding: 10px 0;
+    border-top: 1px solid rgba(253,224,139,.10);
+    min-width: 0;
+  }
+
+}
+
+@media (min-width: 761px) and (max-width: 860px) and (orientation: portrait) {
+
+  #formats-list .format-line-content {
+    grid-template-columns: minmax(0, 37%) minmax(0, 63%) !important;
+    column-gap: 20px;
+  }
+
+  #formats-list .format-line-label {
+    font-size: clamp(21px, 3vw, 28px);
+    line-height: 1.12;
+  }
+
+  #formats-list .format-line-summary {
+    max-width: 240px;
+  }
+
+  #formats-list .format-line-specs {
+    grid-column: 2;
+    grid-row: 1 / span 3;
+    margin-top: 0;
+  }
+
+  #formats-list .format-line-spec {
+    grid-template-columns: minmax(116px, 36%) minmax(0, 64%);
+    column-gap: 14px;
+    padding: 9px 0;
+  }
+
+}
+
+/* ─── Stage TP-19.3: tablet portrait formats-list two-template refinement ─── */
+
+@media (min-width: 761px) and (max-width: 1100px) and (orientation: portrait) {
+
+  /* ═══════════════════════════════════════════════════════════════════════
+     TEMPLATE A — Spec Card (01–03)
+     Two-column grid: left caption → right specs, denser layout
+     ═══════════════════════════════════════════════════════════════════════ */
+
+  #formats-list .format-line:nth-child(-n+3) .format-line-content {
+    display: grid !important;
+    grid-template-columns: minmax(0, 38%) minmax(0, 62%) !important;
+    column-gap: clamp(24px, 4vw, 40px);
+    align-items: start;
+    width: 100%;
+    padding-top: clamp(22px, 3vw, 30px);
+    padding-bottom: clamp(24px, 3.4vw, 34px);
+    border-bottom: 1px solid rgba(253,224,139,.12);
+  }
+
+  #formats-list .format-line:nth-child(-n+3) .format-line-num,
+  #formats-list .format-line:nth-child(-n+3) .format-line-label,
+  #formats-list .format-line:nth-child(-n+3) .format-line-summary {
+    grid-column: 1;
+  }
+
+  #formats-list .format-line:nth-child(-n+3) .format-line-num {
+    margin-bottom: 10px;
+    font-size: clamp(11px, 1.35vw, 12px);
+    line-height: 1;
+    letter-spacing: .14em;
+    color: var(--gold-70);
+  }
+
+  #formats-list .format-line:nth-child(-n+3) .format-line-label {
+    margin-bottom: 12px;
+    font-size: clamp(23px, 2.8vw, 32px);
+    line-height: 1.12;
+    color: var(--text-100);
+    font-family: var(--font-d);
+    max-width: none;
+  }
+
+  #formats-list .format-line:nth-child(-n+3) .format-line-summary {
+    margin-bottom: 0;
+    max-width: 280px;
+    line-height: 1.55;
+    color: var(--text-65);
+    font-size: clamp(13px, 1.5vw, 15px);
+  }
+
+  #formats-list .format-line:nth-child(-n+3) .format-line-specs {
+    grid-column: 2;
+    grid-row: 1 / span 3;
+    align-self: start;
+    margin-top: 0;
+    width: 100%;
+    max-width: none;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  #formats-list .format-line:nth-child(-n+3) .format-line-spec {
+    display: grid;
+    grid-template-columns: minmax(118px, 34%) minmax(0, 66%);
+    column-gap: 18px;
+    align-items: baseline;
+    padding: 9px 0;
+    border-top: 1px solid rgba(253,224,139,.10);
+    min-width: 0;
+  }
+
+  #formats-list .format-line:nth-child(-n+3) .format-line-spec > :first-child {
+    min-width: 0;
+    font-family: var(--font-b);
+    color: var(--gold-70);
+    font-size: 10px;
+    line-height: 1.35;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    white-space: normal;
+  }
+
+  #formats-list .format-line:nth-child(-n+3) .format-line-spec > :last-child {
+    min-width: 0;
+    margin: 0;
+    color: var(--text-65);
+    font-size: clamp(13px, 1.35vw, 15px);
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+  }
+
+  /* ── Hide the vertical divider line on Template A cards ── */
+  #formats-list .format-line:nth-child(-n+3) .format-line-content::before {
+    display: none !important;
+  }
+
+  /* ═══════════════════════════════════════════════════════════════════════
+     TEMPLATE B — Narrative Card (04)
+     Single-column editorial block, no right column
+     ═══════════════════════════════════════════════════════════════════════ */
+
+  #formats-list .format-line:nth-child(4) .format-line-content {
+    display: block !important;
+    width: 100%;
+    max-width: min(100%, 520px);
+    padding-top: clamp(24px, 3vw, 32px);
+    padding-bottom: clamp(30px, 4vw, 42px);
+    border-bottom: 1px solid rgba(253,224,139,.12);
+  }
+
+  /* Hide the vertical divider line — not needed in single-column */
+  #formats-list .format-line:nth-child(4) .format-line-content::before {
+    display: none !important;
+  }
+
+  #formats-list .format-line:nth-child(4) .format-line-num {
+    display: block;
+    margin-bottom: 12px;
+    font-size: clamp(11px, 1.35vw, 12px);
+    line-height: 1;
+    letter-spacing: .14em;
+    color: var(--gold-70);
+  }
+
+  #formats-list .format-line:nth-child(4) .format-line-label {
+    max-width: 420px;
+    margin-bottom: 16px;
+    line-height: 1.12;
+    font-size: clamp(23px, 2.8vw, 32px);
+    color: var(--text-100);
+    font-family: var(--font-d);
+  }
+
+  #formats-list .format-line:nth-child(4) .format-line-summary {
+    max-width: 440px;
+    line-height: 1.65;
+    margin-bottom: 20px;
+    color: var(--text-65);
+    font-size: clamp(13px, 1.5vw, 15px);
+  }
+
+}
+
+@media (min-width: 761px) and (max-width: 860px) and (orientation: portrait) {
+
+  /* ═══════════════════════════════════════════════════════════════════════
+     NARROW PORTRAIT — Template A: tighter columns
+     ═══════════════════════════════════════════════════════════════════════ */
+
+  #formats-list .format-line:nth-child(-n+3) .format-line-content {
+    grid-template-columns: minmax(0, 40%) minmax(0, 60%) !important;
+    column-gap: 20px;
+  }
+
+  #formats-list .format-line:nth-child(-n+3) .format-line-label {
+    font-size: clamp(21px, 3vw, 28px);
+  }
+
+  #formats-list .format-line:nth-child(-n+3) .format-line-summary {
+    max-width: 240px;
+  }
+
+  #formats-list .format-line:nth-child(-n+3) .format-line-spec {
+    grid-template-columns: minmax(116px, 36%) minmax(0, 64%);
+    column-gap: 14px;
+    padding: 9px 0;
+  }
+
+  /* ═══════════════════════════════════════════════════════════════════════
+     NARROW PORTRAIT — Template B: slightly wider max-width
+     ═══════════════════════════════════════════════════════════════════════ */
+
+  #formats-list .format-line:nth-child(4) .format-line-content {
+    max-width: min(100%, 560px);
+  }
+
+}
+
+/* ─── Stage TP-19.4: tablet portrait formats-list unified passport layout ─── */
+
+/* ========================================================================
+   MAIN TABLET PORTRAIT RANGE — unified passport layout for ALL 4 cards
+   Overrides both Template A (01-03) and Template B (04) from TP-19.3
+   ======================================================================== */
+@media (min-width: 761px) and (max-width: 1100px) and (orientation: portrait) {
+
+  /* ─── UNIFIED PASSPORT LAYOUT FOR ALL 4 CARDS ───
+       Composition: [image] → [left: num + label] | [right: summary + specs]
+       Same layout for cards 01, 02, 03, 04.
+       Uses :nth-child(n) to match specificity of existing :nth-child(-n+3) rules
+  ─── */
+
+  /* ── CSS variable — image rail ── */
+  #formats-list {
+    --tp-image-rail: min(86vw, 720px);
+  }
+
+  /* ── Container ── */
+  #formats-list .formats-list-inner {
+    width: 100%;
+    max-width: none;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  #formats-list .formats-list {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+
+  /* ═══════════════════════════════════════════════════════════════════════
+     FORMAT LINE — card wrapper
+     ═══════════════════════════════════════════════════════════════════════ */
+
+  /* Target ALL cards (01-04) with same specificity as nth-child rules */
+  #formats-list .format-line:nth-child(n) {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    width: var(--tp-image-rail) !important;
+    max-width: var(--tp-image-rail) !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    margin-bottom: clamp(42px, 5.5vw, 64px) !important;
+    padding: 0 !important;
+    text-align: left;
+    box-sizing: border-box;
+  }
+
+
+  /* ═══════════════════════════════════════════════════════════════════════
+     IMAGE — full width rail
+     ═══════════════════════════════════════════════════════════════════════ */
+
+  #formats-list .format-line:nth-child(n) .format-line-media {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 auto;
+    aspect-ratio: auto;
+    overflow: hidden;
+  }
+
+  #formats-list .format-line:nth-child(n) .format-line-media img {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    display: block !important;
+    object-fit: cover !important;
+  }
+
+
+  /* ═══════════════════════════════════════════════════════════════════════
+     CONTENT — passport grid: left column (num+label) | right column (summary+specs)
+     ═══════════════════════════════════════════════════════════════════════ */
+
+  #formats-list .format-line:nth-child(n) .format-line-content {
+    display: grid !important;
+    grid-template-columns: minmax(0, 31%) minmax(0, 69%) !important;
+    column-gap: clamp(26px, 4.4vw, 46px) !important;
+    align-items: start !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0;
+    padding-top: clamp(24px, 3.2vw, 34px) !important;
+    padding-bottom: clamp(26px, 3.6vw, 38px) !important;
+    border-bottom: 1px solid rgba(253,224,139,.12) !important;
+    box-sizing: border-box;
+    text-align: left;
+  }
+
+  /* Flatten wrapper elements so their children participate in the content grid */
+  #formats-list .format-line:nth-child(n) .format-line-copy {
+    display: contents !important;
+  }
+
+  #formats-list .format-line:nth-child(n) .format-line-head {
+    display: contents !important;
+  }
+
+  /* Hide vertical divider — not needed in unified layout */
+  #formats-list .format-line:nth-child(n) .format-line-content::before {
+    display: none !important;
+  }
+
+
+  /* ═══════════════════════════════════════════════════════════════════════
+     LEFT COLUMN — num + label only (short, no summary)
+     ═══════════════════════════════════════════════════════════════════════ */
+
+  #formats-list .format-line:nth-child(n) .format-line-num,
+  #formats-list .format-line:nth-child(n) .format-line-label {
+    grid-column: 1 !important;
+  }
+
+  #formats-list .format-line:nth-child(n) .format-line-num {
+    display: block !important;
+    margin-bottom: 12px !important;
+    font-size: 11px;
+    line-height: 1;
+    letter-spacing: .14em;
+    color: var(--gold-70);
+  }
+
+  #formats-list .format-line:nth-child(n) .format-line-label {
+    display: block;
+    max-width: 100% !important;
+    margin-bottom: 0 !important;
+    font-family: var(--font-d);
+    color: var(--text-100);
+    font-size: clamp(24px, 3vw, 34px) !important;
+    line-height: 1.12;
+    letter-spacing: .03em;
+  }
+
+
+  /* ═══════════════════════════════════════════════════════════════════════
+     RIGHT COLUMN — summary + specs
+     ═══════════════════════════════════════════════════════════════════════ */
+
+  #formats-list .format-line:nth-child(n) .format-line-summary,
+  #formats-list .format-line:nth-child(n) .format-line-summary-group,
+  #formats-list .format-line:nth-child(n) .format-line-specs {
+    grid-column: 2 !important;
+  }
+
+  /* Summary text */
+  #formats-list .format-line:nth-child(n) .format-line-summary {
+    max-width: 100% !important;
+    margin: 0 0 16px 0 !important;
+    color: var(--text-65);
+    font-size: clamp(13px, 1.45vw, 15px);
+    line-height: 1.6;
+  }
+
+  /* Card 04: summary-group with multiple paragraphs */
+  #formats-list .format-line:nth-child(n) .format-line-summary-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  /* Specs block */
+  #formats-list .format-line:nth-child(n) .format-line-specs {
+    width: 100% !important;
+    margin-top: 0 !important;
+    display: flex !important;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  /* Spec rows */
+  #formats-list .format-line:nth-child(n) .format-line-spec {
+    display: grid !important;
+    grid-template-columns: minmax(118px, 34%) minmax(0, 66%) !important;
+    column-gap: 18px !important;
+    align-items: baseline !important;
+    padding: 9px 0 !important;
+    border-top: 1px solid rgba(253,224,139,.10);
+    min-width: 0;
+  }
+
+  #formats-list .format-line:nth-child(n) .format-line-spec > :first-child {
+    min-width: 0;
+    font-family: var(--font-b);
+    color: var(--gold-70);
+    font-size: 10px;
+    line-height: 1.35;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    white-space: normal;
+  }
+
+  #formats-list .format-line:nth-child(n) .format-line-spec > :last-child {
+    min-width: 0;
+    margin: 0;
+    color: var(--text-65);
+    font-size: clamp(13px, 1.35vw, 15px);
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+  }
+
+
+  /* ═══════════════════════════════════════════════════════════════════════
+     CARD 04 — same passport layout
+     ═══════════════════════════════════════════════════════════════════════ */
+
+  /* Card 04 uses the same unified grid — no separate template */
+
+  /* If specs exist on card 04: keep as compact meta-lines in right column.
+     If specs are empty / absent: hide the container. */
+  #formats-list .format-line:nth-child(4) .format-line-specs {
+    display: none !important;
+  }
+
+  /* Card 04 summary stays in right column via grid-column: 2 above */
+
+} /* end main tablet portrait MQ (Stage TP-19.4) */
+
+
+/* ========================================================================
+   NARROW VERTICAL TABLET (761px – 860px) — keep two columns, tighter
+   ======================================================================== */
+@media (min-width: 761px) and (max-width: 860px) and (orientation: portrait) {
+
+  /* Keep two columns, tighter proportions */
+  #formats-list .format-line:nth-child(n) .format-line-content {
+    grid-template-columns: minmax(0, 34%) minmax(0, 66%) !important;
+    column-gap: 22px !important;
+  }
+
+  /* Slightly smaller label on narrow viewports */
+  #formats-list .format-line:nth-child(n) .format-line-label {
+    font-size: clamp(21px, 3vw, 28px) !important;
+  }
+
+  /* More compact specs */
+  #formats-list .format-line:nth-child(n) .format-line-spec {
+    grid-template-columns: minmax(116px, 36%) minmax(0, 64%) !important;
+    column-gap: 14px !important;
+    padding: 9px 0 !important;
+  }
+
+} /* end narrow tablet portrait (Stage TP-19.4) */
+
+
+/* ─── Stage TP-19.5: tablet portrait formats-list final typography alignment ─── */
+
+/* ========================================================================
+   MAIN TABLET PORTRAIT RANGE — final alignment
+   Overrides TP-19.4 selectors with same :nth-child(n) specificity.
+   Key changes:
+   1. Num positioned absolutely next to label → one typographic block
+   2. Summary as lead in right column (above specs)
+   3. Specs in right column below summary
+   4. Card 04 same passport layout
+   ======================================================================== */
+@media (min-width: 761px) and (max-width: 1100px) and (orientation: portrait) {
+
+  /* ── Image rail (already defined at :root, redeclare for safety) ── */
+  #formats-list {
+    --tp-image-rail: min(86vw, 720px);
+  }
+
+  /* ── Card wrapper ── */
+  #formats-list .format-line:nth-child(n) {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    width: var(--tp-image-rail) !important;
+    max-width: var(--tp-image-rail) !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    margin-bottom: clamp(40px, 5vw, 60px) !important;
+    padding: 0 !important;
+    text-align: left;
+    box-sizing: border-box;
+  }
+
+  /* ── Image ── */
+  #formats-list .format-line:nth-child(n) .format-line-media {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 auto;
+    aspect-ratio: auto;
+    overflow: hidden;
+  }
+
+  #formats-list .format-line:nth-child(n) .format-line-media img {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    display: block !important;
+    object-fit: cover !important;
+  }
+
+  /* ── PASSPORT GRID: left column | right column ── */
+  #formats-list .format-line:nth-child(n) .format-line-content {
+    position: relative;
+    display: grid !important;
+    grid-template-columns: minmax(0, 32%) minmax(0, 68%) !important;
+    column-gap: clamp(26px, 4vw, 44px) !important;
+    align-items: start !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0;
+    padding-top: clamp(24px, 3vw, 32px) !important;
+    padding-bottom: clamp(24px, 3.2vw, 34px) !important;
+    border-bottom: 1px solid rgba(253,224,139,.12) !important;
+    box-sizing: border-box;
+    text-align: left;
+  }
+
+  /* Flatten wrapper elements so children participate in content grid */
+  #formats-list .format-line:nth-child(n) .format-line-copy {
+    display: contents !important;
+  }
+
+  #formats-list .format-line:nth-child(n) .format-line-head {
+    display: contents !important;
+  }
+
+  /* Hide old vertical divider (was between left and right columns) */
+  #formats-list .format-line:nth-child(n) .format-line-content::before {
+    display: none !important;
+  }
+
+
+  /* ═══════════════════════════════════════════════════════════════════════
+     LEFT COLUMN — num + label as ONE typographic block
+     ═══════════════════════════════════════════════════════════════════════ */
+
+  /* Num: absolutely positioned within its grid area (column 1).
+     The grid area starts at content padding-top, so top: 0 aligns
+     num with the top of the grid area = same as label baseline.
+     This makes num sit to the left of the label on the same line. */
+  #formats-list .format-line:nth-child(n) .format-line-num {
+    grid-column: 1 !important;
+    position: absolute !important;
+    left: 0;
+    top: 0 !important; /* relative to grid area = same as padding-top */
+    margin: 0 !important;
+    padding: 0 !important;
+    display: block !important;
+    font-size: 11px;
+    line-height: 1.12;
+    letter-spacing: .14em;
+    color: var(--gold-70);
+    white-space: nowrap;
+  }
+
+  /* Label: padding-left makes room for num beside it */
+  #formats-list .format-line:nth-child(n) .format-line-label {
+    grid-column: 1 !important;
+    display: block;
+    padding-left: 34px !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    font-family: var(--font-d);
+    color: var(--text-100);
+    font-size: clamp(24px, 3vw, 34px) !important;
+    line-height: 1.12;
+    letter-spacing: .03em;
+    word-break: break-word;
+  }
+
+  /* Ensure no old display:block + margin interferes */
+  #formats-list .format-line:nth-child(n) .format-line-num {
+    margin: 0 !important;
+    padding: 0 !important;
+    display: block !important;
+  }
+
+
+  /* ═══════════════════════════════════════════════════════════════════════
+     RIGHT COLUMN — summary (lead) + specs below
+     ═══════════════════════════════════════════════════════════════════════ */
+
+  /* Summary: lead statement in right column, top position */
+  #formats-list .format-line:nth-child(n) .format-line-summary {
+    grid-column: 2 !important;
+    grid-row: 1;
+    max-width: 100% !important;
+    margin: 0 0 clamp(16px, 2vw, 22px) 0 !important;
+    color: var(--text-80);
+    font-size: clamp(14px, 1.55vw, 16px);
+    line-height: 1.62;
+    letter-spacing: .01em;
+  }
+
+  /* Card 04: summary-group with multiple paragraphs — flex column in right column */
+  #formats-list .format-line:nth-child(n) .format-line-summary-group {
+    grid-column: 2 !important;
+    grid-row: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 100% !important;
+    margin: 0 0 clamp(16px, 2vw, 22px) 0 !important;
+  }
+
+  /* Specs block — below summary */
+  #formats-list .format-line:nth-child(n) .format-line-specs {
+    grid-column: 2 !important;
+    grid-row: 2;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-top: 0 !important;
+    display: flex !important;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  /* Spec rows */
+  #formats-list .format-line:nth-child(n) .format-line-spec {
+    display: grid !important;
+    grid-template-columns: minmax(118px, 34%) minmax(0, 66%) !important;
+    column-gap: 18px !important;
+    align-items: baseline !important;
+    padding: 9px 0 !important;
+    border-top: 1px solid rgba(253,224,139,.10);
+    min-width: 0;
+  }
+
+  /* Spec label (first child) — small, uppercase, muted gold */
+  #formats-list .format-line:nth-child(n) .format-line-spec > :first-child {
+    min-width: 0;
+    font-family: var(--font-b);
+    color: var(--gold-70);
+    font-size: 10px;
+    line-height: 1.35;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    white-space: normal;
+  }
+
+  /* Spec value (last child) — readable muted text */
+  #formats-list .format-line:nth-child(n) .format-line-spec > :last-child {
+    min-width: 0;
+    margin: 0;
+    color: var(--text-65);
+    font-size: clamp(13px, 1.35vw, 15px);
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+  }
+
+
+  /* ═══════════════════════════════════════════════════════════════════════
+     CARD 04 — same passport layout
+     ═══════════════════════════════════════════════════════════════════════ */
+
+  /* Card 04 uses the same grid — no separate template needed.
+     Specs: hidden — card 04 has no .format-line-specs in HTML,
+     but the rule exists to handle any empty container that might appear. */
+  #formats-list .format-line:nth-child(4) .format-line-specs {
+    display: none !important;
+  }
+
+  /* Card 04 summary-group is in right column via grid-column: 2 above */
+
+} /* end main tablet portrait MQ (Stage TP-19.5) */
+
+
+/* ========================================================================
+   NARROW VERTICAL TABLET (761px – 860px) — tighter two columns
+   ======================================================================== */
+@media (min-width: 761px) and (max-width: 860px) and (orientation: portrait) {
+
+  #formats-list .format-line:nth-child(n) .format-line-content {
+    grid-template-columns: minmax(0, 34%) minmax(0, 66%) !important;
+    column-gap: 22px !important;
+  }
+
+  #formats-list .format-line:nth-child(n) .format-line-label {
+    font-size: clamp(21px, 3vw, 28px) !important;
+    padding-left: 30px !important;
+  }
+
+  #formats-list .format-line:nth-child(n) .format-line-num {
+    top: 0 !important;
+  }
+
+  #formats-list .format-line:nth-child(n) .format-line-summary {
+    font-size: clamp(13px, 1.6vw, 14px);
+  }
+
+  #formats-list .format-line:nth-child(n) .format-line-spec {
+    grid-template-columns: minmax(116px, 36%) minmax(0, 64%) !important;
+    column-gap: 14px !important;
+    padding: 8px 0 !important;
+  }
+
+} /* end narrow vertical tablet (Stage TP-19.5) */
+
+
+/* ─── Stage TP-06.1: tablet portrait live-text image rail and manifesto refinement ─── */
+
+/* ========================================================================
+   MAIN TABLET PORTRAIT RANGE — refined screen 06 composition
+   Visual order: title → image → subtle rule → manifesto → formats → CTA
+   Uses existing --tp-image-rail: min(86vw, 720px) (defined at :root above)
+   ======================================================================== */
+@media (min-width: 761px) and (max-width: 1100px) and (orientation: portrait) {
+
+  /* ──────────────────────────────────────────────────────────────────────
+      CONTAINER — centred, wide enough to accommodate image rail
+      ────────────────────────────────────────────────────────────────────── */
+  #live-text .live-text-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 20px;
+  }
+
+  /* ──────────────────────────────────────────────────────────────────────
+      FLEX REORDER — .live-text-left becomes a transparent flex container
+      title(1) → image(2) → rule(3) → manifesto(4) → formats(5) → CTA(6)
+      ────────────────────────────────────────────────────────────────────── */
+  #live-text .live-text-left {
+    display: contents;
+  }
+
+  #live-text .live-text-line {
+    display: none !important;
+  }
+
+
+  /* ──────────────────────────────────────────────────────────────────────
+      1. TITLE — calm, premium, one line on wide portrait
+      ────────────────────────────────────────────────────────────────────── */
+  #live-text .live-title {
+    order: 1;
+    text-align: center;
+    font-size: clamp(38px, 5.2vw, 58px);
+    line-height: 1.08;
+    margin-bottom: clamp(22px, 3vw, 32px);
+    width: 100%;
+    white-space: nowrap;
+  }
+
+  /* Neutralise <br> to get one-line "Живой звуковой перформанс" */
+  #live-text .live-title br {
+    display: inline;
+  }
+  #live-text .live-title br::after {
+    content: " ";
+  }
+
+
+  /* ──────────────────────────────────────────────────────────────────────
+      2. IMAGE — full image rail width, centred
+      ────────────────────────────────────────────────────────────────────── */
+  #live-text .live-mobile-image {
+    order: 2;
+    width: var(--tp-image-rail) !important;
+    max-width: var(--tp-image-rail) !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  #live-text .live-mobile-image img {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    display: block !important;
+    object-fit: cover !important;
+  }
+
+
+  /* ──────────────────────────────────────────────────────────────────────
+      3. SUBTLE RULE — thin short divider between image and manifesto
+      ────────────────────────────────────────────────────────────────────── */
+  #live-text .live-title-rule {
+    order: 3;
+    width: 44px;
+    height: 1px;
+    margin: clamp(20px, 3vw, 28px) auto;
+    background: rgba(253,224,139,.38);
+  }
+
+
+  /* ──────────────────────────────────────────────────────────────────────
+      4. MANIFESTO — centred, expressive, reads as 3-part caption
+      ────────────────────────────────────────────────────────────────────── */
+  #live-text .live-manifesto {
+    order: 4;
+    max-width: 620px;
+    margin: clamp(22px, 3vw, 30px) auto clamp(30px, 4vw, 42px);
+    text-align: center;
+    font-size: clamp(14px, 1.55vw, 16px);
+    line-height: 1.75;
+    color: var(--text-80);
+  }
+
+
+  /* ──────────────────────────────────────────────────────────────────────
+      5. FORMATS LIST — wide editorial list, visually aligned with image rail
+      ────────────────────────────────────────────────────────────────────── */
+  #live-text .live-text-right {
+    order: 5;
+    width: min(100%, var(--tp-image-rail));
+    max-width: var(--tp-image-rail);
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: clamp(30px, 4vw, 44px);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  #live-text .live-formats-label {
+    margin-bottom: clamp(14px, 2vw, 20px);
+    color: var(--gold-70);
+    letter-spacing: .24em;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+  }
+
+  #live-text .live-format-row {
+    width: 100%;
+    display: flex;
+    align-items: baseline;
+    gap: clamp(18px, 3vw, 28px);
+    padding: clamp(13px, 2vw, 18px) 0;
+    border-bottom: 1px solid rgba(253,224,139,.10);
+  }
+
+  #live-text .live-format-row:first-of-type {
+    border-top: 1px solid rgba(253,224,139,.10);
+  }
+
+  #live-text .live-format-num {
+    flex: 0 0 28px;
+    color: var(--gold-70);
+    font-size: 0.85rem;
+    line-height: 1;
+  }
+
+  #live-text .live-format-name {
+    flex: 1;
+    color: var(--text-100);
+    font-size: clamp(20px, 2.5vw, 28px);
+    line-height: 1.25;
+  }
+
+
+  /* ──────────────────────────────────────────────────────────────────────
+      6. CTA — centred below the list
+      ────────────────────────────────────────────────────────────────────── */
+  #live-text .btn {
+    order: 6;
+    width: auto !important;
+    max-width: max-content !important;
+    margin: clamp(26px, 4vw, 42px) auto 0 !important;
+    align-self: center;
+  }
+
+} /* end Stage TP-06.1 main MQ */
+
+
+/* ========================================================================
+   NARROW VERTICAL TABLET (761px – 860px) — allow title wrapping,
+   narrower font scale
+   ======================================================================== */
+@media (min-width: 761px) and (max-width: 860px) and (orientation: portrait) {
+
+  #live-text .live-title {
+    font-size: clamp(36px, 5vw, 46px);
+    white-space: normal;
+  }
+
+  /* <br> stays visible for natural wrapping on narrow portrait */
+  #live-text .live-title br {
+    display: inline;
+  }
+  #live-text .live-title br::after {
+    content: " ";
+  }
+
+} /* end narrow vertical tablet (Stage TP-06.1) */
+
+
+/* ─── Stage TP-06.2: tablet portrait live-text editorial copy block ─── */
+
+/* ========================================================================
+   WIDER VERTICAL TABLET (861px – 1100px) — editorial two-column grid
+   Manifesto (left) + formats list (right) as one premium editorial panel.
+   Overrides TP-06.1 flex layout on .live-text-inner.
+   ======================================================================== */
+@media (min-width: 861px) and (max-width: 1100px) and (orientation: portrait) {
+
+  /* ── Container: grid with two editorial columns ── */
+  #live-text .live-text-inner {
+    display: grid !important;
+    grid-template-columns: 40% 1fr;
+    column-gap: clamp(28px, 4vw, 46px);
+    align-items: start;
+    max-width: var(--tp-image-rail);
+    margin-left: auto;
+    margin-right: auto;
+    padding: 40px 20px;
+  }
+
+  /* ── 1. TITLE — full width, centred ── */
+  #live-text .live-title {
+    grid-column: 1 / -1;
+    order: unset;
+    text-align: center;
+    font-size: clamp(38px, 5.2vw, 58px);
+    line-height: 1.08;
+    margin-bottom: clamp(22px, 3vw, 32px);
+    width: 100%;
+    white-space: nowrap;
+  }
+
+  #live-text .live-title br {
+    display: inline;
+  }
+  #live-text .live-title br::after {
+    content: " ";
+  }
+
+  /* ── 2. IMAGE — full grid width, visually constrained to --tp-image-rail ── */
+  #live-text .live-mobile-image {
+    grid-column: 1 / -1;
+    order: unset;
+    width: var(--tp-image-rail) !important;
+    max-width: var(--tp-image-rail) !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  #live-text .live-mobile-image img {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    display: block !important;
+    object-fit: cover !important;
+  }
+
+  /* ── 3. RULE — full width, centred ── */
+  #live-text .live-title-rule {
+    grid-column: 1 / -1;
+    order: unset;
+    width: 44px;
+    height: 1px;
+    background: rgba(253,224,139,.38);
+    margin: clamp(20px, 3vw, 28px) auto;
+  }
+
+  /* ── 4. MANIFESTO — left editorial column ── */
+  #live-text .live-manifesto {
+    grid-column: 1;
+    order: unset;
+    text-align: left;
+    max-width: none;
+    margin: 0;
+    font-size: clamp(16px, 1.8vw, 19px);
+    line-height: 1.75;
+    color: var(--text-80);
+  }
+
+  /* ── 5. FORMATS — right editorial column ── */
+  #live-text .live-text-right {
+    grid-column: 2;
+    order: unset;
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  #live-text .live-formats-label {
+    margin-bottom: 16px;
+    color: var(--gold-70);
+    letter-spacing: .24em;
+    font-size: 11px;
+    text-transform: uppercase;
+  }
+
+  #live-text .live-format-row {
+    display: flex;
+    align-items: baseline;
+    gap: 18px;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(253,224,139,.10);
+    width: 100%;
+  }
+
+  #live-text .live-format-row:first-of-type {
+    border-top: 1px solid rgba(253,224,139,.10);
+  }
+
+  #live-text .live-format-num {
+    flex: 0 0 28px;
+    font-size: 11px;
+    color: var(--gold-70);
+  }
+
+  #live-text .live-format-name {
+    flex: 1;
+    font-size: clamp(19px, 2.1vw, 25px);
+    line-height: 1.25;
+    color: var(--text-100);
+  }
+
+  /* ── 6. CTA — full width, centred below editorial panel ── */
+  #live-text .btn {
+    grid-column: 1 / -1;
+    order: unset;
+    width: auto !important;
+    max-width: max-content !important;
+    margin: clamp(30px, 4vw, 44px) auto 0 !important;
+    align-self: center;
+    justify-self: center;
+  }
+
+} /* end wider vertical tablet (Stage TP-06.2) */
+
+
+/* ========================================================================
+   NARROW VERTICAL TABLET (761px – 860px) — centred stack layout
+   Manifesto above, formats below, centred. Clean, not a "random paragraph".
+   ======================================================================== */
+@media (min-width: 761px) and (max-width: 860px) and (orientation: portrait) {
+
+  /* Manifesto — centred, readable, not a random small paragraph */
+  #live-text .live-manifesto {
+    text-align: center;
+    max-width: 620px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Formats block — centred, not too narrow */
+  #live-text .live-text-right {
+    max-width: 680px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+} /* end narrow vertical tablet (Stage TP-06.2) */
+
+
+/* ─── Stage TP-06.3: tablet portrait live-text 2x2 formats grid ─── */
+
+/* ========================================================================
+   WIDER VERTICAL TABLET (861px – 1100px) — centred single column with 2×2 grid
+   Overrides TP-06.2 editorial two-column grid. Converts formats list to
+   2 columns × 2 rows. Manifesto becomes editorial caption under photo.
+   ======================================================================== */
+@media (min-width: 861px) and (max-width: 1100px) and (orientation: portrait) {
+
+  /* Container: single-column flex (override TP-06.2 grid) */
+  #live-text .live-text-inner {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center;
+    max-width: var(--tp-image-rail);
+    margin-left: auto;
+    margin-right: auto;
+    padding: 40px 20px;
+  }
+
+  /* Title — centred, one line */
+  #live-text .live-title {
+    order: 1;
+    text-align: center;
+    white-space: nowrap;
+    font-size: clamp(38px, 5.2vw, 58px);
+    line-height: 1.08;
+    margin-bottom: clamp(22px, 3vw, 32px);
+    width: 100%;
+  }
+
+  #live-text .live-title br {
+    display: inline;
+  }
+  #live-text .live-title br::after {
+    content: " ";
+  }
+
+  /* Image — unchanged, use --tp-image-rail */
+  #live-text .live-mobile-image {
+    order: 2;
+    width: var(--tp-image-rail) !important;
+    max-width: var(--tp-image-rail) !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  #live-text .live-mobile-image img {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    display: block !important;
+    object-fit: cover !important;
+  }
+
+  /* Rule — subtle divider */
+  #live-text .live-title-rule {
+    order: 3;
+    width: 44px;
+    height: 1px;
+    background: rgba(253,224,139,.38);
+    margin: clamp(20px, 3vw, 28px) auto;
+  }
+
+  /* Manifesto — editorial caption under photo, not a left column */
+  #live-text .live-manifesto {
+    order: 4;
+    max-width: 620px;
+    margin: clamp(20px, 3vw, 28px) auto clamp(34px, 4.5vw, 48px);
+    text-align: center;
+    font-size: clamp(13px, 1.35vw, 15px);
+    line-height: 1.7;
+    color: var(--text-70, rgba(237,233,224,.70));
+  }
+
+  /* Formats block — 2×2 grid */
+  #live-text .live-text-right {
+    order: 5;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: clamp(34px, 5vw, 58px);
+    row-gap: clamp(20px, 3vw, 30px);
+    width: 100%;
+    max-width: none;
+    margin: 0;
+  }
+
+  /* Formats label — full width header */
+  #live-text .live-formats-label {
+    grid-column: 1 / -1;
+    display: block;
+    margin-bottom: clamp(18px, 2.4vw, 26px);
+    text-align: left;
+    font-size: 11px;
+    line-height: 1;
+    letter-spacing: .28em;
+    text-transform: uppercase;
+    color: var(--gold-70);
+  }
+
+  /* Format rows — grid items with bottom border */
+  #live-text .live-format-row {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    padding: 0 0 14px;
+    border-bottom: 1px solid rgba(253,224,139,.12);
+    width: 100%;
+  }
+
+  #live-text .live-format-row:first-of-type {
+    border-top: none;
+  }
+
+  /* Format number */
+  #live-text .live-format-num {
+    flex: 0 0 28px;
+    font-size: 11px;
+    line-height: 1;
+    letter-spacing: .14em;
+    color: var(--gold-70);
+  }
+
+  /* Format name */
+  #live-text .live-format-name {
+    flex: 1;
+    font-size: clamp(19px, 2.2vw, 26px);
+    line-height: 1.22;
+    color: var(--text-100);
+  }
+
+  /* CTA — below grid, centred */
+  #live-text .btn {
+    order: 6;
+    width: auto !important;
+    max-width: max-content !important;
+    margin: clamp(34px, 4.8vw, 54px) auto 0 !important;
+    align-self: center;
+  }
+
+} /* end wider vertical tablet (Stage TP-06.3) */
+
+
+/* ========================================================================
+   NARROW VERTICAL TABLET (761px – 860px) — compact 2-column formats grid
+   ======================================================================== */
+@media (min-width: 761px) and (max-width: 860px) and (orientation: portrait) {
+
+  /* Manifesto — editorial caption */
+  #live-text .live-manifesto {
+    max-width: 620px;
+    margin: 20px auto 30px;
+    text-align: center;
+    font-size: clamp(13px, 1.6vw, 14px);
+    line-height: 1.7;
+    color: var(--text-70, rgba(237,233,224,.70));
+  }
+
+  /* Formats block — 2-column grid, compact */
+  #live-text .live-text-right {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 24px;
+    row-gap: 18px;
+    width: 100%;
+    max-width: var(--tp-image-rail);
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  #live-text .live-formats-label {
+    grid-column: 1 / -1;
+    display: block;
+    margin-bottom: 16px;
+    text-align: left;
+    font-size: 11px;
+    line-height: 1;
+    letter-spacing: .28em;
+    text-transform: uppercase;
+    color: var(--gold-70);
+  }
+
+  #live-text .live-format-row {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    padding: 0 0 12px;
+    border-bottom: 1px solid rgba(253,224,139,.12);
+  }
+
+  #live-text .live-format-num {
+    flex: 0 0 24px;
+    font-size: 11px;
+    line-height: 1;
+    letter-spacing: .14em;
+    color: var(--gold-70);
+  }
+
+  #live-text .live-format-name {
+    flex: 1;
+    font-size: clamp(18px, 2vw, 22px);
+    line-height: 1.22;
+    color: var(--text-100);
+  }
+
+  /* CTA — centred below */
+  #live-text .btn {
+    width: auto !important;
+    max-width: max-content !important;
+    margin: 28px auto 0 !important;
+    align-self: center;
+  }
+
+} /* end narrow vertical tablet (Stage TP-06.3) */
+
+
+/* ─── Stage TP-06.4: tablet portrait live-text rhythm and centered formats heading ─── */
+
+/* ========================================================================
+   MAIN TABLET PORTRAIT (761px – 1100px) — rhythm tightening, centered heading
+   Fixes: top padding under nav, centered "ПОДХОДИТ ДЛЯ", tighter spacing
+   between photo → caption → heading → grid → CTA.
+   ======================================================================== */
+@media (min-width: 761px) and (max-width: 1100px) and (orientation: portrait) {
+
+  /* Section — align to top so heading is fully visible under fixed nav */
+  #live-text {
+    justify-content: flex-start;
+  }
+
+  /* Container — enough top padding for fixed nav, tighter bottom */
+  #live-text .live-text-inner {
+    padding-top: clamp(86px, 10vh, 118px) !important;
+    padding-bottom: clamp(60px, 8vh, 90px) !important;
+  }
+
+  /* Title — normal rhythm, fully visible */
+  #live-text .live-title {
+    margin-bottom: clamp(20px, 2.8vw, 30px) !important;
+  }
+
+  /* Divider — reduce visual gap; hide it since line adds unnecessary break */
+  #live-text .live-title-rule {
+    display: none !important;
+  }
+
+  /* Manifesto — tighter editorial caption, less empty space around it */
+  #live-text .live-manifesto {
+    max-width: 640px;
+    margin: clamp(16px, 2.2vw, 22px) auto clamp(26px, 3.2vw, 34px) !important;
+    text-align: center;
+    font-size: clamp(13px, 1.35vw, 15px);
+    line-height: 1.65;
+    color: var(--text-70, rgba(237,233,224,.70));
+  }
+
+  /* Formats label — centered heading above 2×2 grid */
+  #live-text .live-formats-label {
+    grid-column: 1 / -1;
+    text-align: center !important;
+    justify-self: center;
+    display: block;
+    margin: 0 0 clamp(18px, 2.4vw, 24px) !important;
+    font-size: 11px;
+    line-height: 1;
+    letter-spacing: .30em;
+    text-transform: uppercase;
+    color: var(--gold-70);
+  }
+
+  /* Formats grid — tighter row-gap, cleaner bottom margin */
+  #live-text .live-text-right {
+    width: min(100%, var(--tp-image-rail, 720px));
+    max-width: var(--tp-image-rail, 720px);
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: clamp(26px, 3.6vw, 38px) !important;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: clamp(32px, 5vw, 56px);
+    row-gap: clamp(16px, 2.4vw, 24px);
+  }
+
+  /* Format rows — slightly tighter bottom padding */
+  #live-text .live-format-row {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    padding: 0 0 12px !important;
+    border-bottom: 1px solid rgba(253,224,139,.12);
+  }
+
+  #live-text .live-format-row:first-of-type {
+    border-top: none;
+  }
+
+  /* Format number — unchanged gold styling */
+  #live-text .live-format-num {
+    flex: 0 0 28px;
+    font-size: 11px;
+    line-height: 1;
+    letter-spacing: .14em;
+    color: var(--gold-70);
+  }
+
+  /* Format name — slightly tighter max size */
+  #live-text .live-format-name {
+    flex: 1;
+    font-size: clamp(19px, 2.2vw, 25px);
+    line-height: 1.22;
+    color: var(--text-100);
+  }
+
+  /* CTA — slightly tighter top margin, centred below grid */
+  #live-text .btn {
+    width: auto !important;
+    max-width: max-content !important;
+    margin: clamp(24px, 3.6vw, 36px) auto 0 !important;
+    align-self: center;
+    justify-self: center;
+  }
+
+} /* end main tablet portrait (Stage TP-06.4) */
+
+
+/* ========================================================================
+   NARROW VERTICAL TABLET (761px – 860px) — compact rhythm tweaks
+   ======================================================================== */
+@media (min-width: 761px) and (max-width: 860px) and (orientation: portrait) {
+
+  /* Container — slightly less padding on narrow tablets */
+  #live-text .live-text-inner {
+    padding-top: clamp(76px, 9vh, 96px) !important;
+    padding-bottom: clamp(50px, 6vh, 70px) !important;
+  }
+
+  /* Hide divider on narrow too */
+  #live-text .live-title-rule {
+    display: none !important;
+  }
+
+  /* Manifesto — compact caption */
+  #live-text .live-manifesto {
+    max-width: 560px;
+    margin: 16px auto 24px !important;
+    text-align: center;
+    font-size: clamp(12px, 1.6vw, 13px);
+    line-height: 1.65;
+    color: var(--text-70, rgba(237,233,224,.70));
+  }
+
+  /* Formats label — centered heading */
+  #live-text .live-formats-label {
+    grid-column: 1 / -1;
+    text-align: center !important;
+    justify-self: center;
+    display: block;
+    margin: 0 0 16px !important;
+    font-size: 11px;
+    line-height: 1;
+    letter-spacing: .30em;
+    text-transform: uppercase;
+    color: var(--gold-70);
+  }
+
+  /* Formats grid — compact 2-column */
+  #live-text .live-text-right {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 24px;
+    row-gap: 16px;
+    width: 100%;
+    max-width: var(--tp-image-rail);
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 22px !important;
+  }
+
+  /* Format rows — compact */
+  #live-text .live-format-row {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    padding: 0 0 10px !important;
+    border-bottom: 1px solid rgba(253,224,139,.12);
+  }
+
+  #live-text .live-format-num {
+    flex: 0 0 24px;
+    font-size: 11px;
+    line-height: 1;
+    letter-spacing: .14em;
+    color: var(--gold-70);
+  }
+
+  #live-text .live-format-name {
+    flex: 1;
+    font-size: clamp(17px, 2.2vw, 21px);
+    line-height: 1.22;
+    color: var(--text-100);
+  }
+
+  /* CTA — tighter top margin */
+  #live-text .btn {
+    width: auto !important;
+    max-width: max-content !important;
+    margin: 24px auto 0 !important;
+    align-self: center;
+  }
+
+} /* end narrow vertical tablet (Stage TP-06.4) */
+
+
+/* ─── Stage TP-06.5: tablet portrait live-text compact lower block refinement ─── */
+
+/* ========================================================================
+   MAIN TABLET PORTRAIT (761px – 1100px) — compact lower editorial block
+   Tighter spacing between photo, caption, heading, grid and CTA.
+   Preserves MALEA premium style — no cheap compression.
+   ======================================================================== */
+@media (min-width: 761px) and (max-width: 1100px) and (orientation: portrait) {
+
+  /* Container — tighter bottom, keeps premium air */
+  #live-text .live-text-inner {
+    padding-bottom: clamp(48px, 6vh, 72px) !important;
+  }
+
+  /* Hide rule — removes visual gap between photo and caption */
+  #live-text .live-title-rule {
+    display: none !important;
+  }
+
+  /* Manifesto — compact editorial caption closer to photo */
+  #live-text .live-manifesto {
+    max-width: min(86vw, 660px);
+    margin: clamp(14px, 2vw, 20px) auto clamp(24px, 3vw, 32px) !important;
+    text-align: center;
+    font-size: clamp(13px, 1.35vw, 15px);
+    line-height: 1.6;
+    color: rgba(237,233,224,.72);
+  }
+
+  /* Formats label — centred, tighter gap to grid */
+  #live-text .live-formats-label {
+    grid-column: 1 / -1;
+    text-align: center;
+    justify-self: center;
+    margin: 0 0 clamp(12px, 1.8vw, 18px) !important;
+    font-size: 10px;
+    line-height: 1;
+    letter-spacing: .30em;
+    text-transform: uppercase;
+    color: rgba(253,224,139,.68);
+  }
+
+  /* Formats grid — compact 2×2 module, not a tall table */
+  #live-text .live-text-right {
+    width: min(100%, var(--tp-image-rail, 720px));
+    max-width: var(--tp-image-rail, 720px);
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: clamp(20px, 2.8vw, 30px) !important;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: clamp(30px, 4.5vw, 52px);
+    row-gap: clamp(10px, 1.6vw, 16px);
+  }
+
+  /* Format rows — compact flex, thin gold border */
+  #live-text .live-format-row {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    padding: 0 0 clamp(8px, 1.2vw, 11px);
+    border-bottom: 1px solid rgba(253,224,139,.11);
+  }
+
+  #live-text .live-format-row:first-of-type {
+    border-top: none !important;
+  }
+
+  /* Format number — compact gold index */
+  #live-text .live-format-num {
+    flex: 0 0 24px;
+    font-size: 10px;
+    line-height: 1;
+    letter-spacing: .14em;
+    color: rgba(253,224,139,.68);
+  }
+
+  /* Format name — editorial scale, not tiny */
+  #live-text .live-format-name {
+    flex: 1;
+    font-size: clamp(18px, 2vw, 23px);
+    line-height: 1.2;
+    color: var(--text-100);
+  }
+
+  /* CTA — closer to grid, part of the block */
+  #live-text .btn {
+    width: auto !important;
+    max-width: max-content !important;
+    margin: clamp(20px, 3vw, 30px) auto 0 !important;
+    align-self: center;
+    justify-self: center;
+  }
+
+} /* end main tablet portrait (Stage TP-06.5) */
+
+
+/* ========================================================================
+   NARROW VERTICAL TABLET (761px – 860px) — compact lower block
+   ======================================================================== */
+@media (min-width: 761px) and (max-width: 860px) and (orientation: portrait) {
+
+  /* Container — tighter bottom */
+  #live-text .live-text-inner {
+    padding-bottom: clamp(40px, 5vh, 56px) !important;
+  }
+
+  /* Hide rule */
+  #live-text .live-title-rule {
+    display: none !important;
+  }
+
+  /* Manifesto — compact caption */
+  #live-text .live-manifesto {
+    max-width: min(86vw, 560px);
+    margin: 12px auto 20px !important;
+    text-align: center;
+    font-size: clamp(12px, 1.6vw, 13px);
+    line-height: 1.6;
+    color: rgba(237,233,224,.72);
+  }
+
+  /* Formats label — centred */
+  #live-text .live-formats-label {
+    grid-column: 1 / -1;
+    text-align: center;
+    justify-self: center;
+    margin: 0 0 12px !important;
+    font-size: 10px;
+    line-height: 1;
+    letter-spacing: .30em;
+    text-transform: uppercase;
+    color: rgba(253,224,139,.68);
+  }
+
+  /* Formats grid — compact 2-column */
+  #live-text .live-text-right {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 22px;
+    row-gap: 12px;
+    width: 100%;
+    max-width: var(--tp-image-rail);
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 18px !important;
+  }
+
+  /* Format rows — compact */
+  #live-text .live-format-row {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    padding: 0 0 8px;
+    border-bottom: 1px solid rgba(253,224,139,.11);
+  }
+
+  #live-text .live-format-row:first-of-type {
+    border-top: none !important;
+  }
+
+  #live-text .live-format-num {
+    flex: 0 0 22px;
+    font-size: 10px;
+    line-height: 1;
+    letter-spacing: .14em;
+    color: rgba(253,224,139,.68);
+  }
+
+  #live-text .live-format-name {
+    flex: 1;
+    font-size: clamp(16px, 2.4vw, 20px);
+    line-height: 1.2;
+    color: var(--text-100);
+  }
+
+  /* CTA — tighter top */
+  #live-text .btn {
+    width: auto !important;
+    max-width: max-content !important;
+    margin: 20px auto 0 !important;
+    align-self: center;
+  }
+
+} /* end narrow vertical tablet (Stage TP-06.5) */
+
+
+/* ─── Stage TP-06.6: tablet portrait compact centered formats grid ─── */
+
+/* ========================================================================
+   MAIN TABLET PORTRAIT (761px – 1100px) — compact centered formats grid
+   Overrides TP-06.5: narrows .live-text-right so it becomes a compact
+   centered module under the photo, NOT spanning the full image rail width.
+   Photo stays wide, grid becomes narrower and centered.
+   ======================================================================== */
+@media (min-width: 761px) and (max-width: 1100px) and (orientation: portrait) {
+
+  /* ── Formats block — compact centered module, narrower than photo ── */
+  #live-text .live-text-right {
+    width: min(76vw, 610px) !important;
+    max-width: 610px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    margin-bottom: clamp(20px, 2.8vw, 30px) !important;
+
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    column-gap: clamp(18px, 2.4vw, 28px) !important;
+    row-gap: clamp(9px, 1.4vw, 14px) !important;
+    justify-content: center;
+    align-items: start;
+  }
+
+  /* ── Formats label — centered relative to the compact grid ── */
+  #live-text .live-formats-label {
+    grid-column: 1 / -1;
+    justify-self: center !important;
+    text-align: center !important;
+    margin: 0 0 clamp(12px, 1.8vw, 16px) !important;
+    font-size: 10px;
+    line-height: 1;
+    letter-spacing: .30em;
+    text-transform: uppercase;
+    color: rgba(253,224,139,.68);
+  }
+
+  /* ── Format rows — tighter gap between num and text ── */
+  #live-text .live-format-row {
+    display: flex;
+    align-items: baseline;
+    gap: 9px !important;
+    padding: 0 0 clamp(7px, 1vw, 10px) !important;
+    border-bottom: 1px solid rgba(253,224,139,.11);
+  }
+
+  #live-text .live-format-row:first-of-type {
+    border-top: none !important;
+  }
+
+  /* ── Format number — compact gold index ── */
+  #live-text .live-format-num {
+    flex: 0 0 20px !important;
+    font-size: 10px;
+    line-height: 1;
+    letter-spacing: .12em;
+    color: rgba(253,224,139,.68);
+  }
+
+  /* ── Format name — editorial scale ── */
+  #live-text .live-format-name {
+    flex: 1;
+    font-size: clamp(18px, 2vw, 23px);
+    line-height: 1.18;
+    color: var(--text-100);
+  }
+
+  /* ── CTA — closer to grid, part of compact block ── */
+  #live-text .btn {
+    width: auto !important;
+    max-width: max-content !important;
+    margin: clamp(18px, 2.8vw, 28px) auto 0 !important;
+    align-self: center;
+    justify-self: center;
+  }
+
+} /* end Stage TP-06.6 main MQ */
+
+
+/* ========================================================================
+   NARROW VERTICAL TABLET (761px – 860px) — even more compact grid
+   ======================================================================== */
+@media (min-width: 761px) and (max-width: 860px) and (orientation: portrait) {
+
+  /* ── Even narrower grid for tight viewports ── */
+  #live-text .live-text-right {
+    width: min(82vw, 560px) !important;
+    max-width: 560px !important;
+    column-gap: 18px !important;
+    row-gap: 10px !important;
+  }
+
+  /* ── Slightly smaller format names ── */
+  #live-text .live-format-name {
+    font-size: clamp(17px, 2vw, 21px);
+  }
+
+} /* end Stage TP-06.6 narrow MQ */
+
+
+/* ─── Stage TP-06.7: tablet portrait true centered compact formats grid ─── */
+
+/* ========================================================================
+   MAIN TABLET PORTRAIT (761px – 1100px) — true centered compact inline-grid
+   Problem: .live-text-right still behaved as wide container stretched to
+   image rail width. Left column of "Подходит для" 2×2 grid stayed left.
+   Solution: convert .live-text-right to inline-grid / max-content so it
+   occupies only its content width, then centered via margin-left:auto/r.
+   Overrides TP-06.6 width: min(76vw, 610px) with width: max-content.
+   ======================================================================== */
+@media (min-width: 761px) and (max-width: 1100px) and (orientation: portrait) {
+
+  /* ── Formats block — compact centered inline-grid module ──
+       NOT spanning image rail width. Width = content width.
+       Centered under photo via margin-left:auto / margin-right:auto. ── */
+  #live-text .live-text-right {
+    display: inline-grid !important;
+    width: max-content !important;
+    max-width: min(92vw, 640px) !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    justify-self: center !important;
+    align-self: center !important;
+
+    grid-template-columns: max-content max-content !important;
+    column-gap: clamp(20px, 2.6vw, 30px) !important;
+    row-gap: clamp(8px, 1.2vw, 12px) !important;
+    justify-content: center !important;
+    align-items: start !important;
+
+    margin-bottom: clamp(18px, 2.6vw, 28px) !important;
+  }
+
+  /* ── Formats label — centered relative to the compact inline-grid ── */
+  #live-text .live-formats-label {
+    grid-column: 1 / -1 !important;
+    justify-self: center !important;
+    text-align: center !important;
+    margin: 0 0 clamp(12px, 1.8vw, 16px) !important;
+    font-size: 10px !important;
+    line-height: 1 !important;
+    letter-spacing: .30em !important;
+    text-transform: uppercase !important;
+    color: rgba(253,224,139,.68) !important;
+  }
+
+  /* ── Format rows — compact content-width grid items ── */
+  #live-text .live-format-row {
+    width: max-content !important;
+    min-width: 0 !important;
+    display: grid !important;
+    grid-template-columns: 22px max-content !important;
+    column-gap: 8px !important;
+    align-items: baseline !important;
+    padding: 0 0 8px !important;
+    border-bottom: 1px solid rgba(253,224,139,.11) !important;
+  }
+
+  #live-text .live-format-row:first-of-type {
+    border-top: none !important;
+  }
+
+  /* ── Format number — fixed-width grid column ── */
+  #live-text .live-format-num {
+    width: auto !important;
+    flex: none !important;
+    font-size: 10px !important;
+    line-height: 1 !important;
+    letter-spacing: .12em !important;
+    color: rgba(253,224,139,.68) !important;
+  }
+
+  /* ── Format name — content-width, not stretched ── */
+  #live-text .live-format-name {
+    width: max-content !important;
+    max-width: 280px !important;
+    flex: none !important;
+    font-size: clamp(18px, 2vw, 23px) !important;
+    line-height: 1.18 !important;
+    color: var(--text-100) !important;
+  }
+
+  /* ── CTA — centered below compact grid ── */
+  #live-text .btn {
+    width: auto !important;
+    max-width: max-content !important;
+    margin: clamp(18px, 2.8vw, 28px) auto 0 !important;
+    align-self: center !important;
+    justify-self: center !important;
+  }
+
+} /* end Stage TP-06.7 main MQ */
+
+
+/* ========================================================================
+   NARROW VERTICAL TABLET (761px – 860px) — tighter compact grid
+   ======================================================================== */
+@media (min-width: 761px) and (max-width: 860px) and (orientation: portrait) {
+
+  /* ── Even narrower inline-grid ── */
+  #live-text .live-text-right {
+    max-width: min(94vw, 580px) !important;
+    column-gap: 18px !important;
+  }
+
+  /* ── Tighter format rows ── */
+  #live-text .live-format-row {
+    grid-template-columns: 20px max-content !important;
+    column-gap: 7px !important;
+  }
+
+  /* ── Slightly narrower format names ── */
+  #live-text .live-format-name {
+    max-width: 245px !important;
+    font-size: clamp(17px, 2vw, 21px) !important;
+  }
+
+} /* end Stage TP-06.7 narrow MQ */
+
+
+/* ─── Stage TP-06.8: tablet portrait fixed centered 2x2 formats module ─── */
+
+/* ========================================================================
+   MAIN TABLET PORTRAIT (761px – 1100px) — fixed compact centered grid
+   Problem: previous TP-06.7 used max-content / inline-grid which did not
+   work reliably — left column stayed left, right column did not approach.
+   Solution: use fixed clamp() width, 2-column grid with minmax(0,1fr),
+   explicit nth-of-type placement of 4 format rows, zero padding.
+   Overrides TP-06.7 .live-text-right rules with !important.
+   ======================================================================== */
+@media (min-width: 761px) and (max-width: 1100px) and (orientation: portrait) {
+
+  /* ── Formats block — fixed compact centered grid ──
+       NOT max-content, NOT inline-grid, NOT image-rail width.
+       Fixed clamp(390px, 56vw, 470px) — noticeably narrower than photo.
+       Centered under photo via margin: 0 auto.
+       Two equal columns with small gap. ── */
+  #live-text .live-text-right {
+    order: 5 !important;
+
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+
+    width: clamp(390px, 56vw, 470px) !important;
+    max-width: clamp(390px, 56vw, 470px) !important;
+
+    padding: 0 !important;
+    margin: 0 auto clamp(18px, 2.6vw, 28px) auto !important;
+
+    column-gap: clamp(14px, 2vw, 20px) !important;
+    row-gap: clamp(8px, 1.2vw, 12px) !important;
+
+    justify-content: center !important;
+    align-items: start !important;
+    justify-items: stretch !important;
+    box-sizing: border-box !important;
+  }
+
+  /* ── Formats label — centered across full grid width ── */
+  #live-text .live-formats-label {
+    grid-column: 1 / -1 !important;
+    justify-self: center !important;
+    text-align: center !important;
+
+    margin: 0 0 clamp(12px, 1.8vw, 16px) !important;
+
+    font-size: 10px !important;
+    line-height: 1 !important;
+    letter-spacing: .30em !important;
+    text-transform: uppercase !important;
+    color: rgba(253,224,139,.68) !important;
+  }
+
+  /* ── Format row — micro-grid: num | name ── */
+  #live-text .live-format-row {
+    width: 100% !important;
+    min-width: 0 !important;
+
+    display: grid !important;
+    grid-template-columns: 22px minmax(0, 1fr) !important;
+    column-gap: 8px !important;
+
+    align-items: baseline !important;
+
+    padding: 0 0 8px !important;
+    border-top: none !important;
+    border-bottom: 1px solid rgba(253,224,139,.11) !important;
+
+    box-sizing: border-box !important;
+  }
+
+  /* ── Format number — fixed-width grid column ── */
+  #live-text .live-format-num {
+    width: auto !important;
+    min-width: 0 !important;
+    flex: none !important;
+
+    font-size: 10px !important;
+    line-height: 1 !important;
+    letter-spacing: .12em !important;
+    color: rgba(253,224,139,.68) !important;
+  }
+
+  /* ── Format name — fluid column, not max-content ── */
+  #live-text .live-format-name {
+    width: auto !important;
+    max-width: none !important;
+    min-width: 0 !important;
+    flex: none !important;
+
+    font-size: clamp(17px, 1.9vw, 21px) !important;
+    line-height: 1.18 !important;
+    color: var(--text-100) !important;
+
+    white-space: normal !important;
+    overflow-wrap: normal !important;
+  }
+
+  /* ── CTA — centered below grid ── */
+  #live-text .btn {
+    order: 6 !important;
+
+    width: auto !important;
+    max-width: max-content !important;
+
+    margin: clamp(20px, 3vw, 30px) auto 0 !important;
+
+    align-self: center !important;
+    justify-self: center !important;
+  }
+
+  /* ═══════════════════════════════════════════════════════════════════════
+     EXPLICIT GRID PLACEMENT — 4 format rows in 2×2 layout
+     Layout:
+       row 1: [live-formats-label] — spans both columns
+       row 2: [format-row 1] [format-row 2]
+       row 3: [format-row 3] [format-row 4]
+     NOT relying on auto-placement.
+     ═══════════════════════════════════════════════════════════════════════ */
+
+  /* Format row 1 → column 1, row 2 */
+  #live-text .live-format-row:nth-of-type(1) {
+    grid-column: 1 !important;
+    grid-row: 2 !important;
+  }
+
+  /* Format row 2 → column 2, row 2 */
+  #live-text .live-format-row:nth-of-type(2) {
+    grid-column: 2 !important;
+    grid-row: 2 !important;
+  }
+
+  /* Format row 3 → column 1, row 3 */
+  #live-text .live-format-row:nth-of-type(3) {
+    grid-column: 1 !important;
+    grid-row: 3 !important;
+  }
+
+  /* Format row 4 → column 2, row 3 */
+  #live-text .live-format-row:nth-of-type(4) {
+    grid-column: 2 !important;
+    grid-row: 3 !important;
+  }
+
+} /* end Stage TP-06.8 main MQ */
+
+
+/* ========================================================================
+   NARROW VERTICAL TABLET (761px – 860px) — even narrower grid
+   ======================================================================== */
+@media (min-width: 761px) and (max-width: 860px) and (orientation: portrait) {
+
+  /* ── Narrower fixed width ── */
+  #live-text .live-text-right {
+    width: clamp(360px, 60vw, 430px) !important;
+    max-width: clamp(360px, 60vw, 430px) !important;
+    column-gap: 14px !important;
+    row-gap: 9px !important;
+  }
+
+  /* ── Tighter format rows ── */
+  #live-text .live-format-row {
+    grid-template-columns: 20px minmax(0, 1fr) !important;
+    column-gap: 7px !important;
+  }
+
+  /* ── Slightly smaller format names ── */
+  #live-text .live-format-name {
+    font-size: clamp(16px, 1.9vw, 20px) !important;
+    line-height: 1.18 !important;
+  }
+
+} /* end Stage TP-06.8 narrow MQ */
+
+
+/* ─── Stage TP-06.9: tablet portrait centered 2x2 formats tiles without numbers ─── */
+
+/* ========================================================================
+   MAIN TABLET PORTRAIT (761px – 1100px) — centered 2×2 grid, no numbers
+   Problem: numbers 01/02/03/04 create an inner axis; columns don't align
+   visually; grid looks like a table, not a design module.
+   Solution: hide numbers, convert to centered text cells 2×2,
+   wider and more breathable than TP-06.8 but still compact.
+   Overrides TP-06.8 .live-text-right rules with !important.
+   ======================================================================== */
+@media (min-width: 761px) and (max-width: 1100px) and (orientation: portrait) {
+
+  /* ── Formats block — centered 2×2 grid, wider than TP-06.8 ──
+       Width: min(78vw, 620px) — wider than TP-06.8's clamp(390px, 56vw, 470px).
+       This prevents the "left column too far left" problem by giving
+       enough room for the longest phrase without compression.
+       Two equal columns.
+       Grid items are centered via justify-items: stretch + text-align: center. ── */
+  #live-text .live-text-right {
+    order: 5 !important;
+
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+
+    width: min(78vw, 620px) !important;
+    max-width: 620px !important;
+
+    padding: 0 !important;
+    margin: 0 auto clamp(18px, 2.6vw, 28px) auto !important;
+
+    column-gap: clamp(22px, 3vw, 34px) !important;
+    row-gap: clamp(12px, 1.8vw, 18px) !important;
+
+    justify-content: center !important;
+    justify-items: stretch !important;
+    align-items: start !important;
+
+    box-sizing: border-box !important;
+  }
+
+  /* ── Formats label — centered header over the 2×2 grid ── */
+  #live-text .live-formats-label {
+    grid-column: 1 / -1 !important;
+
+    justify-self: center !important;
+    text-align: center !important;
+
+    margin: 0 0 clamp(14px, 2vw, 18px) !important;
+
+    font-family: var(--font-b) !important;
+    font-weight: 300 !important;
+    font-size: 10px !important;
+    line-height: 1 !important;
+    letter-spacing: .30em !important;
+    text-transform: uppercase !important;
+    color: rgba(253,224,139,.68) !important;
+  }
+
+  /* ── Hide format numbers 01/02/03/04 ── */
+  #live-text .live-format-num {
+    display: none !important;
+  }
+
+  /* ── Format row — centered flex, acts as grid cell ──
+       No number column. Just centered text with bottom hairline. ── */
+  #live-text .live-format-row {
+    width: 100% !important;
+    min-width: 0 !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    padding: 0 0 clamp(8px, 1.2vw, 11px) !important;
+
+    border-top: none !important;
+    border-bottom: 1px solid rgba(253,224,139,.11) !important;
+
+    box-sizing: border-box !important;
+  }
+
+  /* ── Format name — centered text inside cell ──
+       No left alignment. No number prefix. Pure centered text. ── */
+  #live-text .live-format-name {
+    display: block !important;
+
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+
+    text-align: center !important;
+
+    font-family: var(--font-b) !important;
+    font-weight: 300 !important;
+    font-size: clamp(18px, 2vw, 23px) !important;
+    line-height: 1.18 !important;
+    letter-spacing: .02em !important;
+    color: var(--text-100) !important;
+
+    white-space: normal !important;
+    overflow-wrap: normal !important;
+  }
+
+  /* ── CTA — centered below the 2×2 grid ── */
+  #live-text .btn {
+    order: 6 !important;
+
+    width: auto !important;
+    max-width: max-content !important;
+
+    margin: clamp(22px, 3vw, 32px) auto 0 !important;
+
+    align-self: center !important;
+    justify-self: center !important;
+  }
+
+  /* ═══════════════════════════════════════════════════════════════════════
+     EXPLICIT GRID PLACEMENT — 4 format rows in 2×2 layout
+     Layout:
+       row 1: [live-formats-label] — spans both columns
+       row 2: [format-row 1] [format-row 2]
+       row 3: [format-row 3] [format-row 4]
+     Using nth-of-type (works on div.live-format-row since
+     .live-formats-label is a span, not a div).
+     ═══════════════════════════════════════════════════════════════════════ */
+
+  /* Format row 1 → column 1, row 2 */
+  #live-text .live-format-row:nth-of-type(1) {
+    grid-column: 1 !important;
+    grid-row: 2 !important;
+  }
+
+  /* Format row 2 → column 2, row 2 */
+  #live-text .live-format-row:nth-of-type(2) {
+    grid-column: 2 !important;
+    grid-row: 2 !important;
+  }
+
+  /* Format row 3 → column 1, row 3 */
+  #live-text .live-format-row:nth-of-type(3) {
+    grid-column: 1 !important;
+    grid-row: 3 !important;
+  }
+
+  /* Format row 4 → column 2, row 3 */
+  #live-text .live-format-row:nth-of-type(4) {
+    grid-column: 2 !important;
+    grid-row: 3 !important;
+  }
+
+} /* end Stage TP-06.9 main MQ */
+
+
+/* ========================================================================
+   NARROW VERTICAL TABLET (761px – 860px) — keep 2×2, wider module
+   ======================================================================== */
+@media (min-width: 761px) and (max-width: 860px) and (orientation: portrait) {
+
+  /* ── Slightly wider module on narrow viewports so long phrases
+       don't break the composition too hard ── */
+  #live-text .live-text-right {
+    width: min(84vw, 600px) !important;
+    max-width: 600px !important;
+    column-gap: clamp(18px, 2.5vw, 26px) !important;
+    row-gap: 12px !important;
+  }
+
+  /* ── Slightly smaller format names ── */
+  #live-text .live-format-name {
+    font-size: clamp(17px, 1.9vw, 21px) !important;
+    line-height: 1.18 !important;
+  }
+
+} /* end Stage TP-06.9 narrow MQ */
+
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   Stage TP-06.10: tablet portrait live-text final vertical composition reset
+   
+   PROBLEM:
+   Screen 06 currently lacks compositional unity:
+   - distances between title, photo, manifesto, "Подходит для", list, and CTA
+     feel random
+   - 2×2 grid doesn't work optically due to different phrase lengths
+   - "Подходит для" block looks asymmetrical
+   - Lower text block looks weaker and less tidy than the photo
+   - Previous attempts to tweak columns / reduce gap did not fix the issue
+   
+   SOLUTION:
+   Abandon the 2×2 grid entirely.
+   Replace with a clean centered editorial-list composition.
+   
+   VISUAL GOAL:
+   All elements of screen 06 should live in ONE central rail,
+   not in several different widths.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+
+/* ─── 1. RESET TO SINGLE VERTICAL RAIL ─── */
+@media (min-width: 761px) and (max-width: 1100px) and (orientation: portrait) {
+  #live-text {
+    justify-content: flex-start !important;
+  }
+
+  #live-text .live-text-inner {
+    --tp06-rail: min(86vw, 640px);
+
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+
+    width: 100% !important;
+    max-width: var(--tp06-rail) !important;
+
+    margin-left: auto !important;
+    margin-right: auto !important;
+
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+
+    padding-top: clamp(76px, 8.8vh, 104px) !important;
+    padding-bottom: clamp(46px, 6vh, 68px) !important;
+
+    box-sizing: border-box !important;
+  }
+
+  #live-text .live-text-left {
+    display: contents !important;
+  }
+
+  #live-text .live-text-line {
+    display: none !important;
+  }
+}
+
+
+/* ─── 2. VERTICAL RHYTHM — title → photo → manifesto ─── */
+@media (min-width: 761px) and (max-width: 1100px) and (orientation: portrait) {
+  #live-text .live-title {
+    order: 1 !important;
+
+    width: 100% !important;
+    max-width: var(--tp06-rail) !important;
+
+    text-align: center !important;
+    margin: 0 auto clamp(18px, 2.4vw, 24px) !important;
+
+    font-size: clamp(38px, 5vw, 56px) !important;
+    line-height: 1.08 !important;
+    letter-spacing: .04em !important;
+  }
+
+  #live-text .live-mobile-image {
+    order: 2 !important;
+
+    margin-left: auto !important;
+    margin-right: auto !important;
+    margin-bottom: clamp(12px, 1.7vw, 18px) !important;
+
+    /* Photo crop / size NOT changed — only rhythm around it */
+  }
+
+  #live-text .live-title-rule {
+    display: none !important;
+  }
+
+  #live-text .live-manifesto {
+    order: 3 !important;
+
+    width: 100% !important;
+    max-width: min(100%, 580px) !important;
+
+    margin: 0 auto clamp(20px, 2.8vw, 28px) !important;
+
+    text-align: center !important;
+    font-size: clamp(13px, 1.35vw, 15px) !important;
+    line-height: 1.62 !important;
+    color: rgba(237,233,224,.72) !important;
+  }
+}
+
+
+/* ─── 3. CENTERED EDITORIAL-LIST — no 2×2 grid, no numbers ─── */
+@media (min-width: 761px) and (max-width: 1100px) and (orientation: portrait) {
+  #live-text .live-text-right {
+    order: 4 !important;
+
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+
+    width: 100% !important;
+    max-width: min(100%, 520px) !important;
+
+    padding: 0 !important;
+    margin: 0 auto clamp(18px, 2.6vw, 26px) !important;
+
+    gap: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  #live-text .live-formats-label {
+    display: block !important;
+
+    width: 100% !important;
+
+    text-align: center !important;
+    margin: 0 auto clamp(12px, 1.8vw, 16px) !important;
+
+    font-family: var(--font-b) !important;
+    font-weight: 300 !important;
+    font-size: 10px !important;
+    line-height: 1 !important;
+    letter-spacing: .30em !important;
+    text-transform: uppercase !important;
+    color: rgba(253,224,139,.68) !important;
+  }
+
+  #live-text .live-format-num {
+    display: none !important;
+  }
+
+  #live-text .live-format-row {
+    width: 100% !important;
+    max-width: 100% !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    padding: clamp(4px, .7vw, 7px) 0 !important;
+    margin: 0 !important;
+
+    border-top: none !important;
+    border-bottom: none !important;
+
+    box-sizing: border-box !important;
+  }
+
+  #live-text .live-format-name {
+    display: block !important;
+
+    width: 100% !important;
+    max-width: 100% !important;
+
+    text-align: center !important;
+
+    font-family: var(--font-b) !important;
+    font-weight: 300 !important;
+    font-size: clamp(18px, 2vw, 22px) !important;
+    line-height: 1.24 !important;
+    letter-spacing: .02em !important;
+    color: var(--text-100) !important;
+
+    white-space: normal !important;
+    overflow-wrap: normal !important;
+  }
+}
+
+
+/* ─── 4. EDITORIAL DIVIDER — thin lines above / below list block ─── */
+@media (min-width: 761px) and (max-width: 1100px) and (orientation: portrait) {
+  #live-text .live-text-right::before,
+  #live-text .live-text-right::after {
+    content: "" !important;
+    display: block !important;
+    width: min(100%, 420px) !important;
+    height: 1px !important;
+    background: rgba(253,224,139,.10) !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  #live-text .live-text-right::before {
+    margin-bottom: clamp(14px, 1.8vw, 18px) !important;
+  }
+
+  #live-text .live-text-right::after {
+    margin-top: clamp(12px, 1.6vw, 16px) !important;
+  }
+}
+
+
+/* ─── 5. CTA — anchored to bottom block ─── */
+@media (min-width: 761px) and (max-width: 1100px) and (orientation: portrait) {
+  #live-text .btn {
+    order: 5 !important;
+
+    width: auto !important;
+    max-width: max-content !important;
+
+    margin: clamp(18px, 2.6vw, 26px) auto 0 !important;
+
+    align-self: center !important;
+    justify-self: center !important;
+  }
+}
+
+
+/* ─── 6. NARROW VERTICAL TABLET 761–860 ─── */
+@media (min-width: 761px) and (max-width: 860px) and (orientation: portrait) {
+  #live-text .live-text-inner {
+    --tp06-rail: min(88vw, 600px);
+    padding-top: clamp(70px, 8vh, 92px) !important;
+    padding-bottom: clamp(42px, 5.6vh, 60px) !important;
+  }
+
+  #live-text .live-title {
+    font-size: clamp(36px, 4.8vw, 48px) !important;
+    white-space: normal !important;
+    margin-bottom: clamp(16px, 2.2vw, 22px) !important;
+  }
+
+  #live-text .live-manifesto {
+    max-width: min(100%, 540px) !important;
+    margin-bottom: clamp(18px, 2.5vw, 24px) !important;
+    font-size: clamp(12px, 1.35vw, 14px) !important;
+  }
+
+  #live-text .live-text-right {
+    max-width: min(100%, 500px) !important;
+  }
+
+  #live-text .live-format-name {
+    font-size: clamp(17px, 1.9vw, 20px) !important;
+  }
+
+  #live-text .btn {
+    margin-top: clamp(16px, 2.4vw, 22px) !important;
+  }
+}
+
+
+/* ─── END Stage TP-06.10 ─── */
+
+
+/* ─── Stage TP-06.12: tablet portrait compact left-aligned two-column formats module ─── */
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   Stage TP-06.12: tablet portrait compact left-aligned two-column formats module
+
+   PROBLEM:
+   TP-06.10 uses centered editorial-list (single column, centered items).
+   This creates a vertical list with too much empty space on wider tablets.
+   The 2×2 grid from TP-06.9 was abandoned, but the single-column centered
+   list feels underwhelming and does not use horizontal space well.
+
+   SOLUTION:
+   Restore a compact TWO-COLUMN layout, but fundamentally different from
+   previous attempts:
+   - grid-template-columns: max-content max-content (NOT 1fr, NOT fixed)
+   - width: max-content (NOT 100%, NOT rail width, NOT fixed clamp)
+   - column-gap: clamp(22px, 3vw, 30px) (compact, not wide)
+   - Text inside each column LEFT-ALIGNED (not centered)
+   - No numbers, no row lines, no cards
+   - Entire module centered under photo
+
+   CRITICAL DESIGN RULE:
+   The grid should wrap ONLY its content width, not stretch.
+   Left column = "Фестивалей", "Закрытых клубов"
+   Right column = "Ретритов и выездных программ", "Иммерсивных событий"
+   Gap between columns = ~22–30px (compact, not empty center).
+
+   WHAT RULES ARE OVERRIDDEN:
+   TP-06.10 .live-text-right (display:flex → display:grid)
+   TP-06.10 .live-format-row (flex center → grid items, width:max-content)
+   TP-06.10 .live-format-name (text-align:center → text-align:left)
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+
+/* ─── 1. MAIN TABLET PORTRAIT 761–1100px — compact two-column grid ─── */
+@media (min-width: 761px) and (max-width: 1100px) and (orientation: portrait) {
+
+  /* ── Formats block — compact two-column grid ──
+       grid-template-columns: max-content max-content — columns are only as
+       wide as their content. No stretching, no 1fr, no fixed width.
+       width: max-content — container wraps content, not the image rail.
+       Centered via margin: 0 auto. ── */
+  #live-text .live-text-right {
+    order: 4 !important;
+
+    display: grid !important;
+    grid-template-columns: max-content max-content !important;
+
+    width: max-content !important;
+    max-width: min(92vw, 620px) !important;
+
+    justify-content: center !important;
+    justify-items: start !important;
+    align-items: start !important;
+
+    column-gap: clamp(22px, 3vw, 30px) !important;
+    row-gap: clamp(9px, 1.4vw, 13px) !important;
+
+    padding: 0 !important;
+    margin: 0 auto clamp(18px, 2.6vw, 26px) auto !important;
+
+    box-sizing: border-box !important;
+  }
+
+  /* ── Formats label — centered above both columns ── */
+  #live-text .live-formats-label {
+    grid-column: 1 / -1 !important;
+    grid-row: 1 !important;
+
+    justify-self: center !important;
+    text-align: center !important;
+
+    margin: 0 0 clamp(14px, 2vw, 18px) !important;
+
+    font-family: var(--font-b) !important;
+    font-weight: 300 !important;
+    font-size: 10px !important;
+    line-height: 1 !important;
+    letter-spacing: .30em !important;
+    text-transform: uppercase !important;
+    color: rgba(253,224,139,.68) !important;
+  }
+
+  /* ── Hide format numbers 01/02/03/04 ── */
+  #live-text .live-format-num {
+    display: none !important;
+  }
+
+  /* ── Format row — content-width grid item ──
+       No number column. No row lines (border removed).
+       width: max-content — tightly wraps the text. ── */
+  #live-text .live-format-row {
+    width: max-content !important;
+    max-width: none !important;
+    min-width: 0 !important;
+
+    display: block !important;
+
+    padding: 0 !important;
+    margin: 0 !important;
+
+    border-top: none !important;
+    border-bottom: none !important;
+
+    box-sizing: border-box !important;
+  }
+
+  /* ── Format name — left-aligned, nowrap, editorial scale ──
+       text-align: left (not centered).
+       white-space: nowrap — keeps name on one line; only the long
+       "Ретритов и выездных программ" may wrap on narrow viewports. ── */
+  #live-text .live-format-name {
+    display: block !important;
+
+    width: max-content !important;
+    max-width: none !important;
+    min-width: 0 !important;
+
+    text-align: left !important;
+
+    font-family: var(--font-b) !important;
+    font-weight: 300 !important;
+    font-size: clamp(18px, 2vw, 22px) !important;
+    line-height: 1.24 !important;
+    letter-spacing: .02em !important;
+    color: var(--text-100) !important;
+
+    white-space: nowrap !important;
+    overflow-wrap: normal !important;
+  }
+
+
+  /* ═══════════════════════════════════════════════════════════════════════
+     EXPLICIT GRID PLACEMENT — 4 format rows in 2×2 layout
+     Layout:
+       row 1: [live-formats-label] — spans both columns
+       row 2: [format-row 1 (Фестивалей)] [format-row 2 (Ретритов...)]
+       row 3: [format-row 3 (Закрытых клубов)] [format-row 4 (Иммерсивных событий)]
+     Using nth-of-type (works on div.live-format-row since
+     .live-formats-label is a span, not a div).
+     ═══════════════════════════════════════════════════════════════════════ */
+
+  /* Format row 1 → column 1, row 2 */
+  #live-text .live-format-row:nth-of-type(1) {
+    grid-column: 1 !important;
+    grid-row: 2 !important;
+  }
+
+  /* Format row 2 → column 2, row 2 */
+  #live-text .live-format-row:nth-of-type(2) {
+    grid-column: 2 !important;
+    grid-row: 2 !important;
+  }
+
+  /* Format row 3 → column 1, row 3 */
+  #live-text .live-format-row:nth-of-type(3) {
+    grid-column: 1 !important;
+    grid-row: 3 !important;
+  }
+
+  /* Format row 4 → column 2, row 3 */
+  #live-text .live-format-row:nth-of-type(4) {
+    grid-column: 2 !important;
+    grid-row: 3 !important;
+  }
+
+
+  /* ── CTA — centered below the two-column block ── */
+  #live-text .btn {
+    order: 5 !important;
+
+    width: auto !important;
+    max-width: max-content !important;
+
+    margin: clamp(22px, 3vw, 32px) auto 0 !important;
+
+    align-self: center !important;
+    justify-self: center !important;
+  }
+
+} /* end Stage TP-06.12 main MQ */
+
+
+/* ─── 2. NARROW VERTICAL TABLET 761–860px — preserve two columns, allow wrap on long phrase ─── */
+@media (min-width: 761px) and (max-width: 860px) and (orientation: portrait) {
+
+  /* ── Slightly tighter column gap, same max-content columns ── */
+  #live-text .live-text-right {
+    grid-template-columns: max-content max-content !important;
+    max-width: min(94vw, 600px) !important;
+    column-gap: clamp(18px, 2.8vw, 24px) !important;
+    row-gap: 10px !important;
+  }
+
+  /* ── Slightly smaller font for format names ── */
+  #live-text .live-format-name {
+    font-size: clamp(16px, 1.9vw, 20px) !important;
+  }
+
+  /* ── Allow the long right-column phrase "Ретритов и выездных программ"
+        to wrap on narrow viewports (row 2, format-row:nth-of-type(2)) ── */
+  #live-text .live-format-row:nth-of-type(2) .live-format-name {
+    max-width: 280px !important;
+    white-space: normal !important;
+  }
+
+} /* end Stage TP-06.12 narrow MQ */
+
+
+/* ─── END Stage TP-06.12 ─── */
+
+
+/* ─── Stage TP-06.13: tablet portrait swapped left-aligned two-column formats module ─── */
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   Stage TP-06.13: tablet portrait swapped left-aligned two-column formats module
+
+   PROBLEM:
+   TP-06.12 placed short phrases in the left column and long phrases in the
+   right column. This made the module visually lopsided — heavy on the right,
+   light on the left, creating an unbalanced composition.
+
+   SOLUTION:
+   Keep the same compact max-content grid structure from TP-06.12, but
+   SWAP the columns:
+   - LONG phrases → LEFT column (Ретритов и выездных программ, Иммерсивных событий)
+   - SHORT phrases → RIGHT column (Фестивалей, Закрытых клубов)
+   
+   This creates a visually balanced module: heavy left + light right = stable.
+   The swapped placement is done purely via CSS nth-of-type grid positioning
+   without changing HTML order.
+
+   DIFFERENCES from TP-06.12:
+   1. nth-of-type placement: rows 2,4 → col 1 (left); rows 1,3 → col 2 (right)
+   2. column-gap: slightly smaller clamp(18px, 2.6vw, 26px) vs 22-30px
+   3. Narrow MQ: wrapping targets for left-column long phrases (rows 2,4)
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+
+/* ─── 1. MAIN TABLET PORTRAIT 761–1100px — compact two-column grid, columns swapped ─── */
+@media (min-width: 761px) and (max-width: 1100px) and (orientation: portrait) {
+
+  /* ── Formats block — compact two-column grid ──
+       grid-template-columns: max-content max-content — columns are only as
+       wide as their content. No stretching, no 1fr, no fixed width.
+       width: max-content — container wraps content, not the image rail.
+       Centered via margin: 0 auto.
+       Left column naturally wider (long phrases), right column narrower. ── */
+  #live-text .live-text-right {
+    order: 4 !important;
+
+    display: grid !important;
+    grid-template-columns: max-content max-content !important;
+
+    width: max-content !important;
+    max-width: min(92vw, 620px) !important;
+
+    justify-content: center !important;
+    justify-items: start !important;
+    align-items: start !important;
+
+    column-gap: clamp(18px, 2.6vw, 26px) !important;
+    row-gap: clamp(10px, 1.4vw, 14px) !important;
+
+    padding: 0 !important;
+    margin: 0 auto clamp(18px, 2.6vw, 26px) auto !important;
+
+    box-sizing: border-box !important;
+  }
+
+  /* ── Formats label — centered above both columns ── */
+  #live-text .live-formats-label {
+    grid-column: 1 / -1 !important;
+    grid-row: 1 !important;
+
+    justify-self: center !important;
+    text-align: center !important;
+
+    margin: 0 0 clamp(14px, 2vw, 18px) !important;
+
+    font-family: var(--font-b) !important;
+    font-weight: 300 !important;
+    font-size: 10px !important;
+    line-height: 1 !important;
+    letter-spacing: .30em !important;
+    text-transform: uppercase !important;
+    color: rgba(253,224,139,.68) !important;
+  }
+
+  /* ── Hide format numbers 01/02/03/04 ── */
+  #live-text .live-format-num {
+    display: none !important;
+  }
+
+  /* ── Format row — content-width grid item ──
+       No number column. No row lines. width: max-content. ── */
+  #live-text .live-format-row {
+    width: max-content !important;
+    max-width: none !important;
+    min-width: 0 !important;
+
+    display: block !important;
+
+    padding: 0 !important;
+    margin: 0 !important;
+
+    border-top: none !important;
+    border-bottom: none !important;
+
+    box-sizing: border-box !important;
+  }
+
+  /* ── Format name — left-aligned, nowrap, editorial scale ── */
+  #live-text .live-format-name {
+    display: block !important;
+
+    width: max-content !important;
+    max-width: none !important;
+    min-width: 0 !important;
+
+    text-align: left !important;
+
+    font-family: var(--font-b) !important;
+    font-weight: 300 !important;
+    font-size: clamp(18px, 2vw, 22px) !important;
+    line-height: 1.24 !important;
+    letter-spacing: .02em !important;
+    color: var(--text-100) !important;
+
+    white-space: nowrap !important;
+    overflow-wrap: normal !important;
+  }
+
+
+  /* ═══════════════════════════════════════════════════════════════════════
+     EXPLICIT GRID PLACEMENT — SWAPPED columns
+     
+     Original HTML order:
+       1) Фестивалей          → right column (col 2, row 2)
+       2) Ретритов и выездных  → left column  (col 1, row 2)
+       3) Закрытых клубов      → right column (col 2, row 3)
+       4) Иммерсивных событий  → left column  (col 1, row 3)
+     
+     Visual result:
+       row 1: [label: ПОДХОДИТ ДЛЯ]
+       row 2: [Ретритов и выездных программ]  [Фестивалей]
+       row 3: [Иммерсивных событий]           [Закрытых клубов]
+     
+     Using nth-of-type — works on div.live-format-row.
+     ═══════════════════════════════════════════════════════════════════════ */
+
+  /* Format row 1 (Фестивалей) → right column → col 2, row 2 */
+  #live-text .live-format-row:nth-of-type(1) {
+    grid-column: 2 !important;
+    grid-row: 2 !important;
+  }
+
+  /* Format row 2 (Ретритов и выездных программ) → left column → col 1, row 2 */
+  #live-text .live-format-row:nth-of-type(2) {
+    grid-column: 1 !important;
+    grid-row: 2 !important;
+  }
+
+  /* Format row 3 (Закрытых клубов) → right column → col 2, row 3 */
+  #live-text .live-format-row:nth-of-type(3) {
+    grid-column: 2 !important;
+    grid-row: 3 !important;
+  }
+
+  /* Format row 4 (Иммерсивных событий) → left column → col 1, row 3 */
+  #live-text .live-format-row:nth-of-type(4) {
+    grid-column: 1 !important;
+    grid-row: 3 !important;
+  }
+
+
+  /* ── CTA — centered below the two-column block ── */
+  #live-text .btn {
+    order: 5 !important;
+
+    width: auto !important;
+    max-width: max-content !important;
+
+    margin: clamp(22px, 3vw, 32px) auto 0 !important;
+
+    align-self: center !important;
+    justify-self: center !important;
+  }
+
+} /* end Stage TP-06.13 main MQ */
+
+
+/* ─── 2. NARROW VERTICAL TABLET 761–860px — preserve swapped columns, allow wrap on long left phrases ─── */
+@media (min-width: 761px) and (max-width: 860px) and (orientation: portrait) {
+
+  /* ── Slightly tighter column gap, same max-content swapped columns ── */
+  #live-text .live-text-right {
+    max-width: min(94vw, 580px) !important;
+    column-gap: clamp(16px, 2.4vw, 22px) !important;
+    row-gap: 10px !important;
+  }
+
+  /* ── Slightly smaller font for format names ── */
+  #live-text .live-format-name {
+    font-size: clamp(16px, 1.9vw, 20px) !important;
+  }
+
+  /* ── Allow the long left-column phrase "Ретритов и выездных программ"
+        (row 2, now in left column) to wrap on narrow viewports ── */
+  #live-text .live-format-row:nth-of-type(2) .live-format-name {
+    max-width: 260px !important;
+    white-space: normal !important;
+  }
+
+  /* ── Allow the long left-column phrase "Иммерсивных событий"
+        (row 4, now in left column) to cap width on narrow viewports ── */
+  #live-text .live-format-row:nth-of-type(4) .live-format-name {
+    max-width: 220px !important;
+  }
+
+} /* end Stage TP-06.13 narrow MQ */
+
+
+/* ─── END Stage TP-06.13 ─── */
+
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   Stage TP-06.14: tablet portrait editorial split formats module
+   Screen 06 / #live-text
+   Replaces previous 2×2 / vertical-list / centered approaches with
+   a two-column editorial split:
+     left column  → typographic anchor "ПОДХОДИТ / ДЛЯ"
+     right column → vertical left-aligned list of 4 formats
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ─── Stage TP-06.14: tablet portrait editorial split formats module ─── */
+
+/* ========================================================================
+   MAIN TABLET PORTRAIT RANGE (761–1100)
+   ======================================================================== */
+@media (min-width: 761px) and (max-width: 1100px) and (orientation: portrait) {
+
+  /* ──────────────────────────────────────────────────────────────────────
+      .live-text-right — two-column editorial split grid
+      Left: label "ПОДХОДИТ / ДЛЯ" (grid-column 1)
+      Right: 4 format rows (grid-column 2)
+      Module is centered below photo, NOT stretched to full width
+      ────────────────────────────────────────────────────────────────────── */
+  #live-text .live-text-right {
+    order: 4 !important;
+
+    display: grid !important;
+    grid-template-columns: 112px max-content !important;
+
+    width: max-content !important;
+    max-width: min(90vw, 620px) !important;
+
+    justify-content: center !important;
+    justify-items: start !important;
+    align-items: start !important;
+
+    column-gap: clamp(28px, 4vw, 42px) !important;
+    row-gap: clamp(7px, 1vw, 10px) !important;
+
+    padding: 0 !important;
+    margin: 0 auto clamp(18px, 2.6vw, 26px) auto !important;
+
+    border: none !important;
+    box-sizing: border-box !important;
+  }
+
+
+  /* ──────────────────────────────────────────────────────────────────────
+      .live-formats-label — left anchor column
+      Original text ("Подходит для") hidden via font-size:0
+      Visual replacement via ::before pseudo-element:
+        "ПОДХОДИТ\A ДЛЯ" in two lines
+      Small decorative rule via ::after
+      ────────────────────────────────────────────────────────────────────── */
+  #live-text .live-formats-label {
+    grid-column: 1 !important;
+    grid-row: 1 / span 4 !important;
+
+    align-self: start !important;
+    justify-self: start !important;
+
+    width: 112px !important;
+    max-width: 112px !important;
+
+    margin: 2px 0 0 0 !important;
+    padding: 0 !important;
+
+    font-size: 0 !important;
+    line-height: 0 !important;
+    color: transparent !important;
+
+    text-align: left !important;
+  }
+
+  #live-text .live-formats-label::before {
+    content: "ПОДХОДИТ\A ДЛЯ" !important;
+    white-space: pre !important;
+
+    display: block !important;
+
+    font-family: var(--font-b) !important;
+    font-weight: 300 !important;
+    font-size: 10px !important;
+    line-height: 1.65 !important;
+    letter-spacing: .30em !important;
+    text-transform: uppercase !important;
+
+    color: rgba(253,224,139,.68) !important;
+  }
+
+  #live-text .live-formats-label::after {
+    content: "" !important;
+    display: block !important;
+
+    width: 34px !important;
+    height: 1px !important;
+
+    margin-top: 14px !important;
+
+    background: rgba(253,224,139,.24) !important;
+  }
+
+
+  /* ──────────────────────────────────────────────────────────────────────
+      .live-format-num — hide numbering
+      ────────────────────────────────────────────────────────────────────── */
+  #live-text .live-format-num {
+    display: none !important;
+  }
+
+
+  /* ──────────────────────────────────────────────────────────────────────
+      .live-format-row — right column, vertical list
+      Each row is a block-level item (no flex/grid row layout)
+      ────────────────────────────────────────────────────────────────────── */
+  #live-text .live-format-row {
+    width: max-content !important;
+    max-width: min(100%, 360px) !important;
+    min-width: 0 !important;
+
+    display: block !important;
+
+    padding: 0 !important;
+    margin: 0 !important;
+
+    border-top: none !important;
+    border-bottom: none !important;
+
+    box-sizing: border-box !important;
+  }
+
+  /* ── Grid placement for each of the 4 format rows ── */
+  #live-text .live-format-row:nth-of-type(1) {
+    grid-column: 2 !important;
+    grid-row: 1 !important;
+  }
+
+  #live-text .live-format-row:nth-of-type(2) {
+    grid-column: 2 !important;
+    grid-row: 2 !important;
+  }
+
+  #live-text .live-format-row:nth-of-type(3) {
+    grid-column: 2 !important;
+    grid-row: 3 !important;
+  }
+
+  #live-text .live-format-row:nth-of-type(4) {
+    grid-column: 2 !important;
+    grid-row: 4 !important;
+  }
+
+
+  /* ──────────────────────────────────────────────────────────────────────
+      .live-format-name — format text styling
+      Left-aligned, light weight, editorial font size
+      ────────────────────────────────────────────────────────────────────── */
+  #live-text .live-format-name {
+    display: block !important;
+
+    width: max-content !important;
+    max-width: 360px !important;
+    min-width: 0 !important;
+
+    text-align: left !important;
+
+    font-family: var(--font-b) !important;
+    font-weight: 300 !important;
+    font-size: clamp(18px, 1.95vw, 22px) !important;
+    line-height: 1.32 !important;
+    letter-spacing: .02em !important;
+    color: var(--text-100) !important;
+
+    white-space: normal !important;
+    overflow-wrap: normal !important;
+  }
+
+
+  /* ──────────────────────────────────────────────────────────────────────
+      .btn — CTA below editorial split
+      Order 5 ensures it comes after the formats block (order 4)
+      ────────────────────────────────────────────────────────────────────── */
+  #live-text .btn {
+    order: 5 !important;
+
+    width: auto !important;
+    max-width: max-content !important;
+
+    margin: clamp(22px, 3vw, 32px) auto 0 !important;
+
+    align-self: center !important;
+    justify-self: center !important;
+  }
+
+} /* end main tablet portrait (TP-06.14) */
+
+
+/* ========================================================================
+   NARROW VERTICAL TABLET (761–860)
+   Tighter column gap, slightly smaller label and format text
+   ======================================================================== */
+@media (min-width: 761px) and (max-width: 860px) and (orientation: portrait) {
+
+  /* ── Narrower grid columns ── */
+  #live-text .live-text-right {
+    grid-template-columns: 104px max-content !important;
+    column-gap: clamp(22px, 3.4vw, 32px) !important;
+    max-width: min(92vw, 560px) !important;
+  }
+
+  /* ── Narrower label ── */
+  #live-text .live-formats-label {
+    width: 104px !important;
+    max-width: 104px !important;
+  }
+
+  #live-text .live-formats-label::before {
+    font-size: 9.5px !important;
+    letter-spacing: .28em !important;
+    line-height: 1.65 !important;
+  }
+
+  /* ── Slightly smaller format names ── */
+  #live-text .live-format-name {
+    font-size: clamp(16px, 1.9vw, 20px) !important;
+    line-height: 1.32 !important;
+    max-width: 320px !important;
+  }
+
+  /* ── Allow long phrases to wrap naturally ── */
+  #live-text .live-format-row:nth-of-type(2) .live-format-name {
+    max-width: 260px !important;
+    white-space: normal !important;
+  }
+
+  #live-text .live-format-row:nth-of-type(4) .live-format-name {
+    max-width: 220px !important;
+  }
+
+} /* end narrow vertical tablet (TP-06.14) */
+
+
+/* ─── END Stage TP-06.14 ─── */
+
+
+/* ─── Stage TP-06.15: tablet portrait editorial split refinement ─── */
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   Stage TP-06.15: tablet portrait editorial split refinement
+   Screen 06 / #live-text
+
+   CHANGES FROM TP-06.14:
+   1. Narrower left column: 96px (was 112px)
+   2. Smaller column-gap: clamp(20px, 2.8vw, 28px) (was 28-42px)
+   3. Left label font: var(--font-a) sans (was var(--font-b))
+      → weight 500, size 9px, letter-spacing .28em, color rgba(253,224,139,.72)
+   4. Right list font: var(--font-b) serif (same as before, kept serif)
+      → weight 300, size clamp(19px, 1.95vw, 22px), line-height 1.34
+   5. ::after line: 28px wide, margin-top 12px, opacity .22 (was 34px, 14px, .24)
+   6. Label margin-top: 3px (was 2px)
+   7. Narrow viewport (761-860): left column 88px, font 8.5px
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+
+/* ========================================================================
+   MAIN TABLET PORTRAIT RANGE (761–1100)
+   ======================================================================== */
+@media (min-width: 761px) and (max-width: 1100px) and (orientation: portrait) {
+
+  /* ──────────────────────────────────────────────────────────────────────
+      .live-text-right — refined editorial split grid
+      Narrower left column, tighter gap, more elegant proportions
+      ────────────────────────────────────────────────────────────────────── */
+  #live-text .live-text-right {
+    order: 4 !important;
+
+    display: grid !important;
+    grid-template-columns: 96px max-content !important;
+
+    width: max-content !important;
+    max-width: min(88vw, 560px) !important;
+
+    justify-content: center !important;
+    justify-items: start !important;
+    align-items: start !important;
+
+    column-gap: clamp(20px, 2.8vw, 28px) !important;
+    row-gap: clamp(8px, 1.15vw, 11px) !important;
+
+    padding: 0 !important;
+    margin: 0 auto clamp(18px, 2.6vw, 26px) auto !important;
+
+    border: none !important;
+    box-sizing: border-box !important;
+  }
+
+
+  /* ──────────────────────────────────────────────────────────────────────
+      .live-formats-label — left typographic anchor
+      Font: sans-serif (var(--font-a)), uppercase, muted gold
+      ::before → "ПОДХОДИТ\A ДЛЯ"
+      ::after → subtle decorative rule
+      ────────────────────────────────────────────────────────────────────── */
+  #live-text .live-formats-label {
+    grid-column: 1 !important;
+    grid-row: 1 / span 4 !important;
+
+    align-self: start !important;
+    justify-self: start !important;
+
+    width: 96px !important;
+    max-width: 96px !important;
+
+    margin: 3px 0 0 0 !important;
+    padding: 0 !important;
+
+    font-size: 0 !important;
+    line-height: 0 !important;
+    color: transparent !important;
+
+    text-align: left !important;
+  }
+
+  #live-text .live-formats-label::before {
+    content: "ПОДХОДИТ\A ДЛЯ" !important;
+    white-space: pre !important;
+
+    display: block !important;
+
+    font-family: var(--font-a) !important;
+    font-weight: 500 !important;
+    font-size: 9px !important;
+    line-height: 1.85 !important;
+    letter-spacing: .28em !important;
+    text-transform: uppercase !important;
+
+    color: rgba(253,224,139,.72) !important;
+  }
+
+  #live-text .live-formats-label::after {
+    content: "" !important;
+    display: block !important;
+
+    width: 28px !important;
+    height: 1px !important;
+
+    margin-top: 12px !important;
+
+    background: rgba(253,224,139,.22) !important;
+  }
+
+
+  /* ──────────────────────────────────────────────────────────────────────
+      .live-format-num — hidden (no numbers in editorial split)
+      ────────────────────────────────────────────────────────────────────── */
+  #live-text .live-format-num {
+    display: none !important;
+  }
+
+
+  /* ──────────────────────────────────────────────────────────────────────
+      .live-format-row — right-column list items
+      Block-level, no borders, natural stacking in grid
+      ────────────────────────────────────────────────────────────────────── */
+  #live-text .live-format-row {
+    width: max-content !important;
+    max-width: min(100%, 320px) !important;
+    min-width: 0 !important;
+
+    display: block !important;
+
+    padding: 0 !important;
+    margin: 0 !important;
+
+    border-top: none !important;
+    border-bottom: none !important;
+
+    box-sizing: border-box !important;
+  }
+
+  /* ── Grid placement — 4 format rows, all in column 2 ── */
+  #live-text .live-format-row:nth-of-type(1) {
+    grid-column: 2 !important;
+    grid-row: 1 !important;
+  }
+
+  #live-text .live-format-row:nth-of-type(2) {
+    grid-column: 2 !important;
+    grid-row: 2 !important;
+  }
+
+  #live-text .live-format-row:nth-of-type(3) {
+    grid-column: 2 !important;
+    grid-row: 3 !important;
+  }
+
+  #live-text .live-format-row:nth-of-type(4) {
+    grid-column: 2 !important;
+    grid-row: 4 !important;
+  }
+
+
+  /* ──────────────────────────────────────────────────────────────────────
+      .live-format-name — serif, left-aligned, premium editorial
+      Contrast: left label is sans, right list is serif
+      ────────────────────────────────────────────────────────────────────── */
+  #live-text .live-format-name {
+    display: block !important;
+
+    width: max-content !important;
+    max-width: 320px !important;
+    min-width: 0 !important;
+
+    text-align: left !important;
+
+    font-family: var(--font-b) !important;
+    font-weight: 300 !important;
+    font-size: clamp(19px, 1.95vw, 22px) !important;
+    line-height: 1.34 !important;
+    letter-spacing: .015em !important;
+    color: rgba(237,233,224,.94) !important;
+
+    white-space: normal !important;
+    overflow-wrap: normal !important;
+  }
+
+
+  /* ──────────────────────────────────────────────────────────────────────
+      .btn — CTA below editorial split
+      ────────────────────────────────────────────────────────────────────── */
+  #live-text .btn {
+    order: 5 !important;
+
+    width: auto !important;
+    max-width: max-content !important;
+
+    margin: clamp(22px, 3vw, 30px) auto 0 !important;
+
+    align-self: center !important;
+    justify-self: center !important;
+  }
+
+} /* end main tablet portrait (TP-06.15) */
+
+
+/* ========================================================================
+   NARROW VERTICAL TABLET (761–860) — compact editorial split
+   ======================================================================== */
+@media (min-width: 761px) and (max-width: 860px) and (orientation: portrait) {
+
+  /* ── Narrower grid ── */
+  #live-text .live-text-right {
+    grid-template-columns: 88px max-content !important;
+    column-gap: clamp(18px, 2.6vw, 24px) !important;
+    max-width: min(90vw, 520px) !important;
+  }
+
+  /* ── Narrower label ── */
+  #live-text .live-formats-label {
+    width: 88px !important;
+    max-width: 88px !important;
+  }
+
+  #live-text .live-formats-label::before {
+    font-size: 8.5px !important;
+    letter-spacing: .26em !important;
+    line-height: 1.8 !important;
+  }
+
+  #live-text .live-formats-label::after {
+    width: 24px !important;
+    margin-top: 10px !important;
+  }
+
+  /* ── Slightly smaller format names ── */
+  #live-text .live-format-name {
+    font-size: clamp(17px, 1.85vw, 20px) !important;
+    line-height: 1.34 !important;
+    max-width: 290px !important;
+  }
+
+} /* end narrow vertical tablet (TP-06.15) */
+
+
+/* ─── END Stage TP-06.15 ─── */
+
+
+/* ─── Stage TP-06.16: tablet portrait unified manifesto caption — refined typography ─── */
+
+@media (min-width: 761px) and (max-width: 1100px) and (orientation: portrait) {
+  #live-text .live-text-right {
+    display: none !important;
+  }
+
+  #live-text .live-title-rule {
+    display: none !important;
+  }
+
+  #live-text .live-manifesto {
+    order: 3 !important;
+
+    width: 100% !important;
+    max-width: min(82vw, 640px) !important;
+
+    margin: clamp(14px, 2vw, 20px) auto clamp(26px, 3.4vw, 36px) !important;
+
+    text-align: center !important;
+
+    font-family: var(--font-b) !important;
+    font-weight: 300 !important;
+    letter-spacing: .01em !important;
+
+    color: rgba(237,233,224,.74) !important;
+  }
+
+  #live-text .live-manifesto-main,
+  #live-text .live-manifesto-context {
+    display: block !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  #live-text .live-manifesto-main {
+    max-width: min(100%, 620px) !important;
+
+    font-size: clamp(14px, 1.45vw, 16px) !important;
+    line-height: 1.72 !important;
+
+    color: rgba(237,233,224,.80) !important;
+  }
+
+  #live-text .live-manifesto-context {
+    max-width: min(100%, 580px) !important;
+
+    margin-top: clamp(6px, .9vw, 10px) !important;
+
+    font-size: clamp(12px, 1.25vw, 14px) !important;
+    line-height: 1.65 !important;
+
+    color: rgba(253,224,139,.64) !important;
+    letter-spacing: .035em !important;
+  }
+
+  #live-text .btn {
+    order: 4 !important;
+
+    width: auto !important;
+    max-width: max-content !important;
+
+    margin: 0 auto !important;
+
+    align-self: center !important;
+    justify-self: center !important;
+  }
+}
+
+
+/* ─── Narrow vertical tablet 761–860 ─── */
+@media (min-width: 761px) and (max-width: 860px) and (orientation: portrait) {
+  #live-text .live-manifesto {
+    max-width: min(86vw, 580px) !important;
+    margin-bottom: clamp(24px, 3vw, 32px) !important;
+  }
+
+  #live-text .live-manifesto-main {
+    font-size: clamp(13px, 1.35vw, 15px) !important;
+    line-height: 1.68 !important;
+  }
+
+  #live-text .live-manifesto-context {
+    max-width: min(100%, 540px) !important;
+    font-size: clamp(11.5px, 1.2vw, 13px) !important;
+    line-height: 1.62 !important;
+  }
+}
+
+/* ─── END Stage TP-06.16 ─── */
+
+
+/* ─── Stage TP-06.17: tablet portrait refined manifesto typography under image ─── */
+
+@media (min-width: 761px) and (max-width: 1100px) and (orientation: portrait) {
+  #live-text .live-text-right {
+    display: none !important;
+  }
+
+  #live-text .live-title-rule {
+    display: none !important;
+  }
+
+  #live-text .live-manifesto {
+    order: 3 !important;
+
+    width: 100% !important;
+    max-width: min(84vw, 640px) !important;
+
+    margin: clamp(16px, 2.2vw, 22px) auto clamp(28px, 3.6vw, 38px) !important;
+
+    text-align: center !important;
+
+    font-family: var(--font-b) !important;
+    font-weight: 300 !important;
+    letter-spacing: .01em !important;
+
+    color: rgba(237,233,224,.78) !important;
+  }
+
+  #live-text .live-manifesto-main,
+  #live-text .live-manifesto-context {
+    display: block !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  #live-text .live-manifesto-main {
+    max-width: min(100%, 620px) !important;
+
+    font-family: var(--font-b) !important;
+    font-weight: 300 !important;
+    font-size: clamp(15px, 1.65vw, 18px) !important;
+    line-height: 1.66 !important;
+    letter-spacing: .012em !important;
+
+    color: rgba(237,233,224,.84) !important;
+  }
+
+  #live-text .live-manifesto-context {
+    max-width: min(100%, 590px) !important;
+
+    margin-top: clamp(7px, 1vw, 11px) !important;
+
+    font-family: var(--font-b) !important;
+    font-weight: 300 !important;
+    font-size: clamp(13px, 1.35vw, 15px) !important;
+    line-height: 1.62 !important;
+    letter-spacing: .025em !important;
+
+    color: rgba(253,224,139,.66) !important;
+  }
+
+  #live-text .btn {
+    order: 4 !important;
+
+    width: auto !important;
+    max-width: max-content !important;
+
+    margin: 0 auto !important;
+
+    align-self: center !important;
+    justify-self: center !important;
+  }
+}
+
+
+/* ─── Narrow vertical tablet 761–860 ─── */
+@media (min-width: 761px) and (max-width: 860px) and (orientation: portrait) {
+  #live-text .live-manifesto {
+    max-width: min(86vw, 580px) !important;
+    margin-top: clamp(14px, 2vw, 20px) !important;
+    margin-bottom: clamp(24px, 3.2vw, 32px) !important;
+  }
+
+  #live-text .live-manifesto-main {
+    font-size: clamp(14px, 1.45vw, 16px) !important;
+    line-height: 1.64 !important;
+    max-width: min(100%, 560px) !important;
+  }
+
+  #live-text .live-manifesto-context {
+    font-size: clamp(12.5px, 1.25vw, 14px) !important;
+    line-height: 1.58 !important;
+    max-width: min(100%, 540px) !important;
+  }
+}
+
+/* ─── END Stage TP-06.17 ─── */
+
+
+/* ─── Stage TP-06.18: tablet portrait left-aligned editorial caption under image ─── */
+
+/* ========================================================================
+   MAIN TABLET PORTRAIT RANGE — left-aligned editorial caption
+   ======================================================================== */
+@media (min-width: 761px) and (max-width: 1100px) and (orientation: portrait) {
+
+  /* Hide formats block — caption replaces it visually */
+  #live-text .live-text-right {
+    display: none !important;
+  }
+
+  /* Hide decorative rule below title */
+  #live-text .live-title-rule {
+    display: none !important;
+  }
+
+  /* ── Manifesto → left-aligned editorial caption ── */
+  #live-text .live-manifesto {
+    position: relative !important;
+    order: 3 !important;
+
+    width: 100% !important;
+    max-width: min(84vw, 640px) !important;
+
+    margin: clamp(16px, 2.2vw, 22px) auto clamp(28px, 3.6vw, 38px) !important;
+    padding-left: clamp(18px, 2.2vw, 24px) !important;
+
+    text-align: left !important;
+
+    font-family: var(--font-b) !important;
+    font-weight: 300 !important;
+    letter-spacing: .01em !important;
+
+    color: rgba(237,233,224,.78) !important;
+
+    box-sizing: border-box !important;
+  }
+
+  /* Thin gold accent line on the left */
+  #live-text .live-manifesto::before {
+    content: "" !important;
+    position: absolute !important;
+    left: 0 !important;
+    top: 2px !important;
+
+    width: 1px !important;
+    height: calc(100% - 4px) !important;
+
+    background: linear-gradient(
+      to bottom,
+      rgba(253,224,139,.34),
+      rgba(253,224,139,.10)
+    ) !important;
+  }
+
+  /* Both lines: block-level, left-aligned */
+  #live-text .live-manifesto-main,
+  #live-text .live-manifesto-context {
+    display: block !important;
+    margin: 0 !important;
+    text-align: left !important;
+  }
+
+  /* First line — main editorial statement */
+  #live-text .live-manifesto-main {
+    max-width: 560px !important;
+
+    font-family: var(--font-b) !important;
+    font-weight: 300 !important;
+    font-size: clamp(15px, 1.65vw, 18px) !important;
+    line-height: 1.68 !important;
+    letter-spacing: .012em !important;
+
+    color: rgba(237,233,224,.84) !important;
+  }
+
+  /* Second line — muted gold context hint */
+  #live-text .live-manifesto-context {
+    max-width: 540px !important;
+
+    margin-top: clamp(8px, 1vw, 12px) !important;
+
+    font-family: var(--font-b) !important;
+    font-weight: 300 !important;
+    font-size: clamp(13px, 1.35vw, 15px) !important;
+    line-height: 1.62 !important;
+    letter-spacing: .022em !important;
+
+    color: rgba(253,224,139,.66) !important;
+  }
+
+  /* CTA — keep centered below caption */
+  #live-text .btn {
+    order: 4 !important;
+    width: auto !important;
+    max-width: max-content !important;
+    margin: 0 auto !important;
+    align-self: center !important;
+    justify-self: center !important;
+  }
+
+} /* end Stage TP-06.18 main MQ */
+
+
+/* ========================================================================
+   NARROW VERTICAL TABLET (761px – 860px) — tighter caption
+   ======================================================================== */
+@media (min-width: 761px) and (max-width: 860px) and (orientation: portrait) {
+
+  #live-text .live-manifesto {
+    max-width: min(86vw, 560px) !important;
+    padding-left: clamp(16px, 2vw, 20px) !important;
+    margin-top: clamp(14px, 2vw, 20px) !important;
+    margin-bottom: clamp(24px, 3.2vw, 32px) !important;
+  }
+
+  #live-text .live-manifesto-main {
+    max-width: 520px !important;
+    font-size: clamp(14px, 1.45vw, 16px) !important;
+    line-height: 1.66 !important;
+  }
+
+  #live-text .live-manifesto-context {
+    max-width: 500px !important;
+    font-size: clamp(12.5px, 1.25vw, 14px) !important;
+    line-height: 1.6 !important;
+  }
+
+} /* end Stage TP-06.18 narrow MQ */
+
+
+/* ─── END Stage TP-06.18 ─── */

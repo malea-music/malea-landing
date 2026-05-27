@@ -1,0 +1,1195 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MALEA — Сакральный артист</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital@1&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/tablet-portrait-overrides.css">
+</head>
+<body class="dev-screen-labels">
+
+  <!-- ════════════════════════════════════════
+       NAVIGATION
+  ═════════════════════════════════════════ -->
+  <nav class="nav is-hidden" id="mainNav">
+    <a href="#hero" class="nav-logo">MALEA</a>
+    <ul class="nav-links">
+      <li><a href="#player">МУЗЫКА</a></li>
+      <li><a href="#performance">ПЕРФОРМАНС</a></li>
+      <li><a href="#sensations">ОТЗЫВЫ</a></li>
+      <li><a href="#formats">ФОРМАТЫ</a></li>
+      <li><a href="#final-experience">КОНТАКТЫ</a></li>
+    </ul>
+    <button class="nav-cta" onclick="openModal()">ПРИГЛАСИТЬ НА ИВЕНТ</button>
+
+    <!-- Кнопка мобильного меню (гамбургер) -->
+    <button class="nav-menu-toggle" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="mobileMenu">
+      <span></span>
+      <span></span>
+    </button>
+
+    <!-- Мобильное меню (оверлей) -->
+    <div class="nav-mobile-panel" id="mobileMenu" aria-hidden="true">
+      <div class="nav-mobile-inner">
+        <a href="#hero" class="nav-mobile-logo">MALEA</a>
+        <div class="nav-mobile-rule" aria-hidden="true"></div>
+        <ul class="nav-mobile-links">
+          <li><a href="#player">Музыка</a></li>
+          <li><a href="#performance">Перформанс</a></li>
+          <li><a href="#sensations">Отзывы</a></li>
+          <li><a href="#formats">Форматы</a></li>
+          <li><a href="#final-experience">Контакты</a></li>
+        </ul>
+        <button class="nav-mobile-cta" type="button" onclick="openModal()">Пригласить на ивент</button>
+      </div>
+    </div>
+  </nav>
+
+
+  <!-- ════════════════════════════════════════
+       SCREEN 0 — INTRO
+  ═════════════════════════════════════════ -->
+  <section id="intro" class="screen" data-screen-label="01 · intro">
+    <div class="intro-glow" aria-hidden="true"></div>
+
+    <div class="intro-content">
+      <h1 class="intro-logo">MALEA</h1>
+      <div class="intro-rule"></div>
+      <span class="intro-desc">Сакральный артист. Искусство Нового времени.</span>
+    </div>
+
+    <div class="intro-hint" aria-hidden="true">
+      <div class="intro-hint-line"></div>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════
+       SCREEN 1 — HERO
+  ═════════════════════════════════════════ -->
+  <section id="hero" class="screen" data-screen-label="02 · hero">
+    <div class="hero-glow" aria-hidden="true"></div>
+
+    <!-- Фото: правые 55%, тёмный градиент слева -->
+    <div class="hero-photo" aria-hidden="true">
+      <img
+        src="https://optim.tildacdn.com/tild6338-3961-4964-b065-323834393935/-/format/webp/_1__.png.webp"
+        alt="MALEA на сцене"
+        loading="eager"
+      >
+    </div>
+
+    <!-- Текст: левые 45% -->
+    <div class="hero-inner">
+      <span class="overline">Сакральный артист</span>
+      <h2 class="hero-name">MALEA</h2>
+      <div class="hero-divider" aria-hidden="true"></div>
+      <p class="hero-tagline">Я создаю искусство Нового Времени — музыку, которая меняет состояние пространства</p>
+      <button class="btn" onclick="openModal()">Пригласить на ивент</button>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════
+       SCREEN 2 — IDENTITY / ABOUT
+  ═════════════════════════════════════════ -->
+  <section id="identity" class="screen" data-screen-label="03 · identity">
+    <div class="identity-glow" aria-hidden="true"></div>
+
+    <div class="identity-inner">
+
+      <!-- Левая колонка: портрет -->
+      <div class="identity-portrait">
+        <img
+          src="https://optim.tildacdn.com/tild3833-3164-4330-a264-373038333131/-/format/webp/_2.png.webp"
+          alt="Портрет MALEA"
+          loading="lazy"
+        >
+      </div>
+
+      <!-- Правая колонка: текст -->
+      <div class="identity-text">
+        <h2 class="identity-headline">Голос космоса</h2>
+        <p class="identity-sub">Звуковой феномен&nbsp;&mdash;&nbsp;Сакральный проводник звука</p>
+        <div class="identity-rule" aria-hidden="true"></div>
+        <div class="identity-titres">
+          <div class="titre-item">Автор исцеляющей музыки на частоте 432 Гц</div>
+          <div class="titre-item">Создательница первого в России Art Digital Soundhealing концерта</div>
+          <div class="titre-item">Терапевт звёзд и творцов</div>
+          <div class="titre-item">Автор новаторского метода «Квантовые Трансформации»</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════
+       SCREEN 3 — PHILOSOPHY
+  ═════════════════════════════════════════ -->
+  <section id="philosophy" class="screen" data-screen-label="04 · philosophy">
+    <div class="philosophy-glow" aria-hidden="true"></div>
+
+    <div class="philosophy-inner">
+
+      <!-- Левая колонка: заголовок -->
+      <div class="philosophy-left">
+        <h2 class="philosophy-title">
+          Новому времени<span class="gold-dash">&nbsp;—</span><br>
+          новое искусство
+        </h2>
+      </div>
+
+      <!-- Правая колонка: нить + текст -->
+      <div class="philosophy-right">
+        <div class="philosophy-line" aria-hidden="true"></div>
+        <div class="philosophy-body">
+          <p>Работаю со звуком как с инструментом, который через живое переживание влияет на эмоции, тело и внутреннее состояние человека.</p>
+          <p>Моя музыка — это перезагрузка тела на клеточном уровне и всей энергосистемы, возвращение к целостности, соединение с глубинной силой.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════
+       SCREEN 4-1 — IMAGE ONLY
+  ═════════════════════════════════════════ -->
+  <section id="live-image" class="screen" data-screen-label="05 · live-image">
+    <div class="live-bg" aria-hidden="true">
+      <img
+        src="https://optim.tildacdn.com/tild6561-3533-4361-b233-396133346364/-/format/webp/_3.JPG.webp"
+        alt="MALEA — живой звуковой перформанс"
+        loading="lazy"
+      >
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════
+       SCREEN 4-2 — TEXT
+  ═════════════════════════════════════════ -->
+  <section id="live-text" class="screen" data-screen-label="06 · live-text">
+    <div class="live-text-glow" aria-hidden="true"></div>
+
+    <div class="live-text-inner">
+
+      <!-- Левая колонка: заголовок + тезисы + CTA -->
+      <div class="live-text-left">
+        <h2 class="live-title">Живой звуковой<br>перформанс</h2>
+
+        <figure class="live-mobile-image" aria-hidden="true">
+          <img
+            src="https://optim.tildacdn.com/tild6561-3533-4361-b233-396133346364/-/format/webp/_3.JPG.webp"
+            alt=""
+            loading="lazy"
+          >
+        </figure>
+
+        <div class="live-title-rule" aria-hidden="true"></div>
+        <p class="live-manifesto">
+          <span class="live-manifesto-main">Встраивается в событие, меняет состояние аудитории, усиливает запоминаемость.</span>
+          <span class="live-manifesto-context">Подходит для фестивалей, ретритов, закрытых клубов и иммерсивных форматов.</span>
+        </p>
+        <button class="btn" onclick="openModal()">Пригласить на ивент</button>
+      </div>
+
+      <!-- Вертикальная золотая нить -->
+      <div class="live-text-line" aria-hidden="true"></div>
+
+      <!-- Правая колонка: форматы как главный визуальный объект -->
+      <div class="live-text-right">
+        <span class="live-formats-label">Подходит для</span>
+        <div class="live-format-row">
+          <span class="live-format-num">01</span>
+          <span class="live-format-name">Фестивалей</span>
+        </div>
+        <div class="live-format-row">
+          <span class="live-format-num">02</span>
+          <span class="live-format-name">Ретритов и выездных программ</span>
+        </div>
+        <div class="live-format-row">
+          <span class="live-format-num">03</span>
+          <span class="live-format-name">Закрытых клубов</span>
+        </div>
+        <div class="live-format-row">
+          <span class="live-format-num">04</span>
+          <span class="live-format-name">Иммерсивных событий</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════
+       SCREEN 5 — QUOTE
+  ═════════════════════════════════════════ -->
+  <section id="quote" class="screen" data-screen-label="07 · quote">
+    <div class="quote-glow" aria-hidden="true"></div>
+
+    <div class="quote-inner">
+      <div class="quote-rule" aria-hidden="true"></div>
+      <p class="quote-text">
+        «Это высоковибрационная музыка,<br>
+        через которую я провожу энергии<br>
+        Нового Времени в Матрицу.»
+      </p>
+      <div class="quote-rule" aria-hidden="true"></div>
+      <span class="quote-author">MALEA</span>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════
+       SCREEN 7 — AUDIO PLAYER
+  ═════════════════════════════════════════ -->
+  <div class="experience-flow">
+
+  <section id="player" class="screen" data-screen-label="08 · player">
+
+    <!-- ── Header ── -->
+    <div class="player-header">
+      <div class="player-left">
+        <span class="player-overline">Музыка</span>
+        <h2 class="player-title">Опыт, который<br>нельзя объяснить<br>словами</h2>
+        <div class="player-rule" aria-hidden="true"></div>
+        <p class="player-subtitle">Наденьте наушники.<br>Закройте глаза. Почувствуйте.</p>
+      </div>
+      <div class="player-cd-side">
+        <!-- outer: overflow+shadow; inner: вращается -->
+        <div class="player-cd-outer">
+          <div class="player-cd-wrap" id="playerCD">
+            <img src="https://optim.tildacdn.com/tild6361-3865-4335-b132-353465386539/-/format/webp/photo.jpg.webp" alt="MALEA" crossorigin="anonymous">
+            <div class="cd-label">MALEA</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Track Grid ── -->
+    <div class="track-grid">
+
+      <div class="track-col"
+           data-src="https://storage.yandexcloud.net/malea-tracks/%D0%9A%D0%B8%D1%82%20%D0%B8%20432%20%D0%93%D0%A6.mp3"
+           data-track="0">
+        <span class="track-num">01</span>
+        <div class="track-name">Кит и 432 Гц</div>
+        <div class="waveform" id="wf-0"></div>
+        <div class="track-desc">Работает как очищение и мягкое расширение внутреннего пространства через глубокое погружение в сакральный звук.</div>
+        <div class="track-bar-wrap"><div class="track-bar"></div></div>
+        <div class="track-footer">
+          <span class="track-dur"><span class="track-dur-current">0:00</span><span class="track-dur-sep">/</span><span class="track-dur-total">—</span></span>
+          <button class="track-btn" aria-label="Воспроизвести">
+            <span class="track-icon" aria-hidden="true"></span>
+          </button>
+        </div>
+      </div>
+
+      <div class="track-col"
+           data-src="https://storage.yandexcloud.net/malea-tracks/Orgasm.mp3"
+           data-track="1">
+        <span class="track-num">02</span>
+        <div class="track-name">Оргазм</div>
+        <div class="waveform" id="wf-1"></div>
+        <div class="track-desc">Активирует жизненную силу, раскрывает чувственность и включает телесное проживание звука на клеточном уровне.</div>
+        <div class="track-bar-wrap"><div class="track-bar"></div></div>
+        <div class="track-footer">
+          <span class="track-dur"><span class="track-dur-current">0:00</span><span class="track-dur-sep">/</span><span class="track-dur-total">—</span></span>
+          <button class="track-btn" aria-label="Воспроизвести">
+            <span class="track-icon" aria-hidden="true"></span>
+          </button>
+        </div>
+      </div>
+
+      <div class="track-col"
+           data-src="https://storage.yandexcloud.net/malea-tracks/The%20Higher%20Self.mp3"
+           data-track="2">
+        <span class="track-num">03</span>
+        <div class="track-name">The Higher Self</div>
+        <div class="waveform" id="wf-2"></div>
+        <div class="track-desc">Открывает тихое медитативное пространство и собирает внимание в ясное внутреннее состояние покоя.</div>
+        <div class="track-bar-wrap"><div class="track-bar"></div></div>
+        <div class="track-footer">
+          <span class="track-dur"><span class="track-dur-current">0:00</span><span class="track-dur-sep">/</span><span class="track-dur-total">—</span></span>
+          <button class="track-btn" aria-label="Воспроизвести">
+            <span class="track-icon" aria-hidden="true"></span>
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ════════════════════════════════════════
+       SCREEN 8 — ВИДЕО И ПЕРФОРМАНС
+  ═════════════════════════════════════════ -->
+  <section id="performance" class="screen" data-screen-label="09 · performance">
+    <div class="perf-inner">
+
+      <div class="perf-left">
+        <h2 class="perf-title">Как это<br>выглядит</h2>
+        <div class="perf-rule" aria-hidden="true"></div>
+        <p class="perf-subtitle">Сакральный концерт.<br>Духовный перформанс.</p>
+        <p class="perf-desc">Концерты MALEA проходят в формате живого звукового перформанса с аудиторией от 20 до 500 человек. Продолжительность от 1 до 2 часов. Формат адаптируется под масштаб площадки и технические возможности события.</p>
+      </div>
+
+      <div class="video-grid">
+
+        <div class="video-card" data-src="https://kinescope.io/embed/eguqXWrJUqbUwCjsAoG83E">
+          <div class="video-meta"><span class="video-name">Мистерия Зимнего Солнцестояния</span></div>
+          <div class="video-frame-wrap">
+            <iframe src="https://kinescope.io/embed/eguqXWrJUqbUwCjsAoG83E"
+              allow="autoplay; fullscreen; picture-in-picture" loading="lazy" title="Мистерия Зимнего Солнцестояния"></iframe>
+            <button class="video-expand-btn" aria-label="Развернуть">&#x26F6;</button>
+          </div>
+        </div>
+
+        <div class="video-card" data-src="https://kinescope.io/embed/pER2MuSbTEH3ENpq6zp4Va">
+          <div class="video-meta"><span class="video-name">Art Digital Soundhealing Show</span></div>
+          <div class="video-frame-wrap">
+            <iframe src="https://kinescope.io/embed/pER2MuSbTEH3ENpq6zp4Va"
+              allow="autoplay; fullscreen; picture-in-picture" loading="lazy" title="Art Digital Soundhealing Show"></iframe>
+            <button class="video-expand-btn" aria-label="Развернуть">&#x26F6;</button>
+          </div>
+        </div>
+
+        <div class="video-card" data-src="https://kinescope.io/embed/aRyL76qmzYfyWGHWCRM7dJ">
+          <div class="video-meta"><span class="video-name">Концерт MALEA в Москве</span></div>
+          <div class="video-frame-wrap">
+            <iframe src="https://kinescope.io/embed/aRyL76qmzYfyWGHWCRM7dJ"
+              allow="autoplay; fullscreen; picture-in-picture" loading="lazy" title="Концерт MALEA в Москве"></iframe>
+            <button class="video-expand-btn" aria-label="Развернуть">&#x26F6;</button>
+          </div>
+        </div>
+
+        <div class="video-card" data-src="https://kinescope.io/embed/pV2aioBHJsgHQ6E6xB7psB">
+          <div class="video-meta"><span class="video-name">Камерное событие в Красной Поляне</span></div>
+          <div class="video-frame-wrap">
+            <iframe src="https://kinescope.io/embed/pV2aioBHJsgHQ6E6xB7psB"
+              allow="autoplay; fullscreen; picture-in-picture" loading="lazy" title="Камерное событие в Красной Поляне"></iframe>
+            <button class="video-expand-btn" aria-label="Развернуть">&#x26F6;</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════
+       SCREEN 9B — DIGITAL ART / EXHIBITION MOSAIC
+  ═════════════════════════════════════════ -->
+  <section id="art" class="screen" data-screen-label="10 · art">
+    <div class="art-inner">
+
+      <div class="art-header">
+        <div class="art-left">
+          <h2 class="art-title"><span class="art-title-line">Искусство, которое</span><br><span class="art-title-line">можно увидеть</span></h2>
+          <div class="art-rule" aria-hidden="true"></div>
+          <p class="art-subtitle">Визуальный ряд — часть перформанса</p>
+        </div>
+
+        <div class="art-copy">
+          <p class="art-desc">Каждый перформанс MALEA сопровождается визуальным слоем, который усиливает восприятие звука. Digital-art контент создаётся под музыкальные композиции и транслируется на экраны или с помощью проекционного оборудования. Звук и образ формируют единое поле переживания.</p>
+        </div>
+      </div>
+
+      <div class="art-wall">
+
+        <div class="video-card art-featured" data-src="https://kinescope.io/embed/tm4UgzvBVPh2qpVgyaR7va">
+          <div class="video-meta"><span class="video-name">Киты и 432 Гц</span></div>
+          <div class="video-frame-wrap">
+            <iframe src="https://kinescope.io/embed/tm4UgzvBVPh2qpVgyaR7va"
+              allow="autoplay; fullscreen; picture-in-picture" loading="lazy" title="Киты и 432 Гц"></iframe>
+            <button class="video-expand-btn" aria-label="Развернуть">&#x26F6;</button>
+          </div>
+        </div>
+
+        <div class="art-mini-row">
+
+          <div class="video-card art-mini" data-src="https://kinescope.io/embed/cpe25yMeydLCasvaQxFCtQ">
+            <div class="video-meta"><span class="video-name">Forest</span></div>
+            <div class="video-frame-wrap">
+              <iframe src="https://kinescope.io/embed/cpe25yMeydLCasvaQxFCtQ"
+                allow="autoplay; fullscreen; picture-in-picture" loading="lazy" title="Forest"></iframe>
+              <button class="video-expand-btn" aria-label="Развернуть">&#x26F6;</button>
+            </div>
+          </div>
+
+          <div class="video-card art-mini" data-src="https://kinescope.io/embed/sLtWtkoMKThdG7S44JXakM">
+            <div class="video-meta"><span class="video-name">Underwater Civilization</span></div>
+            <div class="video-frame-wrap">
+              <iframe src="https://kinescope.io/embed/sLtWtkoMKThdG7S44JXakM"
+                allow="autoplay; fullscreen; picture-in-picture" loading="lazy" title="Underwater Civilization"></iframe>
+              <button class="video-expand-btn" aria-label="Развернуть">&#x26F6;</button>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  </div>
+
+  <!-- Видео-модал -->
+  <div class="vmodal-overlay" id="videoModal">
+    <div class="vmodal-box">
+      <button class="vmodal-close" id="videoModalClose" aria-label="Закрыть">&times;</button>
+      <div class="vmodal-frame">
+        <iframe id="videoModalIframe" src="" allow="autoplay; fullscreen; picture-in-picture"></iframe>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ════════════════════════════════════════
+       SCREEN — СОСТАВ МУЗЫКАНТОВ
+  ═════════════════════════════════════════ -->
+  <section id="musicians" class="screen" data-screen-label="11 · musicians">
+    <div class="musicians-intro-inner">
+
+      <span class="musicians-overline">Состав музыкантов</span>
+
+      <h2 class="musicians-title">
+        <span class="musicians-title-line">Музыканты живого</span><br>
+        <span class="musicians-title-line">перформанса</span>
+      </h2>
+
+      <div class="musicians-rule" aria-hidden="true"></div>
+
+    </div>
+  </section>
+
+
+  <section id="musicians-gallery" class="screen" data-screen-label="12 · musicians-gallery">
+    <div class="musicians-gallery-inner">
+
+      <article class="mg-card">
+        <div class="mg-photo">
+          <img
+            src="https://optim.tildacdn.com/tild3964-6630-4938-a263-313036333836/-/format/webp/_5_.jpg.webp"
+            alt="Ашот Даниелян"
+            loading="lazy">
+        </div>
+        <div class="mg-caption">
+          <h3 class="mg-name">Ашот Даниелян</h3>
+          <p class="mg-role">Композитор · Ambient & Meditation</p>
+          <p class="mg-desc">Композитор-мистик. Дар написания музыки раскрылся ещё в 7 лет.</p>
+        </div>
+      </article>
+
+      <article class="mg-card">
+        <div class="mg-photo">
+          <img
+            src="https://optim.tildacdn.com/tild3731-3432-4736-b830-663230336332/-/format/webp/_5__1.jpg.webp"
+            alt="Даша Кошелева"
+            loading="lazy">
+        </div>
+        <div class="mg-caption">
+          <h3 class="mg-name">Даша Кошелева</h3>
+          <p class="mg-role">Мультиинструменталист · Продюсер</p>
+          <p class="mg-desc">Аранжировщик, композитор, музыкальный продюсер и психотерапевт.</p>
+        </div>
+      </article>
+
+      <article class="mg-card">
+        <div class="mg-photo">
+          <img
+            src="https://optim.tildacdn.com/tild3333-3061-4866-b933-306239363137/-/format/webp/_5_.jpg.webp"
+            alt="Максим Приклонский"
+            loading="lazy">
+        </div>
+        <div class="mg-caption">
+          <h3 class="mg-name">Максим Приклонский</h3>
+          <p class="mg-role">Гитарист · Аранжировщик</p>
+          <p class="mg-desc">Гитарист со стажем 22 года. Преподаватель, аранжировщик.</p>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <div class="reviews-flow">
+
+  <section id="sensations" class="screen" data-screen-label="13 · sensations">
+
+    <!-- Основной блок: заголовок + текст -->
+    <div class="sens-block">
+      <span class="sens-overline">Обратная связь участников</span>
+      <h2 class="sens-title">
+        <span class="sens-title-line">Как ощущается музыка</span>
+        <span class="sens-title-line">и перформанс MALEA</span>
+      </h2>
+      <div class="sens-rule" aria-hidden="true"></div>
+      <p class="sens-body">Каждый опыт индивидуален. Иногда это мягкое погружение. Иногда — интенсивный внутренний процесс. Для многих это становится точкой внутреннего сдвига.</p>
+    </div>
+
+    <!-- Плашки -->
+    <div class="sens-pills" aria-label="Соединение с собой, высвобождение эмоций, ясность и внутренняя опора, проявленность и смелость, раскрытие телесности, расширение восприятия">
+      <div class="sens-marquee-track" aria-hidden="true">
+        <span class="sens-pill">Соединение с собой</span>
+        <span class="sens-pill">Высвобождение эмоций</span>
+        <span class="sens-pill">Ясность и внутренняя опора</span>
+        <span class="sens-pill">Проявленность и смелость</span>
+        <span class="sens-pill">Раскрытие телесности</span>
+        <span class="sens-pill">Расширение восприятия</span>
+
+        <span class="sens-pill">Соединение с собой</span>
+        <span class="sens-pill">Высвобождение эмоций</span>
+        <span class="sens-pill">Ясность и внутренняя опора</span>
+        <span class="sens-pill">Проявленность и смелость</span>
+        <span class="sens-pill">Раскрытие телесности</span>
+        <span class="sens-pill">Расширение восприятия</span>
+      </div>
+    </div>
+
+  </section>
+
+
+  <!-- ════════════════════════════════════════
+       SCREEN (reviews — later)
+  ═════════════════════════════════════════ -->
+  <section id="reviews" class="screen" data-screen-label="14 · reviews">
+
+    <!-- Фотокарусель -->
+    <div class="photo-carousel-wrap">
+      <button class="carousel-btn prev" id="carouselPrev" aria-label="Предыдущая фотография">&#8592;</button>
+      <div class="photo-carousel" id="photoCarousel">
+        <div class="photo-slide"><img src="https://optim.tildacdn.com/tild6135-3762-4636-b435-373261356430/-/format/webp/_7__1_1.jpg.webp" alt="Фотоотзыв 1" loading="lazy"></div>
+        <div class="photo-slide"><img src="https://optim.tildacdn.com/tild3633-6532-4163-b036-373264396130/-/format/webp/_7__2_1.jpg.webp" alt="Фотоотзыв 2" loading="lazy"></div>
+        <div class="photo-slide"><img src="https://optim.tildacdn.com/tild3336-6435-4231-b564-626635336335/-/format/webp/_7__3_1.jpg.webp" alt="Фотоотзыв 3" loading="lazy"></div>
+        <div class="photo-slide"><img src="https://optim.tildacdn.com/tild6639-3933-4439-a334-666132306632/-/format/webp/_7__4_1.jpg.webp" alt="Фотоотзыв 4" loading="lazy"></div>
+        <div class="photo-slide"><img src="https://optim.tildacdn.com/tild6433-3462-4563-b565-303461616561/-/format/webp/_7__5_1.jpg.webp" alt="Фотоотзыв 5" loading="lazy"></div>
+      </div>
+      <button class="carousel-btn next" id="carouselNext" aria-label="Следующая фотография">&#8594;</button>
+    </div>
+
+    <!-- Карточки отзывов -->
+    <div class="review-cards">
+      <div class="review-card">
+        <span class="review-card-deco" aria-hidden="true">&ldquo;</span>
+        <p class="review-card-text">Я разрыдалась так, словно мое сердце вновь соприкоснулось со своим забытым домом. Если бы можно было поставить миллион сердечек под видео, я бы поставила.</p>
+      </div>
+      <div class="review-card">
+        <span class="review-card-deco" aria-hidden="true">&ldquo;</span>
+        <p class="review-card-text">Потрясающий опыт, глубокие состояния, много любви и благодарности, активация шишковидной железы, и умиротворение!</p>
+      </div>
+      <div class="review-card">
+        <span class="review-card-deco" aria-hidden="true">&ldquo;</span>
+        <p class="review-card-text">Музыка на таких частотах и голосом Души запускает такие процессы! И исцеление, и единение, и вдохновение. Мы с девочками вышли — и как потекли творческие идеи, до сих пор пишу и не отпускает.</p>
+      </div>
+      <div class="review-card">
+        <span class="review-card-deco" aria-hidden="true">&ldquo;</span>
+        <p class="review-card-text">То, что было сегодня вечером — не передать словами. У меня начала затягиваться рана на ноге, которая не заживала месяц. Я сейчас в такой гармонии — спасибо.</p>
+      </div>
+    </div>
+
+  </section>
+
+
+  <!-- ════════════════════════════════════════
+       SCREEN — ЦИТАТА MALEA
+  ═════════════════════════════════════════ -->
+  <section id="malea-quote-screen" class="screen" data-screen-label="15 · malea-quote">
+
+    <div class="mq-ghost" aria-hidden="true">&ldquo;</div>
+
+    <div class="mq-inner">
+      <div class="mq-rule" aria-hidden="true"></div>
+
+      <p class="mq-text">
+        «Через меня люди соединяются<br>
+        со своей сутью и глубиной»
+      </p>
+
+      <div class="mq-rule" aria-hidden="true"></div>
+
+      <span class="mq-author">MALEA</span>
+    </div>
+
+  </section>
+
+  </div>
+
+
+  <!-- ════════════════════════════════════════
+       SCREEN — ЕГИПЕТСКИЙ КЕЙС
+  ═════════════════════════════════════════ -->
+  <section id="egypt" class="screen egypt-intro" data-screen-label="16 · egypt">
+    <div class="egypt-intro-inner">
+      <p class="egypt-overline">ОПЫТ, КОТОРЫЙ МАСШТАБИРУЕТСЯ ЧЕРЕЗ РЕЗОНАНС</p>
+      <h2 class="egypt-title">
+        Египетский кейс:<br>
+        как музыка открыла<br>
+        пирамиды
+      </h2>
+    </div>
+  </section>
+
+  <section id="egypt-case" class="screen egypt-case" data-screen-label="17 · egypt-case">
+    <div class="egypt-inner">
+
+      <!-- Левая: вертикальное видео (9:16) -->
+      <div class="egypt-video egypt-video-vertical">
+        <div class="video-card" data-src="https://kinescope.io/embed/acwLUVUdDPNhUgR57snfXy">
+          <div class="video-frame-wrap">
+            <iframe src="https://kinescope.io/embed/acwLUVUdDPNhUgR57snfXy"
+              allow="autoplay; fullscreen; picture-in-picture"
+              loading="lazy" title="MALEA — Египетский кейс"></iframe>
+            <button class="video-expand-btn" aria-label="Развернуть на весь экран">⤢</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Правая: весь текст кейса в одной editorial-колонке -->
+      <div class="egypt-copy">
+
+        <div class="egypt-main-text egypt-left">
+          <p class="egypt-body">В день весеннего равноденствия Екатерина получила приглашение провести перформанс в пирамиде Хеопса в Египте. После первого выступления последовало ещё три приглашения:</p>
+        </div>
+
+        <div class="egypt-list">
+          <div class="egypt-tl-item">
+            <span class="egypt-tl-num">I</span>
+            <span class="egypt-tl-text">Второе выступление в пирамиде</span>
+          </div>
+          <div class="egypt-tl-item">
+            <span class="egypt-tl-num">II</span>
+            <span class="egypt-tl-text">Участие в путешествии по Нилу с практиками кундалини-активаций</span>
+          </div>
+          <div class="egypt-tl-item">
+            <span class="egypt-tl-num">III</span>
+            <span class="egypt-tl-text">Перформанс для VIP-группы у Сфинкса</span>
+          </div>
+          <div class="egypt-tl-item">
+            <span class="egypt-tl-num">IV</span>
+            <span class="egypt-tl-text">Закрытый концерт в Дахабе</span>
+          </div>
+        </div>
+
+        <div class="egypt-conclusion egypt-right">
+          <p class="egypt-quote-p">Этот кейс показал важное: музыка MALEA органично встраивается в разные процессы и усиливает их.</p>
+          <p class="egypt-insight-p">Организаторы продолжают интегрировать выступления Екатерины в свои программы, потому что это даёт глубину, которую сложно получить другими инструментами. Формат масштабируется и адаптируется под разные культурные и событийные контексты.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════
+       SCREEN — ФОРМАТЫ ИНТЕГРАЦИИ
+  ═════════════════════════════════════════ -->
+  <div class="formats-flow">
+
+  <section id="formats" class="screen formats-title-screen" data-screen-label="18 · formats">
+    <div class="formats-title-bg" aria-hidden="true"></div>
+
+    <div class="formats-title-inner">
+      <h2 class="formats-main-title">
+        <span>Форматы интеграции</span>
+        <span>в ваше событие</span>
+      </h2>
+    </div>
+  </section>
+    <section id="formats-list" class="screen formats-list-screen" data-screen-label="19 · formats-list">
+      <div class="formats-list-bg" aria-hidden="true"></div>
+
+      <div class="formats-list-inner">
+
+      <div class="formats-list">
+
+        <article class="format-line">
+          <div class="format-line-media">
+            <img src="https://optim.tildacdn.com/tild3532-6266-4731-b063-333239303835/-/format/webp/_9_1_-___1.jpg.webp" alt="Сакральный концерт MALEA." loading="lazy">
+          </div>
+
+          <div class="format-line-content">
+            <span class="format-line-num">01</span>
+
+            <div class="format-line-copy">
+              <div class="format-line-head">
+                <span class="format-line-label">Для фестивалей</span>
+              </div>
+
+              <p class="format-line-summary">Сакральный концерт MALEA.</p>
+
+              <div class="format-line-specs">
+                <div class="format-line-spec">
+                  <span>Аудитория</span>
+                  <p>от 20 до 500 человек.</p>
+                </div>
+                <div class="format-line-spec">
+                  <span>Продолжительность</span>
+                  <p>от 1 до 2 часов.</p>
+                </div>
+                <div class="format-line-spec">
+                  <span>Исполнение</span>
+                  <p>сольно или с командой живых музыкантов.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="format-line">
+          <div class="format-line-media">
+            <img src="https://optim.tildacdn.com/tild3436-3139-4939-b930-656131316563/-/format/webp/_9_2_-____1.jpg.webp" alt="Интеграция в ретрит" loading="lazy">
+          </div>
+
+          <div class="format-line-content">
+            <span class="format-line-num">02</span>
+
+            <div class="format-line-copy">
+              <div class="format-line-head">
+                <span class="format-line-label">Интеграция в ретрит</span>
+              </div>
+
+              <p class="format-line-summary">Приглашённый мастер для усиления программы ретрита или выезда.</p>
+
+              <div class="format-line-specs">
+                <div class="format-line-spec">
+                  <span>Количество сессий</span>
+                  <p>от 1 до 3 за выезд.</p>
+                </div>
+                <div class="format-line-spec">
+                  <span>Формат работы</span>
+                  <p>групповая звуковая терапия.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="format-line">
+          <div class="format-line-media">
+            <img src="https://optim.tildacdn.com/tild3732-3335-4435-a434-626235323934/-/format/webp/_9_3_VIP_1.jpg.webp" alt="VIP-формат" loading="lazy">
+          </div>
+
+          <div class="format-line-content">
+            <span class="format-line-num">03</span>
+
+            <div class="format-line-copy">
+              <div class="format-line-head">
+                <span class="format-line-label">VIP-формат</span>
+              </div>
+
+              <p class="format-line-summary">Закрытый концерт для VIP-группы, корпоратива, частного клуба или сообщества.</p>
+
+              <div class="format-line-specs">
+                <div class="format-line-spec">
+                  <span>Аудитория</span>
+                  <p>от 10 до 100 человек.</p>
+                </div>
+                <div class="format-line-spec">
+                  <span>Дополнительно</span>
+                  <p>Возможна индивидуальная звуковая работа с участниками.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="format-line">
+          <div class="format-line-media">
+            <img src="https://optim.tildacdn.com/tild3134-3530-4039-b133-303933616131/-/format/webp/_9_4___1.jpg.webp" alt="Написание исцеляющих треков" loading="lazy">
+          </div>
+
+          <div class="format-line-content">
+            <span class="format-line-num">04</span>
+
+            <div class="format-line-copy">
+              <div class="format-line-head">
+                <span class="format-line-label">Написание исцеляющих треков</span>
+              </div>
+
+              <div class="format-line-summary-group">
+                <p class="format-line-summary">Создание авторского трека в жанре сакральной музыки голосом MALEA под задачу.</p>
+                <p class="format-line-summary">Продюсирование трека совместно с артистом.</p>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        </div>
+      </div>
+    </section>
+
+    <section id="formats-integration" class="screen formats-integration-screen" data-screen-label="20 · formats-integration">
+      <header class="fi-header">
+        <h2 class="fi-heading">
+          Выступление может<br>быть встроено как:
+        </h2>
+      </header>
+
+      <div class="fi-panels">
+
+        <div class="fi-panel">
+          <h3 class="fi-title">Центральный<br>перформанс события</h3>
+          <div class="fi-rule" aria-hidden="true"></div>
+          <p class="fi-desc">
+            Звук и образ становятся смысловым центром вечера.
+            Всё выстраивается вокруг выступления — гости
+            погружаются в опыт как в главное событие.
+          </p>
+          <span class="fi-tag">Основная программа</span>
+        </div>
+
+        <div class="fi-panel">
+          <h3 class="fi-title">Усиление<br>программы</h3>
+          <div class="fi-rule" aria-hidden="true"></div>
+          <p class="fi-desc">
+            MALEA вписывается в структуру события как точка
+            перехода — усиливает общую атмосферу, добавляет
+            глубину и смысловой слой к существующей программе.
+          </p>
+          <span class="fi-tag">Поддержка формата</span>
+        </div>
+
+        <div class="fi-panel">
+          <h3 class="fi-title">Закрывающий или<br>открывающий слот</h3>
+          <div class="fi-rule" aria-hidden="true"></div>
+          <p class="fi-desc">
+            Задаёт тон с первых минут или оставляет послевкусие,
+            которое остаётся с гостями. Завершение на высокой
+            ноте — или открытие пространства для вечера.
+          </p>
+          <span class="fi-tag">Обрамление события</span>
+        </div>
+
+      </div>
+
+      <div class="fi-cta">
+        <button class="fi-btn" onclick="openModal()">
+          Обсудить формат участия
+        </button>
+      </div>
+    </section>
+  </div>
+
+
+  <!-- ════════════════════════════════════════
+       SCREEN — ПОЧЕМУ MALEA
+  ═════════════════════════════════════════ -->
+  <section id="why" class="screen why-title-screen" data-screen-label="21 · why">
+    <div class="why-title-bg" aria-hidden="true"></div>
+
+    <div class="why-title-inner">
+      <h2 class="why-title-main">
+        <span>Почему MALEA включают</span>
+        <span>в программу событий</span>
+      </h2>
+    </div>
+  </section>
+
+  <section id="why-image" class="screen why-image-screen" data-screen-label="22 · why-image">
+    <figure class="why-image-frame">
+      <img src="https://optim.tildacdn.com/tild6530-6534-4063-a465-346663376336/-/format/webp/_10.jpg.webp" alt="MALEA — почему включают в программу событий" loading="lazy">
+    </figure>
+  </section>
+
+  <section id="why-argument" class="screen why-argument-sheet" data-screen-label="23 · why-argument">
+    <div class="why-argument-bg" aria-hidden="true"></div>
+
+    <div class="why-argument-inner">
+
+      <header class="why-argument-header">
+        <h3 class="why-argument-subtitle" aria-label="Формат, который выделяет ее среди других">
+          <span class="why-argument-subtitle-line">Формат, который выделяет</span>
+          <span class="why-argument-subtitle-line">ее среди других</span>
+        </h3>
+
+        <div class="why-argument-rule" aria-hidden="true"></div>
+      </header>
+
+      <figure class="why-argument-mobile-image" aria-hidden="true">
+        <img
+          src="https://optim.tildacdn.com/tild6530-6534-4063-a465-346663376336/-/format/webp/_10.jpg.webp"
+          alt=""
+          loading="lazy"
+        >
+      </figure>
+
+      <div class="why-argument-list" aria-label="Почему MALEA включают в программу событий">
+
+        <article class="why-argument-item">
+          <div class="why-argument-copy">
+            <h4 class="why-argument-title">Живой отклик аудитории</h4>
+            <p class="why-argument-text">Гости не остаются наблюдателями, а входят в переживание опыта. Звук запускает телесный и эмоциональный отклик. Это усиливает ценность и глубину всего события.</p>
+          </div>
+        </article>
+
+        <article class="why-argument-item">
+          <div class="why-argument-copy">
+            <h4 class="why-argument-title">Уникальность</h4>
+            <p class="why-argument-text">MALEA соединяет искусство, звук и работу с состоянием человека. Это даёт мероприятию опыт, который невозможно заменить стандартными музыкальными форматами.</p>
+          </div>
+        </article>
+
+        <article class="why-argument-item">
+          <div class="why-argument-copy">
+            <h4 class="why-argument-title">Гибкость интеграции</h4>
+            <p class="why-argument-text">Формат легко адаптируется под фестивали, ретриты и закрытые события. MALEA органично вписывается в любой контекст, сохраняя глубину и силу воздействия.</p>
+          </div>
+        </article>
+
+      </div>
+
+      <div class="why-cta">
+        <button class="btn why-btn" onclick="openModal()">Обсудить участие MALEA</button>
+      </div>
+
+    </div>
+  </section>
+
+
+  <div class="portfolio-flow">
+
+  <section id="portfolio" class="screen portfolio-hero" data-screen-label="24 · portfolio">
+    <div class="portfolio-hero-inner">
+      <div class="portfolio-hero-copy">
+        <h2 class="portfolio-title">
+          <span>Портфолио выступлений</span>
+          <span>и партнёрств</span>
+        </h2>
+
+        <p class="portfolio-subtitle">События, которые выбрали MALEA</p>
+
+        <div class="portfolio-rule" aria-hidden="true"></div>
+      </div>
+
+      <div class="portfolio-image">
+        <img
+          src="https://optim.tildacdn.com/tild3037-6237-4862-b761-396230326531/-/format/webp/_11_1.jpg.webp"
+          alt="MALEA — портфолио выступлений и партнёрств"
+          loading="lazy"
+        >
+      </div>
+    </div>
+  </section>
+
+  <section id="portfolio-map" class="screen portfolio-map" data-screen-label="25 · portfolio-map">
+    <div class="pm-grid">
+
+      <div class="pm-col">
+        <div class="pm-col-header">
+          <span class="pm-col-num">I</span>
+          <span class="pm-col-title">Фестивали и события</span>
+        </div>
+
+        <div class="pm-event-list">
+          <div class="pm-event">
+            <span class="pm-event-name">Sunspirit</span>
+            <span class="pm-event-type">Фестиваль</span>
+          </div>
+
+          <div class="pm-event">
+            <span class="pm-event-name">Конференция по квантовой психологии</span>
+            <span class="pm-event-type">Конференция</span>
+          </div>
+
+          <div class="pm-event">
+            <span class="pm-event-name">Yoni Fest</span>
+            <span class="pm-event-type">Фестиваль</span>
+          </div>
+
+          <div class="pm-event">
+            <span class="pm-event-name">Тренинг Екатерины Ballesta</span>
+            <span class="pm-event-type">Закрытый формат · 300+ участников</span>
+          </div>
+
+          <div class="pm-event">
+            <span class="pm-event-name">TANTRA NEKTAR</span>
+            <span class="pm-event-type">Закрытое мероприятие</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="pm-col">
+        <div class="pm-col-header">
+          <span class="pm-col-num">II</span>
+          <span class="pm-col-title">Коллаборации</span>
+        </div>
+
+        <div class="pm-partners">
+          <div class="pm-partner">
+            <span class="pm-partner-name">Екатерина Самойлова</span>
+            <span class="pm-partner-role">Школа ченнелинга «Всё в тебе»</span>
+          </div>
+
+          <div class="pm-partner">
+            <span class="pm-partner-name">Анастасия Хаграс</span>
+            <span class="pm-partner-role">Фасилитатор Кундалини-активаций</span>
+          </div>
+
+          <div class="pm-partner">
+            <span class="pm-partner-name">Дарья Заморина</span>
+            <span class="pm-partner-role">Духовно-научные экспедиции</span>
+          </div>
+
+          <div class="pm-partner">
+            <span class="pm-partner-name">Константин Евдокимов</span>
+            <span class="pm-partner-role">Архитектор сознания</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="pm-col">
+        <div class="pm-col-header">
+          <span class="pm-col-num">III</span>
+          <span class="pm-col-title">В программе 2026</span>
+        </div>
+
+        <div class="pm-upcoming-list">
+          <div class="pm-upcoming">
+            <span class="pm-upcoming-name">YONI FEST</span>
+            <span class="pm-upcoming-ctx">Фестиваль</span>
+          </div>
+
+          <div class="pm-upcoming">
+            <span class="pm-upcoming-name">Фестиваль «Женщины миру»</span>
+            <span class="pm-upcoming-ctx">Фестиваль</span>
+          </div>
+
+          <div class="pm-upcoming">
+            <span class="pm-upcoming-name">Кундалини-активации</span>
+            <span class="pm-upcoming-ctx">Возрождение жреческих традиций</span>
+          </div>
+
+          <div class="pm-upcoming">
+            <span class="pm-upcoming-name">Коллаборация с Самойловой</span>
+            <span class="pm-upcoming-ctx">Совместный проект</span>
+          </div>
+
+          <div class="pm-upcoming">
+            <span class="pm-upcoming-name">ONE PULSE FESTIVAL</span>
+            <span class="pm-upcoming-ctx">Фестиваль</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="portfolio-quote" class="screen portfolio-quote-screen" data-screen-label="26 · portfolio-quote">
+    <div class="portfolio-quote-inner">
+      <div class="portfolio-quote-rule" aria-hidden="true"></div>
+
+      <blockquote class="portfolio-quote-text">
+        «Коллаборации — моя стратегия. В них рождаются новые формы опыта, где звук становится частью глубинной работы с человеком и переводит духовные практики в пространство искусства Нового времени».
+      </blockquote>
+
+      <div class="portfolio-quote-rule" aria-hidden="true"></div>
+      <span class="portfolio-quote-author">MALEA</span>
+    </div>
+  </section>
+
+  </div>
+
+  <section id="final-experience" class="screen final-experience" data-screen-label="27 · final-experience">
+    <div class="final-experience-inner">
+      <div class="final-experience-copy">
+
+        <h2 class="final-experience-title">
+          <span>Создать опыт</span>
+          <span>с MALEA</span>
+        </h2>
+
+        <div class="final-experience-rule" aria-hidden="true"></div>
+
+        <div class="final-experience-text">
+          <p>Каждое событие MALEA рождается в диалоге с пространством, людьми и замыслом.</p>
+          <p>Мы смотрим не только на формат — а на то, какое состояние вы хотите создать у своей аудитории.</p>
+          <p>Мы предложим решение, которое органично встроится в вашу программу и усилит её глубину и воздействие.</p>
+        </div>
+
+        <button class="btn final-experience-btn" onclick="openModal()">Обсудить интеграцию</button>
+      </div>
+
+      <div class="final-experience-image">
+        <img
+          src="https://optim.tildacdn.com/tild3730-6461-4930-b734-646461313166/-/format/webp/_13.jpg.webp"
+          alt="MALEA — создать опыт"
+          loading="lazy"
+        >
+      </div>
+    </div>
+  </section>
+
+  <footer id="site-footer" class="ft ft-unified">
+    <div class="ft-shell">
+
+      <div class="ft-main">
+        <a href="#intro" class="ft-logo">MALEA</a>
+
+        <div class="ft-contacts">
+          <a href="https://t.me/malea_zabota" class="ft-contact-link" target="_blank" rel="noopener">@malea_zabota</a>
+          <span class="ft-dot" aria-hidden="true">·</span>
+          <a href="mailto:info@malea.ru" class="ft-contact-link">info@malea.ru</a>
+        </div>
+
+        <div class="ft-socials">
+          <a href="https://t.me/malea_channel" class="ft-social" target="_blank" rel="noopener" aria-label="Telegram">
+            <svg viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+          </a>
+
+          <a href="https://www.instagram.com/malea__music/" class="ft-social" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </a>
+
+          <a href="https://www.youtube.com/@Malea_Soundhealing" class="ft-social" target="_blank" rel="noopener" aria-label="YouTube">
+            <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="ft-meta">
+        <span class="ft-meta-item">ИП Паскал Е.Л.</span>
+        <span class="ft-meta-sep" aria-hidden="true">·</span>
+        <span class="ft-meta-item">ИНН 772607544305</span>
+        <span class="ft-meta-sep" aria-hidden="true">·</span>
+        <a href="#" class="ft-meta-item">Политика конфиденциальности</a>
+        <span class="ft-meta-sep" aria-hidden="true">·</span>
+        <span class="ft-meta-item">© MALEA, 2026. Все права защищены</span>
+      </div>
+
+    </div>
+  </footer>
+
+
+  <!-- ════════════════════════════════════════
+       MODAL — ЗАЯВКА
+  ═════════════════════════════════════════ -->
+  <div class="modal-overlay" id="modalOverlay" onclick="closeOnOverlay(event)">
+    <div class="modal-box">
+      <button class="modal-close" onclick="closeModal()" aria-label="Закрыть">&times;</button>
+      <h2 class="modal-title">Обсудить интеграцию MALEA</h2>
+      <p class="modal-desc">
+        Опишите ваш проект — мы предложим, как перформанс может усилить его и встроиться в программу.
+      </p>
+      <p class="modal-note">Форма будет подключена на Tilda</p>
+      <a href="https://t.me/malea_zabota" target="_blank" rel="noopener" class="modal-tg">
+        Написать напрямую в Telegram
+      </a>
+    </div>
+  </div>
+
+
+  <!-- ════════════════════════════════════════
+       JS
+  ═════════════════════════════════════════ -->
+  <script src="js/script.js"></script>
+</body>
+</html>
