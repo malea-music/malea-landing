@@ -1,4 +1,79 @@
 
+/* ═══════════════════════════════════════════════════════════════════════════
+   MALEA LANDING — css/styles.css
+   TABLE OF CONTENTS
+   ═══════════════════════════════════════════════════════════════════════════
+
+   ── ZONE A: Foundation layer / active base styles (lines ~1–5601) ──────────
+
+     FONTS                @font-face — Leotaro, Circe (Regular + Light)
+     TOKENS / :root       design tokens: bg, text, gold, typescale, --col-pad
+     TYPOGRAPHY SYSTEM    .section-overline, .section-title, .section-body, etc.
+     RESET                *, html, body, img
+     NAVIGATION           .nav, .nav-logo, .nav-links, .nav-cta
+                          ⚠ JS: .is-hidden, .is-active (nav state), .is-open (#mobileMenu)
+     SHARED COMPONENTS    .screen, .btn
+     DEV BADGES           .dev-screen-badge
+
+     SCREEN 01 · #intro
+     SCREEN 02 · #hero
+     SCREEN 03 · #identity
+     SCREEN 04 · #philosophy
+     SCREEN 05 · #live-image
+     SCREEN 06 · #live-text
+     SCREEN 07 · #quote
+     SCREEN 08 · #player       ⚠ JS: .is-playing, .is-spinning, #playerCD, #wf-0/1/2, .waveform
+     SCREEN 09 · #performance
+     SCREEN 10 · #art
+     SCREEN 11 · #musicians
+     SCREEN 12 · #musicians-gallery
+     SCREEN 13 · #sensations
+     SCREEN 14 · #reviews      ⚠ JS: #photoCarousel, #carouselPrev/Next, .photo-slide (carousel scroll)
+     SCREEN 15 · #malea-quote-screen
+     SCREEN 16 · #egypt
+     SCREEN 17 · #egypt-case
+     SCREEN 18 · #formats
+     SCREEN 19 · #formats-list
+     SCREEN 20 · #formats-integration
+     SCREEN 21 · #why
+     SCREEN 22 · #why-image
+     SCREEN 23 · #why-argument
+     SCREEN 24 · #portfolio
+     SCREEN 25 · #portfolio-map  ⚠ JS: .pm-inview, .pm-motion-ready (IntersectionObserver)
+     SCREEN 26 · #portfolio-quote
+     SCREEN 27 · #final-experience
+     #site-footer
+     VIDEO MODAL            ⚠ JS: .video-modal-active, .vmodal-overlay, .is-video-modalized, etc.
+     MOBILE MENU (≤760px)   ⚠ JS: .is-open, #mobileMenu
+     UNIFIED HEADINGS
+
+   ── ZONE B: Final Responsive System / Stage blocks (lines ~5602–14012) ─────
+
+     Stage 1A         Viewport safety (svh / dvh)              ≤1100px
+     Stage 1B+        Mobile Visual Foundation                  ≤760px, ≤520px
+     Tablet foundation  Base tablet typescale                   761–1100px
+     Stage 2          Screens 01–06 mobile & tablet polish
+     Stage 2V         Visual QA corrections screens 01–06
+     Stage D          Hero cinematic recomposition              ≤1100px  ⚠ HIGH_RISK
+     Stage E          Identity mobile/tablet responsive polish
+     Stage G          Performance / Art tablet portrait
+     Stage H / H2     Musicians gallery mobile/tablet
+     Stage I          Reviews carousel                          ⚠ JS-DEPENDENT
+     Stage J          Reviews text cards tablet editorial
+     Stage K          Screen 15 quote tablet/mobile centering
+     Stage L          Why argument mobile/tablet portrait
+     Stage M          Live-image + live-text tablet landscape
+     Stage N2         Portfolio responsive redesign             ⚠ JS-DEPENDENT (pm-inview)
+     Stage O          Screen 27 final-experience mobile/tablet
+     Stage P3         Screen 27 image aspect-ratio + focal crop
+     Tablet landscape V3  Comprehensive landscape block         961–1366 landscape  ⚠ LANDSCAPE_ONLY
+     Stage TP-1       Tablet portrait critical layout pass      ⚠ PARTLY_OVERRIDDEN
+     Stage TP-1.1     Tablet portrait hotfix CTA + CD           ⚠ PARTLY_OVERRIDDEN
+     Stage TP-2A      Tablet portrait composition redesign      ⚠ PARTLY_OVERRIDDEN (screen 25 active)
+     Stage TP-2A.1    Tablet portrait QA correction             ⚠ PARTLY_OVERRIDDEN (screen 25 active)
+
+   ═══════════════════════════════════════════════════════════════════════════ */
+
     /* ─── FONTS ──────────────────────────────────────── */
     @font-face {
       font-family: 'Leotaro';
@@ -1040,6 +1115,9 @@
 
     /* ═══════════════════════════════════════════════════
        SCREEN 7  —  AUDIO PLAYER
+       ⚠ JS-DEPENDENT: .is-playing, .is-spinning, #playerCD (CD rotation),
+         #wf-0/1/2 (WaveSurfer waveform DOM), .track-btn, .track-bar, .track-bar-wrap.
+         Do not change waveform container geometry without audio player QA.
     ═══════════════════════════════════════════════════ */
     .experience-flow {
       position: relative;
@@ -3244,6 +3322,9 @@
 
     /* ═══════════════════════════════════════════════════
        SCREEN (reviews — later)
+       ⚠ JS-DEPENDENT: #photoCarousel transform controlled by script.js.
+         .photo-slide flex-basis and .photo-carousel gap define slide offsets
+         used in JS scroll calculation. Changes break carousel scroll logic.
     ═══════════════════════════════════════════════════ */
     #reviews {
       background: transparent !important;
@@ -5115,6 +5196,10 @@
        FINAL VIDEO MODAL OVERRIDES
        Must stay at the very end of the file.
        Fixes section-specific overrides in #performance, #art, #egypt-case.
+       ⚠ JS-DEPENDENT: .video-modal-active, .video-modal-card, .video-modal-host,
+         .video-modal-host--vertical, .is-video-modalized, .is-video-modal-horizontal,
+         .is-video-modal-vertical, .vmodal-box--vertical — all toggled by script.js.
+         Do not remove or rename these classes.
     ========================================================= */
 
     /* ─── 5. Единый backdrop для всех inline video modals ─── */
@@ -5391,6 +5476,8 @@
     /* =========================================================
        FINAL MOBILE MENU — MALEA luxury editorial
        Must stay after all nav/mobile rules.
+       ⚠ JS-DEPENDENT: .is-open toggled on #mobileMenu by script.js.
+         aria-hidden and aria-expanded also managed by JS.
     ========================================================= */
 
     @media (max-width: 760px) {
@@ -5399,6 +5486,8 @@
         justify-content: flex-end;
         gap: 0;
         min-height: 58px;
+        /* Поднимаем выше panel (12010) чтобы X-кнопка была видна поверх оверлея */
+        z-index: 12020;
       }
 
       .nav-logo,
@@ -5462,7 +5551,7 @@
         background:
           radial-gradient(circle at 50% 18%, rgba(253,224,139,.055), transparent 34%),
           radial-gradient(circle at 22% 72%, rgba(86,178,205,.045), transparent 36%),
-          linear-gradient(180deg, rgba(5,8,22,.97) 0%, rgba(7,11,29,.98) 100%);
+          linear-gradient(180deg, #050816 0%, #070B1D 100%);
         backdrop-filter: blur(18px);
         -webkit-backdrop-filter: blur(18px);
         opacity: 0;
@@ -5599,11 +5688,210 @@
       }
     }
 
+    /* ─── TABLET PORTRAIT MENU (761px–1100px portrait) ─────────
+       Причина добавления: глобальный Zone-A блок скрывает .nav-menu-toggle
+       и .nav-mobile-panel через display:none. Мобильный блок выше
+       переопределяет это только для ≤760px. Для 761–1100px portrait
+       бургер и оверлей оставались скрытыми — меню не работало совсем.
+    ─────────────────────────────────────────────────────────── */
+    @media (min-width: 761px) and (max-width: 1100px) and (orientation: portrait) {
+
+      /* Нав-бар: логотип слева, бургер справа */
+      .nav {
+        padding: 16px clamp(20px, 3.5vw, 44px);
+        justify-content: space-between;
+        gap: 0;
+        min-height: 64px;
+        /* Поднимаем выше panel (12010) чтобы X-кнопка была видна поверх оверлея */
+        z-index: 12020;
+      }
+
+      /* Логотип виден в закрытом состоянии */
+      .nav-logo {
+        display: flex !important;
+        font-size: clamp(15px, 1.8vw, 20px);
+        letter-spacing: .18em;
+      }
+
+      /* Десктоп-навигация скрыта */
+      .nav-links,
+      .nav-cta {
+        display: none !important;
+      }
+
+      /* Кнопка бургер / X */
+      .nav-menu-toggle {
+        position: relative;
+        z-index: 12020;
+        display: inline-flex !important;
+        flex-shrink: 0;
+        width: 44px;
+        height: 44px;
+        border: 1px solid rgba(253,224,139,.30);
+        border-radius: 999px;
+        background: rgba(5,8,22,.68);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        padding: 0;
+      }
+
+      .nav-menu-toggle span {
+        position: absolute;
+        width: 18px;
+        height: 1px;
+        background: rgba(253,224,139,.84);
+        border-radius: 0;
+        transition:
+          transform .32s ease,
+          opacity   .32s ease,
+          background .32s ease;
+      }
+
+      .nav-menu-toggle span:first-child { transform: translateY(-5px); }
+      .nav-menu-toggle span:last-child  { transform: translateY(5px);  }
+
+      .nav-menu-toggle.is-open span:first-child { transform: rotate(45deg);  }
+      .nav-menu-toggle.is-open span:last-child  { transform: rotate(-45deg); }
+
+      /* Полноэкранный overlay */
+      .nav-mobile-panel {
+        position: fixed;
+        inset: 0;
+        z-index: 12010;
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+        background:
+          radial-gradient(circle at 50% 18%, rgba(253,224,139,.055), transparent 34%),
+          radial-gradient(circle at 22% 72%, rgba(86,178,205,.045), transparent 36%),
+          linear-gradient(180deg, #050816 0%, #070B1D 100%);
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transform: translateY(-8px);
+        transition:
+          opacity    .38s ease,
+          visibility .38s ease,
+          transform  .38s ease;
+      }
+
+      .nav-mobile-panel.is-open {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        transform: translateY(0);
+      }
+
+      /* Контент overlay: вертикальная колонка, центрирована */
+      .nav-mobile-inner {
+        width: min(440px, calc(100vw - 80px));
+        min-height: min(600px, calc(100dvh - 120px));
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 48px 0;
+      }
+
+      /* Логотип MALEA внутри overlay */
+      .nav-mobile-logo {
+        display: block;
+        font-family: var(--font-d);
+        font-weight: 400;
+        font-size: clamp(52px, 7.5vw, 96px);
+        line-height: .96;
+        letter-spacing: .12em;
+        text-transform: uppercase;
+        color: var(--gold);
+        text-decoration: none;
+        margin: 0;
+      }
+
+      /* Разделительная черта */
+      .nav-mobile-rule {
+        width: 48px;
+        height: 1px;
+        background: rgba(253,224,139,.42);
+        margin: 32px auto 48px;
+        flex-shrink: 0;
+      }
+
+      /* Список пунктов */
+      .nav-mobile-links {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 28px;
+        margin: 0 0 56px;
+        padding: 0;
+      }
+
+      .nav-mobile-links a {
+        display: inline-block;
+        font-family: var(--font-b);
+        font-weight: 300;
+        font-size: 13px;
+        line-height: 1;
+        letter-spacing: .26em;
+        text-transform: uppercase;
+        color: rgba(237,233,224,.74);
+        text-decoration: none;
+        transition:
+          color          .28s ease,
+          letter-spacing .28s ease;
+      }
+
+      .nav-mobile-links a:hover,
+      .nav-mobile-links a:focus {
+        color: rgba(253,224,139,.88);
+        letter-spacing: .30em;
+      }
+
+      /* CTA кнопка */
+      .nav-mobile-cta {
+        font-family: var(--font-b);
+        font-weight: 300;
+        font-size: 11px;
+        line-height: 1;
+        letter-spacing: .22em;
+        text-transform: uppercase;
+        color: rgba(253,224,139,.92);
+        border: 1px solid rgba(253,224,139,.38);
+        background: rgba(253,224,139,.035);
+        border-radius: 0;
+        padding: 16px 32px;
+        cursor: pointer;
+        transition:
+          border-color .3s ease,
+          background   .3s ease,
+          color        .3s ease;
+      }
+
+      .nav-mobile-cta:hover,
+      .nav-mobile-cta:focus {
+        color: rgba(253,224,139,.98);
+        border-color: rgba(253,224,139,.58);
+        background: rgba(253,224,139,.07);
+      }
+
+    }
+
 /* =========================================================
    FINAL RESPONSIVE SYSTEM — tablet / mobile
    All new responsive fixes must stay here.
    ========================================================= */
 
+/* STATUS: ACTIVE
+   Scope: ≤1100px — 100svh / 100dvh safe area for all full-screen sections and modals.
+   Required on all mobile and tablet sizes. Do not remove.
+*/
 /* ─── Stage 1A: Viewport safety ─── */
 /* Full-screen sections: safe 100svh fallback for mobile browsers.
    Mobile Safari/Chrome include address bar in 100vh,
@@ -5646,6 +5934,11 @@
 
 }
 
+/* STATUS: MOBILE_ACTIVE / DO_NOT_TOUCH_NOW
+   Scope: ≤760px, ≤520px — core mobile typescale (--m-title-main, --m-body),
+   section vertical rhythm, base media/video normalization.
+   Foundation for all mobile layouts. Do not edit without mobile QA.
+*/
 /* ─── Stage 1B+: Mobile Visual Foundation (≤ 760px) ─── */
 @media (max-width: 760px) {
 
@@ -5838,6 +6131,10 @@
 
 }
 
+/* STATUS: ACTIVE
+   Scope: 761–1100px — base tablet typescale for H2 and ceremonial titles.
+   Active for all screens not fully covered by tablet-portrait-overrides.css.
+*/
 /* ─── Tablet foundation (761px – 1100px) ─── */
 @media (min-width: 761px) and (max-width: 1100px) {
 
@@ -5874,6 +6171,10 @@
 
 }
 
+/* STATUS: ACTIVE
+   Scope: ≤760px, 761–1100px — screens 01–06 composition polish
+   (#intro, #hero, #identity, #philosophy, #live-text).
+*/
 /* ─── Stage 2: Screens 01–06 / Mobile & Tablet Composition Polish ─── */
 /* Scoped fixes only for #intro, #hero, #identity, #philosophy, #live-text. */
 
@@ -5943,6 +6244,9 @@
 
 }
 
+/* STATUS: ACTIVE
+   Scope: ≤1100px, ≤960px, 761–960, 961–1100 — QA corrections for screens 01–06.
+*/
 /* ─── Stage 2V: Visual QA corrections — screens 01–06 ─── */
 
 @media (max-width: 1100px) {
@@ -6126,6 +6430,13 @@
 
 }
 
+/* STATUS: HIGH_RISK / DO_NOT_TOUCH_WITHOUT_SEPARATE_QA
+   Scope: ≤1100px all orientations — Hero cinematic recomposition.
+   Contains: main block + mobile (≤760px) + vertical tablet (761–820px) +
+   horizontal tablet (821–1100px) + tablet landscape touch + iPad Pro full-bleed
+   + multiple dependent hotfix sub-blocks.
+   Any change requires full hero QA across all breakpoints and orientations.
+*/
 /* ─── Stage D: Hero cinematic recomposition (≤1100px only) ─── */
 @media (max-width: 1100px) {
 
@@ -7034,6 +7345,10 @@
   }
 }
 
+/* STATUS: ACTIVE
+   Scope: ≤760px, ≤390px, 761–960 portrait, 961–1100 portrait,
+   961–1100 landscape, 1101–1366 landscape, ≥961 desktop — #identity responsive.
+*/
 /* ─── Stage E: identity mobile/tablet responsive polish ─── */
 @media (max-width: 760px) {
   #identity {
@@ -7743,6 +8058,10 @@
   }
 }
 
+/* STATUS: ACTIVE
+   Scope: 761–1100 portrait (hover:none), 961–1366 landscape (hover:none)
+   — #performance and #art tablet layout.
+*/
 /* ─── Stage G: performance/art tablet layout polish ─── */
 
 /* ============================================================
@@ -7981,9 +8300,30 @@
     max-width: none;
     margin: 0;
   }
-  
+
 }
 
+/* ─── Stage G.1: video-expand-btn — always visible on touch ───────────────────
+   On desktop (hover: hover) the button is revealed by CSS :hover — correct.
+   On touch devices (hover: none) :hover never persists, so opacity stays 0.
+   This single rule makes the button permanently visible on ALL touch devices
+   (mobile, tablet portrait, tablet landscape) without touching the JS or HTML.
+
+   Safe cascade:
+   • Does NOT affect .is-video-modalized .video-expand-btn { opacity:0 }
+     because that selector is more specific (3 classes vs 1).
+   • Does NOT affect the !important overrides in FINAL VIDEO MODAL OVERRIDES.
+   • Does NOT fire on desktop (hover: hover ≠ hover: none).
+   ─────────────────────────────────────────────────────────────────────────── */
+@media (hover: none) {
+  .video-expand-btn {
+    opacity: 1;
+  }
+}
+
+/* STATUS: ACTIVE
+   Scope: ≤760px, 761–1100 portrait (hover:none), landscape — #musicians-gallery.
+*/
 /* ─── Stage H: musicians gallery mobile/tablet polish ─── */
 
 /* Mobile — one-column premium cards */
@@ -8194,6 +8534,9 @@
   }
 }
 
+/* STATUS: ACTIVE
+   Scope: 761–1100 portrait (hover:none) — #musicians-gallery editorial photo frames.
+*/
 /* ─── Stage H2: musicians gallery tablet portrait editorial frames ─── */
 
 @media (min-width: 761px) and (max-width: 1100px) and (orientation: portrait) and (hover: none) and (pointer: coarse) {
@@ -8303,6 +8646,11 @@
   }
 }
 
+/* STATUS: ACTIVE / JS-DEPENDENT
+   Scope: ≤760px, 761–1100 portrait (hover:none), landscape — #reviews carousel.
+   ⚠ JS-DEPENDENT: .photo-slide flex-basis and .photo-carousel gap are used by
+   script.js to compute scroll offsets. Geometry changes break the carousel.
+*/
 /* ─── Stage I: reviews carousel mobile/tablet one-slide polish ─── */
 
 /* Mobile — only one photo visible */
@@ -8465,6 +8813,9 @@
   }
 }
 
+/* STATUS: ACTIVE
+   Scope: 761–1100 portrait (hover:none), landscape — #reviews text cards editorial layout.
+*/
 /* ─── Stage J: reviews text cards tablet editorial polish — desktop identity ─── */
 
 /* Tablet portrait: same desktop identity, but 2 editorial columns */
@@ -8756,6 +9107,9 @@
 */
 
 
+/* STATUS: ACTIVE
+   Scope: ≤1100px, 761–1100 portrait, landscape, ≤760px — #malea-quote-screen centering.
+*/
 /* ─── Stage K: screen 15 quote tablet/mobile stable centering ─── */
 
 @media (max-width: 1100px) {
@@ -8877,6 +9231,9 @@
   }
 }
 
+/* STATUS: ACTIVE
+   Scope: ≤760px, 761–1100 portrait (hover:none) — #why-argument layout order.
+*/
 /* ─── Stage L update: why mobile/tablet portrait order image -> title -> text ─── */
 
 /* Mobile: image first, title below image */
@@ -9067,6 +9424,10 @@
   }
 }
 
+/* STATUS: LANDSCAPE_ONLY
+   Scope: 761–1366 landscape (hover:none) — #live-image and #live-text merged
+   into full-bleed landscape layout. Not active on portrait or desktop.
+*/
 /* ─── Stage M: live-image + live-text tablet landscape merge ─── */
 /*
   Tablet landscape: screen 05 is no longer a separate fullscreen cover.
@@ -9245,6 +9606,11 @@
   }
 }
 
+/* STATUS: ACTIVE / JS-DEPENDENT
+   Scope: ≥961 desktop, landscape, 761–1100 portrait (hover:none), ≤760px — #portfolio.
+   ⚠ JS-DEPENDENT: .pm-inview and .pm-motion-ready added by IntersectionObserver
+   in script.js for #portfolio-map column reveal animation. Do not remove.
+*/
 /* ─── Stage N2: screen 24 portfolio responsive redesign ─── */
 /*
   Strategy:
@@ -9658,6 +10024,9 @@
 }
 
 
+/* STATUS: ACTIVE
+   Scope: ≤760px, 761–1100 portrait (hover:none) — #final-experience layout order.
+*/
 /* ─── Stage O: screen 27 final-experience mobile/tablet portrait order ─── */
 /*
   Mobile/tablet portrait order:
@@ -9945,6 +10314,10 @@
 }
 
 
+/* STATUS: ACTIVE
+   Scope: ≥961 desktop, landscape, 761–1100 portrait (hover:none), ≤760px, ≤520px
+   — #final-experience image aspect-ratio and focal crop.
+*/
 /* ─── Stage P3: screen 27 image aspect-ratio frame + focal crop ─── */
 /*
   Goal:
@@ -10204,6 +10577,12 @@
   }
 }
 
+/* STATUS: LANDSCAPE_ONLY / DO_NOT_TOUCH_NOW
+   Scope: 961–1366px landscape (hover:none) — comprehensive tablet landscape layout.
+   ~1820 lines covering all screens in landscape orientation.
+   Not covered by tablet-portrait-overrides.css. Single source of truth for landscape.
+   Do not edit without dedicated landscape QA on real devices.
+*/
 /* ─── Tablet landscape V3: real centered wide rail ─── */
 /*
   Goal:
@@ -10864,6 +11243,8 @@
 }
 
 /* ─── Portfolio map reveal motion: desktop + tablet landscape ─── */
+/* ⚠ JS-DEPENDENT: .pm-motion-ready and .pm-inview added by IntersectionObserver
+   in script.js. Removing or renaming these classes breaks the column reveal animation. */
 
 @media (min-width: 961px) {
 
@@ -12046,6 +12427,11 @@
   }
 }
 
+/* STATUS: PARTLY_OVERRIDDEN_BY css/tablet-portrait-overrides.css
+   Screens 06, 08, 09, 14, 19, 20, 23, 27 covered by clean override file → rules here are superseded.
+   Screen 25 (#portfolio-map) is NOT in tablet-portrait-overrides.css → rules here remain active.
+   Do not delete without adding screen 25 coverage to tablet-portrait-overrides.css and separate QA.
+*/
 /* ─── Stage TP-1: tablet portrait critical layout pass ─── */
 /*
   Five screens need structural layout fixes on tablet portrait.
@@ -12407,6 +12793,11 @@
   }
 }
 
+/* STATUS: PARTLY_OVERRIDDEN_BY css/tablet-portrait-overrides.css
+   Screens 06, 08 covered by clean override file → hotfix rules here are superseded.
+   Screen 25 (#portfolio-map) is NOT in tablet-portrait-overrides.css → any screen 25 rules here remain active.
+   Do not delete without adding screen 25 coverage to tablet-portrait-overrides.css and separate QA.
+*/
 /* ─── Stage TP-1.1: tablet portrait hotfix after visual QA ─── */
 /*
   Two regression fixes discovered during visual QA of Stage TP-1:
@@ -12449,6 +12840,11 @@
 
 }
 
+/* STATUS: PARTLY_OVERRIDDEN_BY css/tablet-portrait-overrides.css
+   Screens 08, 19, 20, 23 covered by clean override file → redesign rules here are superseded.
+   Screen 25 (#portfolio-map) is NOT in tablet-portrait-overrides.css → screen 25 rules here remain active.
+   Do not delete without adding screen 25 coverage to tablet-portrait-overrides.css and separate QA.
+*/
 /* ─── Stage TP-2A: tablet portrait composition redesign — 08 / 19 / 20 / 23 / 25 ─── */
 /*
   Premium editorial / cinematic tablet portrait recomposition for screens
@@ -13355,6 +13751,11 @@
   }
 }
 
+/* STATUS: PARTLY_OVERRIDDEN_BY css/tablet-portrait-overrides.css
+   Screens 08, 19, 20, 23 covered by clean override file → correction rules here are superseded.
+   Screen 25 (#portfolio-map) is NOT in tablet-portrait-overrides.css → screen 25 rules here remain active.
+   Do not delete without adding screen 25 coverage to tablet-portrait-overrides.css and separate QA.
+*/
 /* ─── Stage TP-2A.1: tablet portrait composition correction after visual QA ─── */
 /*
   Targeted overrides on top of Stage TP-2A for screens 08/19/20/23/25.

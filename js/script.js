@@ -99,6 +99,7 @@
     // ─── Mobile Menu Toggle ─────────────────────────
     const menuToggle = document.querySelector('.nav-menu-toggle');
     const mobileMenu = document.getElementById('mobileMenu');
+    const mainNav    = document.getElementById('mainNav');
 
     function getMenuOpen() {
       return menuToggle && menuToggle.getAttribute('aria-expanded') === 'true';
@@ -112,6 +113,15 @@
       mobileMenu.classList.add('is-open');
       mobileMenu.setAttribute('aria-hidden', 'false');
       document.body.style.overflow = 'hidden';
+      // Поднимаем <nav> выше оверлея (#mobileMenu z-index:12010) и
+      // возвращаем на экран (is-hidden прячет нав через transform).
+      // Это делает логотип (tablet) и X-кнопку видимыми поверх оверлея.
+      if (mainNav) {
+        mainNav.style.zIndex     = '12020';
+        mainNav.style.transform  = 'translateY(0)';
+        mainNav.style.opacity    = '1';
+        mainNav.style.visibility = 'visible';
+      }
     }
 
     function closeMobileMenu() {
@@ -122,6 +132,13 @@
       mobileMenu.classList.remove('is-open');
       mobileMenu.setAttribute('aria-hidden', 'true');
       document.body.style.overflow = '';
+      // Возвращаем nav под управление CSS (scroll-анимация сама решит)
+      if (mainNav) {
+        mainNav.style.zIndex     = '';
+        mainNav.style.transform  = '';
+        mainNav.style.opacity    = '';
+        mainNav.style.visibility = '';
+      }
     }
 
     function toggleMobileMenu() {
@@ -144,9 +161,14 @@
       }
     });
 
-    // Закрытие при ресайзе на десктоп (>760px)
+    // Закрытие при переходе на desktop (>1100px) или при повороте в landscape.
+    // Ранее порог был 760px — меню закрывалось сразу на любом планшете шире 760px.
+    // Теперь: планшеты portrait 761–1100px оставляют меню открытым; десктоп и
+    // landscape (поворот) — закрывают.
     window.addEventListener('resize', function () {
-      if (window.innerWidth > 760 && getMenuOpen()) {
+      const isDesktop  = window.innerWidth > 1100;
+      const isLandscape = window.matchMedia('(orientation: landscape)').matches;
+      if ((isDesktop || isLandscape) && getMenuOpen()) {
         closeMobileMenu();
       }
     });

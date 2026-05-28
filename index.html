@@ -34,22 +34,25 @@
       <span></span>
     </button>
 
-    <!-- Мобильное меню (оверлей) -->
-    <div class="nav-mobile-panel" id="mobileMenu" aria-hidden="true">
-      <div class="nav-mobile-inner">
-        <a href="#hero" class="nav-mobile-logo">MALEA</a>
-        <div class="nav-mobile-rule" aria-hidden="true"></div>
-        <ul class="nav-mobile-links">
-          <li><a href="#player">Музыка</a></li>
-          <li><a href="#performance">Перформанс</a></li>
-          <li><a href="#sensations">Отзывы</a></li>
-          <li><a href="#formats">Форматы</a></li>
-          <li><a href="#final-experience">Контакты</a></li>
-        </ul>
-        <button class="nav-mobile-cta" type="button" onclick="openModal()">Пригласить на ивент</button>
-      </div>
-    </div>
   </nav>
+
+  <!-- Мобильное меню (оверлей) — намеренно вне <nav>:
+       .nav имеет backdrop-filter + transform, оба создают containing block для position:fixed.
+       Вынесено на уровень <body> чтобы inset:0 = viewport и z-index работал глобально. -->
+  <div class="nav-mobile-panel" id="mobileMenu" aria-hidden="true">
+    <div class="nav-mobile-inner">
+      <a href="#hero" class="nav-mobile-logo">MALEA</a>
+      <div class="nav-mobile-rule" aria-hidden="true"></div>
+      <ul class="nav-mobile-links">
+        <li><a href="#player">Музыка</a></li>
+        <li><a href="#performance">Перформанс</a></li>
+        <li><a href="#sensations">Отзывы</a></li>
+        <li><a href="#formats">Форматы</a></li>
+        <li><a href="#final-experience">Контакты</a></li>
+      </ul>
+      <button class="nav-mobile-cta" type="button" onclick="openModal()">Пригласить на ивент</button>
+    </div>
+  </div>
 
 
   <!-- ════════════════════════════════════════
@@ -1069,7 +1072,7 @@
           </div>
 
           <div class="pm-upcoming">
-            <span class="pm-upcoming-name">Коллаборация с Самойловой</span>
+            <span class="pm-upcoming-name">Коллаборация с Екатериной Самойловой</span>
             <span class="pm-upcoming-ctx">Совместный проект</span>
           </div>
 
