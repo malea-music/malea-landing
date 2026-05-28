@@ -2,10 +2,10 @@
 .env
 .env.local
 .vercel/
-.DS_Store
 dist/
 build/
 .cache/
 *.log
-
 qa/screenshots/
+screenshots-stage-f/
+project-structure.txt
