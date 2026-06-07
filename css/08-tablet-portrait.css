@@ -1,0 +1,173 @@
+/* =========================================================
+   MALEA · Portrait tablets — full composition pass
+   ---------------------------------------------------------
+   Authoritative layer for tablets held vertically: narrow but
+   tall canvases (744–1024 wide). Loaded last, so it overrides
+   both the phone rules (≤760 — needed for iPad mini at 744px,
+   which sits below the mobile breakpoint) and the legacy
+   portrait baseline in 05-screens. One coherent design here.
+
+   Devices (portrait CSS px, width × height):
+     iPad mini 8.3"    744 × 1133
+     iPad 10.2/10.9"   810 × 1080  ·  820 × 1180 (Air)
+     iPad Pro 11"      834 × 1194
+     iPad Pro 12.9"   1024 × 1366
+
+   Intent: editorial single-column flow for split screens
+   (image as a calm full-bleed band, copy inset and breathing),
+   two-up grids where the medium reads well at this width
+   (videos, musicians, quotes, timeline), generous but
+   disciplined vertical rhythm, wider measures than on phone.
+   ========================================================= */
+
+@media (orientation: portrait) and (min-width: 700px) and (max-width: 1024px) {
+
+  /* ---- Rhythm & gutters, retuned for a tall portrait canvas ---- */
+  :root {
+    --page-x:       clamp(48px, 7vw, 88px);
+    --vr-standard:  clamp(92px, 11vh, 148px);
+    --vr-dense:     clamp(60px, 8vh, 100px);
+    --vr-generous:  clamp(116px, 13vh, 176px);
+  }
+
+  /* Reclaim section padding from the phone overrides (which set it
+     explicitly) so the portrait rhythm above actually applies. */
+  .pad-block            { padding-block: var(--vr-standard); }
+  .pad-block--dense     { padding-block: var(--vr-dense); }
+  .pad-block--generous  { padding-block: var(--vr-generous); }
+
+  /* Full-bleed media bands share one height ramp for a steady beat. */
+  .hero__media,
+  .final__media { min-height: clamp(380px, 50vh, 560px); }
+
+  /* ===== 02 · HERO ===================================== */
+  #hero { grid-template-columns: 1fr; min-height: auto; }
+  .hero__media { order: -1; }
+  .hero__media::after {
+    background: linear-gradient(0deg, var(--bg-void) 2%, transparent 58%);
+  }
+  .hero__text {
+    padding-inline: var(--page-x);
+    padding-block: clamp(48px, 6vh, 80px) clamp(64px, 9vh, 112px);
+  }
+  .hero__lede { max-width: 46ch; }
+
+  /* ===== 03 · IDENTITY ================================= */
+  .identity__inner {
+    grid-template-columns: 1fr;
+    gap: clamp(44px, 6vh, 76px);
+  }
+  .identity__portrait {
+    width: 100%;
+    max-width: 460px;
+    margin-inline: auto;
+  }
+  .identity__body { max-width: none; }
+
+  /* ===== 04 · PHILOSOPHY =============================== */
+  /* Stack heading over copy, centred. */
+  .philo__inner { grid-template-columns: 1fr; gap: clamp(32px, 4vh, 56px); }
+  .philo__heading { white-space: normal; text-align: center; }
+  .philo__text p { max-width: 52ch; margin-inline: auto; }
+
+  /* ===== 05 · LIVE ===================================== */
+  .live__media { margin-bottom: clamp(36px, 4vh, 60px); }
+  .live-text-inner {
+    grid-template-columns: 1fr;
+    grid-template-rows: none;
+    min-height: auto;
+    row-gap: clamp(48px, 7vh, 80px);
+    align-items: stretch;
+  }
+  .live-text-line { display: none; grid-column: auto; grid-row: auto; }
+  .live-text-left  { grid-column: auto; grid-row: auto; padding-right: 0; text-align: center; }
+  .live__text { margin-inline: auto; }
+  .live-text-right { grid-column: auto; grid-row: auto; padding-left: 0; }
+  /* Formats become a centred 2×2 grid */
+  .live-formats-label {
+    text-align: center;
+    font-family: var(--font-display);
+    font-size: clamp(21px, 2.2vw, 30px);
+    letter-spacing: .02em;
+    color: var(--ink-soft);
+    font-weight: normal;
+    margin-bottom: clamp(30px, 3vh, 48px);
+  }
+  .live-formats { display: grid; grid-template-columns: 1fr 1fr; gap: 0 clamp(24px, 3vw, 40px); }
+  .live-format-row { border: none; border-top: 1px solid rgba(216,183,108,.10); padding: clamp(13px, 1.7svh, 19px) 0; }
+  .live-format-row:hover { padding-left: 0; }
+  .live-text-btn { grid-column: 1 / -1; grid-row: auto; align-self: auto; margin-top: var(--s-6); margin-bottom: 0; text-align: center; }
+
+  /* ===== 06 · QUOTE screens ============================ */
+  .quote-screen { min-height: 70svh; }
+  .bigquote { max-width: min(90%, 680px); }
+  .quote-screen--wide .bigquote { max-width: min(94%, 820px); }
+
+  /* ===== 07 · PLAYER ================================== */
+  /* One stacked column, centred so cards keep a readable width. */
+  .players {
+    grid-template-columns: 1fr;
+    max-width: 680px;
+    margin-inline: auto;
+  }
+
+  /* ===== 08 · PERFORMANCE ============================= */
+  .perf__grid { grid-template-columns: 1fr 1fr; }
+
+  /* ===== 09 · ART ===================================== */
+  #art { min-height: auto; }
+  .art__grid { grid-template-columns: 1fr 1fr; }
+
+  /* ===== 10 · MUSICIANS =============================== */
+  .mus__grid {
+    grid-template-columns: 1fr 1fr;
+    max-width: none;            /* drop the phone (≤420px) cap on iPad mini */
+    gap: clamp(28px, 3.5vw, 44px) clamp(28px, 4vw, 48px);
+  }
+  .mus__desc { max-width: none; }
+
+  /* ===== 11 · REVIEWS ================================= */
+  .carousel { aspect-ratio: 16 / 10; }
+  .rev__quotes {
+    grid-template-columns: 1fr 1fr;
+    column-gap: clamp(28px, 4vw, 48px);
+  }
+
+  /* ===== 12 · EGYPT ================================== */
+  .egypt__grid { grid-template-columns: 1fr; gap: clamp(40px, 6vh, 64px); }
+  .egypt__media { width: min(100%, 540px); margin-inline: auto; }
+  .egypt-video-preview { aspect-ratio: 4 / 5; }
+  .egypt__timeline { grid-template-columns: 1fr 1fr; }
+
+  /* ===== 13 · FORMATS =============================== */
+  /* Stack: image becomes a wide band above the copy. */
+  .fmt__line {
+    grid-template-columns: 1fr;
+    row-gap: clamp(28px, 4vh, 44px);
+  }
+  .fmt__line-media { aspect-ratio: 16 / 9; }
+
+  /* ===== 15 · WHY ================================== */
+  .why__media::before { padding-bottom: 62%; }
+  .why__arg h4 { min-height: 0; }
+
+  /* ===== 16 · PORTFOLIO =========================== */
+  /* Re-show the collage band (hidden on desktop) and stack columns. */
+  .pf__media { display: block; aspect-ratio: 16 / 9; }
+  .pm-grid { grid-template-columns: 1fr; }
+
+  /* ===== 17 · FINAL =============================== */
+  #final-experience { grid-template-columns: 1fr; }
+  .final__media {
+    order: -1;
+    min-height: clamp(340px, 46vh, 520px);
+  }
+  .final__media::after {
+    background: linear-gradient(0deg, var(--bg-main) 2%, transparent 56%);
+  }
+  .final__text {
+    padding-inline: var(--page-x);
+    padding-block: clamp(56px, 8vh, 96px) clamp(72px, 10vh, 120px);
+  }
+  .final__body { max-width: 56ch; }
+}

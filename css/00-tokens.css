@@ -1,0 +1,107 @@
+/* =========================================================
+   MALEA · Design tokens
+   Edit colors, type scale, spacing and timing here only.
+   ========================================================= */
+
+/* ---- Fonts ---- */
+@font-face {
+  font-family: "Leotaro";
+  src: url("../assets/fonts/Leotaro-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Circe";
+  src: url("../assets/fonts/circe.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Circe";
+  src: url("../assets/fonts/circe-light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  /* ---- Backgrounds (deep blue-black) ---- */
+  --bg-void: #040812;
+  --bg-night: #071020;
+  --bg-deep: #0A1326;
+  --bg-blue-black: #050B18;
+  --bg-main: #0A1220;  /* unified atmospheric dark after Identity — deep but airy */
+
+
+  /* ---- Ink (warm milky, never pure white) ---- */
+  --ink: #F3EBDD;
+  --ink-soft: rgba(243, 235, 221, .74);
+  --ink-muted: rgba(243, 235, 221, .52);
+  --ink-faint: rgba(243, 235, 221, .32);
+  --ink-ghost: rgba(243, 235, 221, .12);
+
+  /* ---- Gold (accent only) ---- */
+  --gold: #D8B76C;
+  --gold-soft: rgba(216, 183, 108, .64);
+  --gold-line: rgba(216, 183, 108, .28);
+  --gold-faint: rgba(216, 183, 108, .12);
+
+  /* ---- Mists ---- */
+  --blue-mist: rgba(94, 141, 190, .14);
+  --violet-mist: rgba(117, 91, 171, .10);
+
+  /* ---- Type families ---- */
+  --font-display: "Leotaro", "Cormorant Garamond", Georgia, serif;
+  --font-body: "Circe", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-quote: "Cormorant Garamond", Georgia, serif;
+
+  /* ---- Type scale ---- */
+  --fs-display: clamp(82px, 10vw, 152px);
+  --fs-hero: clamp(64px, 8.6vw, 126px);
+  --fs-section: clamp(36px, 4.2vw, 60px);
+  --fs-title: clamp(28px, 3.4vw, 48px);
+  --fs-subtitle: clamp(19px, 2vw, 28px);
+  --fs-body: clamp(15px, 1.25vw, 18px);
+  --fs-micro: clamp(10px, .78vw, 12px);
+
+  /* ---- Spacing scale ---- */
+  --s-1: 8px;
+  --s-2: 12px;
+  --s-3: 16px;
+  --s-4: 24px;
+  --s-5: 32px;
+  --s-6: 48px;
+  --s-7: 72px;
+  --s-8: 96px;
+  --s-9: 128px;
+  --s-10: 160px;
+
+  /* ---- Editorial rhythm ---- */
+  --heading-kicker-gap: clamp(14px, 1.6vw, 24px);
+  --heading-sub-gap: clamp(10px, 1.1vw, 16px);
+  --heading-copy-gap: clamp(22px, 2.4vw, 36px);
+
+  /* ---- Vertical rhythm (section breathing) ---- */
+  --vr-standard: clamp(100px, 12vh, 180px);
+  --vr-dense: clamp(72px, 8vh, 120px);
+  --vr-generous: clamp(140px, 16vh, 220px);
+  --vr-transitional: clamp(60px, 6vh, 100px);
+
+  /* ---- Layout grid ---- */
+  --page-x: clamp(28px, 6vw, 128px);
+  --content-max: 1360px;
+  --content: min(calc(100vw - var(--page-x) * 2), var(--content-max));
+
+  /* ---- Motion ---- */
+  --ease-out: cubic-bezier(.16, 1, .3, 1);
+  --ease-soft: cubic-bezier(.22, .61, .36, 1);
+  --dur-slow: 1100ms;
+  --dur-mid: 760ms;
+
+  /* ---- Z-index ---- */
+  --z-nav: 80;
+  --z-menu: 90;
+  --z-modal: 100;
+}

@@ -1,0 +1,240 @@
+/* =========================================================
+   MALEA · Navigation (desktop bar + mobile overlay)
+   ========================================================= */
+
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: var(--z-nav);
+  padding-block: var(--s-4);
+  background: linear-gradient(180deg, rgba(5, 10, 24, .82), rgba(5, 10, 24, 0));
+  transform: translateY(-100%);
+  opacity: 0;
+  transition: transform .7s var(--ease-out), opacity .7s var(--ease-out),
+              background .5s ease, border-color .5s ease;
+  border-bottom: 1px solid transparent;
+}
+.nav.is-visible { transform: translateY(0); opacity: 1; }
+.nav.is-solid {
+  background: rgba(5, 10, 24, .78);
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+  border-bottom-color: var(--gold-line);
+}
+
+.nav__inner {
+  width: var(--content);
+  max-width: var(--content-max);
+  margin-inline: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-5);
+}
+.nav__logo {
+  font-family: var(--font-display);
+  font-size: clamp(20px, 2vw, 26px);
+  letter-spacing: .20em;
+  padding-left: .20em;
+  color: var(--gold);
+}
+.nav__links {
+  display: flex;
+  align-items: center;
+  gap: clamp(20px, 2.4vw, 44px);
+}
+.nav__links a {
+  font-size: var(--fs-micro);
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  position: relative;
+  padding-block: 6px;
+  transition: color .4s var(--ease-soft);
+}
+.nav__links a::after {
+  content: "";
+  position: absolute;
+  left: 0; bottom: 0;
+  width: 100%; height: 1px;
+  background: var(--gold);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform .45s var(--ease-out);
+}
+.nav__links a:hover { color: var(--ink); }
+.nav__links a:hover::after { transform: scaleX(1); transform-origin: left; }
+
+.nav__cta { display: inline-flex; }
+.nav__cta .btn { padding: .85em 1.6em; }
+
+.nav__burger {
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+  width: 40px;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+}
+.nav__burger span {
+  width: 24px; height: 1.5px; border-radius: 2px;
+  background: var(--ink);
+  transition: background .4s var(--ease-soft), transform .4s var(--ease-out);
+}
+.nav__burger:hover span { background: var(--gold); }
+
+/* ---- Mobile overlay menu ---- */
+.menu {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-menu);
+  display: flex;
+  flex-direction: column;
+  padding-inline: 0;             /* zones self-centre to the --content column */
+  padding-block:
+    max(var(--s-4), env(safe-area-inset-top))
+    max(var(--s-6), env(safe-area-inset-bottom));
+  background: var(--bg-night);
+  opacity: 0;
+  visibility: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  transition: opacity .55s var(--ease-out), visibility .55s;
+}
+.menu.is-open { opacity: 1; visibility: visible; }
+
+.menu__bg {
+  position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  background:
+    radial-gradient(ellipse 92% 48% at 50% -8%, rgba(94,141,190,.16), transparent 60%),
+    radial-gradient(ellipse 80% 46% at 50% 108%, rgba(216,183,108,.10), transparent 62%),
+    linear-gradient(180deg, var(--bg-void) 0%, var(--bg-night) 48%, var(--bg-void) 100%);
+}
+.menu__bg::after {
+  content: ""; position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 50% 46%, transparent 56%, rgba(4,8,18,.55) 100%);
+}
+
+/* — top bar — */
+.menu__top {
+  position: relative; z-index: 2; flex: 0 0 auto;
+  width: var(--content); max-width: var(--content-max);
+  margin-inline: auto; margin-bottom: clamp(20px, 4vh, 48px);
+  display: flex; align-items: center; justify-content: space-between;
+}
+/* logo is a pixel-clone of .nav__logo so it doesn't shift on open */
+.menu__logo {
+  font-family: var(--font-display);
+  font-size: clamp(20px, 2vw, 26px);
+  letter-spacing: .20em; padding-left: .20em;
+  color: var(--gold);
+}
+/* same 40px footprint as the burger → close sits exactly where it was */
+.menu__close {
+  position: relative; width: 40px; height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--gold-line);
+  background: rgba(5, 10, 24, .32);
+  transition: border-color .4s var(--ease-soft), background .4s var(--ease-soft);
+}
+.menu__close:hover { border-color: var(--gold-soft); background: rgba(5, 10, 24, .5); }
+.menu__close::before, .menu__close::after {
+  content: ""; position: absolute; top: 50%; left: 50%;
+  width: 16px; height: 1.5px; background: var(--ink);
+  transition: background .4s var(--ease-soft);
+}
+.menu__close::before { transform: translate(-50%, -50%) rotate(45deg); }
+.menu__close::after  { transform: translate(-50%, -50%) rotate(-45deg); }
+.menu__close:hover::before, .menu__close:hover::after { background: var(--gold); }
+
+/* — navigation list (editorial, numbered, ruled) — */
+.menu__links {
+  position: relative; z-index: 2;
+  flex: 0 1 auto; min-height: 0;
+  width: var(--content); max-width: var(--content-max);
+  margin: auto;                  /* centre in free space (vertical) + content column */
+  display: flex; flex-direction: column;
+}
+.menu__links a {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: baseline;
+  column-gap: clamp(16px, 5vw, 26px);
+  padding-block: clamp(15px, 2.3vh, 24px);
+  border-bottom: 1px solid var(--ink-ghost);
+  opacity: 0; transform: translateY(12px);
+  transition: opacity .6s var(--ease-out), transform .6s var(--ease-out);
+}
+.menu__links a:first-child { border-top: 1px solid var(--ink-ghost); }
+.menu__num {
+  font-family: var(--font-body);
+  font-size: var(--fs-micro);
+  letter-spacing: .16em;
+  color: var(--gold-soft);
+  font-variant-numeric: tabular-nums;
+  transition: color .4s var(--ease-soft);
+}
+.menu__label {
+  font-family: var(--font-display);
+  font-size: clamp(30px, 8vw, 40px);
+  line-height: 1.05; letter-spacing: .015em;
+  color: var(--ink-soft);
+  transition: color .4s var(--ease-soft), transform .5s var(--ease-out);
+}
+.menu__arrow {
+  position: relative; align-self: center;
+  width: 20px; height: 8px;
+  opacity: 0; transform: translateX(-8px);
+  transition: opacity .4s var(--ease-soft), transform .5s var(--ease-out);
+}
+.menu__arrow::before {
+  content: ""; position: absolute; top: 50%; left: 0; right: 4px;
+  height: 1px; background: var(--gold); transform: translateY(-50%);
+}
+.menu__arrow::after {
+  content: ""; position: absolute; top: 50%; right: 3px;
+  width: 6px; height: 6px;
+  border-top: 1px solid var(--gold); border-right: 1px solid var(--gold);
+  transform: translateY(-50%) rotate(45deg);
+}
+.menu__links a:hover .menu__label,
+.menu__links a:focus-visible .menu__label { color: var(--ink); transform: translateX(6px); }
+.menu__links a:hover .menu__num,
+.menu__links a:focus-visible .menu__num { color: var(--gold); }
+.menu__links a:hover .menu__arrow,
+.menu__links a:focus-visible .menu__arrow { opacity: 1; transform: translateX(0); }
+
+/* staggered entrance — transform/opacity only, so colour stays snappy */
+.menu.is-open .menu__links a { opacity: 1; transform: none; }
+.menu.is-open .menu__links a:nth-child(1) { transition-delay: .12s; }
+.menu.is-open .menu__links a:nth-child(2) { transition-delay: .18s; }
+.menu.is-open .menu__links a:nth-child(3) { transition-delay: .24s; }
+.menu.is-open .menu__links a:nth-child(4) { transition-delay: .30s; }
+.menu.is-open .menu__links a:nth-child(5) { transition-delay: .36s; }
+
+/* — footer: CTA + contacts — */
+.menu__foot {
+  position: relative; z-index: 2; flex: 0 0 auto;
+  width: var(--content); max-width: var(--content-max);
+  margin-inline: auto; margin-top: clamp(28px, 5vh, 56px);
+  display: flex; flex-direction: column; gap: clamp(18px, 3vh, 26px);
+  opacity: 0; transform: translateY(12px);
+  transition: opacity .6s var(--ease-out), transform .6s var(--ease-out);
+}
+.menu.is-open .menu__foot { opacity: 1; transform: none; transition-delay: .34s; }
+.menu__cta-btn { width: 100%; justify-content: center; }
+
+@media (prefers-reduced-motion: reduce) {
+  .menu__links a, .menu__foot { transition: opacity .3s linear; transform: none; }
+}
+
+@media (max-width: 980px) {
+  /* Burger must be reachable from the very top — keep the bar shown,
+     and align its top inset with the menu so the logo doesn't jump. */
+  .nav { transform: none; opacity: 1; padding-top: max(var(--s-4), env(safe-area-inset-top)); }
+  .nav__links, .nav__cta { display: none; }
+  .nav__burger { display: flex; }
+}

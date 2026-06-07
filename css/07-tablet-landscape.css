@@ -1,0 +1,45 @@
+/* =========================================================
+   MALEA · Landscape tablets (iPad mini / iPad / Air / Pro)
+   Targets touch tablets held horizontally — wide but short
+   viewports. The desktop compositions already apply here
+   (portrait-only stacking is scoped out in 05-screens.css);
+   this layer only tightens the vertical rhythm so full-height
+   split screens breathe correctly on a short viewport.
+
+   Devices (landscape CSS px, width × height):
+     iPad mini 8.3"    1133 × 744
+     iPad 10.2/10.9"   1080 × 810
+     iPad Air 10.9"    1180 × 820
+     iPad Pro 11"      1194 × 834
+     iPad Pro 12.9"    1366 × 1024
+
+   (pointer: coarse) keeps this off real desktops/laptops that
+   share the same width range — only touch devices match.
+   ========================================================= */
+
+@media (min-width: 1024px) and (max-width: 1366px)
+   and (orientation: landscape) and (pointer: coarse) {
+
+  /* Denser vertical rhythm for short viewport height — the
+     desktop floors (100–220px) are too tall at 744–1024px. */
+  :root {
+    --vr-standard:     clamp(64px, 9vh, 120px);
+    --vr-dense:        clamp(46px, 7vh, 88px);
+    --vr-generous:     clamp(84px, 11vh, 150px);
+    --vr-transitional: clamp(44px, 5vh, 80px);
+  }
+
+  /* Full-height split screens (hero / final): trim the oversized
+     block padding so two-column content fits within 100svh. */
+  .hero__text,
+  .final__text { padding-block: clamp(56px, 9vh, 110px); }
+
+  /* Philosophy (centred two-column) — tighten the column gap;
+     Live image band — shorter gap to its text on a short viewport. */
+  .philo__inner { gap: clamp(28px, 4vw, 48px); }
+  .live__media { margin-bottom: clamp(72px, 8vh, 112px); }
+
+  /* Pull-quote screens feel cavernous on a short viewport —
+     bring the standalone quotes closer to a single screen. */
+  .quote-screen { min-height: 78svh; }
+}
