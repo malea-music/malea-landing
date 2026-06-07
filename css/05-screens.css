@@ -41,6 +41,13 @@
   .intro__mark { font-size: 22vw; }
 }
 
+/* Intro always fills the full visible viewport on mobile.
+   dvh tracks the browser UI (unlike svh, which is the *small* height
+   and leaves a gap when the address bar is hidden). */
+@media (max-width: 760px) {
+  #intro { min-height: 100vh; min-height: 100dvh; }
+}
+
 /* ===== 02 · HERO ====================================== */
 #hero {
   display: grid;
