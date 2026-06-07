@@ -1,0 +1,243 @@
+/* =========================================================
+   MALEA · Reset + base + layout primitives
+   ========================================================= */
+
+*, *::before, *::after { box-sizing: border-box; }
+* { margin: 0; padding: 0; }
+
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: var(--fs-body);
+  line-height: 1.66;
+  color: var(--ink);
+  background: var(--bg-main);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+body.is-scroll-locked { overflow: hidden; }
+
+/* ---------- Fixed atmospheric canvas ---------- */
+.site-atmosphere {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at 50% 5%, rgba(243,235,221,.025) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 92%, rgba(94,141,190,.06) 0%, transparent 50%),
+    linear-gradient(180deg, var(--bg-void) 0%, var(--bg-main) 35%, var(--bg-main) 100%);
+}
+
+@media (max-width: 760px) {
+  .site-atmosphere {
+    position: absolute;
+    background:
+      radial-gradient(ellipse at 50% 5%, rgba(243,235,221,.015) 0%, transparent 50%),
+      radial-gradient(ellipse at 50% 92%, rgba(94,141,190,.04) 0%, transparent 50%),
+      linear-gradient(180deg, var(--bg-void) 0%, var(--bg-main) 35%, var(--bg-main) 100%);
+  }
+}
+
+img { display: block; max-width: 100%; height: auto; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; background: none; border: none; cursor: pointer; }
+ul, ol { list-style: none; }
+::selection { background: var(--gold); color: var(--bg-void); }
+
+h1, h2, h3, h4 { font-weight: 400; text-wrap: balance; }
+p { text-wrap: pretty; }
+
+:focus-visible { outline: 1px solid var(--gold-soft); outline-offset: 4px; }
+
+/* ---------- Layout primitives ---------- */
+.section {
+  position: relative;
+  width: 100%;
+}
+
+.wrap {
+  position: relative;
+  z-index: 1;
+  width: var(--content);
+  max-width: var(--content-max);
+  margin-inline: auto;
+}
+
+.pad-block { padding-block: var(--vr-standard); }
+.pad-block--dense { padding-block: var(--vr-dense); }
+.pad-block--generous { padding-block: var(--vr-generous); }
+.pad-block--transitional { padding-block: var(--vr-transitional); }
+.full { min-height: 100svh; }
+
+/* ---------- Shared type atoms ---------- */
+.overline {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-3);
+  font-size: var(--fs-micro);
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--gold-soft);
+  font-weight: 400;
+}
+.overline::before {
+  content: "";
+  width: clamp(28px, 4vw, 56px);
+  height: 1px;
+  background: var(--gold-line);
+}
+.overline--center::after {
+  content: "";
+  width: clamp(28px, 4vw, 56px);
+  height: 1px;
+  background: var(--gold-line);
+}
+
+.display {
+  font-family: var(--font-display);
+  font-size: var(--fs-display);
+  line-height: .98;
+  letter-spacing: .03em;
+}
+.heading {
+  font-family: var(--font-display);
+  font-size: var(--fs-section);
+  line-height: 1.08;
+  letter-spacing: .01em;
+}
+.overline + .heading,
+.overline + .title {
+  margin-top: var(--heading-kicker-gap);
+}
+.heading + .subtitle,
+.title + .subtitle {
+  margin-top: var(--heading-sub-gap);
+}
+.title {
+  font-family: var(--font-display);
+  font-size: var(--fs-title);
+  line-height: 1.12;
+}
+.subtitle {
+  font-size: var(--fs-subtitle);
+  color: var(--ink-soft);
+  font-weight: 300;
+  line-height: 1.4;
+}
+.lede {
+  font-size: var(--fs-body);
+  color: var(--ink-soft);
+  line-height: 1.7;
+  max-width: 60ch;
+}
+.measure { max-width: 36rem; }
+
+.rule {
+  width: 100%;
+  height: 1px;
+  background: var(--gold-line);
+  border: 0;
+}
+.rule--short { width: clamp(48px, 8vw, 120px); }
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-3);
+  padding: 1.05em 2.1em;
+  font-family: var(--font-body);
+  font-size: var(--fs-micro);
+  font-weight: 400;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--ink);
+  border: 1px solid var(--gold-line);
+  background: transparent;
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  transition:
+    color       .45s var(--ease-soft),
+    border-color .45s var(--ease-soft),
+    box-shadow  .45s var(--ease-soft);
+}
+.btn::after {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  background: radial-gradient(
+    ellipse 120% 180% at 50% 130%,
+    rgba(216, 183, 108, .22)  0%,
+    rgba(216, 183, 108, .08)  40%,
+    transparent               68%
+  );
+  opacity: 0;
+  transform: scale(.55) translateY(8px);
+  transform-origin: 50% 100%;
+  transition:
+    opacity   .5s var(--ease-soft),
+    transform .65s var(--ease-out);
+  pointer-events: none;
+  z-index: 0;
+}
+.btn:hover {
+  color: var(--gold);
+  border-color: rgba(216, 183, 108, .52);
+  box-shadow:
+    0 0 0 1px rgba(216,183,108,.08),
+    0 0 22px rgba(216,183,108,.10),
+    inset 0 0 14px rgba(216,183,108,.04);
+}
+.btn:hover::after {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+}
+.btn--gold {
+  border-color: var(--gold-soft);
+  color: var(--gold);
+}
+.btn--gold::after {
+  background: radial-gradient(
+    ellipse 120% 180% at 50% 130%,
+    rgba(216, 183, 108, .28)  0%,
+    rgba(216, 183, 108, .10)  40%,
+    transparent               68%
+  );
+}
+.btn--gold:hover {
+  border-color: var(--gold);
+  box-shadow:
+    0 0 0 1px rgba(216,183,108,.14),
+    0 0 28px rgba(216,183,108,.16),
+    inset 0 0 18px rgba(216,183,108,.06);
+}
+.btn > span {
+  position: relative;
+  z-index: 1;
+}
+
+.link-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-2);
+  font-size: var(--fs-micro);
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--gold-soft);
+  transition: gap .4s var(--ease-soft), color .4s var(--ease-soft);
+}
+.link-arrow:hover { gap: var(--s-4); color: var(--gold); }
+
+/* ---------- Decorative background aura ---------- */
+.aura {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}

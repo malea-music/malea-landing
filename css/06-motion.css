@@ -1,0 +1,62 @@
+/* =========================================================
+   MALEA · Motion — slow, soft, breathing reveals
+   ========================================================= */
+
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(28px);
+  filter: blur(6px);
+  transition:
+    opacity var(--dur-slow) var(--ease-out),
+    transform var(--dur-slow) var(--ease-out),
+    filter var(--dur-slow) var(--ease-out);
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+[data-reveal].is-in {
+  opacity: 1;
+  transform: none;
+  filter: blur(0);
+}
+
+[data-reveal="line"] {
+  transform: scaleX(0);
+  transform-origin: left;
+  filter: none;
+  transition: transform var(--dur-slow) var(--ease-out);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+[data-reveal="line"].is-in { transform: scaleX(1); }
+
+[data-reveal="scale"] {
+  opacity: 0;
+  transform: scale(1.03);
+  filter: blur(4px);
+  transition:
+    opacity var(--dur-slow) var(--ease-out),
+    transform var(--dur-slow) var(--ease-out),
+    filter var(--dur-slow) var(--ease-out);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+[data-reveal="scale"].is-in { opacity: 1; transform: scale(1); filter: blur(0); }
+
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal], [data-reveal="line"], [data-reveal="scale"] {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    transition: none !important;
+  }
+}
+
+/* Escape hatch: applied by reveal.js when the environment cannot run
+   transitions / IntersectionObserver. Reaches the visible end-state with
+   NO transition so content can never stay stuck hidden. */
+.reveal-static [data-reveal],
+.reveal-static [data-reveal="line"],
+.reveal-static [data-reveal="scale"] {
+  opacity: 1 !important;
+  transform: none !important;
+  filter: none !important;
+  transition: none !important;
+}
