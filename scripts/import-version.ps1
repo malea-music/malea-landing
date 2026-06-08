@@ -93,6 +93,15 @@ function Test-GitStatus {
   }
 }
 
+function Get-RelativePath {
+  param([string]$Base, [string]$Target)
+  # Manual implementation of GetRelativePath for .NET Framework (PowerShell 5.1)
+  $baseUri = New-Object Uri -ArgumentList ($Base.TrimEnd('\') + '\')
+  $targetUri = New-Object Uri -ArgumentList $Target
+  $relativeUri = $baseUri.MakeRelativeUri($targetUri)
+  return [System.Uri]::UnescapeDataString($relativeUri.ToString()).Replace('/', '\')
+}
+
 function Get-ProductionWhitelist {
   param([string]$SourceIndexPath)
 
@@ -138,7 +147,7 @@ function Get-ProductionWhitelist {
               [System.IO.Path]::GetDirectoryName($jsFullPath), $importPath
             )
           )
-          $relPath = [System.IO.Path]::GetRelativePath($sourceRoot, $resolvedPath)
+          $relPath = Get-RelativePath -Base $sourceRoot -Target $resolvedPath
           $relPath = $relPath -replace '\\', '/'
           if (-not $whitelist.Contains($relPath)) {
             [void]$whitelist.Add($relPath)
@@ -328,7 +337,7 @@ $protectedDirs = @('.git', '.roo', 'scripts', 'docs', 'plans', 'qa', 'rebuild_1'
 
 # Find files in deploy that are NOT in whitelist (excluding protected dirs)
 $allDeployFiles = Get-ChildItem $DeployDir -Recurse -File | Where-Object {
-  $relPath = [System.IO.Path]::GetRelativePath($DeployDir, $_.FullName)
+  $relPath = Get-RelativePath -Base $DeployDir -Target $_.FullName
   $exclude = $false
   foreach ($pd in $protectedDirs) {
     if ($relPath -like "$pd/*" -or $relPath -eq $pd) {
@@ -452,4 +461,6 @@ Write-Host ""
 Write-Host "============================================" -ForegroundColor Magenta
 Write-Host "  Import complete"                            -ForegroundColor Magenta
 Write-Host "============================================" -ForegroundColor Magenta
+
+
 
