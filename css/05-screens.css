@@ -14,6 +14,10 @@
   display: grid;
   place-items: center;
   text-align: center;
+  /* Full visible viewport on EVERY device (phones + tablets). --vh-intro is the
+     real visible height from visualViewport; svh/dvh are the no-JS fallbacks. */
+  min-height: 100svh;
+  min-height: var(--vh-intro, 100dvh);
   background:
     radial-gradient(ellipse at 50% 28%, rgba(94,141,190,.14), transparent 52%),
     radial-gradient(ellipse at 50% 92%, rgba(216,183,108,.07), transparent 56%),
@@ -41,14 +45,7 @@
   .intro__mark { font-size: 22vw; }
 }
 
-/* Intro always fills the full visible viewport on mobile.
-   --vh-intro is set from window.visualViewport.height by an inline script
-   in <head> — the only value that reliably matches the *real* visible area
-   on iOS/Android (dvh/svh/vh misbehave with the dynamic browser toolbar).
-   Fallback chain: exact px → dvh (modern) → svh (older browsers). */
-@media (max-width: 760px) {
-  #intro { min-height: 100svh; min-height: var(--vh-intro, 100dvh); }
-}
+/* (Intro full-screen is now handled in the base #intro rule above — all devices.) */
 
 /* ===== 02 · HERO ====================================== */
 #hero {

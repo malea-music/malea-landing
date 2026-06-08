@@ -12,7 +12,8 @@ export function initNav() {
   if (!nav) return;
 
   // ── desktop scroll appearance ──────────────────────────────
-  const showAfter = () => window.innerHeight * 0.6;
+  // Reveal the nav only after the intro (≈ one full screen) — i.e. from the hero on.
+  const showAfter = () => window.innerHeight * 0.85;
   const onScroll = () => {
     const y = window.scrollY;
     nav.classList.toggle('is-visible', y > showAfter());

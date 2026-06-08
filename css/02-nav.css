@@ -232,9 +232,10 @@
 }
 
 @media (max-width: 980px) {
-  /* Burger must be reachable from the very top — keep the bar shown,
-     and align its top inset with the menu so the logo doesn't jump. */
-  .nav { transform: none; opacity: 1; padding-top: max(var(--s-4), env(safe-area-inset-top)); }
+  /* Nav stays hidden on the intro (first screen) and reveals on scroll (from the
+     hero) via the .is-visible class — no forced visibility here. Keep the safe-area
+     top inset so the bar/logo align with the menu once it appears. */
+  .nav { padding-top: max(var(--s-4), env(safe-area-inset-top)); }
   .nav__links, .nav__cta { display: none; }
   .nav__burger { display: flex; }
 }

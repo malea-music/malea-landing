@@ -1,5 +1,5 @@
 // MALEA · app entry — initialise every module safely and in isolation.
-import { initNav } from './modules/nav.js';
+import { initNav } from './modules/nav.js?v=2';
 import { initModal } from './modules/modal.js';
 import { initAudioPlayer } from './modules/audio-player.js';
 import { initVideoModal } from './modules/video-modal.js';
