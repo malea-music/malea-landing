@@ -36,21 +36,20 @@
   .pad-block--dense     { padding-block: var(--vr-dense); }
   .pad-block--generous  { padding-block: var(--vr-generous); }
 
-  /* Full-bleed media bands share one height ramp for a steady beat. */
-  .hero__media,
   .final__media { min-height: clamp(380px, 50vh, 560px); }
 
-  /* ===== 02 · HERO ===================================== */
-  #hero { grid-template-columns: 1fr; min-height: auto; }
-  .hero__media { order: -1; }
+  /* ===== 02 · HERO — full-screen stacked composition ===== */
+  #hero { grid-template-columns: 1fr; grid-template-rows: 1fr auto; }
+  .hero__media { order: -1; min-height: 0; }
   .hero__media::after {
-    background: linear-gradient(0deg, var(--bg-void) 2%, transparent 58%);
+    background: linear-gradient(0deg, var(--bg-deep) 0%, rgba(10,19,38,.82) 8%, rgba(10,19,38,.5) 18%, rgba(10,19,38,.22) 32%, rgba(10,19,38,.06) 46%, transparent 60%);
   }
   .hero__text {
+    justify-content: flex-start;
     padding-inline: var(--page-x);
-    padding-block: clamp(48px, 6vh, 80px) clamp(64px, 9vh, 112px);
+    padding-block: clamp(32px, 4.5vh, 60px) clamp(44px, 7vh, 88px);
   }
-  .hero__lede { max-width: 46ch; }
+  .hero__lede { max-width: 52ch; }
 
   /* ===== 03 · IDENTITY ================================= */
   .identity__inner {
