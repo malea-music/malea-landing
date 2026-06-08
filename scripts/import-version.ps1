@@ -96,10 +96,11 @@ function Test-GitStatus {
 function Get-RelativePath {
   param([string]$Base, [string]$Target)
   # Manual implementation of GetRelativePath for .NET Framework (PowerShell 5.1)
+  # Returns path with forward slashes for consistency
   $baseUri = New-Object Uri -ArgumentList ($Base.TrimEnd('\') + '\')
   $targetUri = New-Object Uri -ArgumentList $Target
   $relativeUri = $baseUri.MakeRelativeUri($targetUri)
-  return [System.Uri]::UnescapeDataString($relativeUri.ToString()).Replace('/', '\')
+  return [System.Uri]::UnescapeDataString($relativeUri.ToString()).Replace('\', '/')
 }
 
 function Get-ProductionWhitelist {
@@ -349,7 +350,7 @@ $allDeployFiles = Get-ChildItem $DeployDir -Recurse -File | Where-Object {
 }
 
 foreach ($df in $allDeployFiles) {
-  $relPath = $df.FullName.Substring($DeployDir.Length + 1) -replace '\\', '/'
+  $relPath = $df.FullName.Substring($DeployDir.Length + 1).Replace('\', '/')
   if ($relPath -notin $sourceFilesToCopy -and $relPath -notin $filteredWhitelist) {
     [void]$toRemove.Add($relPath)
   }
@@ -461,6 +462,7 @@ Write-Host ""
 Write-Host "============================================" -ForegroundColor Magenta
 Write-Host "  Import complete"                            -ForegroundColor Magenta
 Write-Host "============================================" -ForegroundColor Magenta
+
 
 
 
