@@ -134,10 +134,15 @@
   }
 
   /* ===== 12 · EGYPT ================================== */
-  .egypt__grid { grid-template-columns: 1fr; gap: clamp(40px, 6vh, 64px); }
-  .egypt__media { width: min(100%, 540px); margin-inline: auto; }
-  .egypt-video-preview { aspect-ratio: 4 / 5; }
-  .egypt__timeline { grid-template-columns: 1fr 1fr; }
+  /* Video spans the full content width — its edges line up with the text/timeline
+     below, restoring the rhythm; max-height tames the vertical clip on tall tablets. */
+  .egypt__grid { grid-template-columns: 1fr; gap: clamp(44px, 6vh, 72px); align-items: stretch; }
+  .egypt__media { width: 100%; max-width: none; margin-inline: 0; }
+  .egypt-video-preview { height: auto; min-height: 0; aspect-ratio: 4 / 5; max-height: 62vh; }
+  .egypt-video-preview__media { background-position: center 32%; }
+  .egypt__body { display: block; }
+  .egypt__text { max-width: 64ch; }
+  .egypt__concl { margin-top: 0; }
 
   /* ===== 13 · FORMATS =============================== */
   /* Stack: image becomes a wide band above the copy. */

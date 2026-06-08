@@ -42,10 +42,12 @@
 }
 
 /* Intro always fills the full visible viewport on mobile.
-   dvh tracks the browser UI (unlike svh, which is the *small* height
-   and leaves a gap when the address bar is hidden). */
+   --vh-intro is set from window.visualViewport.height by an inline script
+   in <head> — the only value that reliably matches the *real* visible area
+   on iOS/Android (dvh/svh/vh misbehave with the dynamic browser toolbar).
+   Fallback chain: exact px → dvh (modern) → svh (older browsers). */
 @media (max-width: 760px) {
-  #intro { min-height: 100vh; min-height: 100dvh; }
+  #intro { min-height: 100svh; min-height: var(--vh-intro, 100dvh); }
 }
 
 /* ===== 02 · HERO ====================================== */
@@ -691,9 +693,11 @@
 
 .egypt__grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(360px, .9fr);
-  gap: clamp(42px, 5.4vw, 96px);
-  align-items: start;
+  /* Vertical video takes the NARROWER column; the text (more content) leads.
+     align-items: stretch makes both columns share one height — a clean grid. */
+  grid-template-columns: minmax(320px, 440px) minmax(0, 1fr);
+  gap: clamp(40px, 5vw, 88px);
+  align-items: stretch;
 }
 .egypt__media { position: relative; min-width: 0; }
 
@@ -701,7 +705,8 @@
   position: relative;
   display: block;
   width: 100%;
-  aspect-ratio: 5 / 6;
+  height: 100%;                       /* fill column height (= text block) */
+  min-height: clamp(440px, 56vh, 760px);
   overflow: hidden;
   border: 1px solid var(--gold-line);
   background: var(--bg-blue-black);
@@ -753,30 +758,30 @@
   box-shadow: 0 0 0 6px rgba(216,183,108,.08), 0 0 40px rgba(216,183,108,.18);
 }
 
-.egypt__body { min-width: 0; }
-.egypt__text { color: var(--ink-soft); margin-bottom: var(--s-6); max-width: 58ch; text-wrap: pretty; }
+.egypt__body { min-width: 0; display: flex; flex-direction: column; }
+.egypt__text { color: var(--ink-soft); margin-bottom: var(--s-6); max-width: 64ch; text-wrap: pretty; }
 
+/* Timeline — a single column of clean ruled rows (number beside text).
+   Same editorial language as the landing's other numbered lists. */
 .egypt__timeline {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--s-3);
+  gap: 0;
   margin-bottom: var(--s-7);
   counter-reset: tl;
   list-style: none;
+  border-top: 1px solid var(--ink-ghost);
 }
 .egypt__timeline li {
   display: grid;
-  gap: var(--s-2);
-  padding: var(--s-4);
-  border: 1px solid var(--ink-ghost);
+  grid-template-columns: auto 1fr;
+  align-items: baseline;
+  gap: clamp(16px, 1.6vw, 24px);
+  padding: clamp(14px, 1.5vw, 20px) var(--s-1);
+  border-bottom: 1px solid var(--ink-ghost);
   color: var(--ink-soft);
-  align-content: start;
-  transition: border-color .4s var(--ease-soft), background .4s var(--ease-soft);
+  transition: padding-left .4s var(--ease-out), color .4s var(--ease-soft);
 }
-.egypt__timeline li:hover {
-  border-color: var(--gold-line);
-  background: rgba(216,183,108,.03);
-}
+.egypt__timeline li:hover { padding-left: var(--s-3); color: var(--ink); }
 .egypt__timeline li::before {
   counter-increment: tl;
   content: "0" counter(tl);
@@ -784,10 +789,10 @@
   letter-spacing: .14em;
   color: var(--gold);
   font-variant-numeric: tabular-nums;
-  margin-bottom: var(--s-2);
 }
 .egypt__concl {
   position: relative;
+  margin-top: auto;                  /* anchor the takeaway to the column bottom */
   padding-left: var(--s-5);
   border-left: 1px solid var(--gold-line);
   color: var(--ink-muted);
@@ -795,18 +800,19 @@
   gap: var(--s-3);
 }
 
-@media (min-width: 761px) and (max-width: 1100px) and (orientation: portrait) {
-  .egypt__grid { grid-template-columns: 1fr; gap: var(--s-6); }
-  .egypt__media { max-width: 640px; }
-  .egypt-video-preview { aspect-ratio: 4 / 5; }
+/* Landscape tablets — cap the video height on a short viewport. */
+@media (orientation: landscape) and (min-width: 1024px) and (max-width: 1366px) {
+  .egypt-video-preview { min-height: clamp(420px, 64vh, 640px); }
 }
 
+/* Phones — stacked; full-width video; single-column ruled timeline (base). */
 @media (max-width: 760px) {
-  .egypt__grid { grid-template-columns: 1fr; gap: var(--s-6); }
-  .egypt__media { max-width: none; }
-  .egypt-video-preview { aspect-ratio: 3 / 4; }
-  .egypt__timeline { grid-template-columns: 1fr; }
-  .egypt__concl { padding-left: var(--s-4); }
+  .egypt__grid { grid-template-columns: 1fr; gap: clamp(36px, 5vh, 56px); align-items: stretch; }
+  .egypt__media { width: 100%; max-width: 520px; margin-inline: auto; }
+  .egypt-video-preview { height: auto; min-height: 0; aspect-ratio: 4 / 5; }
+  .egypt__body { display: block; }
+  .egypt__text { max-width: none; }
+  .egypt__concl { margin-top: 0; padding-left: var(--s-4); }
 }
 
 /* ===== 13 · FORMATS =============================== */
