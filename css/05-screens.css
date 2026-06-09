@@ -14,10 +14,12 @@
   display: grid;
   place-items: center;
   text-align: center;
-  /* Full visible viewport on EVERY device (phones + tablets). --vh-intro is the
-     real visible height from visualViewport; svh/dvh are the no-JS fallbacks. */
-  min-height: 100svh;
-  min-height: var(--vh-intro, 100dvh);
+  /* Static full screen: lvh = large (toolbar-retracted) viewport. Always ≥ the
+     screen (nothing peeks below) AND a fixed height — it does NOT resize while the
+     mobile toolbar shows/hides, so there's no scroll jitter. (Dynamic vh / JS-driven
+     heights reflow on every toolbar frame → the jump.) 100vh = lvh on iOS (fallback). */
+  min-height: 100vh;
+  min-height: 100lvh;
   background:
     radial-gradient(ellipse at 50% 28%, rgba(94,141,190,.14), transparent 52%),
     radial-gradient(ellipse at 50% 92%, rgba(216,183,108,.07), transparent 56%),
@@ -54,9 +56,10 @@
   align-items: stretch;
   overflow: hidden;
   position: relative;
-  /* Always exactly the visible viewport (real-device full screen via --vh-hero). */
-  min-height: 100svh;
-  min-height: var(--vh-hero, 100dvh);
+  /* Static full screen (see #intro): lvh never resizes on scroll → no jitter,
+     and is always ≥ the screen so the next section never peeks below. */
+  min-height: 100vh;
+  min-height: 100lvh;
   /* Dark blue, lifted from void; the photo's shadows are graded to this SAME tone
      (lighten) and the edge fades resolve to it — dark photo edges = background. */
   background: var(--bg-deep);
