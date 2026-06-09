@@ -11,8 +11,15 @@
 
 /* ===== 01 · INTRO ===================================== */
 #intro {
-  display: grid;
-  place-items: center;
+  /* Flexbox (not grid place-items) reliably stretches the container to min-height
+     and centres the content on every mobile engine — a grid container with only
+     auto/content rows can fail to expand to min-height on some WebKit/iOS builds,
+     which made the intro fall short of the screen while the hero (explicit 1fr
+     row) filled correctly. */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   text-align: center;
   /* Static full screen: lvh = large (toolbar-retracted) viewport. Always ≥ the
      screen (nothing peeks below) AND a fixed height — it does NOT resize while the
