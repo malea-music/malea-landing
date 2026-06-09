@@ -8,13 +8,11 @@
 html {
   -webkit-text-size-adjust: 100%;
   scroll-behavior: smooth;
-  /* Guard against horizontal scroll: body's overflow-x:hidden cannot clip
-     fixed/absolute overlays (nav, menu, modals) — they escape to the root.
-     `overflow-x: hidden` on <html> clips them and (per spec) computes
-     overflow-y to `auto`, so vertical scrolling is preserved.
-     NB: do NOT use `overflow-x: clip` here — with overflow-y:visible it
-     propagates to the viewport and disables vertical scroll. */
-  overflow-x: hidden;
+  /* NB: <html> must stay overflow: visible. Putting overflow-x:hidden here turns
+     <html> into a scroll container, which breaks the mobile dynamic viewport
+     (100svh/lvh/dvh + address-bar collapse) → full-screen sections misbehave.
+     Horizontal overflow is clipped on <body> below, which propagates to the
+     viewport (root is visible), covering fixed overlays too. */
 }
 
 body {
