@@ -1,0 +1,61 @@
+/* =========================================================
+   MALEA · 12 · Unified background (seamless)
+   ---------------------------------------------------------
+   ONE continuous deep field for the whole page so section
+   boundaries never show as a background "seam":
+
+   · body paints the uniform field (--bg-deep, like screen 2) —
+     it spans the entire page, so there are no per-section edges.
+   · .site-atmosphere becomes a fixed, transparent overlay that
+     only adds a whisper of radial depth (so it isn't dead-flat);
+     being fixed, it's identical in every viewport → no transition
+     is visible while scrolling.
+   · All sections stay transparent (Hero's solid bg-deep now equals
+     the field → no edge).
+   · Per-section colour auras are turned OFF — they used to glow on
+     some sections and not others, which read as "patchwork" and
+     made boundaries visible. The ONLY glow kept is on the
+     pull-quotes (one intentional accent).
+
+   ►  TO ROLL BACK: remove this file's <link> in index.html.
+   ========================================================= */
+
+/* Uniform field across the whole page (no seams, any height). */
+body { background: var(--bg-deep); }
+
+/* Atmosphere = fixed, transparent depth overlay (no solid base → the
+   body field shows through uniformly; the radials frame each viewport
+   identically, so they don't mark section transitions). */
+.site-atmosphere {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 130% 90% at 50% -15%, rgba(243, 235, 221, .020) 0%, transparent 50%),
+    radial-gradient(ellipse 130% 80% at 50% 115%, rgba(94, 141, 190, .05) 0%, transparent 50%);
+}
+
+/* Section colour auras OFF — except the pull-quotes. */
+#identity .aura,
+#philosophy .aura,
+#live .aura,
+#player .aura,
+#integration .aura { background: none; }
+
+/* ---------------------------------------------------------
+   Section-specific background OVERLAYS off — these were the
+   remaining visible "seams" at section boundaries:
+   · #philosophy::before  → top-highlight band (Identity→Philosophy)
+   · .quote-screen::before → top/bottom radials (every quote edge)
+   · #art background       → its own blue/violet radials (Performance→Art)
+   · #egypt background + ::before → radials + grid texture (after quote 2)
+   Each section now shows ONLY the uniform field → no transition.
+   The pull-quotes keep their soft centred .aura glow (it fades to
+   transparent before the edges, so it doesn't create a seam).
+   --------------------------------------------------------- */
+#philosophy::before { display: none; }
+.quote-screen::before { display: none; }
+#art   { background: transparent; }
+#egypt { background: transparent; }
+#egypt::before { display: none; }

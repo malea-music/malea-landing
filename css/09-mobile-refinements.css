@@ -1,0 +1,115 @@
+/* =========================================================
+   MALEA · 09 · Mobile refinements  —  PHONES ONLY (≤760px)
+   ---------------------------------------------------------
+   Self-contained mobile-only polish layer, loaded LAST so it
+   wins purely by cascade order (no !important needed).
+
+   ►  TO ROLL BACK: delete this file's <link> in index.html
+      (or comment it out). Nothing else references it and no
+      existing rule was edited — removing the link restores
+      the previous mobile layout exactly.
+
+   Scope is strictly max-width:760px. Desktop, landscape
+   tablets (07) and portrait tablets (08) are NOT touched.
+
+   Audit items applied (P1 + P2), mobile only:
+     · Section headings → left-aligned, slightly smaller,
+       looser leading (lighter multi-line headings)
+     · Even vertical rhythm: #art / #reviews padding pulled
+       onto the standard mobile value; pull-quote screens
+       shortened (were a near-full empty screen each)
+     · Formats: image & copy share one left edge (the running
+       number becomes a kicker above the title)
+     · Micro labels 10→11px; body 15→16px (readability)
+   ========================================================= */
+
+@media (max-width: 760px) {
+
+  /* ---------- Type scale (token overrides, mobile only) ---------- */
+  :root {
+    /* was clamp(36px, 4.2vw, 60px) → 36 floor on every phone.
+       Now ~31px at 390px, never larger than the old 36. */
+    --fs-section: clamp(30px, 8vw, 36px);
+    /* was clamp(10px, .78vw, 12px) → 10px floor — too small on phones */
+    --fs-micro: 11px;
+    /* was clamp(15px, 1.25vw, 18px) → 15px floor — +1px for comfort */
+    --fs-body: 16px;
+    /* Heading→content / media→text gap. Desktop token stays clamp(72,8vh,120)
+       = 72px on phones — too airy. Tighten so headings sit with their content. */
+    --vr-dense: clamp(30px, 4vh, 48px);
+  }
+
+  /* ---------- Section headings: left-aligned ---------- */
+  /* Override the per-section centring so every section header shares
+     one left edge with its body/list/cards on the narrow column. */
+  #musicians .shead,
+  #formats .shead,
+  #why .shead,
+  #portfolio .shead,
+  .player__head,
+  .egypt__header,
+  .live__heading,
+  .slots__head { text-align: left; }
+
+  /* Looser leading so the 3–4 line headings breathe at the smaller size. */
+  .shead__title,
+  .slots__head,
+  .player__heading,
+  .live__heading,
+  .final__heading,
+  .egypt__header .heading,
+  .philo__heading { line-height: 1.12; }
+
+  /* ---------- Even, tighter vertical rhythm between sections ---------- */
+  /* Phones were at 84px top+bottom → ~168px between sections (and #art/#reviews
+     even escaped that via ID+token). Pull EVERY section onto one tighter value
+     so the page reads as a continuous flow, not isolated screens with voids.
+     ~51px each side → ~102px between sections (vs 168). */
+  .pad-block,
+  #art,
+  #reviews { padding-block: clamp(44px, 6vh, 64px); }
+
+  /* Pull-quotes & Philosophy are LOW-DENSITY blocks (a one-line quote, a short
+     statement). At the standard section padding their own air stacks with the
+     neighbours' → ~100–120px around very little content = looks gigantic. Give
+     them one shared, tighter padding so they sit inside the flow as an accent,
+     not a floating block. (Both use --vr-block below.) */
+  :root { --vr-block: clamp(20px, 3vh, 30px); }
+  /* Quotes keep their original CENTRED Cormorant-italic look (left-aligned /
+     enlarged read worse). They only needed breathing room: give them
+     section-level padding so the last quote isn't jammed against the
+     image-led "Создать опыт" section right below it. */
+  .quote-screen { min-height: 0; padding-block: clamp(40px, 6vh, 56px); }
+
+  /* ---------- Philosophy: normal-flow section, aligned to the margin ---------- */
+  /* Was a 100svh full screen with ~400px of voids; on a scrolled phone that
+     pause is just dead space. Drop the full height and let it flow.
+     .philo__inner sits INSIDE .wrap yet also carried its own
+     padding:var(--page-x) (content inset twice, ~56px). Zero the inner
+     horizontal padding so heading/text line up at the standard 28px margin
+     (the existing <br> then resolves the heading to a clean 2 lines), and
+     give it the standard section rhythm via padding-block. */
+  #philosophy { min-height: 0; }
+  #philosophy .philo__inner { padding-inline: 0; padding-block: var(--vr-block); }
+
+  /* ---------- Reviews heading: tidy the wrap ---------- */
+  /* The desktop hard break (музыка<br>и…) re-wraps on the narrow column
+     into 4 ragged lines with single-word orphans. Drop the forced break
+     on phones and let the browser balance it into clean lines. (The
+     desktop <br> stays; a trailing space before it lets the words rejoin
+     without gluing «музыка»+«и».) */
+  #reviews .shead__title br { display: none; }
+  #reviews .shead__title { text-wrap: balance; }
+
+  /* ---------- Formats: image and copy share the left edge ---------- */
+  /* Drop the hanging-number gutter (image was flush at the margin while
+     the copy was indented ~56px). The number becomes a small kicker
+     above the title, so image + number + copy all align at the margin. */
+  #formats .fmt__line-content { grid-template-columns: 1fr; }
+  #formats .fmt__line-num { padding-top: 0; margin-bottom: var(--s-2); }
+  /* Tighten the card-to-card gap (was 42/42 → ~84px between cards). */
+  .fmt__line { padding-block: clamp(22px, 3vw, 28px); }
+
+  /* ---------- Final CTA: centre to match the other mobile buttons ---------- */
+  #final-experience .final__text > div:last-child { text-align: center; }
+}

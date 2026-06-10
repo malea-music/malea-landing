@@ -9,14 +9,18 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;1,500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/00-tokens.css?v=4">
-<link rel="stylesheet" href="css/01-base.css?v=8">
-<link rel="stylesheet" href="css/02-nav.css?v=11">
+<link rel="stylesheet" href="css/01-base.css?v=10">
+<link rel="stylesheet" href="css/02-nav.css?v=12">
 <link rel="stylesheet" href="css/03-modal.css?v=5">
 <link rel="stylesheet" href="css/04-components.css?v=6">
-<link rel="stylesheet" href="css/05-screens.css?v=42">
+<link rel="stylesheet" href="css/05-screens.css?v=49">
 <link rel="stylesheet" href="css/06-motion.css?v=3">
 <link rel="stylesheet" href="css/07-tablet-landscape.css?v=2">
-<link rel="stylesheet" href="css/08-tablet-portrait.css?v=3">
+<link rel="stylesheet" href="css/08-tablet-portrait.css?v=5">
+<link rel="stylesheet" href="css/09-mobile-refinements.css?v=3">
+<link rel="stylesheet" href="css/10-ipadpro-portrait.css?v=1">
+<link rel="stylesheet" href="css/11-tablet-portrait-refine.css?v=1">
+<link rel="stylesheet" href="css/12-unified-bg.css?v=1">
 </head>
 <body>
 
@@ -314,21 +318,27 @@
     <div class="mus__grid">
       <article class="mus__card" data-reveal>
         <div class="mus__photo"><img src="https://optim.tildacdn.com/tild3964-6630-4938-a263-313036333836/-/format/webp/_5_.jpg.webp" alt="Ашот Даниелян" loading="lazy"></div>
-        <span class="mus__role">Композитор · Ambient &amp; Meditation</span>
-        <h3 class="mus__name">Ашот Даниелян</h3>
-        <p class="mus__desc">Композитор-мистик. Дар написания музыки раскрылся ещё в 7 лет.</p>
+        <div class="mus__info">
+          <span class="mus__role">Композитор · Ambient &amp; Meditation</span>
+          <h3 class="mus__name">Ашот Даниелян</h3>
+          <p class="mus__desc">Композитор-мистик. Дар написания музыки раскрылся ещё в 7 лет.</p>
+        </div>
       </article>
       <article class="mus__card" data-reveal style="--reveal-delay:120ms">
         <div class="mus__photo"><img src="https://optim.tildacdn.com/tild3731-3432-4736-b830-663230336332/-/format/webp/_5__1.jpg.webp" alt="Даша Кошелева" loading="lazy"></div>
-        <span class="mus__role">Мультиинструменталист · Продюсер</span>
-        <h3 class="mus__name">Даша Кошелева</h3>
-        <p class="mus__desc">Аранжировщик, композитор, музыкальный продюсер и психотерапевт.</p>
+        <div class="mus__info">
+          <span class="mus__role">Мультиинструменталист · Продюсер</span>
+          <h3 class="mus__name">Даша Кошелева</h3>
+          <p class="mus__desc">Аранжировщик, композитор, музыкальный продюсер и психотерапевт.</p>
+        </div>
       </article>
       <article class="mus__card" data-reveal style="--reveal-delay:240ms">
         <div class="mus__photo"><img src="https://optim.tildacdn.com/tild3333-3061-4866-b933-306239363137/-/format/webp/_5_.jpg.webp" alt="Максим Приклонский" loading="lazy"></div>
-        <span class="mus__role">Гитарист · Аранжировщик</span>
-        <h3 class="mus__name">Максим Приклонский</h3>
-        <p class="mus__desc">Гитарист со стажем 22 года. Преподаватель, аранжировщик.</p>
+        <div class="mus__info">
+          <span class="mus__role">Гитарист · Аранжировщик</span>
+          <h3 class="mus__name">Максим Приклонский</h3>
+          <p class="mus__desc">Гитарист со стажем 22 года. Преподаватель, аранжировщик.</p>
+        </div>
       </article>
     </div>
   </div>
@@ -338,7 +348,7 @@
 <section class="section pad-block" id="reviews">
   <div class="wrap">
     <div class="shead">
-      <h2 class="shead__title" data-reveal>Как ощущается музыка<br>и перформанс MALEA</h2>
+      <h2 class="shead__title" data-reveal>Как ощущается музыка <br>и перформанс MALEA</h2>
       <p class="shead__sub" data-reveal style="--reveal-delay:80ms">Обратная связь участников</p>
       <p class="shead__text" data-reveal style="--reveal-delay:140ms">Каждый опыт индивидуален. Иногда это мягкое погружение. Иногда — интенсивный внутренний процесс. Для многих это становится точкой внутреннего сдвига.</p>
       <div class="rev__states" data-reveal style="--reveal-delay:200ms">
@@ -348,6 +358,7 @@
           <li><span class="n">03</span><span>Ясность и внутренняя опора</span></li>
           <li><span class="n">04</span><span>Проявленность и смелость</span></li>
           <li><span class="n">05</span><span>Расширение восприятия</span></li>
+          <li class="rev__state--xtra"><span class="n">06</span><span>Раскрытие телесности</span></li>
         </ul>
       </div>
     </div>
@@ -603,6 +614,7 @@
           <div class="pm-partner"><span class="pm-partner-name">Анастасия Хаграс</span><span class="pm-partner-role">Фасилитатор Кундалини-активаций</span></div>
           <div class="pm-partner"><span class="pm-partner-name">Дарья Заморина</span><span class="pm-partner-role">Духовно-научные экспедиции</span></div>
           <div class="pm-partner"><span class="pm-partner-name">Константин Евдокимов</span><span class="pm-partner-role">Архитектор сознания</span></div>
+          <div class="pm-partner pm-partner--spacer" aria-hidden="true"></div>
         </div>
       </div>
       <div class="pm-col" data-reveal style="--reveal-delay:240ms">
@@ -654,27 +666,31 @@
 <!-- ============ FOOTER ============ -->
 <footer class="section" id="site-footer">
   <div class="wrap">
-    <div class="footer__grid">
-      <div class="footer__col">
-        <h4>Контакты</h4>
-        <a href="https://t.me/malea_zabota" target="_blank" rel="noopener">Telegram · @malea_zabota</a>
+    <div class="footer__rows">
+      <div class="footer__row">
+        <a href="https://t.me/malea_zabota" target="_blank" rel="noopener">@malea_zabota</a>
+        <span class="footer__sep">|</span>
         <a href="mailto:info@malea.ru">info@malea.ru</a>
       </div>
-      <div class="footer__col">
-        <h4>Соцсети</h4>
-        <a href="https://t.me/malea_channel" target="_blank" rel="noopener">Telegram-канал</a>
-        <a href="https://www.instagram.com/malea__music/" target="_blank" rel="noopener">Instagram</a>
-        <a href="https://www.youtube.com/@Malea_Soundhealing" target="_blank" rel="noopener">YouTube</a>
-      </div>
-      <div class="footer__col">
-        <h4>Информация</h4>
-        <p>ИП Паскал Е.Л.</p>
-        <p>ИНН 772607544305</p>
+      <div class="footer__row">
+        <span>ИП Паскал Е.Л.</span>
+        <span class="footer__sep">|</span>
+        <span>ИНН 772607544305</span>
+        <span class="footer__sep">|</span>
         <a href="#">Политика конфиденциальности</a>
       </div>
-    </div>
-    <div class="footer__bottom">
-      <span>© MALEA, 2026</span>
+      <div class="footer__row--socials">
+        <a href="https://t.me/malea_channel" target="_blank" rel="noopener">
+          <img class="footer__icon" src="https://optim.tildacdn.com/tild3734-6332-4163-a163-396232643063/-/format/webp/malea-telegram-gold-.png.webp" alt="Telegram" loading="lazy">
+        </a>
+        <a href="https://www.instagram.com/malea__music/" target="_blank" rel="noopener">
+          <img class="footer__icon" src="https://optim.tildacdn.com/tild6536-3738-4465-b034-363536373739/-/format/webp/malea-instagram-gold.png.webp" alt="Instagram" loading="lazy">
+        </a>
+        <a href="https://www.youtube.com/@Malea_Soundhealing" target="_blank" rel="noopener">
+          <img class="footer__icon" src="https://optim.tildacdn.com/tild3261-3037-4065-b865-386531643636/-/format/webp/malea-youtube-gold-o.png.webp" alt="YouTube" loading="lazy">
+        </a>
+      </div>
+      <div class="footer__copy">© MALEA, 2026</div>
     </div>
   </div>
 </footer>
@@ -702,6 +718,6 @@
   </div>
 </div>
 
-<script type="module" src="js/app.js"></script>
+<script type="module" src="js/app.js?v=2"></script>
 </body>
 </html>

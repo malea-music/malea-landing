@@ -36,21 +36,20 @@
   .pad-block--dense     { padding-block: var(--vr-dense); }
   .pad-block--generous  { padding-block: var(--vr-generous); }
 
-  /* Full-bleed media bands share one height ramp for a steady beat. */
-  .hero__media,
   .final__media { min-height: clamp(380px, 50vh, 560px); }
 
-  /* ===== 02 · HERO ===================================== */
-  #hero { grid-template-columns: 1fr; min-height: auto; }
-  .hero__media { order: -1; }
+  /* ===== 02 · HERO — full-screen stacked composition ===== */
+  #hero { grid-template-columns: 1fr; grid-template-rows: 1fr auto; }
+  .hero__media { order: -1; min-height: 0; }
   .hero__media::after {
-    background: linear-gradient(0deg, var(--bg-void) 2%, transparent 58%);
+    background: linear-gradient(0deg, var(--bg-deep) 0%, rgba(10,19,38,.82) 8%, rgba(10,19,38,.5) 18%, rgba(10,19,38,.22) 32%, rgba(10,19,38,.06) 46%, transparent 60%);
   }
   .hero__text {
+    justify-content: flex-start;
     padding-inline: var(--page-x);
-    padding-block: clamp(48px, 6vh, 80px) clamp(64px, 9vh, 112px);
+    padding-block: clamp(32px, 4.5vh, 60px) clamp(44px, 7vh, 88px);
   }
-  .hero__lede { max-width: 46ch; }
+  .hero__lede { max-width: 52ch; }
 
   /* ===== 03 · IDENTITY ================================= */
   .identity__inner {
@@ -119,12 +118,27 @@
   .art__grid { grid-template-columns: 1fr 1fr; }
 
   /* ===== 10 · MUSICIANS =============================== */
+  /* 3 rows, each card horizontal (photo thumbnail | text). */
   .mus__grid {
-    grid-template-columns: 1fr 1fr;
-    max-width: none;            /* drop the phone (≤420px) cap on iPad mini */
-    gap: clamp(28px, 3.5vw, 44px) clamp(28px, 4vw, 48px);
+    grid-template-columns: 1fr;
+    max-width: 760px;           /* tidy centred column; rows stay balanced on wide iPads */
+    margin-inline: auto;
+    gap: clamp(28px, 3.5vw, 48px);
   }
-  .mus__desc { max-width: none; }
+  .mus__card {
+    flex-direction: row;
+    align-items: center;
+    gap: clamp(28px, 4vw, 48px);
+  }
+  .mus__photo {
+    width: clamp(180px, 28vw, 260px);
+    aspect-ratio: 4/5;          /* brand portrait crop, matches desktop */
+    flex-shrink: 0;
+    margin-bottom: 0;
+  }
+  .mus__info { flex: 1; min-width: 0; }
+  .mus__name { font-size: clamp(24px, 3vw, 32px); }
+  .mus__desc { max-width: 42ch; }
 
   /* ===== 11 · REVIEWS ================================= */
   .carousel { aspect-ratio: 16 / 10; }
@@ -134,27 +148,88 @@
   }
 
   /* ===== 12 · EGYPT ================================== */
-  .egypt__grid { grid-template-columns: 1fr; gap: clamp(40px, 6vh, 64px); }
-  .egypt__media { width: min(100%, 540px); margin-inline: auto; }
-  .egypt-video-preview { aspect-ratio: 4 / 5; }
-  .egypt__timeline { grid-template-columns: 1fr 1fr; }
+  /* Video spans the full content width — its edges line up with the text/timeline
+     below, restoring the rhythm; max-height tames the vertical clip on tall tablets. */
+  .egypt__grid { grid-template-columns: 1fr; gap: clamp(44px, 6vh, 72px); align-items: stretch; }
+  .egypt__media { width: 100%; max-width: none; margin-inline: 0; }
+  .egypt-video-preview { height: auto; min-height: 0; aspect-ratio: 4 / 5; max-height: 62vh; }
+  .egypt-video-preview__media { background-position: center 32%; }
+  .egypt__body { display: block; }
+  .egypt__text { max-width: 64ch; }
+  .egypt__concl { margin-top: 0; }
 
   /* ===== 13 · FORMATS =============================== */
-  /* Stack: image becomes a wide band above the copy. */
+  /* Keep the 2-column image | copy layout, just more compact;
+     hide the running numbers and collapse the copy to one column. */
   .fmt__line {
-    grid-template-columns: 1fr;
-    row-gap: clamp(28px, 4vh, 44px);
+    grid-template-columns: minmax(280px, 48%) minmax(0, 1fr);
+    padding: clamp(28px, 3.5vh, 42px) 0;
+    column-gap: clamp(24px, 2.5vw, 36px);
   }
   .fmt__line-media { aspect-ratio: 16 / 9; }
+  .fmt__line-content { grid-template-columns: 1fr; }
+  .fmt__line-num { display: none; }
+  .fmt__line-head { margin-bottom: clamp(10px, 1.4vw, 16px); }
+  .fmt__line-label { font-size: clamp(22px, 2.4vw, 28px); }
+  .fmt__line-summary { margin-bottom: clamp(14px, 1.6vw, 20px); }
+  .fmt__line-spec { gap: var(--s-4); padding: var(--s-2) 0; }
+
+  /* ===== 14 · INTEGRATION (fi-panels) ============== */
+  /* Panels stack vertically (1 col), but each panel keeps a
+     2-column inside: title + tag | description. */
+  .fi-panel {
+    display: grid;
+    grid-template-columns: minmax(280px, 48%) minmax(0, 1fr);
+    grid-template-rows: auto auto;
+    column-gap: clamp(24px, 2.5vw, 36px);
+    row-gap: 0;
+    align-items: start;
+    padding: clamp(28px, 3.5vh, 40px) clamp(20px, 2.4vw, 32px)
+              clamp(32px, 4vh, 48px);
+    border-right: none;
+    border-bottom: 1px solid var(--gold-line);
+  }
+  .fi-panel:last-child { border-bottom: none; }
+  .fi-title { grid-column: 1; grid-row: 1; margin-bottom: clamp(14px, 1.8vw, 20px); }
+  .fi-rule { grid-column: 1; grid-row: 2; display: none; }
+  .fi-tag {
+    grid-column: 1; grid-row: 2;
+    margin-top: 0;
+    align-self: start;
+    width: max-content;
+    max-width: 100%;
+    line-height: 1.35;
+  }
+  .fi-desc { grid-column: 2; grid-row: 1 / 3; align-self: center; }
 
   /* ===== 15 · WHY ================================== */
-  .why__media::before { padding-bottom: 62%; }
-  .why__arg h4 { min-height: 0; }
+  /* Portrait-tablet why styling (2-col args + 52% image band) lives in
+     05-screens.css so a single rule governs up to 1100px without conflict. */
 
   /* ===== 16 · PORTFOLIO =========================== */
-  /* Re-show the collage band (hidden on desktop) and stack columns. */
-  .pf__media { display: block; aspect-ratio: 16 / 9; }
-  .pm-grid { grid-template-columns: 1fr; }
+  /* Keep all 3 columns on iPad portrait. Tightened locally (padding,
+     type, row height) so they fit the wide portrait content width —
+     the global --page-x rhythm is left untouched. Collage band stays
+     hidden (it's the phone-only fallback). clamp(…vw…) scales the
+     compression from iPad mini (744) up to iPad Pro (1024). */
+  .pf__media { display: none; }
+  .pm-grid { grid-template-columns: 1fr 1fr 1fr; }
+  .pm-col {
+    border-right: 1px solid var(--gold-line);
+    border-bottom: none;
+    padding: clamp(22px, 3vh, 32px) clamp(10px, 1.5vw, 18px);
+  }
+  .pm-col:last-child { border-right: none; }
+  .pm-col-header { margin-bottom: clamp(16px, 2vh, 22px); min-height: 38px; }
+  .pm-event, .pm-partner, .pm-upcoming { padding: 12px 0; min-height: 56px; }
+  .pm-event-name, .pm-partner-name, .pm-upcoming-name {
+    font-size: clamp(13px, 1.7vw, 17px);
+    letter-spacing: .04em;
+    word-break: break-word;
+    hyphens: auto;
+  }
+  .pm-event-type, .pm-partner-role, .pm-upcoming-ctx { font-size: clamp(10px, 1.2vw, 12px); }
+  .pm-partner--spacer { display: flex; }  /* re-enable row alignment in 3-col */
 
   /* ===== 17 · FINAL =============================== */
   #final-experience { grid-template-columns: 1fr; }

@@ -1,0 +1,172 @@
+/* =========================================================
+   MALEA · 10 · iPad PORTRAIT compositions
+   ---------------------------------------------------------
+   Restores the DESKTOP paired (2-column) editorial compositions
+   on portrait iPads, where the 08 layer had flattened them into
+   weak single-column stacks (image floating over text, etc.).
+
+   TWO bands:
+   · 700–1024  — the 7 TEXT compositions (Identity, Live,
+                 Performance, Art, Reviews, Egypt, Final). These
+                 read as paired image|text / text|list units and
+                 fit from iPad mini (744) up to iPad Pro 12.9 (1024).
+   · 960–1024  — the wider 3-column grids (Musicians, Integration,
+                 Why) + Philosophy 2-col + tightened heading gap;
+                 these need real width, so iPad Pro 12.9 only.
+
+   Phones (≤760) → layer 09.  Vertical rhythm for 761–959 → layer 11.
+   Loaded after 08/09 → overrides their portrait stacking.
+
+   ►  TO ROLL BACK: delete this file's <link> in index.html.
+
+   Kept portrait-style on purpose: Hero (stacked), Player (stacked
+   cards), Formats (compact 2-col), Portfolio (tight 3-col).
+   ========================================================= */
+
+/* =========================================================
+   BAND 1 · Paired text compositions — ALL portrait iPads (700–1024)
+   ========================================================= */
+@media (orientation: portrait) and (min-width: 700px) and (max-width: 1024px) {
+
+  /* ===== 03 · IDENTITY → photo | (title + sub + list) ===== */
+  .identity__inner { grid-template-columns: 44fr 56fr; gap: clamp(32px, 4vw, 72px); align-items: center; }
+  .identity__portrait { width: auto; max-width: none; margin-inline: 0; }
+
+  /* ===== 05 · LIVE → lede | divider | formats list ===== */
+  .live-text-inner {
+    grid-template-columns: minmax(0, 48%) 1px minmax(0, 52%);
+    grid-template-rows: auto auto;
+    row-gap: 0;
+    align-items: start;
+  }
+  .live__heading { text-align: left; }
+  .live-text-left  { grid-column: 1; grid-row: 1; padding-right: clamp(28px, 3.5vw, 56px); text-align: left; }
+  .live__text      { margin-inline: 0; }
+  .live-text-line  { display: block; grid-column: 2; grid-row: 1 / 3; }
+  .live-text-right { grid-column: 3; grid-row: 1 / 3; padding-left: clamp(28px, 3.5vw, 56px); }
+  .live-formats-label {
+    font-family: var(--font-body);
+    font-size: var(--fs-subtitle);
+    font-weight: 300;
+    text-align: left;
+    margin-bottom: clamp(14px, 2vh, 24px);
+  }
+  .live-formats { display: flex; flex-direction: column; }
+  .live-format-row { border-top: none; border-bottom: 1px solid rgba(216,183,108,.10); }
+  .live-format-row:first-child { border-top: 1px solid rgba(216,183,108,.10); }
+  .live-text-btn { grid-column: 1; grid-row: 2; align-self: end; text-align: left; }
+
+  /* ===== 08 · PERFORMANCE → title+sub | text ===== */
+  #performance .shead { grid-template-columns: 1fr 1fr; column-gap: clamp(24px, 3.5vw, 64px); }
+  #performance .shead::before { display: block; }
+  #performance .shead .shead__title { grid-column: 1; grid-row: 1; margin-top: 0; }
+  #performance .shead .shead__sub   { grid-column: 1; grid-row: 2; max-width: none; }
+  #performance .shead .shead__text  { grid-column: 2; grid-row: 1 / -1; align-self: start; max-width: 44ch; margin-top: 0; padding-left: clamp(14px, 2vw, 28px); }
+
+  /* ===== 09 · ART → title+sub | text ===== */
+  #art .shead { grid-template-columns: 1fr 1fr; column-gap: clamp(24px, 3.5vw, 64px); }
+  #art .shead::before { display: block; }
+  #art .shead .shead__title { grid-column: 1; grid-row: 1; margin-top: 0; }
+  #art .shead .shead__sub   { grid-column: 1; grid-row: 2; max-width: none; }
+  #art .shead .shead__text  { grid-column: 2; grid-row: 1 / -1; align-self: start; max-width: 44ch; margin-top: 0; padding-left: clamp(14px, 2vw, 28px); }
+
+  /* ===== 11 · REVIEWS → full-width stack.
+     The states list is TALLER than the heading text, so beside it it would
+     collide with the carousel on a portrait canvas. Stack: heading →
+     full-width states list → carousel. Dropping the half-column cap also
+     fixes the original "content stuck in the left half" look — the list now
+     spans the full width and lines up with the carousel below. ===== */
+  #reviews .shead { grid-template-columns: 1fr; }
+  #reviews .shead .shead__title,
+  #reviews .shead .shead__sub,
+  #reviews .shead .shead__text { grid-column: auto; grid-row: auto; }
+  .rev__states { position: static; left: auto; right: auto; top: auto; grid-column: auto; grid-row: auto; margin-top: clamp(28px, 4vh, 48px); max-width: none; }
+  /* Short state labels look sparse in one full-width column → 2-column matrix
+     (with the 6th state shown, that's a clean 3×2). */
+  .rev__states-list { grid-template-columns: 1fr 1fr; column-gap: clamp(28px, 4vw, 64px); }
+
+  /* ===== 12 · EGYPT → video | text + timeline (centred section title) ===== */
+  .egypt__header { text-align: center; }
+  .egypt__grid {
+    grid-template-columns: minmax(260px, 40%) minmax(0, 1fr);
+    gap: clamp(28px, 4vw, 72px);
+    align-items: stretch;
+  }
+  .egypt-video-preview {
+    height: 100%;
+    aspect-ratio: auto;
+    min-height: clamp(400px, 38vh, 560px);
+    max-height: none;
+  }
+  .egypt-video-preview__media { background-position: center; }
+  .egypt__body { display: flex; flex-direction: column; }
+
+  /* ===== 17 · FINAL → text | image ===== */
+  #final-experience { grid-template-columns: 1fr 1fr; align-items: stretch; }
+  .final__media { order: 0; min-height: 0; }
+  .final__media::after { background: linear-gradient(90deg, var(--bg-main), transparent 40%); }
+  .final__text { padding-block: clamp(40px, 6vh, 96px); padding-inline: var(--page-x); }
+  .final__body { max-width: 52ch; }
+}
+
+/* =========================================================
+   BAND 2 · Wide-only — iPad Pro 12.9" portrait (960–1024)
+   3-column grids + Philosophy 2-col + tighter heading gap.
+   ========================================================= */
+@media (orientation: portrait) and (min-width: 960px) and (max-width: 1024px) {
+
+  /* Heading → content gap: 08's 8vh caps at 100px on this tall canvas. */
+  :root { --vr-dense: clamp(40px, 4.2vh, 60px); }
+
+  /* ===== 04 · PHILOSOPHY → 2 columns (heading | text) ===== */
+  .philo__inner { grid-template-columns: 1.4fr 1fr; gap: clamp(40px, 6vw, 80px); padding-inline: 0; }
+  .philo__heading { white-space: normal; text-align: left; }
+  .philo__text p { max-width: 56ch; margin-inline: 0; }
+
+  /* ===== 10 · MUSICIANS → 3 vertical cards ===== */
+  .mus__grid { grid-template-columns: repeat(3, 1fr); max-width: none; margin-inline: 0; gap: clamp(24px, 3vw, 48px); }
+  .mus__card { flex-direction: column; align-items: stretch; gap: 0; justify-content: flex-start; }
+  .mus__photo { width: auto; aspect-ratio: 4/5; margin-bottom: var(--s-5); }
+  .mus__info { flex: 0 1 auto; }
+  .mus__name { font-size: clamp(19px, 2.1vw, 23px); }
+  .mus__desc { max-width: none; }
+
+  /* ===== 14 · INTEGRATION → 3 columns (subgrid panels) ===== */
+  .fi-panels { grid-template-columns: repeat(3, 1fr); grid-template-rows: auto auto 1fr auto; }
+  .fi-panel {
+    display: grid;
+    grid-template-columns: none;
+    grid-template-rows: subgrid;
+    grid-row: span 4;
+    column-gap: 0; row-gap: 0;
+    padding: clamp(30px, 4vh, 52px) clamp(20px, 2.4vw, 36px) clamp(34px, 4.5vh, 60px);
+    border-right: 1px solid var(--gold-line);
+    border-bottom: none;
+  }
+  .fi-panel:last-child { border-right: none; border-bottom: none; }
+  .fi-title { grid-column: auto; grid-row: auto; margin-bottom: var(--s-5); }
+  .fi-rule  { grid-column: auto; grid-row: auto; display: block; }
+  .fi-tag   { grid-column: auto; grid-row: auto; margin-top: var(--s-6); align-self: auto; width: auto; max-width: none; }
+  .fi-desc  { grid-column: auto; grid-row: auto; align-self: auto; }
+
+  /* ===== 15 · WHY → 3 columns ===== */
+  .why__args { grid-template-columns: repeat(3, 1fr); }
+  .why__arg {
+    display: flex; flex-direction: column;
+    grid-template-columns: none; column-gap: 0;
+    align-items: stretch;
+    border-right: 1px solid var(--gold-line); border-bottom: none;
+  }
+  .why__arg:last-child { border-right: none; border-bottom: none; }
+  .why__arg h4 { grid-column: auto; grid-row: auto; min-height: 2.2em; margin-bottom: clamp(16px, 2.2vh, 26px); }
+  .why__arg p  { grid-column: auto; grid-row: auto; }
+}
+
+/* =========================================================
+   Reviews · 6th state ("Раскрытие телесности") shown ONLY on portrait
+   phones + tablets (≤1024). Desktop & landscape keep 5 states so their
+   composition (states in the right column) isn't broken.
+   ========================================================= */
+@media (orientation: portrait) and (max-width: 1024px) {
+  .rev__states-list li.rev__state--xtra { display: grid; }
+}
