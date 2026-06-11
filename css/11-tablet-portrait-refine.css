@@ -46,4 +46,34 @@
      (08 already sets margin-inline:auto), and centre the card content. */
   .mus__grid { max-width: 660px; }
   .mus__card { justify-content: center; }
+
+  /* ---------- E · Identity — match text height to the photo ----------
+     Photo (aspect 4/5 in the 44% column) is ~370px tall; the
+     title + sub + 4-item list ran ~506px, so the centred photo
+     floated short beside a much taller text block. Keep the photo as
+     is and COMPRESS the text vertically: tighten the gap under the
+     subtitle and the per-row padding of the credentials list so the
+     text column ≈ the photo height (both then centre cleanly). */
+  #identity .identity__sub { margin-bottom: clamp(16px, 2.2vh, 22px); }
+  #identity .identity__list li { padding-block: clamp(9px, 1.4vh, 11px); }
+
+  /* ---------- F · Pull-quotes · Direction A (editorial accent) ----------
+     Same treatment as the phone layer, scaled for the wider portrait canvas:
+     a touch more size for presence, a tight byline that belongs to the quote,
+     and a short gold rule above as an anchor. (iPad Pro 12.9" / 960–1024 is
+     outside this query, so it is intentionally left untouched.) */
+  .bigquote__text { font-size: clamp(30px, 4vw, 34px); line-height: 1.24; font-weight: 300; letter-spacing: .015em; }
+  .bigquote__attr { margin-top: clamp(16px, 2vh, 22px); letter-spacing: .2em; }
+  .bigquote::before {
+    content: "";
+    display: block;
+    width: 48px; height: 1px;
+    margin: 0 auto clamp(24px, 3vh, 32px);
+    background: var(--gold-soft);
+  }
+  /* Last quote (--wide): Portfolio above supplies its own padding-bottom while
+     the image-led Final below has padding-top:0 → symmetric quote padding read
+     as "pressed to the photo". Asymmetric padding (small top, larger bottom)
+     evens the content-to-content air before/after. */
+  .quote-screen--wide { margin-block: 0; padding-top: clamp(2px, 0.5vh, 10px); padding-bottom: clamp(76px, 9vh, 110px); }
 }
