@@ -32,8 +32,11 @@
     --fs-section: clamp(30px, 8vw, 36px);
     /* was clamp(10px, .78vw, 12px) → 10px floor — too small on phones */
     --fs-micro: 11px;
-    /* was clamp(15px, 1.25vw, 18px) → 15px floor — +1px for comfort */
-    --fs-body: 16px;
+    /* Body was 16px (bare minimum → read "очень мелко"). 17px reads
+       comfortably and keeps a clear step under the 19px gold subtitle.
+       One token → all body text scales uniformly; grid/rhythm are px-based
+       and unaffected. */
+    --fs-body: 17px;
     /* Heading→content / media→text gap. Desktop token stays clamp(72,8vh,120)
        = 72px on phones — too airy. Tighten so headings sit with their content. */
     --vr-dense: clamp(30px, 4vh, 48px);
@@ -112,4 +115,62 @@
 
   /* ---------- Final CTA: centre to match the other mobile buttons ---------- */
   #final-experience .final__text > div:last-child { text-align: center; }
-}
+
+  /* ---------- Live: kill the doubled gap before "Подходит для:" ---------- */
+  /* Stacked, the inner grid already separates the lede from the formats
+     block via its row-gap (~42px). The lede paragraph ALSO carried
+     margin-bottom:var(--s-6) (48px), so the two stacked into ~90px of void
+     and broke the rhythm. Zero the paragraph margin → only the row-gap
+     remains as the separator. */
+  #live .live__text { margin-bottom: 0; }
+
+  /* ---------- Final: trim the oversized top image ~10% ----------
+     The image-led Final screen used min-height:60vh → it dominated the phone.
+     Pull it back ~10% (54vh). With object-position 50% 65% the crop lands
+     mostly on the top, so the subject stays framed. */
+  #final-experience .final__media { min-height: 46vh; }
+  /* Raise the photo ~10% within the frame (show a slightly lower slice of the
+     portrait): object-position Y 65% → 75%. scale(1.05) zooms the photo ~5%
+     inside the frame (clipped by the media box). */
+  #final-experience .final__media { overflow: hidden; }
+  #final-experience .final__media img { object-position: 50% 75%; transform: scale(1.05); }
+  /* The text block kept the desktop 14vh (~118px) block padding → an ~111px
+     void between the photo and the "Создать опыт" heading, out of step with the
+     mobile rhythm. Pull it onto the standard mobile section padding. */
+  #final-experience .final__text { padding-block: clamp(44px, 6vh, 64px); }
+
+  /* ---------- Reviews: tighten the gap before the states list ---------- */
+  /* When the states list drops below the lede (stacked), 05-screens gives it
+     margin-top:var(--s-7) (72px) → an oversized jump before "Соединение с
+     собой". Pull it onto the standard mobile dense gap so it reads in rhythm. */
+  #reviews .rev__states { margin-top: var(--vr-dense); }
+
+  /* ---------- Pull-quotes · Direction A (editorial accent) ----------
+     On phones the quote fell to the 22px clamp floor (barely above the 17px
+     body) and the byline sat 48px adrift, so the "moment" read as an orphan
+     paragraph. Restore presence: larger quote, tight byline, and a short gold
+     rule above as an anchor (the same gold-line language used elsewhere). */
+  /* font-weight 300 = genuinely light Cormorant (now imported); a hair of
+     positive tracking opens the italic serif up for a more couture, airy read. */
+  .bigquote__text { font-size: 26px; line-height: 1.26; font-weight: 300; letter-spacing: .015em; }
+  .bigquote__attr { margin-top: clamp(14px, 2vh, 18px); font-size: 17px; letter-spacing: .2em; }
+  .bigquote::before {
+    content: "";
+    display: block;
+    width: 40px; height: 1px;
+    margin: 0 auto clamp(20px, 3vh, 26px);
+    background: var(--gold-soft);
+  }
+  /* (b) The quote sat at max-width:300px → ~45px side margins on a 390 phone,
+     so it read "squeezed". Widen to ~86vw (≈27px margins, matching the page
+     rhythm) so the line measure breathes. */
+  .bigquote { max-width: 86vw; }
+  .quote-screen--wide .bigquote { max-width: 90vw; }
+  /* (a) The last quote (--wide) sits between Portfolio (which has its OWN ~51px
+     padding-bottom) and the image-led Final screen (padding-top:0, photo flush).
+     With symmetric quote padding the CONTENT-to-content gap was ~123px above vs
+     ~72px below → the quote looked pressed to the photo. Rebalance with
+     ASYMMETRIC padding: small top (Portfolio's padding already supplies the gap
+     above) + larger bottom (replaces the Final's missing top padding). Result:
+     even air before/after the quote. No margins. */
+  .quote-screen--wide { margin-block: 0; padding-top: clamp(6px, 1.1vh, 12px); padding-bottom: clamp(60px, 9vh, 86px); }

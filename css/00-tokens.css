@@ -63,7 +63,11 @@
   --fs-section: clamp(36px, 4.2vw, 60px);
   --fs-title: clamp(28px, 3.4vw, 48px);
   --fs-subtitle: clamp(19px, 2vw, 28px);
-  --fs-body: clamp(15px, 1.25vw, 18px);
+  /* Floor raised 15→16px: below ~1280px the clamp sat on its floor, so ALL
+     tablets (744–1180) were stuck at 15px body — smaller than the phone's 17px.
+     16px floor gives a clean ladder: tablets 16 → phone 17 → desktop 18.
+     Desktop (cap 18) and wide landscape are unchanged. ROLLBACK: restore 15px. */
+  --fs-body: clamp(16px, 1.25vw, 18px);
   --fs-micro: clamp(10px, .78vw, 12px);
 
   /* ---- Spacing scale ---- */

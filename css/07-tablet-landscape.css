@@ -59,6 +59,9 @@
   }
   .fi-title { font-size: clamp(18px, 1.8vw, 24px); margin-bottom: var(--s-3); }
   .fi-rule { margin-bottom: var(--s-3); }
-  .fi-desc { font-size: clamp(13px, 1.2vw, 15px); }
+  /* Was clamp(13px,1.2vw,15px) — matched the old 15px body floor. After the
+     body bump (now 16–18px) it read NOTICEABLY smaller than every other
+     paragraph. Track --fs-body so the panel copy equals the rest of the text. */
+  .fi-desc { font-size: var(--fs-body); }
   .fi-tag { margin-top: var(--s-4); }
 }

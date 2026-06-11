@@ -396,7 +396,11 @@
   font-size: clamp(22px, 3.6vw, 50px);
   line-height: 1.22;
   color: var(--ink);
-  font-weight: 300;
+  /* 500 = the weight actually loaded for desktop today (300 was requested but
+     never imported, so the browser already renders 500). Pinning 500 here keeps
+     desktop EXACTLY as-is now that weight 300 has been added to the font import;
+     the mobile/tablet layers (09/11) drop to the genuinely lighter 300. */
+  font-weight: 500;
 }
 /* Wide variant for longer quotes (e.g. Коллаборации) */
 .quote-screen--wide .bigquote { max-width: clamp(400px, 82vw, 1120px); }
