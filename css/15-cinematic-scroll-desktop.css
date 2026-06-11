@@ -1,0 +1,56 @@
+/* =========================================================
+   MALEA · 15 · Cinematic scroll reveal — PHILOSOPHY  (DESKTOP only, ≥1101px)
+   ---------------------------------------------------------
+   PHILOSOPHY ("Новому времени — новое искусство") — a soft ONE-SHOT reveal:
+   the whole composition rises gently from depth as it scrolls into view after
+   the cinematic deck, so the hand-off from the deck doesn't feel abrupt
+   (a gentle "появление", NOT a screen-swap). Same depth language as the deck
+   (rise from depth · soft blur clear · deck easing). Driven by
+   js/modules/cinematic-scroll.js (toggles #philosophy.op-appear).
+
+   Gated behind <html class="js-cinematic"> (set by the JS only on desktop with
+   motion allowed). Without it (no-JS / reduced-motion / ≤1100) nothing applies
+   and the composition shows normally — tablet / mobile are untouched, and the
+   content is NEVER left stuck hidden.
+
+   ►  TO ROLL BACK: remove this file's <link> AND the initCinematicScroll()
+      call in js/app.js.
+   ========================================================= */
+
+@media (min-width: 1101px) {
+
+  /* (a) Philosophy — reveal the whole composition as one soft rise.
+     Neutralise the per-element data-reveal inside so it doesn't double-move
+     (id-specificity + !important beats the reveal classes / reveal-static). */
+  html.js-cinematic #philosophy [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    transition: none !important;
+  }
+  html.js-cinematic #philosophy .philo__inner {
+    opacity: 0;
+    transform: translateY(32px) scale(0.97);
+    filter: blur(6px);
+    transform-origin: 50% 60%;
+    transition:
+      opacity   1200ms var(--op-ease),
+      transform 1200ms var(--op-ease),
+      filter    1200ms var(--op-ease);
+    will-change: transform, opacity, filter;
+  }
+  html.js-cinematic #philosophy.op-appear .philo__inner {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+}
+
+/* Safety: if motion is reduced, never leave philosophy hidden. */
+@media (prefers-reduced-motion: reduce) {
+  html.js-cinematic #philosophy .philo__inner {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+  }
+}

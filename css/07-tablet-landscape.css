@@ -34,14 +34,56 @@
   .hero__text,
   .final__text { padding-block: clamp(56px, 9vh, 110px); }
 
+  /* Philosophy → ordinary-rhythm section.
+     Base composition is a full-height centred screen; on horizontal iPads it
+     should read as a landing section in the same cadence as Live / Player. */
+  #philosophy {
+    display: block;
+    min-height: 0;
+    padding-block: var(--vr-standard);
+  }
+  #philosophy .philo__inner {
+    padding-block: 0;
+  }
+
   /* Philosophy (centred two-column) — tighten the column gap;
      Live image band — shorter gap to its text on a short viewport. */
   .philo__inner { gap: clamp(28px, 4vw, 48px); }
   .live__media { margin-bottom: clamp(72px, 8vh, 112px); }
 
-  /* Pull-quote screens feel cavernous on a short viewport —
-     bring the standalone quotes closer to a single screen. */
-  .quote-screen { min-height: 78svh; }
+  /* Pull-quotes → ordinary-rhythm sections.
+     On landscape tablets the quotes must not behave as independent screens:
+     their top/bottom air follows the same tablet section rhythm as the rest of
+     the landing, while the quote itself remains a centred editorial accent. */
+  .quote-screen {
+    min-height: 0;
+    padding-block: var(--vr-standard);
+  }
+  .bigquote { max-width: min(82%, 820px); }
+  .quote-screen--wide .bigquote { max-width: min(88%, 1040px); }
+  .bigquote__text {
+    font-size: clamp(34px, 3.2vw, 44px);
+    line-height: 1.22;
+    font-weight: 300;
+    letter-spacing: .012em;
+  }
+  .bigquote__attr { margin-top: clamp(16px, 2.2vh, 24px); letter-spacing: .2em; }
+  .bigquote::before {
+    content: "";
+    display: block;
+    width: 52px;
+    height: 1px;
+    margin: 0 auto clamp(22px, 3vh, 32px);
+    background: var(--gold-soft);
+  }
+  /* Last quote: Portfolio above already contributes its own section bottom
+     rhythm, while the following Final starts image-led. Rebalance only this
+     junction so the quote does not read as a separate screen or as a spacer. */
+  .quote-screen--wide {
+    margin-block: 0;
+    padding-top: clamp(24px, 3.5vh, 44px);
+    padding-bottom: var(--vr-standard);
+  }
 
   /* ===== 13 · FORMATS — tighter rhythm, taller images ===== */
   .fmt__line {

@@ -40,11 +40,91 @@
 }
 [data-reveal="scale"].is-in { opacity: 1; transform: scale(1); filter: blur(0); }
 
+/* Cinematic depth reveal for the three MALEA big-quote screens.
+   Uses the same JS trigger as regular [data-reveal], but starts farther back:
+   smaller, lower, blurred, dimmed and slightly tilted toward the viewer. */
+[data-reveal="depth-quote"] {
+  opacity: 0;
+  transform: perspective(980px) translate3d(0, 46px, -190px) rotateX(9deg) scale(.84);
+  transform-origin: 50% 62%;
+  filter: blur(18px) saturate(.78) brightness(.72);
+  transition:
+    opacity 1650ms var(--ease-out),
+    transform 1650ms var(--ease-out),
+    filter 1650ms var(--ease-out);
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: opacity, transform, filter;
+  backface-visibility: hidden;
+}
+[data-reveal="depth-quote"].is-in {
+  opacity: 1;
+  transform: perspective(980px) translate3d(0, 0, 0) rotateX(0deg) scale(1);
+  filter: blur(0) saturate(1) brightness(1);
+}
+
+[data-reveal="depth-quote"] .bigquote__text {
+  text-shadow: 0 0 0 rgba(216,183,108,0), 0 0 0 rgba(94,141,190,0);
+  transition: text-shadow 1900ms var(--ease-soft);
+  transition-delay: calc(var(--reveal-delay, 0ms) + 120ms);
+}
+[data-reveal="depth-quote"].is-in .bigquote__text {
+  text-shadow:
+    0 0 34px rgba(216,183,108,.10),
+    0 0 78px rgba(94,141,190,.08);
+}
+
+[data-reveal="depth-quote"] .bigquote__attr {
+  opacity: .18;
+  transform: translateY(16px);
+  transition:
+    opacity 1300ms var(--ease-out),
+    transform 1300ms var(--ease-out);
+  transition-delay: calc(var(--reveal-delay, 0ms) + 280ms);
+}
+[data-reveal="depth-quote"].is-in .bigquote__attr {
+  opacity: 1;
+  transform: none;
+}
+
+@media (max-width: 1100px) {
+  [data-reveal="depth-quote"] {
+    transform: perspective(860px) translate3d(0, 34px, -120px) rotateX(6deg) scale(.90);
+    filter: blur(13px) saturate(.84) brightness(.78);
+    transition-duration: 1450ms;
+  }
+  [data-reveal="depth-quote"].is-in {
+    transform: perspective(860px) translate3d(0, 0, 0) rotateX(0deg) scale(1);
+  }
+}
+
+@media (max-width: 760px) {
+  [data-reveal="depth-quote"] {
+    transform: perspective(760px) translate3d(0, 26px, -72px) rotateX(4deg) scale(.94);
+    filter: blur(9px) saturate(.88) brightness(.82);
+    transition-duration: 1250ms;
+  }
+  [data-reveal="depth-quote"].is-in {
+    transform: perspective(760px) translate3d(0, 0, 0) rotateX(0deg) scale(1);
+  }
+  [data-reveal="depth-quote"].is-in .bigquote__text {
+    text-shadow:
+      0 0 22px rgba(216,183,108,.08),
+      0 0 48px rgba(94,141,190,.06);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   [data-reveal], [data-reveal="line"], [data-reveal="scale"] {
     opacity: 1 !important;
     transform: none !important;
     filter: none !important;
+    transition: none !important;
+  }
+  [data-reveal="depth-quote"] .bigquote__text,
+  [data-reveal="depth-quote"] .bigquote__attr {
+    opacity: 1 !important;
+    transform: none !important;
+    text-shadow: none !important;
     transition: none !important;
   }
 }
@@ -58,5 +138,13 @@
   opacity: 1 !important;
   transform: none !important;
   filter: none !important;
+  transition: none !important;
+}
+
+.reveal-static [data-reveal="depth-quote"] .bigquote__text,
+.reveal-static [data-reveal="depth-quote"] .bigquote__attr {
+  opacity: 1 !important;
+  transform: none !important;
+  text-shadow: none !important;
   transition: none !important;
 }

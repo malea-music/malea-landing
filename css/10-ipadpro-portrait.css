@@ -115,10 +115,45 @@
    ========================================================= */
 @media (orientation: portrait) and (min-width: 960px) and (max-width: 1024px) {
 
-  /* Heading → content gap: 08's 8vh caps at 100px on this tall canvas. */
-  :root { --vr-dense: clamp(40px, 4.2vh, 60px); }
+  /* iPad Pro portrait rhythm pass.
+     08's tall-canvas scale caps at 148/176px, which makes low-density blocks
+     (especially the three MALEA pull-quotes) feel detached from the landing
+     cadence. Bring the whole Pro portrait rhythm onto a tighter editorial step,
+     then tune quotes as compact accent sections below. */
+  :root {
+    --vr-standard: clamp(72px, 6vh, 96px);
+    --vr-dense:    clamp(40px, 4.2vh, 60px);
+    --vr-generous: clamp(72px, 6vh, 96px);
+  }
+
+  /* Pull-quotes on iPad Pro portrait are editorial accents, not full sections.
+     Keep them in the same cadence as surrounding sections, but use a tighter
+     self-padding because the quote content itself is intentionally low-density. */
+  .quote-screen {
+    min-height: 0;
+    padding-block: clamp(48px, 4.5vh, 64px);
+  }
+  .bigquote { max-width: min(86%, 760px); }
+  .quote-screen--wide .bigquote { max-width: min(90%, 940px); }
+
+  /* Last quote sits between Portfolio (which already has bottom padding) and the
+     image-led Final. Use asymmetric padding so the visible air above and below
+     reads balanced instead of creating a separate pause. */
+  .quote-screen--wide {
+    margin-block: 0;
+    padding-top: clamp(18px, 2vh, 28px);
+    padding-bottom: clamp(60px, 5.5vh, 80px);
+  }
 
   /* ===== 04 · PHILOSOPHY → 2 columns (heading | text) ===== */
+  #philosophy {
+    display: block;
+    min-height: 0;
+    padding-block: var(--vr-standard);
+  }
+  #philosophy .philo__inner {
+    padding-block: 0;
+  }
   .philo__inner { grid-template-columns: 1.4fr 1fr; gap: clamp(40px, 6vw, 80px); padding-inline: 0; }
   .philo__heading { white-space: normal; text-align: left; }
   .philo__text p { max-width: 56ch; margin-inline: 0; }
