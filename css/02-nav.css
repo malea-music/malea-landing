@@ -17,6 +17,11 @@
   border-bottom: 1px solid transparent;
 }
 .nav.is-visible { transform: translateY(0); opacity: 1; }
+html.js-opening .nav {
+  transition: transform .96s var(--op-ease, var(--ease-out)), opacity .96s var(--op-ease, var(--ease-out)),
+              background .5s ease, border-color .5s ease;
+}
+html.opening-nav-visible .nav { transform: translateY(0); opacity: 1; }
 .nav.is-solid {
   background: rgba(5, 10, 24, .78);
   -webkit-backdrop-filter: blur(16px);

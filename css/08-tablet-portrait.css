@@ -97,10 +97,39 @@
   .live-format-row:hover { padding-left: 0; }
   .live-text-btn { grid-column: 1 / -1; grid-row: auto; align-self: auto; margin-top: var(--s-6); margin-bottom: 0; text-align: center; }
 
-  /* ===== 06 · QUOTE screens ============================ */
-  .quote-screen { min-height: 70svh; }
-  .bigquote { max-width: min(90%, 680px); }
-  .quote-screen--wide .bigquote { max-width: min(94%, 820px); }
+  /* ===== 06 · QUOTE sections =========================== */
+  /* Quotes are not tablet "screens": they sit in the same vertical cadence as
+     the rest of the landing sections, with no viewport-height floor. Phone and
+     mid-tablet refinement layers loaded later keep their tighter overrides. */
+  .quote-screen {
+    min-height: 0;
+    padding-block: var(--vr-standard);
+  }
+  .bigquote { max-width: min(90%, 720px); }
+  .quote-screen--wide .bigquote { max-width: min(94%, 900px); }
+  .bigquote__text {
+    font-size: clamp(30px, 4vw, 40px);
+    line-height: 1.24;
+    font-weight: 300;
+    letter-spacing: .015em;
+  }
+  .bigquote__attr { margin-top: clamp(16px, 2vh, 24px); letter-spacing: .2em; }
+  .bigquote::before {
+    content: "";
+    display: block;
+    width: 52px;
+    height: 1px;
+    margin: 0 auto clamp(24px, 3vh, 34px);
+    background: var(--gold-soft);
+  }
+  /* Last quote: Portfolio already has a full section bottom rhythm above it,
+     Final is image-led below it. Keep the quote in-flow, but make this edge
+     transition visually even on the large portrait iPad band. */
+  .quote-screen--wide {
+    margin-block: 0;
+    padding-top: clamp(20px, 2.8vh, 40px);
+    padding-bottom: var(--vr-standard);
+  }
 
   /* ===== 07 · PLAYER ================================== */
   /* One stacked column, centred so cards keep a readable width. */

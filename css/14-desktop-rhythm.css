@@ -1,0 +1,65 @@
+/* =========================================================
+   MALEA · 14 · Desktop section rhythm  (DESKTOP only, ≥1101px)
+   ---------------------------------------------------------
+   Brings the post-deck stretch into the landing's unified section
+   rhythm. After the cinematic deck ends on "Голос космоса" (identity),
+   the following screens must read as ORDINARY sections, not separate
+   full-height screens.
+
+   · #philosophy ("Новому времени — новое искусство") was a full-screen
+     centred composition (display:grid; place-items:center; min-height:
+     100svh). Here it flows as a normal section with the standard
+     `--vr-standard` block rhythm — exactly like identity / performance /
+     art / live, so identity → philosophy → live read in one cadence.
+   · #live is already `.pad-block` (standard rhythm) — left as is.
+   · .quote-screen (all three pull-quotes) were full-height screens
+     (min-height:92svh). Here they flow as ordinary sections with the same
+     `--vr-standard` block rhythm — so the gap before/after each quote
+     matches the cadence of every other section.
+
+   Scope is strictly ≥1101px. Tablets / mobile (≤1100) keep their own
+   philosophy / quote handling untouched (tuned separately).
+
+   ►  TO ROLL BACK: remove this file's <link> in index.html.
+   ========================================================= */
+
+@media (min-width: 1101px) {
+  /* Philosophy → normal-rhythm section (was a full-screen centred block). */
+  #philosophy {
+    display: block;
+    min-height: 0;
+    padding-block: var(--vr-standard);
+  }
+  /* Rhythm now comes from the section padding above — drop the inner block
+     padding so spacing matches every other section (no double inset). */
+  #philosophy .philo__inner {
+    padding-block: 0;
+  }
+
+  /* Pull-quotes → ordinary-rhythm sections (were full-height screens).
+     Keeps the centred quote composition; spacing before/after now equals the
+     standard section rhythm. */
+  .quote-screen {
+    min-height: 0;
+    padding-block: var(--vr-standard);
+  }
+
+  /* …and they emerge SOFTLY FROM DEPTH on scroll-in, so the accent feels alive
+     and harmonises with the deck / philosophy depth language. Reuses the global
+     data-reveal (already on every .bigquote) — just a deeper start + the deck's
+     easing. The .is-in override needs higher specificity than the base reveal so
+     the quote actually resolves to its resting state. */
+  .quote-screen .bigquote[data-reveal] {
+    transform: translateY(34px) scale(0.965);
+    filter: blur(7px);
+    transition:
+      opacity   1150ms var(--op-ease),
+      transform 1150ms var(--op-ease),
+      filter    1150ms var(--op-ease);
+    will-change: transform, opacity, filter;
+  }
+  .quote-screen .bigquote[data-reveal].is-in {
+    transform: none;
+    filter: none;
+  }
+}

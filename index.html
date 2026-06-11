@@ -9,18 +9,21 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,500;1,300;1,500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/00-tokens.css?v=5">
-<link rel="stylesheet" href="css/01-base.css?v=10">
-<link rel="stylesheet" href="css/02-nav.css?v=12">
+<link rel="stylesheet" href="css/01-base.css?v=12">
+<link rel="stylesheet" href="css/02-nav.css?v=14">
 <link rel="stylesheet" href="css/03-modal.css?v=5">
 <link rel="stylesheet" href="css/04-components.css?v=6">
 <link rel="stylesheet" href="css/05-screens.css?v=50">
-<link rel="stylesheet" href="css/06-motion.css?v=3">
-<link rel="stylesheet" href="css/07-tablet-landscape.css?v=3">
-<link rel="stylesheet" href="css/08-tablet-portrait.css?v=5">
+<link rel="stylesheet" href="css/06-motion.css?v=4">
+<link rel="stylesheet" href="css/07-tablet-landscape.css?v=5">
+<link rel="stylesheet" href="css/08-tablet-portrait.css?v=6">
 <link rel="stylesheet" href="css/09-mobile-refinements.css?v=18">
-<link rel="stylesheet" href="css/10-ipadpro-portrait.css?v=5">
-<link rel="stylesheet" href="css/11-tablet-portrait-refine.css?v=12">
+<link rel="stylesheet" href="css/10-ipadpro-portrait.css?v=7">
+<link rel="stylesheet" href="css/11-tablet-portrait-refine.css?v=14">
 <link rel="stylesheet" href="css/12-unified-bg.css?v=1">
+  <link rel="stylesheet" href="css/13-opening-desktop.css?v=11">
+<link rel="stylesheet" href="css/14-desktop-rhythm.css?v=3">
+<link rel="stylesheet" href="css/15-cinematic-scroll-desktop.css?v=2">
 </head>
 <body>
 
@@ -68,8 +71,14 @@
 
 <main>
 
+<!-- ============ OPENING STAGE (desktop/landscape: intro→hero→identity; portrait tablets/mobile: intro→hero) ============ -->
+<!-- Wrapper is `display:contents` by default → inert on no-JS/
+     reduced-motion. Becomes a 1-viewport stage only under html.js-opening
+     (set by js/modules/opening.js on desktop/tablets/mobile). See css/13-opening-desktop.css. -->
+<div id="opening" class="opening-stage">
+
 <!-- ============ 01 · INTRO ============ -->
-<section class="section full" id="intro">
+<section class="section full op-layer" id="intro">
   <div>
     <h1 class="intro__mark" data-reveal="scale">MALEA</h1>
     <p class="intro__sub" data-reveal style="--reveal-delay:160ms">Сакральный артист. Искусство Нового времени.</p>
@@ -77,7 +86,7 @@
 </section>
 
 <!-- ============ 02 · HERO ============ -->
-<section class="section full" id="hero">
+<section class="section full op-layer" id="hero">
   <div class="hero__text">
     <span class="overline hero__overline" data-reveal>Сакральный артист</span>
     <h2 class="hero__title" data-reveal style="--reveal-delay:80ms">MALEA</h2>
@@ -92,7 +101,7 @@
 </section>
 
 <!-- ============ 03 · IDENTITY ============ -->
-<section class="section pad-block" id="identity">
+<section class="section pad-block op-layer" id="identity">
   <div class="aura"></div>
   <div class="wrap identity__inner">
       <div class="identity__portrait" data-reveal="scale">
@@ -110,6 +119,8 @@
       </div>
   </div>
 </section>
+
+</div><!-- /#opening (opening-stage) -->
 
 <!-- ============ 04 · PHILOSOPHY ============ -->
 <section class="section full" id="philosophy">
@@ -171,7 +182,7 @@
 <!-- ============ 06 · QUOTE ============ -->
 <section class="section full quote-screen">
   <div class="aura"></div>
-  <blockquote class="bigquote wrap" data-reveal>
+  <blockquote class="bigquote wrap" data-reveal="depth-quote">
     <p class="bigquote__text">Это высоковибрационная музыка, через которую я провожу энергии Нового Времени в Матрицу.</p>
     <footer class="bigquote__attr">— MALEA</footer>
   </blockquote>
@@ -188,7 +199,7 @@
 
     <div class="players">
       <!-- Track 01 -->
-      <article class="ptrack" data-track data-src="https://storage.yandexcloud.net/malea-tracks/Кит%20и%20432%20ГЦ.mp3" data-reveal>
+      <article class="ptrack" data-track data-src="https://storage.yandexcloud.net/malea-tracks/Кит%20и%20432%20ГЦ.mp3">
         <button class="ptrack__play" type="button" aria-label="Воспроизвести «Кит и 432 Гц»"></button>
         <div class="ptrack__body">
           <div class="ptrack__top">
@@ -205,7 +216,7 @@
       </article>
 
       <!-- Track 02 -->
-      <article class="ptrack" data-track data-src="https://storage.yandexcloud.net/malea-tracks/Orgasm.mp3" data-reveal>
+      <article class="ptrack" data-track data-src="https://storage.yandexcloud.net/malea-tracks/Orgasm.mp3">
         <button class="ptrack__play" type="button" aria-label="Воспроизвести «Оргазм»"></button>
         <div class="ptrack__body">
           <div class="ptrack__top">
@@ -222,7 +233,7 @@
       </article>
 
       <!-- Track 03 -->
-      <article class="ptrack" data-track data-src="https://storage.yandexcloud.net/malea-tracks/The%20Higher%20Self.mp3" data-reveal>
+      <article class="ptrack" data-track data-src="https://storage.yandexcloud.net/malea-tracks/The%20Higher%20Self.mp3">
         <button class="ptrack__play" type="button" aria-label="Воспроизвести «The Higher Self»"></button>
         <div class="ptrack__body">
           <div class="ptrack__top">
@@ -250,25 +261,25 @@
       <p class="shead__text" data-reveal style="--reveal-delay:160ms">Концерты MALEA проходят в формате живого звукового перформанса с аудиторией от 20 до 500 человек. Продолжительность от 1 до 2 часов. Формат адаптируется под масштаб площадки и технические возможности события.</p>
     </div>
     <div class="perf__grid">
-      <figure class="perf__item" data-reveal>
+      <figure class="perf__item">
         <div class="video-frame" data-video-provider="kinescope" data-video-ratio="16:9">
           <iframe src="https://kinescope.io/embed/eguqXWrJUqbUwCjsAoG83E" allow="autoplay; fullscreen; picture-in-picture; encrypted-media; gyroscope; accelerometer; clipboard-write; screen-wake-lock;" frameborder="0" allowfullscreen loading="lazy"></iframe>
         </div>
         <figcaption class="media-caption"><span class="media-caption__idx">01</span><span class="media-caption__name">Мистерия зимнего солнцестояния</span></figcaption>
       </figure>
-      <figure class="perf__item" data-reveal style="--reveal-delay:100ms">
+      <figure class="perf__item">
         <div class="video-frame" data-video-provider="kinescope" data-video-ratio="16:9">
           <iframe src="https://kinescope.io/embed/pER2MuSbTEH3ENpq6zp4Va" allow="autoplay; fullscreen; picture-in-picture; encrypted-media; gyroscope; accelerometer; clipboard-write; screen-wake-lock;" frameborder="0" allowfullscreen loading="lazy"></iframe>
         </div>
         <figcaption class="media-caption"><span class="media-caption__idx">02</span><span class="media-caption__name">Первое в России Art Digital Show</span></figcaption>
       </figure>
-      <figure class="perf__item" data-reveal>
+      <figure class="perf__item">
         <div class="video-frame" data-video-provider="kinescope" data-video-ratio="16:9">
           <iframe src="https://kinescope.io/embed/aRyL76qmzYfyWGHWCRM7dJ" allow="autoplay; fullscreen; picture-in-picture; encrypted-media; gyroscope; accelerometer; clipboard-write; screen-wake-lock;" frameborder="0" allowfullscreen loading="lazy"></iframe>
         </div>
         <figcaption class="media-caption"><span class="media-caption__idx">03</span><span class="media-caption__name">Концерт в Москве</span></figcaption>
       </figure>
-      <figure class="perf__item" data-reveal style="--reveal-delay:100ms">
+      <figure class="perf__item">
         <div class="video-frame" data-video-provider="kinescope" data-video-ratio="16:9">
           <iframe src="https://kinescope.io/embed/pV2aioBHJsgHQ6E6xB7psB" allow="autoplay; fullscreen; picture-in-picture; encrypted-media; gyroscope; accelerometer; clipboard-write; screen-wake-lock;" frameborder="0" allowfullscreen loading="lazy"></iframe>
         </div>
@@ -287,19 +298,19 @@
       <p class="shead__text" data-reveal style="--reveal-delay:160ms">Каждый перформанс MALEA сопровождается визуальным слоем, который усиливает восприятие звука. Digital-art контент создаётся под музыкальные композиции и транслируется на экраны или с помощью проекционного оборудования. Звук и образ формируют единое поле переживания.</p>
     </div>
     <div class="art__grid">
-      <figure class="art__feature" data-reveal>
+      <figure class="art__feature">
         <div class="video-frame" data-video-provider="kinescope" data-video-ratio="16:9">
           <iframe src="https://kinescope.io/embed/tm4UgzvBVPh2qpVgyaR7va" allow="autoplay; fullscreen; picture-in-picture; encrypted-media; gyroscope; accelerometer; clipboard-write; screen-wake-lock;" frameborder="0" allowfullscreen loading="lazy"></iframe>
         </div>
         <figcaption class="media-caption"><span class="media-caption__idx">01</span><span class="media-caption__name">Кит и 432 ГЦ</span></figcaption>
       </figure>
-      <figure class="art__small art__small--top" data-reveal style="--reveal-delay:100ms">
+      <figure class="art__small art__small--top">
         <div class="video-frame" data-video-provider="kinescope" data-video-ratio="16:9">
           <iframe src="https://kinescope.io/embed/cpe25yMeydLCasvaQxFCtQ" allow="autoplay; fullscreen; picture-in-picture; encrypted-media; gyroscope; accelerometer; clipboard-write; screen-wake-lock;" frameborder="0" allowfullscreen loading="lazy"></iframe>
         </div>
         <figcaption class="media-caption"><span class="media-caption__idx">02</span><span class="media-caption__name">Forest</span></figcaption>
       </figure>
-      <figure class="art__small art__small--bottom" data-reveal style="--reveal-delay:180ms">
+      <figure class="art__small art__small--bottom">
         <div class="video-frame" data-video-provider="kinescope" data-video-ratio="16:9">
           <iframe src="https://kinescope.io/embed/sLtWtkoMKThdG7S44JXakM" allow="autoplay; fullscreen; picture-in-picture; encrypted-media; gyroscope; accelerometer; clipboard-write; screen-wake-lock;" frameborder="0" allowfullscreen loading="lazy"></iframe>
         </div>
@@ -316,7 +327,7 @@
       <h2 class="shead__title" data-reveal>Музыканты живого<br>перформанса</h2>
     </div>
     <div class="mus__grid">
-      <article class="mus__card" data-reveal>
+      <article class="mus__card">
         <div class="mus__photo"><img src="https://optim.tildacdn.com/tild3964-6630-4938-a263-313036333836/-/format/webp/_5_.jpg.webp" alt="Ашот Даниелян" loading="lazy"></div>
         <div class="mus__info">
           <span class="mus__role">Композитор · Ambient &amp; Meditation</span>
@@ -324,7 +335,7 @@
           <p class="mus__desc">Композитор-мистик. Дар написания музыки раскрылся ещё в 7 лет.</p>
         </div>
       </article>
-      <article class="mus__card" data-reveal style="--reveal-delay:120ms">
+      <article class="mus__card">
         <div class="mus__photo"><img src="https://optim.tildacdn.com/tild3731-3432-4736-b830-663230336332/-/format/webp/_5__1.jpg.webp" alt="Даша Кошелева" loading="lazy"></div>
         <div class="mus__info">
           <span class="mus__role">Мультиинструменталист · Продюсер</span>
@@ -332,7 +343,7 @@
           <p class="mus__desc">Аранжировщик, композитор, музыкальный продюсер и психотерапевт.</p>
         </div>
       </article>
-      <article class="mus__card" data-reveal style="--reveal-delay:240ms">
+      <article class="mus__card">
         <div class="mus__photo"><img src="https://optim.tildacdn.com/tild3333-3061-4866-b933-306239363137/-/format/webp/_5_.jpg.webp" alt="Максим Приклонский" loading="lazy"></div>
         <div class="mus__info">
           <span class="mus__role">Гитарист · Аранжировщик</span>
@@ -351,7 +362,7 @@
       <h2 class="shead__title" data-reveal>Как ощущается музыка <br>и перформанс MALEA</h2>
       <p class="shead__sub" data-reveal style="--reveal-delay:80ms">Обратная связь участников</p>
       <p class="shead__text" data-reveal style="--reveal-delay:140ms">Каждый опыт индивидуален. Иногда это мягкое погружение. Иногда — интенсивный внутренний процесс. Для многих это становится точкой внутреннего сдвига.</p>
-      <div class="rev__states" data-reveal style="--reveal-delay:200ms">
+      <div class="rev__states">
 <ul class="rev__states-list">
           <li><span class="n">01</span><span>Соединение с собой</span></li>
           <li><span class="n">02</span><span>Высвобождение эмоций</span></li>
@@ -393,7 +404,7 @@
 <!-- ============ Quote · MALEA ============ -->
 <section class="section full quote-screen">
   <div class="aura"></div>
-  <blockquote class="bigquote wrap" data-reveal>
+  <blockquote class="bigquote wrap" data-reveal="depth-quote">
     <p class="bigquote__text">Через меня люди соединяются со своей сутью и глубиной</p>
     <footer class="bigquote__attr">— MALEA</footer>
   </blockquote>
@@ -417,14 +428,14 @@
         </button>
       </div>
       <div class="egypt__body">
-        <p class="egypt__text" data-reveal style="--reveal-delay:80ms">В день весеннего равноденствия Екатерина получила приглашение провести перформанс в пирамиде Хеопса в Египте. После первого выступления последовало ещё три приглашения:</p>
-        <ol class="egypt__timeline" data-reveal style="--reveal-delay:140ms">
+        <p class="egypt__text">В день весеннего равноденствия Екатерина получила приглашение провести перформанс в пирамиде Хеопса в Египте. После первого выступления последовало ещё три приглашения:</p>
+        <ol class="egypt__timeline">
           <li><span>Второе выступление в пирамиде</span></li>
           <li><span>Участие в путешествии по Нилу с практиками кундалини-активаций</span></li>
           <li><span>Перформанс для VIP-группы у Сфинкса</span></li>
           <li><span>Закрытый концерт в Дахабе</span></li>
         </ol>
-        <div class="egypt__concl" data-reveal style="--reveal-delay:200ms">
+        <div class="egypt__concl">
           <p>Этот кейс показал важное: музыка MALEA органично встраивается в разные процессы и усиливает их.</p>
           <p>Организаторы продолжают интегрировать выступления Екатерины в свои программы, потому что это даёт глубину, которую сложно получить другими инструментами. Формат масштабируется и адаптируется под разные культурные и событийные контексты.</p>
         </div>
@@ -441,7 +452,7 @@
     </div>
     <div class="fmt__list">
 
-      <article class="fmt__line" data-reveal>
+      <article class="fmt__line">
         <div class="fmt__line-media">
           <img src="https://optim.tildacdn.com/tild3532-6266-4731-b063-333239303835/-/format/webp/_9_1_-___1.jpg.webp" alt="Для фестивалей" loading="lazy">
         </div>
@@ -461,7 +472,7 @@
         </div>
       </article>
 
-      <article class="fmt__line" data-reveal style="--reveal-delay:80ms">
+      <article class="fmt__line">
         <div class="fmt__line-media">
           <img src="https://optim.tildacdn.com/tild3436-3139-4939-b930-656131316563/-/format/webp/_9_2_-____1.jpg.webp" alt="Интеграция в ретрит" loading="lazy">
         </div>
@@ -480,7 +491,7 @@
         </div>
       </article>
 
-      <article class="fmt__line" data-reveal style="--reveal-delay:160ms">
+      <article class="fmt__line">
         <div class="fmt__line-media">
           <img src="https://optim.tildacdn.com/tild3732-3335-4435-a434-626235323934/-/format/webp/_9_3_VIP_1.jpg.webp" alt="VIP-формат" loading="lazy">
         </div>
@@ -499,7 +510,7 @@
         </div>
       </article>
 
-      <article class="fmt__line" data-reveal style="--reveal-delay:240ms">
+      <article class="fmt__line">
         <div class="fmt__line-media">
           <img src="https://optim.tildacdn.com/tild3134-3530-4039-b133-303933616131/-/format/webp/_9_4___1.jpg.webp" alt="Написание исцеляющих треков" loading="lazy">
         </div>
@@ -525,19 +536,19 @@
   <div class="wrap">
     <h2 class="slots__head" data-reveal>Выступление<br>может быть встроено как:</h2>
     <div class="fi-panels">
-      <div class="fi-panel" data-reveal>
+      <div class="fi-panel">
         <h3 class="fi-title">Центральный<br>перформанс события</h3>
         <div class="fi-rule" aria-hidden="true"></div>
         <p class="fi-desc">Звук и образ становятся смысловым центром вечера. Всё выстраивается вокруг выступления — гости погружаются в опыт как в главное событие.</p>
         <span class="fi-tag">Основная программа</span>
       </div>
-      <div class="fi-panel" data-reveal style="--reveal-delay:120ms">
+      <div class="fi-panel">
         <h3 class="fi-title">Усиление<br>программы</h3>
         <div class="fi-rule" aria-hidden="true"></div>
         <p class="fi-desc">MALEA вписывается в структуру события как точка перехода — усиливает общую атмосферу, добавляет глубину и смысловой слой к существующей программе.</p>
         <span class="fi-tag">Поддержка формата</span>
       </div>
-      <div class="fi-panel" data-reveal style="--reveal-delay:240ms">
+      <div class="fi-panel">
         <h3 class="fi-title">Закрывающий или<br>открывающий слот</h3>
         <div class="fi-rule" aria-hidden="true"></div>
         <p class="fi-desc">Задаёт тон с первых минут или оставляет послевкусие, которое остаётся с гостями. Завершение на высокой ноте — или открытие пространства для вечера.</p>
@@ -555,26 +566,26 @@
   <div class="wrap">
     <div class="shead" data-reveal>
       <h2 class="shead__title">Почему MALEA включают<br>в программу событий</h2>
-      <p class="shead__sub" data-reveal style="--reveal-delay:80ms">Формат, который выделяет ее среди других</p>
+      <p class="shead__sub">Формат, который выделяет ее среди других</p>
     </div>
     <div class="why__media" data-reveal="scale">
       <img src="https://optim.tildacdn.com/tild6530-6534-4063-a465-346663376336/-/format/webp/_10.jpg.webp" alt="MALEA — почему включают в программу событий" loading="lazy">
     </div>
     <div class="why__args">
-      <div class="why__arg" data-reveal>
+      <div class="why__arg">
         <h4>Живой отклик аудитории</h4>
         <p>Гости не остаются наблюдателями — они входят в переживание опыта и уходят с ощущением чего-то большего.</p>
       </div>
-      <div class="why__arg" data-reveal style="--reveal-delay:100ms">
+      <div class="why__arg">
         <h4>Уникальный формат</h4>
         <p>MALEA соединяет живой звук, визуальное искусство и работу с состоянием человека в единое переживание.</p>
       </div>
-      <div class="why__arg" data-reveal style="--reveal-delay:200ms">
+      <div class="why__arg">
         <h4>Гибкость интеграции</h4>
         <p>Формат легко адаптируется под фестивали, ретриты, корпоративные и закрытые частные события.</p>
       </div>
     </div>
-    <div class="why__cta" data-reveal style="--reveal-delay:120ms">
+    <div class="why__cta">
       <button class="btn btn--gold" type="button" data-modal-open><span>Обсудить участие MALEA</span></button>
     </div>
   </div>
@@ -591,7 +602,7 @@
       <img src="https://optim.tildacdn.com/tild3037-6237-4862-b761-396230326531/-/format/webp/_11_1.jpg.webp" alt="MALEA — портфолио выступлений и партнерств" loading="lazy">
     </div>
     <div class="pm-grid">
-      <div class="pm-col" data-reveal>
+      <div class="pm-col">
         <div class="pm-col-header">
           <span class="pm-col-num">I</span>
           <span class="pm-col-title">Фестивали и события</span>
@@ -604,7 +615,7 @@
           <div class="pm-event"><span class="pm-event-name">TANTRA NEKTAR</span><span class="pm-event-type">Закрытое мероприятие</span></div>
         </div>
       </div>
-      <div class="pm-col" data-reveal style="--reveal-delay:120ms">
+      <div class="pm-col">
         <div class="pm-col-header">
           <span class="pm-col-num">II</span>
           <span class="pm-col-title">Коллаборации</span>
@@ -617,7 +628,7 @@
           <div class="pm-partner pm-partner--spacer" aria-hidden="true"></div>
         </div>
       </div>
-      <div class="pm-col" data-reveal style="--reveal-delay:240ms">
+      <div class="pm-col">
         <div class="pm-col-header">
           <span class="pm-col-num">III</span>
           <span class="pm-col-title">В программе 2026</span>
@@ -637,7 +648,7 @@
 <!-- ============ Quote · Коллаборации ============ -->
 <section class="section full quote-screen quote-screen--wide">
   <div class="aura"></div>
-  <blockquote class="bigquote wrap" data-reveal>
+  <blockquote class="bigquote wrap" data-reveal="depth-quote">
     <p class="bigquote__text">Коллаборации — моя стратегия. В них рождаются новые формы опыта, где звук становится частью глубинной работы с человеком и переводит духовные практики в пространство искусства Нового времени.</p>
     <footer class="bigquote__attr">— MALEA</footer>
   </blockquote>
@@ -647,16 +658,16 @@
 <section class="section" id="final-experience">
   <div class="final__text">
     <h2 class="final__heading" data-reveal>Создать опыт<br>с MALEA</h2>
-    <div class="final__body" data-reveal style="--reveal-delay:140ms">
+    <div class="final__body">
       <p>Каждое событие MALEA рождается в диалоге с пространством, людьми и замыслом.</p>
       <p>Мы смотрим не только на формат — а на то, какое состояние вы хотите создать у своей аудитории.</p>
       <p>Мы предложим решение, которое органично встроится в вашу программу и усилит её глубину и воздействие.</p>
     </div>
-    <div data-reveal style="--reveal-delay:200ms">
+    <div data-reveal style="--reveal-delay:120ms">
       <button class="btn btn--gold" type="button" data-modal-open><span>Обсудить интеграцию</span></button>
     </div>
   </div>
-  <div class="final__media" data-reveal="scale">
+  <div class="final__media">
     <img src="https://optim.tildacdn.com/tild3730-6461-4930-b734-646461313166/-/format/webp/_13.jpg.webp" alt="MALEA — создать опыт" loading="lazy">
   </div>
 </section>
@@ -718,6 +729,6 @@
   </div>
 </div>
 
-<script type="module" src="js/app.js?v=2"></script>
+<script type="module" src="js/app.js?v=24"></script>
 </body>
 </html>

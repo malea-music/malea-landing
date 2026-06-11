@@ -36,8 +36,12 @@
   /* ---------- B · Kill the full-height voids ----------
      On a tall portrait the 100svh statement / 70svh quote screens
      floated a tiny block in ~700px of emptiness. Make them flow. */
-  #philosophy { min-height: 0; }
-  #philosophy .philo__inner { padding-block: clamp(44px, 5.5vh, 68px); }
+  #philosophy {
+    display: block;
+    min-height: 0;
+    padding-block: var(--vr-standard);
+  }
+  #philosophy .philo__inner { padding-block: 0; }
   .quote-screen { min-height: 0; padding-block: clamp(48px, 6vh, 76px); }
 
   /* ---------- C · Centre the horizontal musician cards ----------
@@ -60,8 +64,8 @@
   /* ---------- F · Pull-quotes · Direction A (editorial accent) ----------
      Same treatment as the phone layer, scaled for the wider portrait canvas:
      a touch more size for presence, a tight byline that belongs to the quote,
-     and a short gold rule above as an anchor. (iPad Pro 12.9" / 960–1024 is
-     outside this query, so it is intentionally left untouched.) */
+     and a short gold rule above as an anchor. Larger portrait iPads inherit
+     the same tablet quote principle from 08-tablet-portrait. */
   .bigquote__text { font-size: clamp(30px, 4vw, 34px); line-height: 1.24; font-weight: 300; letter-spacing: .015em; }
   .bigquote__attr { margin-top: clamp(16px, 2vh, 22px); letter-spacing: .2em; }
   .bigquote::before {

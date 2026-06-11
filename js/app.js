@@ -5,6 +5,8 @@ import { initAudioPlayer } from './modules/audio-player.js';
 import { initVideoModal } from './modules/video-modal.js';
 import { initReviewsCarousel } from './modules/reviews-carousel.js';
 import { initReveal } from './modules/reveal.js';
+import { initOpening } from './modules/opening.js?v=10';
+import { initCinematicScroll } from './modules/cinematic-scroll.js?v=3';
 
 function safeInit(name, fn) {
   try {
@@ -23,6 +25,8 @@ function initApp() {
   safeInit('video-modal', initVideoModal);
   safeInit('reviews-carousel', initReviewsCarousel);
   safeInit('reveal', initReveal);
+  safeInit('opening', initOpening);
+  safeInit('cinematic-scroll', initCinematicScroll);
 }
 
 if (document.readyState === 'loading') {
