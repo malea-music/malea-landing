@@ -1,30 +1,30 @@
 {
-  "generatedAt": "2026-06-12T11:28:54.122Z",
+  "generatedAt": "2026-06-12T11:37:41.037Z",
   "publicBase": "https://events.malea-soundhealing.com",
   "parts": [
     {
       "file": "parts/01-css-tokens-base.html",
-      "bytes": 10260
+      "bytes": 8530
     },
     {
       "file": "parts/02-css-nav-modal-components.html",
-      "bytes": 22723
+      "bytes": 21039
     },
     {
       "file": "parts/03-css-screens.html",
-      "bytes": 50430
+      "bytes": 44334
     },
     {
       "file": "parts/04-css-motion-tablets.html",
-      "bytes": 20976
+      "bytes": 13996
     },
     {
       "file": "parts/05-css-ipad-mobile.html",
-      "bytes": 27485
+      "bytes": 10593
     },
     {
       "file": "parts/06-css-final-tilda-color-font-guard.html",
-      "bytes": 20622
+      "bytes": 10296
     },
     {
       "file": "parts/07-html-nav-opening-philosophy.html",

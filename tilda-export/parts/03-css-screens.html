@@ -1,33 +1,13 @@
 <!-- MALEA / Tilda export / 03 / screens -->
 <style id="malea-tilda-css-03-screens">
-/* ===== 05-screens.css ===== */
-/* =========================================================
-   MALEA · Screen compositions
-   One block per screen — desktop, tablet, mobile in one place.
-   Breakpoints:
-     desktop          default (>1100) — also drives landscape tablets (1024+)
-     tablet portrait  761–1100 + (orientation: portrait)
-     mobile           <=760
-     tiny             <=420
-   Landscape-tablet vertical-rhythm tuning lives in 07-tablet-landscape.css.
-   ========================================================= */
-
-/* ===== 01 · INTRO ===================================== */
 #intro {
-  /* Flexbox (not grid place-items) reliably stretches the container to min-height
-     and centres the content on every mobile engine — a grid container with only
-     auto/content rows can fail to expand to min-height on some WebKit/iOS builds,
-     which made the intro fall short of the screen while the hero (explicit 1fr
-     row) filled correctly. */
+  
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
-  /* Static full screen: lvh = large (toolbar-retracted) viewport. Always ≥ the
-     screen (nothing peeks below) AND a fixed height — it does NOT resize while the
-     mobile toolbar shows/hides, so there's no scroll jitter. (Dynamic vh / JS-driven
-     heights reflow on every toolbar frame → the jump.) 100vh = lvh on iOS (fallback). */
+  
   min-height: 100vh;
   min-height: 100lvh;
   background:
@@ -57,21 +37,19 @@
   .intro__mark { font-size: 22vw; }
 }
 
-/* (Intro full-screen is now handled in the base #intro rule above — all devices.) */
 
-/* ===== 02 · HERO ====================================== */
+
+
 #hero {
   display: grid;
   grid-template-columns: 45fr 55fr;
   align-items: stretch;
   overflow: hidden;
   position: relative;
-  /* Static full screen (see #intro): lvh never resizes on scroll → no jitter,
-     and is always ≥ the screen so the next section never peeks below. */
+  
   min-height: 100vh;
   min-height: 100lvh;
-  /* Dark blue, lifted from void; the photo's shadows are graded to this SAME tone
-     (lighten) and the edge fades resolve to it — dark photo edges = background. */
+  
   background: var(--bg-deep);
 }
 .hero__text {
@@ -86,15 +64,14 @@
 .hero__lede { font-size: var(--fs-subtitle); color: var(--ink-soft); font-weight: 300; max-width: 34ch; margin-bottom: var(--s-7); line-height: 1.4; }
 .hero__media { position: relative; z-index: 1; isolation: isolate; }
 .hero__media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-/* Technique B — lift the photo's blacks to bg-deep so its shadow zones become
-   exactly the background; only the deepest shadows change, the lit subject stays. */
+
 .hero__media::before {
   content: ""; position: absolute; inset: 0; z-index: 1;
   background: var(--bg-deep);
   mix-blend-mode: lighten;
   pointer-events: none;
 }
-/* Short eased fade settling any bright pixels right at the inner edge. */
+
 .hero__media::after {
   content: ""; position: absolute; inset: 0; z-index: 2;
   background: linear-gradient(90deg,
@@ -105,9 +82,9 @@
     transparent 46%);
 }
 
-/* Portrait tablets handled in 08-tablet-portrait.css. */
 
-/* Phones — full-screen stacked: photo fills the top (1fr), text settles below. */
+
+
 @media (max-width: 760px) {
   #hero { grid-template-columns: 1fr; grid-template-rows: 1fr auto; }
   .hero__media { order: -1; min-height: 0; }
@@ -115,7 +92,7 @@
   .hero__text { justify-content: flex-start; padding-inline: var(--page-x); padding-block: clamp(22px, 3.5vh, 40px) clamp(30px, 5.5vh, 52px); }
 }
 
-/* Stacked (phones + portrait tablets): figure centre-right, text/CTA centred. */
+
 @media (max-width: 760px),
        (orientation: portrait) and (min-width: 700px) and (max-width: 1024px) {
   .hero__media img { object-position: 38% 50%; }
@@ -124,7 +101,7 @@
   .hero__overline::after { content: ""; width: clamp(28px, 4vw, 56px); height: 1px; background: var(--gold-line); }
 }
 
-/* ===== 03 · IDENTITY ================================== */
+
 .identity__inner {
   display: grid;
   grid-template-columns: 46fr 54fr;
@@ -140,7 +117,7 @@
   overflow: visible;
   isolation: isolate;
 }
-/* blurred glow copy of the photo — sits behind via z-index: -1 */
+
 .identity__portrait::before {
   content: '';
   position: absolute;
@@ -154,7 +131,7 @@
   -webkit-mask-image: radial-gradient(ellipse 64% 70% at 50% 48%, rgba(0,0,0,.92) 24%, rgba(0,0,0,.46) 48%, transparent 74%);
   pointer-events: none;
 }
-/* soft vignette fades the photo edges into the background */
+
 .identity__portrait img {
   display: block;
   width: 100%;
@@ -171,7 +148,7 @@
   mask-composite: intersect;
   -webkit-mask-composite: source-in, source-in;
 }
-/* subtle dark depth overlay on top of the image */
+
 .identity__portrait::after {
   content: '';
   position: absolute;
@@ -204,8 +181,8 @@
   .identity__inner { grid-template-columns: 1fr; gap: var(--s-6); }
 }
 
-/* ===== 04 · PHILOSOPHY ================================ */
-/* Centred two-column composition (heading | copy) — no image. */
+
+
 #philosophy {
   display: grid;
   place-items: center;
@@ -222,17 +199,14 @@
 #philosophy .aura { background: radial-gradient(ellipse at 20% 20%, rgba(94,141,190,.08), transparent 50%); }
 .philo__inner {
   display: grid;
-  /* Heading gets the wider column so "Новому времени —" stays on one line
-     → a clean 2-line heading (was wrapping to 4). */
+  
   grid-template-columns: 1.4fr 1fr;
   gap: clamp(40px, 6vw, 80px);
   align-items: center;
   width: 100%;
   max-width: var(--content-max);
   margin: 0 auto;
-  /* .philo__inner already sits inside .wrap (which provides the page gutter),
-     so keep only vertical padding — no double horizontal inset. This also
-     widens the columns enough for the 2-line heading. */
+  
   padding-block: var(--page-x);
   padding-inline: 0;
 }
@@ -254,11 +228,11 @@
   .philo__heading { white-space: normal; text-align: left; text-wrap: auto; }
 }
 
-/* ===== 05 · LIVE ===================================== */
+
 #live { background: transparent; }
 #live .aura { background: radial-gradient(ellipse at 75% 80%, rgba(216,183,108,.07), transparent 54%); }
 
-/* Image — sits as a full-width band above the text composition */
+
 .live__media { width: 100%; margin-bottom: clamp(96px, 10vh, 160px); position: relative; }
 .live__media img {
   display: block;
@@ -373,7 +347,7 @@
   .live-text-btn { grid-column: 1 / -1; grid-row: auto; align-self: auto; margin-top: var(--s-6); margin-bottom: 0; text-align: center; }
 }
 
-/* ===== 06 · QUOTE ==================================== */
+
 .quote-screen {
   display: grid;
   place-items: center;
@@ -399,13 +373,10 @@
   font-size: clamp(22px, 3.6vw, 50px);
   line-height: 1.22;
   color: var(--ink);
-  /* 500 = the weight actually loaded for desktop today (300 was requested but
-     never imported, so the browser already renders 500). Pinning 500 here keeps
-     desktop EXACTLY as-is now that weight 300 has been added to the font import;
-     the mobile/tablet layers (09/11) drop to the genuinely lighter 300. */
+  
   font-weight: 500;
 }
-/* Wide variant for longer quotes (e.g. Коллаборации) */
+
 .quote-screen--wide .bigquote { max-width: clamp(400px, 82vw, 1120px); }
 .bigquote__attr {
   margin-top: var(--s-6);
@@ -416,7 +387,7 @@
   font-weight: 400;
 }
 
-/* ===== 07 · PLAYER =================================== */
+
 #player { background: transparent; }
 #player .aura { background: radial-gradient(ellipse at 50% 0%, rgba(94,141,190,.10), transparent 46%); }
 .player__head { margin-bottom: var(--vr-dense); text-align: center; }
@@ -432,7 +403,7 @@
   .ptrack__top { flex-wrap: wrap; }
 }
 
-/* ===== Section header (shared editorial header) ===== */
+
 .shead { margin-bottom: var(--vr-dense); max-width: var(--content-max); }
 .shead--split { display: grid; grid-template-columns: 1fr auto; gap: var(--s-6); align-items: end; }
 .shead__overline { margin-bottom: var(--heading-kicker-gap); }
@@ -444,7 +415,7 @@
   .shead--split { grid-template-columns: 1fr; }
 }
 
-/* ===== 08 · PERFORMANCE ============================= */
+
 #performance { background: transparent; }
 #performance .shead {
   display: grid;
@@ -495,7 +466,7 @@
   .perf__grid { grid-template-columns: 1fr; }
 }
 
-/* ===== 09 · ART ===================================== */
+
 #art {
   min-height: 100svh;
   background:
@@ -568,7 +539,7 @@
   .art__grid { grid-template-columns: 1fr; }
 }
 
-/* ===== 10 · MUSICIANS =============================== */
+
 #musicians { background: transparent; }
 #musicians .shead { text-align: center; }
 .mus__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(24px, 3vw, 48px); }
@@ -580,7 +551,7 @@
 .mus__name { font-family: var(--font-display); font-size: clamp(24px, 2.6vw, 34px); line-height: 1.15; margin-bottom: var(--s-3); }
 .mus__desc { color: var(--ink-soft); font-size: var(--fs-body); line-height: 1.6; max-width: 32ch; }
 
-/* Landscape tablets — 3 columns, name shrinks to fit in one line. */
+
 @media (min-width: 761px) and (max-width: 1366px) and (orientation: landscape) {
   .mus__name { font-size: clamp(18px, 1.8vw, 22px); }
   .mus__desc { max-width: none; }
@@ -595,7 +566,7 @@
   .mus__desc { max-width: none; }
 }
 
-/* ===== 11 · REVIEWS ================================= */
+
 #reviews { padding-block: var(--vr-generous); background: transparent; }
 #reviews .shead {
   display: grid;
@@ -611,7 +582,7 @@
 #reviews .shead .shead__text  { grid-column: 1; grid-row: 3; max-width: 52ch; }
 .rev__states { position: absolute; left: 62%; right: 0; top: 0; }
 
-/* States list — mirrors identity__list visual language */
+
 .rev__states-list { display: grid; gap: 0; border-bottom: 1px solid var(--ink-ghost); }
 .rev__states-list li {
   display: grid;
@@ -626,9 +597,8 @@
   letter-spacing: .02em;
   transition: color .4s var(--ease-soft), padding-left .4s var(--ease-out);
 }
-/* Closing line is on the list container now (above), so it follows the last
-   VISIBLE item whether the list shows 5 or 6 states. */
-.rev__states-list li.rev__state--xtra { display: none; }  /* 6th state — shown only on portrait tablets / mobile (layer 10) */
+
+.rev__states-list li.rev__state--xtra { display: none; }  
 .rev__states-list li:hover { color: var(--ink); padding-left: var(--s-3); }
 .rev__states-list .n {
   font-size: var(--fs-micro);
@@ -654,7 +624,7 @@
 .carousel__slide { position: absolute; inset: 0; opacity: 0; transition: opacity 1s var(--ease-soft); }
 .carousel__slide.is-active { opacity: 1; }
 .carousel__slide img { width: 100%; height: 100%; object-fit: cover; }
-/* Carousel side arrows */
+
 .carousel__nav {
   position: absolute;
   inset: 0;
@@ -718,7 +688,7 @@
   .rev__quotes { grid-template-columns: 1fr; }
 }
 
-/* ===== 12 · EGYPT ================================== */
+
 #egypt {
   background:
     radial-gradient(ellipse at 30% 20%, rgba(216,183,108,.04), transparent 52%),
@@ -744,8 +714,7 @@
 
 .egypt__grid {
   display: grid;
-  /* Vertical video takes the NARROWER column; the text (more content) leads.
-     align-items: stretch makes both columns share one height — a clean grid. */
+  
   grid-template-columns: minmax(320px, 440px) minmax(0, 1fr);
   gap: clamp(40px, 5vw, 88px);
   align-items: stretch;
@@ -756,7 +725,7 @@
   position: relative;
   display: block;
   width: 100%;
-  height: 100%;                       /* fill column height (= text block) */
+  height: 100%;                       
   min-height: clamp(440px, 56vh, 760px);
   overflow: hidden;
   border: 1px solid var(--gold-line);
@@ -812,8 +781,7 @@
 .egypt__body { min-width: 0; display: flex; flex-direction: column; }
 .egypt__text { color: var(--ink-soft); margin-bottom: var(--s-6); max-width: 64ch; text-wrap: pretty; }
 
-/* Timeline — a single column of clean ruled rows (number beside text).
-   Same editorial language as the landing's other numbered lists. */
+
 .egypt__timeline {
   display: grid;
   gap: 0;
@@ -843,7 +811,7 @@
 }
 .egypt__concl {
   position: relative;
-  margin-top: auto;                  /* anchor the takeaway to the column bottom */
+  margin-top: auto;                  
   padding-left: var(--s-5);
   border-left: 1px solid var(--gold-line);
   color: var(--ink-muted);
@@ -851,12 +819,12 @@
   gap: var(--s-3);
 }
 
-/* Landscape tablets — cap the video height on a short viewport. */
+
 @media (orientation: landscape) and (min-width: 1024px) and (max-width: 1366px) {
   .egypt-video-preview { min-height: clamp(420px, 64vh, 640px); }
 }
 
-/* Phones — stacked; full-width video; single-column ruled timeline (base). */
+
 @media (max-width: 760px) {
   .egypt__grid { grid-template-columns: 1fr; gap: clamp(36px, 5vh, 56px); align-items: stretch; }
   .egypt__media { width: 100%; max-width: 520px; margin-inline: auto; }
@@ -866,7 +834,7 @@
   .egypt__concl { margin-top: 0; padding-left: var(--s-4); }
 }
 
-/* ===== 13 · FORMATS =============================== */
+
 #formats { background: transparent; }
 #formats .shead { text-align: center; }
 .fmt__list { display: flex; flex-direction: column; }
@@ -949,14 +917,14 @@
   .fmt__line-spec { grid-template-columns: 1fr; gap: 6px; }
 }
 
-/* ===== 14 · INTEGRATION (fi-panels) ============== */
+
 #integration { background: transparent; }
 #integration .aura { background: radial-gradient(ellipse at 50% 0%, rgba(117,91,171,.08), transparent 48%); }
 .slots__head { font-family: var(--font-display); font-size: var(--fs-section); line-height: 1.06; margin-bottom: var(--vr-dense); text-align: center; }
 .fi-panels {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: auto auto 1fr auto; /* title | rule | desc | tag */
+  grid-template-rows: auto auto 1fr auto; 
   border-top: 1px solid var(--gold-line);
   border-bottom: 1px solid var(--gold-line);
   margin-bottom: var(--vr-dense);
@@ -1041,7 +1009,7 @@
   .fi-desc { flex-grow: 1; }
 }
 
-/* ===== 15 · WHY ================================== */
+
 #why { background: transparent; }
 #why .shead { margin-bottom: var(--vr-dense); text-align: center; }
 #why .shead__title { word-spacing: -0.03em; text-wrap: auto; }
@@ -1113,7 +1081,7 @@
   .why__arg:last-child { border-bottom: none; }
 }
 
-/* ===== 16 · PORTFOLIO =========================== */
+
 #portfolio { background: transparent; }
 #portfolio .shead { text-align: center; }
 .pf__media { aspect-ratio: 21/9; overflow: hidden; border: 1px solid var(--ink-ghost); margin-bottom: var(--vr-dense); }
@@ -1153,8 +1121,7 @@
 .pm-col-header { display: flex; align-items: center; gap: 14px; margin-bottom: clamp(24px, 3vh, 40px); min-height: 44px; }
 .pm-col-num { font-size: 12px; font-weight: 300; color: var(--gold-soft); letter-spacing: .1em; flex-shrink: 0; transition: color .35s var(--ease-soft); }
 .pm-col-title { font-size: var(--fs-micro); font-weight: 300; letter-spacing: .14em; text-transform: uppercase; color: var(--gold-soft); transition: color .35s var(--ease-soft); }
-/* Lists fill the column; each row has a fixed min-height so row N
-   aligns across all three columns (5 / 4+spacer / 5 items). */
+
 .pm-event-list, .pm-partners, .pm-upcoming-list { display: flex; flex-direction: column; flex: 1; }
 .pm-event, .pm-partner, .pm-upcoming {
   padding: 14px 0;
@@ -1187,21 +1154,21 @@
 .pm-partner:hover .pm-partner-role,
 .pm-upcoming:hover .pm-upcoming-ctx { color: var(--ink); }
 
-/* Invisible row that keeps the 4-item column aligned with the 5-item ones. */
+
 .pm-partner--spacer { visibility: hidden; pointer-events: none; border-bottom: none; }
 
 @media (max-width: 820px) {
   .pm-grid { grid-template-columns: 1fr; }
   .pm-col { border-right: none; border-bottom: 1px solid var(--gold-line); }
   .pm-col:last-child { border-bottom: none; }
-  .pm-partner--spacer { display: none; }  /* no alignment needed when stacked */
+  .pm-partner--spacer { display: none; }  
 }
 
 @media (max-width: 760px) {
   .pf__media { aspect-ratio: 4/3; }
 }
 
-/* ===== 17 · FINAL =============================== */
+
 #final-experience { display: grid; grid-template-columns: 1fr 1fr; align-items: stretch; overflow: hidden; background: transparent; }
 .final__text { display: flex; flex-direction: column; justify-content: center; padding: var(--page-x); padding-block: clamp(96px,14vh,180px); padding-left: max(var(--page-x), calc((100vw - var(--content-max)) / 2)); }
 .final__heading { font-family: var(--font-display); font-size: var(--fs-section); line-height: 1.04; margin-bottom: var(--heading-copy-gap); }
@@ -1217,20 +1184,14 @@
 @media (max-width: 760px) {
   #final-experience { grid-template-columns: 1fr; }
   .final__media { min-height: 60vh; order: -1; }
-  /* The overlay extends 4px BELOW the media box (inset bottom:-4px) and holds
-     a solid --bg-deep cap for the bottom 8px. The fractional-height box rounds
-     differently every scroll frame, so its bottom edge must cut through SOLID
-     field colour — not through the photo's last (bright) pixel row. Extending
-     the dark cap past the edge means rounding can never reveal a bright pixel
-     or the fixed atmosphere behind it → no 1px line, no scroll flicker.
-     Requires overflow:visible on .final__media (set in 09-mobile-refinements). */
+  
   .final__media::after {
     inset: 0 0 -4px 0;
     background: linear-gradient(0deg, var(--bg-deep) 0, var(--bg-deep) 8px, transparent 55%);
   }
 }
 
-/* ===== FOOTER =================================== */
+
 #site-footer {
   position: relative;
   padding-block: clamp(48px, 6vh, 72px) clamp(36px, 5vh, 52px);
@@ -1304,7 +1265,7 @@
   .footer__row { flex-wrap: wrap; justify-content: center; }
 }
 
-/* ===== Global utility overrides (mobile) =========== */
+
 @media (max-width: 760px) {
   .pad-block { padding-block: clamp(72px, 10vh, 120px); }
   .pad-block--generous { padding-block: clamp(96px, 12vh, 160px); }

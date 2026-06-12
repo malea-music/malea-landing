@@ -9,13 +9,6 @@
 <div id="allrecords" class="t-records">
 <!-- MALEA / Tilda export / 01 / tokens + base -->
 <style id="malea-tilda-css-01-tokens-base">
-/* ===== 00-tokens.css ===== */
-/* =========================================================
-   MALEA · Design tokens
-   Edit colors, type scale, spacing and timing here only.
-   ========================================================= */
-
-/* ---- Fonts ---- */
 @font-face {
   font-family: "Leotaro";
   src: url("https://events.malea-soundhealing.com/assets/fonts/Leotaro-Regular.otf") format("opentype");
@@ -39,50 +32,47 @@
 }
 
 :root {
-  /* ---- Backgrounds (deep blue-black) ---- */
+  
   --bg-void: #040812;
   --bg-night: #071020;
   --bg-deep: #0A1326;
   --bg-blue-black: #050B18;
-  --bg-main: #0A1220;  /* unified atmospheric dark after Identity — deep but airy */
+  --bg-main: #0A1220;  
 
 
-  /* ---- Ink (warm milky, never pure white) ---- */
+  
   --ink: #F3EBDD;
   --ink-soft: rgba(243, 235, 221, .74);
   --ink-muted: rgba(243, 235, 221, .52);
   --ink-faint: rgba(243, 235, 221, .32);
   --ink-ghost: rgba(243, 235, 221, .12);
 
-  /* ---- Gold (accent only) ---- */
+  
   --gold: #D8B76C;
   --gold-soft: rgba(216, 183, 108, .64);
   --gold-line: rgba(216, 183, 108, .28);
   --gold-faint: rgba(216, 183, 108, .12);
 
-  /* ---- Mists ---- */
+  
   --blue-mist: rgba(94, 141, 190, .14);
   --violet-mist: rgba(117, 91, 171, .10);
 
-  /* ---- Type families ---- */
+  
   --font-display: "Leotaro", "Cormorant Garamond", Georgia, serif;
   --font-body: "Circe", "Helvetica Neue", Helvetica, Arial, sans-serif;
   --font-quote: "Cormorant Garamond", Georgia, serif;
 
-  /* ---- Type scale ---- */
+  
   --fs-display: clamp(82px, 10vw, 152px);
   --fs-hero: clamp(64px, 8.6vw, 126px);
   --fs-section: clamp(36px, 4.2vw, 60px);
   --fs-title: clamp(28px, 3.4vw, 48px);
   --fs-subtitle: clamp(19px, 2vw, 28px);
-  /* Floor raised 15→16px: below ~1280px the clamp sat on its floor, so ALL
-     tablets (744–1180) were stuck at 15px body — smaller than the phone's 17px.
-     16px floor gives a clean ladder: tablets 16 → phone 17 → desktop 18.
-     Desktop (cap 18) and wide landscape are unchanged. ROLLBACK: restore 15px. */
+  
   --fs-body: clamp(16px, 1.25vw, 18px);
   --fs-micro: clamp(10px, .78vw, 12px);
 
-  /* ---- Spacing scale ---- */
+  
   --s-1: 8px;
   --s-2: 12px;
   --s-3: 16px;
@@ -94,39 +84,37 @@
   --s-9: 128px;
   --s-10: 160px;
 
-  /* ---- Editorial rhythm ---- */
+  
   --heading-kicker-gap: clamp(14px, 1.6vw, 24px);
   --heading-sub-gap: clamp(10px, 1.1vw, 16px);
   --heading-copy-gap: clamp(22px, 2.4vw, 36px);
 
-  /* ---- Vertical rhythm (section breathing) ---- */
+  
   --vr-standard: clamp(100px, 12vh, 180px);
   --vr-dense: clamp(72px, 8vh, 120px);
   --vr-generous: clamp(140px, 16vh, 220px);
   --vr-transitional: clamp(60px, 6vh, 100px);
 
-  /* ---- Layout grid ---- */
+  
   --page-x: clamp(28px, 6vw, 128px);
   --content-max: 1360px;
   --content: min(calc(100vw - var(--page-x) * 2), var(--content-max));
 
-  /* ---- Motion ---- */
+  
   --ease-out: cubic-bezier(.16, 1, .3, 1);
   --ease-soft: cubic-bezier(.22, .61, .36, 1);
   --dur-slow: 1100ms;
   --dur-mid: 760ms;
 
-  /* ---- Z-index ---- */
+  
   --z-nav: 80;
   --z-menu: 90;
   --z-modal: 100;
 }
 
 
-/* ===== 01-base.css ===== */
-/* =========================================================
-   MALEA · Reset + base + layout primitives
-   ========================================================= */
+
+
 
 *, *::before, *::after { box-sizing: border-box; }
 * { margin: 0; padding: 0; }
@@ -134,9 +122,7 @@
 html {
   -webkit-text-size-adjust: 100%;
   scroll-behavior: smooth;
-  /* Clip horizontal overflow at the root — without this the page can be dragged
-     sideways on mobile (fixed overlays / sub-pixel widths escape body's clip).
-     overflow-x:hidden computes overflow-y to auto, so vertical scroll is preserved. */
+  
   overflow-x: hidden;
 }
 
@@ -154,7 +140,7 @@ body {
 
 body.is-scroll-locked { overflow: hidden; }
 
-/* ---------- Fixed atmospheric canvas ---------- */
+
 .site-atmosphere {
   position: fixed;
   inset: 0;
@@ -187,7 +173,7 @@ p { text-wrap: pretty; }
 
 :focus-visible { outline: 1px solid var(--gold-soft); outline-offset: 4px; }
 
-/* ---------- Layout primitives ---------- */
+
 .section {
   position: relative;
   width: 100%;
@@ -207,7 +193,7 @@ p { text-wrap: pretty; }
 .pad-block--transitional { padding-block: var(--vr-transitional); }
 .full { min-height: 100svh; }
 
-/* ---------- Shared type atoms ---------- */
+
 .overline {
   display: inline-flex;
   align-items: center;
@@ -278,7 +264,7 @@ p { text-wrap: pretty; }
 }
 .rule--short { width: clamp(48px, 8vw, 120px); }
 
-/* ---------- Buttons ---------- */
+
 .btn {
   display: inline-flex;
   align-items: center;
@@ -350,7 +336,7 @@ p { text-wrap: pretty; }
     0 0 28px rgba(216,183,108,.16),
     inset 0 0 18px rgba(216,183,108,.06);
 }
-.btn > span {
+.btn span {
   position: relative;
   z-index: 1;
 }
@@ -367,7 +353,7 @@ p { text-wrap: pretty; }
 }
 .link-arrow:hover { gap: var(--s-4); color: var(--gold); }
 
-/* ---------- Decorative background aura ---------- */
+
 .aura {
   position: absolute;
   inset: 0;
@@ -379,11 +365,6 @@ p { text-wrap: pretty; }
 
 <!-- MALEA / Tilda export / 02 / nav + modal + components -->
 <style id="malea-tilda-css-02-nav-modal-components">
-/* ===== 02-nav.css ===== */
-/* =========================================================
-   MALEA · Navigation (desktop bar + mobile overlay)
-   ========================================================= */
-
 .nav {
   position: fixed;
   top: 0;
@@ -473,14 +454,14 @@ html.opening-nav-visible .nav { transform: translateY(0); opacity: 1; }
 }
 .nav__burger:hover span { background: var(--gold); }
 
-/* ---- Mobile overlay menu ---- */
+
 .menu {
   position: fixed;
   inset: 0;
   z-index: var(--z-menu);
   display: flex;
   flex-direction: column;
-  padding-inline: 0;             /* zones self-centre to the --content column */
+  padding-inline: 0;             
   padding-block:
     max(var(--s-4), env(safe-area-inset-top))
     max(var(--s-6), env(safe-area-inset-bottom));
@@ -505,21 +486,21 @@ html.opening-nav-visible .nav { transform: translateY(0); opacity: 1; }
   background: radial-gradient(ellipse at 50% 46%, transparent 56%, rgba(4,8,18,.55) 100%);
 }
 
-/* — top bar — */
+
 .menu__top {
   position: relative; z-index: 2; flex: 0 0 auto;
   width: var(--content); max-width: var(--content-max);
   margin-inline: auto; margin-bottom: clamp(20px, 4vh, 48px);
   display: flex; align-items: center; justify-content: space-between;
 }
-/* logo is a pixel-clone of .nav__logo so it doesn't shift on open */
+
 .menu__logo {
   font-family: var(--font-display);
   font-size: clamp(20px, 2vw, 26px);
   letter-spacing: .20em; padding-left: .20em;
   color: var(--gold);
 }
-/* same 40px footprint as the burger → close sits exactly where it was */
+
 .menu__close {
   position: relative; width: 40px; height: 40px;
   border-radius: 50%;
@@ -537,12 +518,12 @@ html.opening-nav-visible .nav { transform: translateY(0); opacity: 1; }
 .menu__close::after  { transform: translate(-50%, -50%) rotate(-45deg); }
 .menu__close:hover::before, .menu__close:hover::after { background: var(--gold); }
 
-/* — navigation list (editorial, numbered, ruled) — */
+
 .menu__links {
   position: relative; z-index: 2;
   flex: 0 1 auto; min-height: 0;
   width: var(--content); max-width: var(--content-max);
-  margin: auto;                  /* centre in free space (vertical) + content column */
+  margin: auto;                  
   display: flex; flex-direction: column;
 }
 .menu__links a {
@@ -594,7 +575,7 @@ html.opening-nav-visible .nav { transform: translateY(0); opacity: 1; }
 .menu__links a:hover .menu__arrow,
 .menu__links a:focus-visible .menu__arrow { opacity: 1; transform: translateX(0); }
 
-/* staggered entrance — transform/opacity only, so colour stays snappy */
+
 .menu.is-open .menu__links a { opacity: 1; transform: none; }
 .menu.is-open .menu__links a:nth-child(1) { transition-delay: .12s; }
 .menu.is-open .menu__links a:nth-child(2) { transition-delay: .18s; }
@@ -602,7 +583,7 @@ html.opening-nav-visible .nav { transform: translateY(0); opacity: 1; }
 .menu.is-open .menu__links a:nth-child(4) { transition-delay: .30s; }
 .menu.is-open .menu__links a:nth-child(5) { transition-delay: .36s; }
 
-/* — footer: CTA + contacts — */
+
 .menu__foot {
   position: relative; z-index: 2; flex: 0 0 auto;
   width: var(--content); max-width: var(--content-max);
@@ -619,21 +600,17 @@ html.opening-nav-visible .nav { transform: translateY(0); opacity: 1; }
 }
 
 @media (max-width: 980px) {
-  /* Nav stays hidden on the intro (first screen) and reveals on scroll (from the
-     hero) via the .is-visible class — no forced visibility here. Keep the safe-area
-     top inset so the bar/logo align with the menu once it appears. */
+  
   .nav { padding-top: max(var(--s-4), env(safe-area-inset-top)); }
   .nav__links, .nav__cta { display: none; }
   .nav__burger { display: flex; }
 }
 
 
-/* ===== 03-modal.css ===== */
-/* =========================================================
-   MALEA · Modals (invite form + vertical video lightbox)
-   ========================================================= */
 
-/* ---- Invite / form modal ---- */
+
+
+
 .modal {
   position: fixed;
   inset: 0;
@@ -700,7 +677,7 @@ html.opening-nav-visible .nav { transform: translateY(0); opacity: 1; }
 .modal__close::after { transform: translate(-50%, -50%) rotate(-45deg); }
 .modal__close:hover::before, .modal__close:hover::after { background: var(--gold); }
 
-/* ---- Vertical video lightbox ---- */
+
 .video-modal {
   position: fixed;
   inset: 0;
@@ -750,13 +727,10 @@ html.opening-nav-visible .nav { transform: translateY(0); opacity: 1; }
 }
 
 
-/* ===== 04-components.css ===== */
-/* =========================================================
-   MALEA · Shared components
-   video-frame · audio player · marquee · media placeholder
-   ========================================================= */
 
-/* ---------- Adaptive video frame ---------- */
+
+
+
 .video-frame {
   position: relative;
   width: 100%;
@@ -788,7 +762,7 @@ html.opening-nav-visible .nav { transform: translateY(0); opacity: 1; }
   letter-spacing: .01em;
 }
 
-/* ---------- Image placeholder (drop real art here) ---------- */
+
 .ph {
   position: relative;
   width: 100%;
@@ -802,7 +776,7 @@ html.opening-nav-visible .nav { transform: translateY(0); opacity: 1; }
 }
 .ph img { width: 100%; height: 100%; object-fit: cover; }
 
-/* ---------- Audio player ---------- */
+
 .players {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -945,7 +919,7 @@ html.opening-nav-visible .nav { transform: translateY(0); opacity: 1; }
 }
 .ptrack__time .cur { color: var(--gold-soft); font-weight: 400; }
 
-/* waveform / seek */
+
 .wave {
   grid-area: wave;
   position: relative;
@@ -1020,7 +994,7 @@ html.opening-nav-visible .nav { transform: translateY(0); opacity: 1; }
 }
 .ptrack.is-playing .ptrack__desc { opacity: .92; }
 
-/* ---------- Marquee (tags) ---------- */
+
 .marquee {
   position: relative;
   overflow: hidden;
@@ -1055,34 +1029,14 @@ html.opening-nav-visible .nav { transform: translateY(0); opacity: 1; }
 
 <!-- MALEA / Tilda export / 03 / screens -->
 <style id="malea-tilda-css-03-screens">
-/* ===== 05-screens.css ===== */
-/* =========================================================
-   MALEA · Screen compositions
-   One block per screen — desktop, tablet, mobile in one place.
-   Breakpoints:
-     desktop          default (>1100) — also drives landscape tablets (1024+)
-     tablet portrait  761–1100 + (orientation: portrait)
-     mobile           <=760
-     tiny             <=420
-   Landscape-tablet vertical-rhythm tuning lives in 07-tablet-landscape.css.
-   ========================================================= */
-
-/* ===== 01 · INTRO ===================================== */
 #intro {
-  /* Flexbox (not grid place-items) reliably stretches the container to min-height
-     and centres the content on every mobile engine — a grid container with only
-     auto/content rows can fail to expand to min-height on some WebKit/iOS builds,
-     which made the intro fall short of the screen while the hero (explicit 1fr
-     row) filled correctly. */
+  
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
-  /* Static full screen: lvh = large (toolbar-retracted) viewport. Always ≥ the
-     screen (nothing peeks below) AND a fixed height — it does NOT resize while the
-     mobile toolbar shows/hides, so there's no scroll jitter. (Dynamic vh / JS-driven
-     heights reflow on every toolbar frame → the jump.) 100vh = lvh on iOS (fallback). */
+  
   min-height: 100vh;
   min-height: 100lvh;
   background:
@@ -1112,21 +1066,19 @@ html.opening-nav-visible .nav { transform: translateY(0); opacity: 1; }
   .intro__mark { font-size: 22vw; }
 }
 
-/* (Intro full-screen is now handled in the base #intro rule above — all devices.) */
 
-/* ===== 02 · HERO ====================================== */
+
+
 #hero {
   display: grid;
   grid-template-columns: 45fr 55fr;
   align-items: stretch;
   overflow: hidden;
   position: relative;
-  /* Static full screen (see #intro): lvh never resizes on scroll → no jitter,
-     and is always ≥ the screen so the next section never peeks below. */
+  
   min-height: 100vh;
   min-height: 100lvh;
-  /* Dark blue, lifted from void; the photo's shadows are graded to this SAME tone
-     (lighten) and the edge fades resolve to it — dark photo edges = background. */
+  
   background: var(--bg-deep);
 }
 .hero__text {
@@ -1141,15 +1093,14 @@ html.opening-nav-visible .nav { transform: translateY(0); opacity: 1; }
 .hero__lede { font-size: var(--fs-subtitle); color: var(--ink-soft); font-weight: 300; max-width: 34ch; margin-bottom: var(--s-7); line-height: 1.4; }
 .hero__media { position: relative; z-index: 1; isolation: isolate; }
 .hero__media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-/* Technique B — lift the photo's blacks to bg-deep so its shadow zones become
-   exactly the background; only the deepest shadows change, the lit subject stays. */
+
 .hero__media::before {
   content: ""; position: absolute; inset: 0; z-index: 1;
   background: var(--bg-deep);
   mix-blend-mode: lighten;
   pointer-events: none;
 }
-/* Short eased fade settling any bright pixels right at the inner edge. */
+
 .hero__media::after {
   content: ""; position: absolute; inset: 0; z-index: 2;
   background: linear-gradient(90deg,
@@ -1160,9 +1111,9 @@ html.opening-nav-visible .nav { transform: translateY(0); opacity: 1; }
     transparent 46%);
 }
 
-/* Portrait tablets handled in 08-tablet-portrait.css. */
 
-/* Phones — full-screen stacked: photo fills the top (1fr), text settles below. */
+
+
 @media (max-width: 760px) {
   #hero { grid-template-columns: 1fr; grid-template-rows: 1fr auto; }
   .hero__media { order: -1; min-height: 0; }
@@ -1170,7 +1121,7 @@ html.opening-nav-visible .nav { transform: translateY(0); opacity: 1; }
   .hero__text { justify-content: flex-start; padding-inline: var(--page-x); padding-block: clamp(22px, 3.5vh, 40px) clamp(30px, 5.5vh, 52px); }
 }
 
-/* Stacked (phones + portrait tablets): figure centre-right, text/CTA centred. */
+
 @media (max-width: 760px),
        (orientation: portrait) and (min-width: 700px) and (max-width: 1024px) {
   .hero__media img { object-position: 38% 50%; }
@@ -1179,7 +1130,7 @@ html.opening-nav-visible .nav { transform: translateY(0); opacity: 1; }
   .hero__overline::after { content: ""; width: clamp(28px, 4vw, 56px); height: 1px; background: var(--gold-line); }
 }
 
-/* ===== 03 · IDENTITY ================================== */
+
 .identity__inner {
   display: grid;
   grid-template-columns: 46fr 54fr;
@@ -1195,7 +1146,7 @@ html.opening-nav-visible .nav { transform: translateY(0); opacity: 1; }
   overflow: visible;
   isolation: isolate;
 }
-/* blurred glow copy of the photo — sits behind via z-index: -1 */
+
 .identity__portrait::before {
   content: '';
   position: absolute;
@@ -1209,7 +1160,7 @@ html.opening-nav-visible .nav { transform: translateY(0); opacity: 1; }
   -webkit-mask-image: radial-gradient(ellipse 64% 70% at 50% 48%, rgba(0,0,0,.92) 24%, rgba(0,0,0,.46) 48%, transparent 74%);
   pointer-events: none;
 }
-/* soft vignette fades the photo edges into the background */
+
 .identity__portrait img {
   display: block;
   width: 100%;
@@ -1226,7 +1177,7 @@ html.opening-nav-visible .nav { transform: translateY(0); opacity: 1; }
   mask-composite: intersect;
   -webkit-mask-composite: source-in, source-in;
 }
-/* subtle dark depth overlay on top of the image */
+
 .identity__portrait::after {
   content: '';
   position: absolute;
@@ -1259,8 +1210,8 @@ html.opening-nav-visible .nav { transform: translateY(0); opacity: 1; }
   .identity__inner { grid-template-columns: 1fr; gap: var(--s-6); }
 }
 
-/* ===== 04 · PHILOSOPHY ================================ */
-/* Centred two-column composition (heading | copy) — no image. */
+
+
 #philosophy {
   display: grid;
   place-items: center;
@@ -1277,17 +1228,14 @@ html.opening-nav-visible .nav { transform: translateY(0); opacity: 1; }
 #philosophy .aura { background: radial-gradient(ellipse at 20% 20%, rgba(94,141,190,.08), transparent 50%); }
 .philo__inner {
   display: grid;
-  /* Heading gets the wider column so "Новому времени —" stays on one line
-     → a clean 2-line heading (was wrapping to 4). */
+  
   grid-template-columns: 1.4fr 1fr;
   gap: clamp(40px, 6vw, 80px);
   align-items: center;
   width: 100%;
   max-width: var(--content-max);
   margin: 0 auto;
-  /* .philo__inner already sits inside .wrap (which provides the page gutter),
-     so keep only vertical padding — no double horizontal inset. This also
-     widens the columns enough for the 2-line heading. */
+  
   padding-block: var(--page-x);
   padding-inline: 0;
 }
@@ -1309,11 +1257,11 @@ html.opening-nav-visible .nav { transform: translateY(0); opacity: 1; }
   .philo__heading { white-space: normal; text-align: left; text-wrap: auto; }
 }
 
-/* ===== 05 · LIVE ===================================== */
+
 #live { background: transparent; }
 #live .aura { background: radial-gradient(ellipse at 75% 80%, rgba(216,183,108,.07), transparent 54%); }
 
-/* Image — sits as a full-width band above the text composition */
+
 .live__media { width: 100%; margin-bottom: clamp(96px, 10vh, 160px); position: relative; }
 .live__media img {
   display: block;
@@ -1428,7 +1376,7 @@ html.opening-nav-visible .nav { transform: translateY(0); opacity: 1; }
   .live-text-btn { grid-column: 1 / -1; grid-row: auto; align-self: auto; margin-top: var(--s-6); margin-bottom: 0; text-align: center; }
 }
 
-/* ===== 06 · QUOTE ==================================== */
+
 .quote-screen {
   display: grid;
   place-items: center;
@@ -1454,13 +1402,10 @@ html.opening-nav-visible .nav { transform: translateY(0); opacity: 1; }
   font-size: clamp(22px, 3.6vw, 50px);
   line-height: 1.22;
   color: var(--ink);
-  /* 500 = the weight actually loaded for desktop today (300 was requested but
-     never imported, so the browser already renders 500). Pinning 500 here keeps
-     desktop EXACTLY as-is now that weight 300 has been added to the font import;
-     the mobile/tablet layers (09/11) drop to the genuinely lighter 300. */
+  
   font-weight: 500;
 }
-/* Wide variant for longer quotes (e.g. Коллаборации) */
+
 .quote-screen--wide .bigquote { max-width: clamp(400px, 82vw, 1120px); }
 .bigquote__attr {
   margin-top: var(--s-6);
@@ -1471,7 +1416,7 @@ html.opening-nav-visible .nav { transform: translateY(0); opacity: 1; }
   font-weight: 400;
 }
 
-/* ===== 07 · PLAYER =================================== */
+
 #player { background: transparent; }
 #player .aura { background: radial-gradient(ellipse at 50% 0%, rgba(94,141,190,.10), transparent 46%); }
 .player__head { margin-bottom: var(--vr-dense); text-align: center; }
@@ -1487,7 +1432,7 @@ html.opening-nav-visible .nav { transform: translateY(0); opacity: 1; }
   .ptrack__top { flex-wrap: wrap; }
 }
 
-/* ===== Section header (shared editorial header) ===== */
+
 .shead { margin-bottom: var(--vr-dense); max-width: var(--content-max); }
 .shead--split { display: grid; grid-template-columns: 1fr auto; gap: var(--s-6); align-items: end; }
 .shead__overline { margin-bottom: var(--heading-kicker-gap); }
@@ -1499,7 +1444,7 @@ html.opening-nav-visible .nav { transform: translateY(0); opacity: 1; }
   .shead--split { grid-template-columns: 1fr; }
 }
 
-/* ===== 08 · PERFORMANCE ============================= */
+
 #performance { background: transparent; }
 #performance .shead {
   display: grid;
@@ -1550,7 +1495,7 @@ html.opening-nav-visible .nav { transform: translateY(0); opacity: 1; }
   .perf__grid { grid-template-columns: 1fr; }
 }
 
-/* ===== 09 · ART ===================================== */
+
 #art {
   min-height: 100svh;
   background:
@@ -1623,7 +1568,7 @@ html.opening-nav-visible .nav { transform: translateY(0); opacity: 1; }
   .art__grid { grid-template-columns: 1fr; }
 }
 
-/* ===== 10 · MUSICIANS =============================== */
+
 #musicians { background: transparent; }
 #musicians .shead { text-align: center; }
 .mus__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(24px, 3vw, 48px); }
@@ -1635,7 +1580,7 @@ html.opening-nav-visible .nav { transform: translateY(0); opacity: 1; }
 .mus__name { font-family: var(--font-display); font-size: clamp(24px, 2.6vw, 34px); line-height: 1.15; margin-bottom: var(--s-3); }
 .mus__desc { color: var(--ink-soft); font-size: var(--fs-body); line-height: 1.6; max-width: 32ch; }
 
-/* Landscape tablets — 3 columns, name shrinks to fit in one line. */
+
 @media (min-width: 761px) and (max-width: 1366px) and (orientation: landscape) {
   .mus__name { font-size: clamp(18px, 1.8vw, 22px); }
   .mus__desc { max-width: none; }
@@ -1650,7 +1595,7 @@ html.opening-nav-visible .nav { transform: translateY(0); opacity: 1; }
   .mus__desc { max-width: none; }
 }
 
-/* ===== 11 · REVIEWS ================================= */
+
 #reviews { padding-block: var(--vr-generous); background: transparent; }
 #reviews .shead {
   display: grid;
@@ -1666,7 +1611,7 @@ html.opening-nav-visible .nav { transform: translateY(0); opacity: 1; }
 #reviews .shead .shead__text  { grid-column: 1; grid-row: 3; max-width: 52ch; }
 .rev__states { position: absolute; left: 62%; right: 0; top: 0; }
 
-/* States list — mirrors identity__list visual language */
+
 .rev__states-list { display: grid; gap: 0; border-bottom: 1px solid var(--ink-ghost); }
 .rev__states-list li {
   display: grid;
@@ -1681,9 +1626,8 @@ html.opening-nav-visible .nav { transform: translateY(0); opacity: 1; }
   letter-spacing: .02em;
   transition: color .4s var(--ease-soft), padding-left .4s var(--ease-out);
 }
-/* Closing line is on the list container now (above), so it follows the last
-   VISIBLE item whether the list shows 5 or 6 states. */
-.rev__states-list li.rev__state--xtra { display: none; }  /* 6th state — shown only on portrait tablets / mobile (layer 10) */
+
+.rev__states-list li.rev__state--xtra { display: none; }  
 .rev__states-list li:hover { color: var(--ink); padding-left: var(--s-3); }
 .rev__states-list .n {
   font-size: var(--fs-micro);
@@ -1709,7 +1653,7 @@ html.opening-nav-visible .nav { transform: translateY(0); opacity: 1; }
 .carousel__slide { position: absolute; inset: 0; opacity: 0; transition: opacity 1s var(--ease-soft); }
 .carousel__slide.is-active { opacity: 1; }
 .carousel__slide img { width: 100%; height: 100%; object-fit: cover; }
-/* Carousel side arrows */
+
 .carousel__nav {
   position: absolute;
   inset: 0;
@@ -1773,7 +1717,7 @@ html.opening-nav-visible .nav { transform: translateY(0); opacity: 1; }
   .rev__quotes { grid-template-columns: 1fr; }
 }
 
-/* ===== 12 · EGYPT ================================== */
+
 #egypt {
   background:
     radial-gradient(ellipse at 30% 20%, rgba(216,183,108,.04), transparent 52%),
@@ -1799,8 +1743,7 @@ html.opening-nav-visible .nav { transform: translateY(0); opacity: 1; }
 
 .egypt__grid {
   display: grid;
-  /* Vertical video takes the NARROWER column; the text (more content) leads.
-     align-items: stretch makes both columns share one height — a clean grid. */
+  
   grid-template-columns: minmax(320px, 440px) minmax(0, 1fr);
   gap: clamp(40px, 5vw, 88px);
   align-items: stretch;
@@ -1811,7 +1754,7 @@ html.opening-nav-visible .nav { transform: translateY(0); opacity: 1; }
   position: relative;
   display: block;
   width: 100%;
-  height: 100%;                       /* fill column height (= text block) */
+  height: 100%;                       
   min-height: clamp(440px, 56vh, 760px);
   overflow: hidden;
   border: 1px solid var(--gold-line);
@@ -1867,8 +1810,7 @@ html.opening-nav-visible .nav { transform: translateY(0); opacity: 1; }
 .egypt__body { min-width: 0; display: flex; flex-direction: column; }
 .egypt__text { color: var(--ink-soft); margin-bottom: var(--s-6); max-width: 64ch; text-wrap: pretty; }
 
-/* Timeline — a single column of clean ruled rows (number beside text).
-   Same editorial language as the landing's other numbered lists. */
+
 .egypt__timeline {
   display: grid;
   gap: 0;
@@ -1898,7 +1840,7 @@ html.opening-nav-visible .nav { transform: translateY(0); opacity: 1; }
 }
 .egypt__concl {
   position: relative;
-  margin-top: auto;                  /* anchor the takeaway to the column bottom */
+  margin-top: auto;                  
   padding-left: var(--s-5);
   border-left: 1px solid var(--gold-line);
   color: var(--ink-muted);
@@ -1906,12 +1848,12 @@ html.opening-nav-visible .nav { transform: translateY(0); opacity: 1; }
   gap: var(--s-3);
 }
 
-/* Landscape tablets — cap the video height on a short viewport. */
+
 @media (orientation: landscape) and (min-width: 1024px) and (max-width: 1366px) {
   .egypt-video-preview { min-height: clamp(420px, 64vh, 640px); }
 }
 
-/* Phones — stacked; full-width video; single-column ruled timeline (base). */
+
 @media (max-width: 760px) {
   .egypt__grid { grid-template-columns: 1fr; gap: clamp(36px, 5vh, 56px); align-items: stretch; }
   .egypt__media { width: 100%; max-width: 520px; margin-inline: auto; }
@@ -1921,7 +1863,7 @@ html.opening-nav-visible .nav { transform: translateY(0); opacity: 1; }
   .egypt__concl { margin-top: 0; padding-left: var(--s-4); }
 }
 
-/* ===== 13 · FORMATS =============================== */
+
 #formats { background: transparent; }
 #formats .shead { text-align: center; }
 .fmt__list { display: flex; flex-direction: column; }
@@ -2004,14 +1946,14 @@ html.opening-nav-visible .nav { transform: translateY(0); opacity: 1; }
   .fmt__line-spec { grid-template-columns: 1fr; gap: 6px; }
 }
 
-/* ===== 14 · INTEGRATION (fi-panels) ============== */
+
 #integration { background: transparent; }
 #integration .aura { background: radial-gradient(ellipse at 50% 0%, rgba(117,91,171,.08), transparent 48%); }
 .slots__head { font-family: var(--font-display); font-size: var(--fs-section); line-height: 1.06; margin-bottom: var(--vr-dense); text-align: center; }
 .fi-panels {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: auto auto 1fr auto; /* title | rule | desc | tag */
+  grid-template-rows: auto auto 1fr auto; 
   border-top: 1px solid var(--gold-line);
   border-bottom: 1px solid var(--gold-line);
   margin-bottom: var(--vr-dense);
@@ -2096,7 +2038,7 @@ html.opening-nav-visible .nav { transform: translateY(0); opacity: 1; }
   .fi-desc { flex-grow: 1; }
 }
 
-/* ===== 15 · WHY ================================== */
+
 #why { background: transparent; }
 #why .shead { margin-bottom: var(--vr-dense); text-align: center; }
 #why .shead__title { word-spacing: -0.03em; text-wrap: auto; }
@@ -2168,7 +2110,7 @@ html.opening-nav-visible .nav { transform: translateY(0); opacity: 1; }
   .why__arg:last-child { border-bottom: none; }
 }
 
-/* ===== 16 · PORTFOLIO =========================== */
+
 #portfolio { background: transparent; }
 #portfolio .shead { text-align: center; }
 .pf__media { aspect-ratio: 21/9; overflow: hidden; border: 1px solid var(--ink-ghost); margin-bottom: var(--vr-dense); }
@@ -2208,8 +2150,7 @@ html.opening-nav-visible .nav { transform: translateY(0); opacity: 1; }
 .pm-col-header { display: flex; align-items: center; gap: 14px; margin-bottom: clamp(24px, 3vh, 40px); min-height: 44px; }
 .pm-col-num { font-size: 12px; font-weight: 300; color: var(--gold-soft); letter-spacing: .1em; flex-shrink: 0; transition: color .35s var(--ease-soft); }
 .pm-col-title { font-size: var(--fs-micro); font-weight: 300; letter-spacing: .14em; text-transform: uppercase; color: var(--gold-soft); transition: color .35s var(--ease-soft); }
-/* Lists fill the column; each row has a fixed min-height so row N
-   aligns across all three columns (5 / 4+spacer / 5 items). */
+
 .pm-event-list, .pm-partners, .pm-upcoming-list { display: flex; flex-direction: column; flex: 1; }
 .pm-event, .pm-partner, .pm-upcoming {
   padding: 14px 0;
@@ -2242,21 +2183,21 @@ html.opening-nav-visible .nav { transform: translateY(0); opacity: 1; }
 .pm-partner:hover .pm-partner-role,
 .pm-upcoming:hover .pm-upcoming-ctx { color: var(--ink); }
 
-/* Invisible row that keeps the 4-item column aligned with the 5-item ones. */
+
 .pm-partner--spacer { visibility: hidden; pointer-events: none; border-bottom: none; }
 
 @media (max-width: 820px) {
   .pm-grid { grid-template-columns: 1fr; }
   .pm-col { border-right: none; border-bottom: 1px solid var(--gold-line); }
   .pm-col:last-child { border-bottom: none; }
-  .pm-partner--spacer { display: none; }  /* no alignment needed when stacked */
+  .pm-partner--spacer { display: none; }  
 }
 
 @media (max-width: 760px) {
   .pf__media { aspect-ratio: 4/3; }
 }
 
-/* ===== 17 · FINAL =============================== */
+
 #final-experience { display: grid; grid-template-columns: 1fr 1fr; align-items: stretch; overflow: hidden; background: transparent; }
 .final__text { display: flex; flex-direction: column; justify-content: center; padding: var(--page-x); padding-block: clamp(96px,14vh,180px); padding-left: max(var(--page-x), calc((100vw - var(--content-max)) / 2)); }
 .final__heading { font-family: var(--font-display); font-size: var(--fs-section); line-height: 1.04; margin-bottom: var(--heading-copy-gap); }
@@ -2272,20 +2213,14 @@ html.opening-nav-visible .nav { transform: translateY(0); opacity: 1; }
 @media (max-width: 760px) {
   #final-experience { grid-template-columns: 1fr; }
   .final__media { min-height: 60vh; order: -1; }
-  /* The overlay extends 4px BELOW the media box (inset bottom:-4px) and holds
-     a solid --bg-deep cap for the bottom 8px. The fractional-height box rounds
-     differently every scroll frame, so its bottom edge must cut through SOLID
-     field colour — not through the photo's last (bright) pixel row. Extending
-     the dark cap past the edge means rounding can never reveal a bright pixel
-     or the fixed atmosphere behind it → no 1px line, no scroll flicker.
-     Requires overflow:visible on .final__media (set in 09-mobile-refinements). */
+  
   .final__media::after {
     inset: 0 0 -4px 0;
     background: linear-gradient(0deg, var(--bg-deep) 0, var(--bg-deep) 8px, transparent 55%);
   }
 }
 
-/* ===== FOOTER =================================== */
+
 #site-footer {
   position: relative;
   padding-block: clamp(48px, 6vh, 72px) clamp(36px, 5vh, 52px);
@@ -2359,7 +2294,7 @@ html.opening-nav-visible .nav { transform: translateY(0); opacity: 1; }
   .footer__row { flex-wrap: wrap; justify-content: center; }
 }
 
-/* ===== Global utility overrides (mobile) =========== */
+
 @media (max-width: 760px) {
   .pad-block { padding-block: clamp(72px, 10vh, 120px); }
   .pad-block--generous { padding-block: clamp(96px, 12vh, 160px); }
@@ -2370,11 +2305,6 @@ html.opening-nav-visible .nav { transform: translateY(0); opacity: 1; }
 
 <!-- MALEA / Tilda export / 04 / motion + tablets -->
 <style id="malea-tilda-css-04-motion-tablets">
-/* ===== 06-motion.css ===== */
-/* =========================================================
-   MALEA · Motion — slow, soft, breathing reveals
-   ========================================================= */
-
 [data-reveal] {
   opacity: 0;
   transform: translateY(28px);
@@ -2413,9 +2343,7 @@ html.opening-nav-visible .nav { transform: translateY(0); opacity: 1; }
 }
 [data-reveal="scale"].is-in { opacity: 1; transform: scale(1); filter: blur(0); }
 
-/* Cinematic depth reveal for the three MALEA big-quote screens.
-   Uses the same JS trigger as regular [data-reveal], but starts farther back:
-   smaller, lower, blurred, dimmed and slightly tilted toward the viewer. */
+
 [data-reveal="depth-quote"] {
   opacity: 0;
   transform: perspective(980px) translate3d(0, 46px, -190px) rotateX(9deg) scale(.84);
@@ -2502,9 +2430,7 @@ html.opening-nav-visible .nav { transform: translateY(0); opacity: 1; }
   }
 }
 
-/* Escape hatch: applied by reveal.js when the environment cannot run
-   transitions / IntersectionObserver. Reaches the visible end-state with
-   NO transition so content can never stay stuck hidden. */
+
 .reveal-static [data-reveal],
 .reveal-static [data-reveal="line"],
 .reveal-static [data-reveal="scale"] {
@@ -2523,31 +2449,13 @@ html.opening-nav-visible .nav { transform: translateY(0); opacity: 1; }
 }
 
 
-/* ===== 07-tablet-landscape.css ===== */
-/* =========================================================
-   MALEA · Landscape tablets (iPad mini / iPad / Air / Pro)
-   Targets touch tablets held horizontally — wide but short
-   viewports. The desktop compositions already apply here
-   (portrait-only stacking is scoped out in 05-screens.css);
-   this layer only tightens the vertical rhythm so full-height
-   split screens breathe correctly on a short viewport.
 
-   Devices (landscape CSS px, width × height):
-     iPad mini 8.3"    1133 × 744
-     iPad 10.2/10.9"   1080 × 810
-     iPad Air 10.9"    1180 × 820
-     iPad Pro 11"      1194 × 834
-     iPad Pro 12.9"    1366 × 1024
 
-   (pointer: coarse) keeps this off real desktops/laptops that
-   share the same width range — only touch devices match.
-   ========================================================= */
 
 @media (min-width: 1024px) and (max-width: 1366px)
    and (orientation: landscape) and (pointer: coarse) {
 
-  /* Denser vertical rhythm for short viewport height — the
-     desktop floors (100–220px) are too tall at 744–1024px. */
+  
   :root {
     --vr-standard:     clamp(64px, 9vh, 120px);
     --vr-dense:        clamp(46px, 7vh, 88px);
@@ -2555,14 +2463,11 @@ html.opening-nav-visible .nav { transform: translateY(0); opacity: 1; }
     --vr-transitional: clamp(44px, 5vh, 80px);
   }
 
-  /* Full-height split screens (hero / final): trim the oversized
-     block padding so two-column content fits within 100svh. */
+  
   .hero__text,
   .final__text { padding-block: clamp(56px, 9vh, 110px); }
 
-  /* Philosophy → ordinary-rhythm section.
-     Base composition is a full-height centred screen; on horizontal iPads it
-     should read as a landing section in the same cadence as Live / Player. */
+  
   #philosophy {
     display: block;
     min-height: 0;
@@ -2572,15 +2477,11 @@ html.opening-nav-visible .nav { transform: translateY(0); opacity: 1; }
     padding-block: 0;
   }
 
-  /* Philosophy (centred two-column) — tighten the column gap;
-     Live image band — shorter gap to its text on a short viewport. */
+  
   .philo__inner { gap: clamp(28px, 4vw, 48px); }
   .live__media { margin-bottom: clamp(72px, 8vh, 112px); }
 
-  /* Pull-quotes → ordinary-rhythm sections.
-     On landscape tablets the quotes must not behave as independent screens:
-     their top/bottom air follows the same tablet section rhythm as the rest of
-     the landing, while the quote itself remains a centred editorial accent. */
+  
   .quote-screen {
     min-height: 0;
     padding-block: var(--vr-standard);
@@ -2602,16 +2503,14 @@ html.opening-nav-visible .nav { transform: translateY(0); opacity: 1; }
     margin: 0 auto clamp(22px, 3vh, 32px);
     background: var(--gold-soft);
   }
-  /* Last quote: Portfolio above already contributes its own section bottom
-     rhythm, while the following Final starts image-led. Rebalance only this
-     junction so the quote does not read as a separate screen or as a spacer. */
+  
   .quote-screen--wide {
     margin-block: 0;
     padding-top: clamp(24px, 3.5vh, 44px);
     padding-bottom: var(--vr-standard);
   }
 
-  /* ===== 13 · FORMATS — tighter rhythm, taller images ===== */
+  
   .fmt__line {
     padding: clamp(28px, 4vh, 40px) 0;
     column-gap: clamp(28px, 3vw, 40px);
@@ -2621,46 +2520,24 @@ html.opening-nav-visible .nav { transform: translateY(0); opacity: 1; }
   .fmt__line-summary { margin-bottom: clamp(14px, 1.6vw, 20px); }
   .fmt__line-spec { padding: var(--s-2) 0; gap: var(--s-4); }
 
-  /* ===== 14 · INTEGRATION — tighter padding and type ===== */
+  
   .fi-panel {
     padding: clamp(22px, 3vh, 32px) clamp(16px, 2vw, 28px) clamp(26px, 3.5vh, 40px);
   }
   .fi-title { font-size: clamp(18px, 1.8vw, 24px); margin-bottom: var(--s-3); }
   .fi-rule { margin-bottom: var(--s-3); }
-  /* Was clamp(13px,1.2vw,15px) — matched the old 15px body floor. After the
-     body bump (now 16–18px) it read NOTICEABLY smaller than every other
-     paragraph. Track --fs-body so the panel copy equals the rest of the text. */
+  
   .fi-desc { font-size: var(--fs-body); }
   .fi-tag { margin-top: var(--s-4); }
 }
 
 
-/* ===== 08-tablet-portrait.css ===== */
-/* =========================================================
-   MALEA · Portrait tablets — full composition pass
-   ---------------------------------------------------------
-   Authoritative layer for tablets held vertically: narrow but
-   tall canvases (744–1024 wide). Loaded last, so it overrides
-   both the phone rules (≤760 — needed for iPad mini at 744px,
-   which sits below the mobile breakpoint) and the legacy
-   portrait baseline in 05-screens. One coherent design here.
 
-   Devices (portrait CSS px, width × height):
-     iPad mini 8.3"    744 × 1133
-     iPad 10.2/10.9"   810 × 1080  ·  820 × 1180 (Air)
-     iPad Pro 11"      834 × 1194
-     iPad Pro 12.9"   1024 × 1366
 
-   Intent: editorial single-column flow for split screens
-   (image as a calm full-bleed band, copy inset and breathing),
-   two-up grids where the medium reads well at this width
-   (videos, musicians, quotes, timeline), generous but
-   disciplined vertical rhythm, wider measures than on phone.
-   ========================================================= */
 
 @media (orientation: portrait) and (min-width: 700px) and (max-width: 1024px) {
 
-  /* ---- Rhythm & gutters, retuned for a tall portrait canvas ---- */
+  
   :root {
     --page-x:       clamp(48px, 7vw, 88px);
     --vr-standard:  clamp(92px, 11vh, 148px);
@@ -2668,15 +2545,14 @@ html.opening-nav-visible .nav { transform: translateY(0); opacity: 1; }
     --vr-generous:  clamp(116px, 13vh, 176px);
   }
 
-  /* Reclaim section padding from the phone overrides (which set it
-     explicitly) so the portrait rhythm above actually applies. */
+  
   .pad-block            { padding-block: var(--vr-standard); }
   .pad-block--dense     { padding-block: var(--vr-dense); }
   .pad-block--generous  { padding-block: var(--vr-generous); }
 
   .final__media { min-height: clamp(380px, 50vh, 560px); }
 
-  /* ===== 02 · HERO — full-screen stacked composition ===== */
+  
   #hero { grid-template-columns: 1fr; grid-template-rows: 1fr auto; }
   .hero__media { order: -1; min-height: 0; }
   .hero__media::after {
@@ -2689,7 +2565,7 @@ html.opening-nav-visible .nav { transform: translateY(0); opacity: 1; }
   }
   .hero__lede { max-width: 52ch; }
 
-  /* ===== 03 · IDENTITY ================================= */
+  
   .identity__inner {
     grid-template-columns: 1fr;
     gap: clamp(44px, 6vh, 76px);
@@ -2701,13 +2577,13 @@ html.opening-nav-visible .nav { transform: translateY(0); opacity: 1; }
   }
   .identity__body { max-width: none; }
 
-  /* ===== 04 · PHILOSOPHY =============================== */
-  /* Stack heading over copy, centred. */
+  
+  
   .philo__inner { grid-template-columns: 1fr; gap: clamp(32px, 4vh, 56px); }
   .philo__heading { white-space: normal; text-align: center; }
   .philo__text p { max-width: 52ch; margin-inline: auto; }
 
-  /* ===== 05 · LIVE ===================================== */
+  
   .live__media { margin-bottom: clamp(36px, 4vh, 60px); }
   .live-text-inner {
     grid-template-columns: 1fr;
@@ -2720,7 +2596,7 @@ html.opening-nav-visible .nav { transform: translateY(0); opacity: 1; }
   .live-text-left  { grid-column: auto; grid-row: auto; padding-right: 0; text-align: center; }
   .live__text { margin-inline: auto; }
   .live-text-right { grid-column: auto; grid-row: auto; padding-left: 0; }
-  /* Formats become a centred 2×2 grid */
+  
   .live-formats-label {
     text-align: center;
     font-family: var(--font-display);
@@ -2735,10 +2611,8 @@ html.opening-nav-visible .nav { transform: translateY(0); opacity: 1; }
   .live-format-row:hover { padding-left: 0; }
   .live-text-btn { grid-column: 1 / -1; grid-row: auto; align-self: auto; margin-top: var(--s-6); margin-bottom: 0; text-align: center; }
 
-  /* ===== 06 · QUOTE sections =========================== */
-  /* Quotes are not tablet "screens": they sit in the same vertical cadence as
-     the rest of the landing sections, with no viewport-height floor. Phone and
-     mid-tablet refinement layers loaded later keep their tighter overrides. */
+  
+  
   .quote-screen {
     min-height: 0;
     padding-block: var(--vr-standard);
@@ -2760,35 +2634,33 @@ html.opening-nav-visible .nav { transform: translateY(0); opacity: 1; }
     margin: 0 auto clamp(24px, 3vh, 34px);
     background: var(--gold-soft);
   }
-  /* Last quote: Portfolio already has a full section bottom rhythm above it,
-     Final is image-led below it. Keep the quote in-flow, but make this edge
-     transition visually even on the large portrait iPad band. */
+  
   .quote-screen--wide {
     margin-block: 0;
     padding-top: clamp(20px, 2.8vh, 40px);
     padding-bottom: var(--vr-standard);
   }
 
-  /* ===== 07 · PLAYER ================================== */
-  /* One stacked column, centred so cards keep a readable width. */
+  
+  
   .players {
     grid-template-columns: 1fr;
     max-width: 680px;
     margin-inline: auto;
   }
 
-  /* ===== 08 · PERFORMANCE ============================= */
+  
   .perf__grid { grid-template-columns: 1fr 1fr; }
 
-  /* ===== 09 · ART ===================================== */
+  
   #art { min-height: auto; }
   .art__grid { grid-template-columns: 1fr 1fr; }
 
-  /* ===== 10 · MUSICIANS =============================== */
-  /* 3 rows, each card horizontal (photo thumbnail | text). */
+  
+  
   .mus__grid {
     grid-template-columns: 1fr;
-    max-width: 760px;           /* tidy centred column; rows stay balanced on wide iPads */
+    max-width: 760px;           
     margin-inline: auto;
     gap: clamp(28px, 3.5vw, 48px);
   }
@@ -2799,7 +2671,7 @@ html.opening-nav-visible .nav { transform: translateY(0); opacity: 1; }
   }
   .mus__photo {
     width: clamp(180px, 28vw, 260px);
-    aspect-ratio: 4/5;          /* brand portrait crop, matches desktop */
+    aspect-ratio: 4/5;          
     flex-shrink: 0;
     margin-bottom: 0;
   }
@@ -2807,16 +2679,15 @@ html.opening-nav-visible .nav { transform: translateY(0); opacity: 1; }
   .mus__name { font-size: clamp(24px, 3vw, 32px); }
   .mus__desc { max-width: 42ch; }
 
-  /* ===== 11 · REVIEWS ================================= */
+  
   .carousel { aspect-ratio: 16 / 10; }
   .rev__quotes {
     grid-template-columns: 1fr 1fr;
     column-gap: clamp(28px, 4vw, 48px);
   }
 
-  /* ===== 12 · EGYPT ================================== */
-  /* Video spans the full content width — its edges line up with the text/timeline
-     below, restoring the rhythm; max-height tames the vertical clip on tall tablets. */
+  
+  
   .egypt__grid { grid-template-columns: 1fr; gap: clamp(44px, 6vh, 72px); align-items: stretch; }
   .egypt__media { width: 100%; max-width: none; margin-inline: 0; }
   .egypt-video-preview { height: auto; min-height: 0; aspect-ratio: 4 / 5; max-height: 62vh; }
@@ -2825,9 +2696,8 @@ html.opening-nav-visible .nav { transform: translateY(0); opacity: 1; }
   .egypt__text { max-width: 64ch; }
   .egypt__concl { margin-top: 0; }
 
-  /* ===== 13 · FORMATS =============================== */
-  /* Keep the 2-column image | copy layout, just more compact;
-     hide the running numbers and collapse the copy to one column. */
+  
+  
   .fmt__line {
     grid-template-columns: minmax(280px, 48%) minmax(0, 1fr);
     padding: clamp(28px, 3.5vh, 42px) 0;
@@ -2841,9 +2711,8 @@ html.opening-nav-visible .nav { transform: translateY(0); opacity: 1; }
   .fmt__line-summary { margin-bottom: clamp(14px, 1.6vw, 20px); }
   .fmt__line-spec { gap: var(--s-4); padding: var(--s-2) 0; }
 
-  /* ===== 14 · INTEGRATION (fi-panels) ============== */
-  /* Panels stack vertically (1 col), but each panel keeps a
-     2-column inside: title + tag | description. */
+  
+  
   .fi-panel {
     display: grid;
     grid-template-columns: minmax(280px, 48%) minmax(0, 1fr);
@@ -2869,16 +2738,11 @@ html.opening-nav-visible .nav { transform: translateY(0); opacity: 1; }
   }
   .fi-desc { grid-column: 2; grid-row: 1 / 3; align-self: center; }
 
-  /* ===== 15 · WHY ================================== */
-  /* Portrait-tablet why styling (2-col args + 52% image band) lives in
-     05-screens.css so a single rule governs up to 1100px without conflict. */
+  
+  
 
-  /* ===== 16 · PORTFOLIO =========================== */
-  /* Keep all 3 columns on iPad portrait. Tightened locally (padding,
-     type, row height) so they fit the wide portrait content width —
-     the global --page-x rhythm is left untouched. Collage band stays
-     hidden (it's the phone-only fallback). clamp(…vw…) scales the
-     compression from iPad mini (744) up to iPad Pro (1024). */
+  
+  
   .pf__media { display: none; }
   .pm-grid { grid-template-columns: 1fr 1fr 1fr; }
   .pm-col {
@@ -2896,9 +2760,9 @@ html.opening-nav-visible .nav { transform: translateY(0); opacity: 1; }
     hyphens: auto;
   }
   .pm-event-type, .pm-partner-role, .pm-upcoming-ctx { font-size: clamp(10px, 1.2vw, 12px); }
-  .pm-partner--spacer { display: flex; }  /* re-enable row alignment in 3-col */
+  .pm-partner--spacer { display: flex; }  
 
-  /* ===== 17 · FINAL =============================== */
+  
   #final-experience { grid-template-columns: 1fr; }
   .final__media {
     order: -1;
@@ -2918,42 +2782,13 @@ html.opening-nav-visible .nav { transform: translateY(0); opacity: 1; }
 
 <!-- MALEA / Tilda export / 05 / iPad + mobile -->
 <style id="malea-tilda-css-05-ipad-mobile">
-/* ===== 10-ipadpro-portrait.css ===== */
-/* =========================================================
-   MALEA · 10 · iPad PORTRAIT compositions
-   ---------------------------------------------------------
-   Restores the DESKTOP paired (2-column) editorial compositions
-   on portrait iPads, where the 08 layer had flattened them into
-   weak single-column stacks (image floating over text, etc.).
-
-   TWO bands:
-   · 700–1024  — the 7 TEXT compositions (Identity, Live,
-                 Performance, Art, Reviews, Egypt, Final). These
-                 read as paired image|text / text|list units and
-                 fit from iPad mini (744) up to iPad Pro 12.9 (1024).
-   · 960–1024  — the wider 3-column grids (Musicians, Integration,
-                 Why) + Philosophy 2-col + tightened heading gap;
-                 these need real width, so iPad Pro 12.9 only.
-
-   Phones (≤760) → layer 09.  Vertical rhythm for 761–959 → layer 11.
-   Loaded after 08/09 → overrides their portrait stacking.
-
-   ►  TO ROLL BACK: delete this file's <link> in index.html.
-
-   Kept portrait-style on purpose: Hero (stacked), Player (stacked
-   cards), Formats (compact 2-col), Portfolio (tight 3-col).
-   ========================================================= */
-
-/* =========================================================
-   BAND 1 · Paired text compositions — ALL portrait iPads (700–1024)
-   ========================================================= */
 @media (orientation: portrait) and (min-width: 700px) and (max-width: 1024px) {
 
-  /* ===== 03 · IDENTITY → photo | (title + sub + list) ===== */
+  
   .identity__inner { grid-template-columns: 44fr 56fr; gap: clamp(32px, 4vw, 72px); align-items: center; }
   .identity__portrait { width: auto; max-width: none; margin-inline: 0; }
 
-  /* ===== 05 · LIVE → lede | divider | formats list ===== */
+  
   .live-text-inner {
     grid-template-columns: minmax(0, 48%) 1px minmax(0, 52%);
     grid-template-rows: auto auto;
@@ -2977,36 +2812,30 @@ html.opening-nav-visible .nav { transform: translateY(0); opacity: 1; }
   .live-format-row:first-child { border-top: 1px solid rgba(216,183,108,.10); }
   .live-text-btn { grid-column: 1; grid-row: 2; align-self: end; text-align: left; }
 
-  /* ===== 08 · PERFORMANCE → title+sub | text ===== */
+  
   #performance .shead { grid-template-columns: 1fr 1fr; column-gap: clamp(24px, 3.5vw, 64px); }
   #performance .shead::before { display: block; }
   #performance .shead .shead__title { grid-column: 1; grid-row: 1; margin-top: 0; }
   #performance .shead .shead__sub   { grid-column: 1; grid-row: 2; max-width: none; }
   #performance .shead .shead__text  { grid-column: 2; grid-row: 1 / -1; align-self: start; max-width: 44ch; margin-top: 0; padding-left: clamp(14px, 2vw, 28px); }
 
-  /* ===== 09 · ART → title+sub | text ===== */
+  
   #art .shead { grid-template-columns: 1fr 1fr; column-gap: clamp(24px, 3.5vw, 64px); }
   #art .shead::before { display: block; }
   #art .shead .shead__title { grid-column: 1; grid-row: 1; margin-top: 0; }
   #art .shead .shead__sub   { grid-column: 1; grid-row: 2; max-width: none; }
   #art .shead .shead__text  { grid-column: 2; grid-row: 1 / -1; align-self: start; max-width: 44ch; margin-top: 0; padding-left: clamp(14px, 2vw, 28px); }
 
-  /* ===== 11 · REVIEWS → full-width stack.
-     The states list is TALLER than the heading text, so beside it it would
-     collide with the carousel on a portrait canvas. Stack: heading →
-     full-width states list → carousel. Dropping the half-column cap also
-     fixes the original "content stuck in the left half" look — the list now
-     spans the full width and lines up with the carousel below. ===== */
+  
   #reviews .shead { grid-template-columns: 1fr; }
   #reviews .shead .shead__title,
   #reviews .shead .shead__sub,
   #reviews .shead .shead__text { grid-column: auto; grid-row: auto; }
   .rev__states { position: static; left: auto; right: auto; top: auto; grid-column: auto; grid-row: auto; margin-top: clamp(28px, 4vh, 48px); max-width: none; }
-  /* Short state labels look sparse in one full-width column → 2-column matrix
-     (with the 6th state shown, that's a clean 3×2). */
+  
   .rev__states-list { grid-template-columns: 1fr 1fr; column-gap: clamp(28px, 4vw, 64px); }
 
-  /* ===== 12 · EGYPT → video | text + timeline (centred section title) ===== */
+  
   .egypt__header { text-align: center; }
   .egypt__grid {
     grid-template-columns: minmax(260px, 40%) minmax(0, 1fr);
@@ -3022,7 +2851,7 @@ html.opening-nav-visible .nav { transform: translateY(0); opacity: 1; }
   .egypt-video-preview__media { background-position: center; }
   .egypt__body { display: flex; flex-direction: column; }
 
-  /* ===== 17 · FINAL → text | image ===== */
+  
   #final-experience { grid-template-columns: 1fr 1fr; align-items: stretch; }
   .final__media { order: 0; min-height: 0; }
   .final__media::after { background: linear-gradient(90deg, var(--bg-main), transparent 40%); }
@@ -3030,26 +2859,17 @@ html.opening-nav-visible .nav { transform: translateY(0); opacity: 1; }
   .final__body { max-width: 52ch; }
 }
 
-/* =========================================================
-   BAND 2 · Wide-only — iPad Pro 12.9" portrait (960–1024)
-   3-column grids + Philosophy 2-col + tighter heading gap.
-   ========================================================= */
+
 @media (orientation: portrait) and (min-width: 960px) and (max-width: 1024px) {
 
-  /* iPad Pro portrait rhythm pass.
-     08's tall-canvas scale caps at 148/176px, which makes low-density blocks
-     (especially the three MALEA pull-quotes) feel detached from the landing
-     cadence. Bring the whole Pro portrait rhythm onto a tighter editorial step,
-     then tune quotes as compact accent sections below. */
+  
   :root {
     --vr-standard: clamp(72px, 6vh, 96px);
     --vr-dense:    clamp(40px, 4.2vh, 60px);
     --vr-generous: clamp(72px, 6vh, 96px);
   }
 
-  /* Pull-quotes on iPad Pro portrait are editorial accents, not full sections.
-     Keep them in the same cadence as surrounding sections, but use a tighter
-     self-padding because the quote content itself is intentionally low-density. */
+  
   .quote-screen {
     min-height: 0;
     padding-block: clamp(48px, 4.5vh, 64px);
@@ -3057,16 +2877,14 @@ html.opening-nav-visible .nav { transform: translateY(0); opacity: 1; }
   .bigquote { max-width: min(86%, 760px); }
   .quote-screen--wide .bigquote { max-width: min(90%, 940px); }
 
-  /* Last quote sits between Portfolio (which already has bottom padding) and the
-     image-led Final. Use asymmetric padding so the visible air above and below
-     reads balanced instead of creating a separate pause. */
+  
   .quote-screen--wide {
     margin-block: 0;
     padding-top: clamp(18px, 2vh, 28px);
     padding-bottom: clamp(60px, 5.5vh, 80px);
   }
 
-  /* ===== 04 · PHILOSOPHY → 2 columns (heading | text) ===== */
+  
   #philosophy {
     display: block;
     min-height: 0;
@@ -3079,7 +2897,7 @@ html.opening-nav-visible .nav { transform: translateY(0); opacity: 1; }
   .philo__heading { white-space: normal; text-align: left; }
   .philo__text p { max-width: 56ch; margin-inline: 0; }
 
-  /* ===== 10 · MUSICIANS → 3 vertical cards ===== */
+  
   .mus__grid { grid-template-columns: repeat(3, 1fr); max-width: none; margin-inline: 0; gap: clamp(24px, 3vw, 48px); }
   .mus__card { flex-direction: column; align-items: stretch; gap: 0; justify-content: flex-start; }
   .mus__photo { width: auto; aspect-ratio: 4/5; margin-bottom: var(--s-5); }
@@ -3087,7 +2905,7 @@ html.opening-nav-visible .nav { transform: translateY(0); opacity: 1; }
   .mus__name { font-size: clamp(19px, 2.1vw, 23px); }
   .mus__desc { max-width: none; }
 
-  /* ===== 14 · INTEGRATION → 3 columns (subgrid panels) ===== */
+  
   .fi-panels { grid-template-columns: repeat(3, 1fr); grid-template-rows: auto auto 1fr auto; }
   .fi-panel {
     display: grid;
@@ -3105,7 +2923,7 @@ html.opening-nav-visible .nav { transform: translateY(0); opacity: 1; }
   .fi-tag   { grid-column: auto; grid-row: auto; margin-top: var(--s-6); align-self: auto; width: auto; max-width: none; }
   .fi-desc  { grid-column: auto; grid-row: auto; align-self: auto; }
 
-  /* ===== 15 · WHY → 3 columns ===== */
+  
   .why__args { grid-template-columns: repeat(3, 1fr); }
   .why__arg {
     display: flex; flex-direction: column;
@@ -3118,55 +2936,25 @@ html.opening-nav-visible .nav { transform: translateY(0); opacity: 1; }
   .why__arg p  { grid-column: auto; grid-row: auto; }
 }
 
-/* =========================================================
-   Reviews · 6th state ("Раскрытие телесности") shown ONLY on portrait
-   phones + tablets (≤1024). Desktop & landscape keep 5 states so their
-   composition (states in the right column) isn't broken.
-   ========================================================= */
+
 @media (orientation: portrait) and (max-width: 1024px) {
   .rev__states-list li.rev__state--xtra { display: grid; }
 }
 
 
-/* ===== 11-tablet-portrait-refine.css ===== */
-/* =========================================================
-   MALEA · 11 · Portrait tablets refine — iPad / Air / Pro 11"
-   ---------------------------------------------------------
-   Range: portrait, 761–959px (iPad 10.2 @810, iPad Air @820,
-   iPad Pro 11" @834). This middle band kept the LOOSE 08 rhythm
-   (130px section padding → 260px gaps, 94px heading→content) and
-   full-height "statement" screens (Philosophy / quotes) that left
-   huge voids on a tall portrait canvas.
 
-   NOT covered here on purpose:
-     · iPad mini (744) → already tightened by the mobile layer 09.
-     · iPad Pro 12.9" portrait (≥960) → layer 10.
-     · Phones (≤760) → layer 09.
 
-   Loaded LAST. ►  TO ROLL BACK: remove this file's <link>.
-
-   Applies (from the audit):
-     A · Tighter, even vertical rhythm (section gaps & heading gaps)
-     B · Philosophy + pull-quotes → normal flow (kills the voids)
-     C · Centre the horizontal musician cards (no dead space right)
-   ========================================================= */
 
 @media (orientation: portrait) and (min-width: 761px) and (max-width: 959px) {
 
-  /* ---------- A · Vertical rhythm ----------
-     Was: --vr-standard 11vh→130 (260px between sections),
-          --vr-dense 8vh→94 (heading→content),
-          reviews on --vr-generous (153, out of step).
-     Now: one tighter, consistent scale. */
+  
   :root {
-    --vr-standard: clamp(56px, 7vh, 84px);   /* section padding → ~80; gap 260 → ~160 */
-    --vr-dense:    clamp(36px, 4.5vh, 56px);  /* heading → content → ~53 (was 94) */
-    --vr-generous: clamp(56px, 7vh, 84px);    /* reviews onto the same rhythm */
+    --vr-standard: clamp(56px, 7vh, 84px);   
+    --vr-dense:    clamp(36px, 4.5vh, 56px);  
+    --vr-generous: clamp(56px, 7vh, 84px);    
   }
 
-  /* ---------- B · Kill the full-height voids ----------
-     On a tall portrait the 100svh statement / 70svh quote screens
-     floated a tiny block in ~700px of emptiness. Make them flow. */
+  
   #philosophy {
     display: block;
     min-height: 0;
@@ -3175,28 +2963,15 @@ html.opening-nav-visible .nav { transform: translateY(0); opacity: 1; }
   #philosophy .philo__inner { padding-block: 0; }
   .quote-screen { min-height: 0; padding-block: clamp(48px, 6vh, 76px); }
 
-  /* ---------- C · Centre the horizontal musician cards ----------
-     The single-column horizontal cards left ~175px of dead space on
-     the right. Tighten the column to the content width and centre it
-     (08 already sets margin-inline:auto), and centre the card content. */
+  
   .mus__grid { max-width: 660px; }
   .mus__card { justify-content: center; }
 
-  /* ---------- E · Identity — match text height to the photo ----------
-     Photo (aspect 4/5 in the 44% column) is ~370px tall; the
-     title + sub + 4-item list ran ~506px, so the centred photo
-     floated short beside a much taller text block. Keep the photo as
-     is and COMPRESS the text vertically: tighten the gap under the
-     subtitle and the per-row padding of the credentials list so the
-     text column ≈ the photo height (both then centre cleanly). */
+  
   #identity .identity__sub { margin-bottom: clamp(16px, 2.2vh, 22px); }
   #identity .identity__list li { padding-block: clamp(9px, 1.4vh, 11px); }
 
-  /* ---------- F · Pull-quotes · Direction A (editorial accent) ----------
-     Same treatment as the phone layer, scaled for the wider portrait canvas:
-     a touch more size for presence, a tight byline that belongs to the quote,
-     and a short gold rule above as an anchor. Larger portrait iPads inherit
-     the same tablet quote principle from 08-tablet-portrait. */
+  
   .bigquote__text { font-size: clamp(30px, 4vw, 34px); line-height: 1.24; font-weight: 300; letter-spacing: .015em; }
   .bigquote__attr { margin-top: clamp(16px, 2vh, 22px); letter-spacing: .2em; }
   .bigquote::before {
@@ -3206,77 +2981,37 @@ html.opening-nav-visible .nav { transform: translateY(0); opacity: 1; }
     margin: 0 auto clamp(24px, 3vh, 32px);
     background: var(--gold-soft);
   }
-  /* Last quote (--wide): Portfolio above supplies its own padding-bottom while
-     the image-led Final below has padding-top:0 → symmetric quote padding read
-     as "pressed to the photo". Asymmetric padding (small top, larger bottom)
-     evens the content-to-content air before/after. */
+  
   .quote-screen--wide { margin-block: 0; padding-top: clamp(2px, 0.5vh, 10px); padding-bottom: clamp(76px, 9vh, 110px); }
 }
 
 
-/* ===== 09-mobile-refinements.css ===== */
-/* =========================================================
-   MALEA · 09 · Mobile refinements  —  PHONES ONLY (≤760px)
-   ---------------------------------------------------------
-   Also holds the .live__heading desktop/mobile visibility
-   toggle (global, not inside the media query).
-   ========================================================= */
 
-/* ---------- Live heading: mobile vs desktop visibility ---------- */
-/* The mobile heading (.live__heading--mobile) sits before .live__media
-   in the DOM; the desktop heading stays inside .live-text-left.
-   Only one is visible at a time — the other is display:none so
-   IntersectionObserver and [data-reveal] are inert on the hidden copy. */
-.live__heading--mobile { display: none; }   /* hidden on desktop */
-.live__heading--desktop { display: block; }  /* shown on desktop */
 
-/* =========================================================
-   MALEA · 09 · Mobile refinements  —  PHONES ONLY (≤760px)
-   ---------------------------------------------------------
-   Self-contained mobile-only polish layer, loaded LAST so it
-   wins purely by cascade order (no !important needed).
 
-   ►  TO ROLL BACK: delete this file's <link> in index.html
-      (or comment it out). Nothing else references it and no
-      existing rule was edited — removing the link restores
-      the previous mobile layout exactly.
 
-   Scope is strictly max-width:760px. Desktop, landscape
-   tablets (07) and portrait tablets (08) are NOT touched.
 
-   Audit items applied (P1 + P2), mobile only:
-     · Section headings → left-aligned, slightly smaller,
-       looser leading (lighter multi-line headings)
-     · Even vertical rhythm: #art / #reviews padding pulled
-       onto the standard mobile value; pull-quote screens
-       shortened (were a near-full empty screen each)
-     · Formats: image & copy share one left edge (the running
-       number becomes a kicker above the title)
-     · Micro labels 10→11px; body 15→16px (readability)
-   ========================================================= */
+.live__heading--mobile { display: none; }   
+.live__heading--desktop { display: block; }  
+
+
 
 @media (max-width: 760px) {
 
-  /* ---------- Type scale (token overrides, mobile only) ---------- */
+  
   :root {
-    /* was clamp(36px, 4.2vw, 60px) → 36 floor on every phone.
-       Now ~31px at 390px, never larger than the old 36. */
+    
     --fs-section: clamp(30px, 8vw, 36px);
-    /* was clamp(10px, .78vw, 12px) → 10px floor — too small on phones */
+    
     --fs-micro: 11px;
-    /* Body was 16px (bare minimum → read "очень мелко"). 17px reads
-       comfortably and keeps a clear step under the 19px gold subtitle.
-       One token → all body text scales uniformly; grid/rhythm are px-based
-       and unaffected. */
+    
     --fs-body: 17px;
-    /* Heading→content / media→text gap. Desktop token stays clamp(72,8vh,120)
-       = 72px on phones — too airy. Tighten so headings sit with their content. */
+    
     --vr-dense: clamp(30px, 4vh, 48px);
   }
 
-  /* ---------- Section headings: left-aligned ---------- */
-  /* Override the per-section centring so every section header shares
-     one left edge with its body/list/cards on the narrow column. */
+  
+  
   #musicians .shead,
   #formats .shead,
   #why .shead,
@@ -3286,7 +3021,7 @@ html.opening-nav-visible .nav { transform: translateY(0); opacity: 1; }
   .live__heading,
   .slots__head { text-align: left; }
 
-  /* Looser leading so the 3–4 line headings breathe at the smaller size. */
+  
   .shead__title,
   .slots__head,
   .player__heading,
@@ -3295,122 +3030,68 @@ html.opening-nav-visible .nav { transform: translateY(0); opacity: 1; }
   .egypt__header .heading,
   .philo__heading { line-height: 1.12; }
 
-  /* ---------- Even, tighter vertical rhythm between sections ---------- */
-  /* Phones were at 84px top+bottom → ~168px between sections (and #art/#reviews
-     even escaped that via ID+token). Pull EVERY section onto one tighter value
-     so the page reads as a continuous flow, not isolated screens with voids.
-     ~51px each side → ~102px between sections (vs 168). */
+  
+  
   .pad-block,
   #art,
   #reviews,
   #philosophy { padding-block: clamp(44px, 6vh, 64px); }
 
-  /* identity in the opening-deck gets --vr-standard (~100-180px) from
-     13-opening-desktop.css → override to match the uniform mobile rhythm. */
-  html.js-opening #opening >#identity.op-layer {
+  
+  html.js-opening #opening #identity.op-layer {
     padding-block: clamp(44px, 6vh, 64px);
   }
 
-  /* Pull-quotes & Philosophy are LOW-DENSITY blocks (a one-line quote, a short
-     statement). At the standard section padding their own air stacks with the
-     neighbours' → ~100–120px around very little content = looks gigantic. Give
-     them one shared, tighter padding so they sit inside the flow as an accent,
-     not a floating block. (Both use --vr-block below.) */
+  
   :root { --vr-block: clamp(20px, 3vh, 30px); }
-  /* Quotes keep their original CENTRED Cormorant-italic look (left-aligned /
-     enlarged read worse). They only needed breathing room: give them
-     section-level padding so the last quote isn't jammed against the
-     image-led "Создать опыт" section right below it. */
+  
   .quote-screen { min-height: 0; padding-block: clamp(40px, 6vh, 56px); }
 
-  /* ---------- Philosophy: normal-flow section, aligned to the margin ---------- */
-  /* Was a 100svh full screen with ~400px of voids; on a scrolled phone that
-     pause is just dead space. Drop the full height and let it flow.
-     .philo__inner sits INSIDE .wrap yet also carried its own
-     padding:var(--page-x) (content inset twice, ~56px). Zero the inner
-     horizontal padding so heading/text line up at the standard 28px margin
-     (the existing <br> then resolves the heading to a clean 2 lines), and
-     give it the standard section rhythm via padding-block. */
+  
+  
   #philosophy { min-height: 0; }
   #philosophy .philo__inner { padding-inline: 0; padding-block: 0; }
 
-  /* ---------- Reviews heading: tidy the wrap ---------- */
-  /* The desktop hard break (музыка<br>и…) re-wraps on the narrow column
-     into 4 ragged lines with single-word orphans. Drop the forced break
-     on phones and let the browser balance it into clean lines. (The
-     desktop <br> stays; a trailing space before it lets the words rejoin
-     without gluing «музыка»+«и».) */
+  
+  
   #reviews .shead__title br { display: none; }
   #reviews .shead__title { text-wrap: balance; }
 
-  /* ---------- Formats: image and copy share the left edge ---------- */
-  /* Drop the hanging-number gutter (image was flush at the margin while
-     the copy was indented ~56px). The number becomes a small kicker
-     above the title, so image + number + copy all align at the margin. */
+  
+  
   #formats .fmt__line-content { grid-template-columns: 1fr; }
   #formats .fmt__line-num { padding-top: 0; margin-bottom: var(--s-2); }
-  /* Tighten the card-to-card gap (was 42/42 → ~84px between cards). */
+  
   .fmt__line { padding-block: clamp(22px, 3vw, 28px); }
 
-  /* ---------- Final CTA: centre to match the other mobile buttons ---------- */
-  #final-experience .final__text > div:last-child { text-align: center; }
+  
+  #final-experience .final__text div:last-child { text-align: center; }
 
-  /* ---------- Live: kill the doubled gap before "Подходит для:" ---------- */
-  /* Stacked, the inner grid already separates the lede from the formats
-     block via its row-gap (~42px). The lede paragraph ALSO carried
-     margin-bottom:var(--s-6) (48px), so the two stacked into ~90px of void
-     and broke the rhythm. Zero the paragraph margin → only the row-gap
-     remains as the separator. */
+  
+  
   #live .live__text { margin-bottom: 0; }
 
-  /* ---------- Final: trim the oversized top image ~10% ----------
-     The image-led Final screen used min-height:60vh → it dominated the phone.
-     Pull it back ~10% (54vh). With object-position 50% 65% the crop lands
-     mostly on the top, so the subject stays framed. */
+  
   #final-experience .final__media { min-height: 46vh; }
-  /* Kill the 1px "pixel line" at the photo's bottom edge.
-     .final__media has a fractional height (46vh), so at dpr 2–3 its bottom
-     edge lands on a half-device-pixel → the clipped bottom row renders
-     semi-transparent. The fixed .site-atmosphere overlay (a blue radial
-     pinned to the bottom of the viewport) showed THROUGH that translucent
-     row as a faint, scroll-flickering seam ("просвечивается сквозь фон").
-     Paint the section + media with the solid field colour so there is no
-     transparency behind the edge for the atmosphere to bleed through.
-     --bg-deep == the body field, so this is visually identical to the
-     unified background — no new seam. */
+  
   #final-experience { background: var(--bg-deep); }
   #final-experience .final__media { background: var(--bg-deep); }
-  /* Raise the photo ~10% within the frame (show a slightly lower slice of the
-     portrait): object-position Y 65% → 75%. Remove transform:scale() because
-     it creates a GPU compositor layer that can leave a 1px sub-pixel seam
-     against the ::after overlay at the bottom edge. Without scale, the photo
-     fills exactly 100% of the container — same visual crop, no seam. */
-  /* overflow must stay VISIBLE so .final__media::after can extend below the box
-     (see the bottom-cap overlay in 05-screens.css). The img is sized inset:0 to
-     the box, so nothing else overflows. */
+  
+  
   #final-experience .final__media { overflow: visible; }
   #final-experience .final__media img {
     object-position: 50% 75%;
     transform: none;
   }
-  /* The text block kept the desktop 14vh (~118px) block padding → an ~111px
-     void between the photo and the "Создать опыт" heading, out of step with the
-     mobile rhythm. Pull it onto the standard mobile section padding. */
+  
   #final-experience .final__text { padding-block: clamp(44px, 6vh, 64px); }
 
-  /* ---------- Reviews: tighten the gap before the states list ---------- */
-  /* When the states list drops below the lede (stacked), 05-screens gives it
-     margin-top:var(--s-7) (72px) → an oversized jump before "Соединение с
-     собой". Pull it onto the standard mobile dense gap so it reads in rhythm. */
+  
+  
   #reviews .rev__states { margin-top: var(--vr-dense); }
 
-  /* ---------- Pull-quotes · Direction A (editorial accent) ----------
-     On phones the quote fell to the 22px clamp floor (barely above the 17px
-     body) and the byline sat 48px adrift, so the "moment" read as an orphan
-     paragraph. Restore presence: larger quote, tight byline, and a short gold
-     rule above as an anchor (the same gold-line language used elsewhere). */
-  /* font-weight 300 = genuinely light Cormorant (now imported); a hair of
-     positive tracking opens the italic serif up for a more couture, airy read. */
+  
+  
   .bigquote__text { font-size: 26px; line-height: 1.26; font-weight: 300; letter-spacing: .015em; }
   .bigquote__attr { margin-top: clamp(14px, 2vh, 18px); font-size: 17px; letter-spacing: .2em; }
   .bigquote::before {
@@ -3420,26 +3101,18 @@ html.opening-nav-visible .nav { transform: translateY(0); opacity: 1; }
     margin: 0 auto clamp(20px, 3vh, 26px);
     background: var(--gold-soft);
   }
-  /* (b) The quote sat at max-width:300px → ~45px side margins on a 390 phone,
-     so it read "squeezed". Widen to ~86vw (≈27px margins, matching the page
-     rhythm) so the line measure breathes. */
+  
   .bigquote { max-width: 86vw; }
   .quote-screen--wide .bigquote { max-width: 90vw; }
-  /* (a) The last quote (--wide) sits between Portfolio (which has its OWN ~51px
-     padding-bottom) and the image-led Final screen (padding-top:0, photo flush).
-     With symmetric quote padding the CONTENT-to-content gap was ~123px above vs
-     ~72px below → the quote looked pressed to the photo. Rebalance with
-     ASYMMETRIC padding: small top (Portfolio's padding already supplies the gap
-     above) + larger bottom (replaces the Final's missing top padding). Result:
-     even air before/after the quote. No margins. */
+  
   .quote-screen--wide { margin-block: 0; padding-top: clamp(6px, 1.1vh, 12px); padding-bottom: clamp(60px, 9vh, 86px); }
 
-  /* ---------- Live: heading above image (mobile only) ---------- */
-  /* Hide the desktop heading, show the mobile one placed before .live__media */
+  
+  
   .live__heading--desktop { display: none; }
   .live__heading--mobile { display: block; }
 
-  /* Hide the gold rule below the image on mobile (it's between heading and text) */
+  
   .live-rule { display: none; }
 }
 </style>
@@ -3447,35 +3120,9 @@ html.opening-nav-visible .nav { transform: translateY(0); opacity: 1; }
 
 <!-- MALEA / Tilda export / 06 / final layers + Tilda color/font guard -->
 <style id="malea-tilda-css-06-final-guard">
-/* ===== 12-unified-bg.css ===== */
-/* =========================================================
-   MALEA · 12 · Unified background (seamless)
-   ---------------------------------------------------------
-   ONE continuous deep field for the whole page so section
-   boundaries never show as a background "seam":
-
-   · body paints the uniform field (--bg-deep, like screen 2) —
-     it spans the entire page, so there are no per-section edges.
-   · .site-atmosphere becomes a fixed, transparent overlay that
-     only adds a whisper of radial depth (so it isn't dead-flat);
-     being fixed, it's identical in every viewport → no transition
-     is visible while scrolling.
-   · All sections stay transparent (Hero's solid bg-deep now equals
-     the field → no edge).
-   · Per-section colour auras are turned OFF — they used to glow on
-     some sections and not others, which read as "patchwork" and
-     made boundaries visible. The ONLY glow kept is on the
-     pull-quotes (one intentional accent).
-
-   ►  TO ROLL BACK: remove this file's <link> in index.html.
-   ========================================================= */
-
-/* Uniform field across the whole page (no seams, any height). */
 body { background: var(--bg-deep); }
 
-/* Atmosphere = fixed, transparent depth overlay (no solid base → the
-   body field shows through uniformly; the radials frame each viewport
-   identically, so they don't mark section transitions). */
+
 .site-atmosphere {
   position: fixed;
   inset: 0;
@@ -3486,24 +3133,14 @@ body { background: var(--bg-deep); }
     radial-gradient(ellipse 130% 80% at 50% 115%, rgba(94, 141, 190, .05) 0%, transparent 50%);
 }
 
-/* Section colour auras OFF — except the pull-quotes. */
+
 #identity .aura,
 #philosophy .aura,
 #live .aura,
 #player .aura,
 #integration .aura { background: none; }
 
-/* ---------------------------------------------------------
-   Section-specific background OVERLAYS off — these were the
-   remaining visible "seams" at section boundaries:
-   · #philosophy::before  → top-highlight band (Identity→Philosophy)
-   · .quote-screen::before → top/bottom radials (every quote edge)
-   · #art background       → its own blue/violet radials (Performance→Art)
-   · #egypt background + ::before → radials + grid texture (after quote 2)
-   Each section now shows ONLY the uniform field → no transition.
-   The pull-quotes keep their soft centred .aura glow (it fades to
-   transparent before the edges, so it doesn't create a seam).
-   --------------------------------------------------------- */
+
 #philosophy::before { display: none; }
 .quote-screen::before { display: none; }
 #art   { background: transparent; }
@@ -3511,55 +3148,16 @@ body { background: var(--bg-deep); }
 #egypt::before { display: none; }
 
 
-/* ===== 13-opening-desktop.css ===== */
-/* =========================================================
-   MALEA · 13 · Cinematic opening DECK
-   ---------------------------------------------------------
-   A wheel/key-triggered, TIME-BASED cinematic chain across the opening
-   screens: INTRO → HERO → IDENTITY on desktop / landscape tablets,
-   and INTRO → HERO only on portrait tablets / mobile.
-   Each forward step: the next screen rises softly from depth while the
-   current one recedes toward the viewer. Reverse is symmetric. After the
-   last deck screen a normal scroll releases to the rest of the page
-   (Philosophy, Live, … are ordinary scroll sections — no cinematic).
 
-   Adapted from the motion-lab "opening pair" technique, generalised to an
-   N-screen deck and tuned for a deep, expensive, cinematic feel.
 
-   Architecture:
-      · #intro…#identity are wrapped in <div class="opening-stage"> and each
-        carries the `op-layer` class.
-      · By default (no JS / unsupported viewport / reduced-motion) the wrapper is
-        `display: contents` → it vanishes and the three sections behave as
-         the normal sections they always were. Reduced-motion keeps this inert.
-     · Only when js/modules/opening.js sets <html class="js-opening">
-        (desktop/fine pointer OR touch tablet/mobile + motion allowed) does the wrapper become a
-       1-viewport stage with deck sections as stacked absolute layers,
-       and the JS drives a class-based, time-based chained transition.
 
-   State classes (set by JS, direction-agnostic):
-     .op-layer              → hidden in depth (resting non-current)
-     .op-layer.is-current   → fully resolved, visible
-     .op-layer.is-leaving   → receding toward the viewer (during a step)
-     html.opening-anim      → enables the transition while a step runs
 
-   Visual model (GPU: transform / opacity / filter only):
-     incoming (rising from depth): opacity 0→1 · scale .94→1 · ty 22→0 · blur 4→0 · veil .58→0
-     leaving  (toward the viewer): opacity 1→0 · scale 1→1.014 · blur 0→1.2 · veil 0→.40
-
-   ►  TO ROLL BACK: remove this file's <link> in index.html AND the
-      initOpening() call in js/app.js. (Optionally unwrap .opening-stage
-      and drop the op-layer classes.) Removing the link alone already
-      restores the normal section layout — the JS guard checks the CSS.
-   ========================================================= */
-
-/* Inert by default — wrapper has no box; the sections flow as before. */
 .opening-stage { display: contents; }
 
-/* Tunables (only consumed under .js-opening). */
+
 :root {
   --op-dur: 1500ms;
-  --op-ease: cubic-bezier(0.33, 0, 0.18, 1); /* symmetric, NOT front-loaded */
+  --op-ease: cubic-bezier(0.33, 0, 0.18, 1); 
 }
 
 @media (min-width: 1101px),
@@ -3567,7 +3165,7 @@ body { background: var(--bg-deep); }
        (orientation: portrait) and (min-width: 700px) and (max-width: 1024px) and (pointer: coarse),
        (max-width: 760px) and (pointer: coarse) {
 
-  /* ---- Stage: exactly one viewport, clips the stacked layers ---- */
+  
   html.js-opening .opening-stage {
     display: block;
     position: relative;
@@ -3577,8 +3175,8 @@ body { background: var(--bg-deep); }
     z-index: 2;
   }
 
-  /* ---- Layers: the first three screens stacked absolutely inside the stage ---- */
-  html.js-opening #opening >.op-layer {
+  
+  html.js-opening #opening .op-layer {
     position: absolute;
     inset: 0;
     min-height: 0;
@@ -3587,75 +3185,68 @@ body { background: var(--bg-deep); }
     transform-origin: 50% 58%;
     will-change: transform, opacity, filter;
     backface-visibility: hidden;
-    /* Default = hidden "depth" state (every non-current layer). */
+    
     opacity: 0;
     transform: scale(0.94) translateY(22px);
     filter: blur(4px);
   }
 
-  /* ---- Dark veil → the "emergence from darkness/depth" ---- */
-  html.js-opening #opening >.op-layer::after {
+  
+  html.js-opening #opening .op-layer::after {
     content: "";
     position: absolute;
     inset: 0;
     background: #000;
-    opacity: 0.58;            /* non-current = veiled (deep) */
+    opacity: 0.58;            
     pointer-events: none;
-    z-index: 6;               /* above this layer's own content */
+    z-index: 6;               
     will-change: opacity;
     backface-visibility: hidden;
   }
 
-  /* ---- Current (visible, fully resolved) layer ---- */
-  html.js-opening #opening >.op-layer.is-current {
+  
+  html.js-opening #opening .op-layer.is-current {
     opacity: 1;
     transform: none;
     filter: none;
     z-index: 4;
   }
-  html.js-opening #opening >.op-layer.is-current::after { opacity: 0; }
+  html.js-opening #opening .op-layer.is-current::after { opacity: 0; }
 
-  /* ---- Leaving layer: recedes toward the viewer (scale up + soft blur) ---- */
-  html.js-opening #opening >.op-layer.is-leaving {
+  
+  html.js-opening #opening .op-layer.is-leaving {
     opacity: 0;
     transform: scale(1.014);
     filter: blur(1.2px);
     z-index: 3;
   }
-  html.js-opening #opening >.op-layer.is-leaving::after { opacity: 0.40; }
+  html.js-opening #opening .op-layer.is-leaving::after { opacity: 0.40; }
 
-  /* ---- Enable transitions only while a step is running ---- */
-  html.js-opening.opening-anim #opening >.op-layer {
+  
+  html.js-opening.opening-anim #opening .op-layer {
     transition:
       transform var(--op-dur) var(--op-ease),
       opacity   var(--op-dur) var(--op-ease),
       filter    var(--op-dur) var(--op-ease);
   }
-  html.js-opening.opening-anim #opening >.op-layer::after {
+  html.js-opening.opening-anim #opening .op-layer::after {
     transition: opacity var(--op-dur) var(--op-ease);
   }
 
-  /* =======================================================
-     Per-screen fit: each layer must read as a full screen.
-     INTRO / HERO already fill & centre themselves.
-     IDENTITY is a content (pad-block) section — centre it vertically
-     inside the 1-viewport layer and drop the block padding.
-     ======================================================= */
-  html.js-opening #opening >#identity.op-layer {
+  
+  html.js-opening #opening #identity.op-layer {
     display: grid;
     place-content: center;
     padding-block: 0;
   }
 
-  /* IDENTITY's portrait drives its height; cap it so the composition always
-     fits one viewport (it otherwise overflows on ~768px-tall desktops). */
-  html.js-opening #opening >#identity.op-layer .identity__portrait {
+  
+  html.js-opening #opening #identity.op-layer .identity__portrait {
     max-height: 76vh;
   }
 }
 
-/* Portrait tablets + mobile: the cinematic deck ends on HERO. IDENTITY must return to
-   normal page flow directly after the one-viewport opening stage. */
+
 @media ((max-width: 760px) and (pointer: coarse)),
        ((orientation: portrait) and (min-width: 700px) and (max-width: 1024px) and (pointer: coarse)) {
   html.js-opening .opening-stage {
@@ -3668,14 +3259,14 @@ body { background: var(--bg-deep); }
     overscroll-behavior: none;
   }
 
-  html.js-opening #opening >#intro.op-layer,
-  html.js-opening #opening >#hero.op-layer {
+  html.js-opening #opening #intro.op-layer,
+  html.js-opening #opening #hero.op-layer {
     height: 100vh;
     height: 100lvh;
     height: 100dvh;
   }
 
-  html.js-opening #opening >#identity.op-layer {
+  html.js-opening #opening #identity.op-layer {
     position: relative;
     inset: auto;
     display: block;
@@ -3689,71 +3280,41 @@ body { background: var(--bg-deep); }
     padding-block: var(--vr-standard);
   }
 
-  html.js-opening #opening >#identity.op-layer::after { display: none; }
+  html.js-opening #opening #identity.op-layer::after { display: none; }
 
-  html.js-opening #opening >#identity.op-layer .identity__inner {
+  html.js-opening #opening #identity.op-layer .identity__inner {
     align-items: center;
   }
 }
 
-/* ---- Accessibility: never run the cinematic if motion is reduced ---- */
+
 @media (prefers-reduced-motion: reduce) {
   .opening-stage { display: contents; }
 }
 
 
-/* ===== 14-desktop-rhythm.css ===== */
-/* =========================================================
-   MALEA · 14 · Desktop section rhythm  (DESKTOP only, ≥1101px)
-   ---------------------------------------------------------
-   Brings the post-deck stretch into the landing's unified section
-   rhythm. After the cinematic deck ends on "Голос космоса" (identity),
-   the following screens must read as ORDINARY sections, not separate
-   full-height screens.
 
-   · #philosophy ("Новому времени — новое искусство") was a full-screen
-     centred composition (display:grid; place-items:center; min-height:
-     100svh). Here it flows as a normal section with the standard
-     `--vr-standard` block rhythm — exactly like identity / performance /
-     art / live, so identity → philosophy → live read in one cadence.
-   · #live is already `.pad-block` (standard rhythm) — left as is.
-   · .quote-screen (all three pull-quotes) were full-height screens
-     (min-height:92svh). Here they flow as ordinary sections with the same
-     `--vr-standard` block rhythm — so the gap before/after each quote
-     matches the cadence of every other section.
 
-   Scope is strictly ≥1101px. Tablets / mobile (≤1100) keep their own
-   philosophy / quote handling untouched (tuned separately).
-
-   ►  TO ROLL BACK: remove this file's <link> in index.html.
-   ========================================================= */
 
 @media (min-width: 1101px) {
-  /* Philosophy → normal-rhythm section (was a full-screen centred block). */
+  
   #philosophy {
     display: block;
     min-height: 0;
     padding-block: var(--vr-standard);
   }
-  /* Rhythm now comes from the section padding above — drop the inner block
-     padding so spacing matches every other section (no double inset). */
+  
   #philosophy .philo__inner {
     padding-block: 0;
   }
 
-  /* Pull-quotes → ordinary-rhythm sections (were full-height screens).
-     Keeps the centred quote composition; spacing before/after now equals the
-     standard section rhythm. */
+  
   .quote-screen {
     min-height: 0;
     padding-block: var(--vr-standard);
   }
 
-  /* …and they emerge SOFTLY FROM DEPTH on scroll-in, so the accent feels alive
-     and harmonises with the deck / philosophy depth language. Reuses the global
-     data-reveal (already on every .bigquote) — just a deeper start + the deck's
-     easing. The .is-in override needs higher specificity than the base reveal so
-     the quote actually resolves to its resting state. */
+  
   .quote-screen .bigquote[data-reveal] {
     transform: translateY(34px) scale(0.965);
     filter: blur(7px);
@@ -3770,31 +3331,12 @@ body { background: var(--bg-deep); }
 }
 
 
-/* ===== 15-cinematic-scroll-desktop.css ===== */
-/* =========================================================
-   MALEA · 15 · Cinematic scroll reveal — PHILOSOPHY  (DESKTOP only, ≥1101px)
-   ---------------------------------------------------------
-   PHILOSOPHY ("Новому времени — новое искусство") — a soft ONE-SHOT reveal:
-   the whole composition rises gently from depth as it scrolls into view after
-   the cinematic deck, so the hand-off from the deck doesn't feel abrupt
-   (a gentle "появление", NOT a screen-swap). Same depth language as the deck
-   (rise from depth · soft blur clear · deck easing). Driven by
-   js/modules/cinematic-scroll.js (toggles #philosophy.op-appear).
 
-   Gated behind <html class="js-cinematic"> (set by the JS only on desktop with
-   motion allowed). Without it (no-JS / reduced-motion / ≤1100) nothing applies
-   and the composition shows normally — tablet / mobile are untouched, and the
-   content is NEVER left stuck hidden.
 
-   ►  TO ROLL BACK: remove this file's <link> AND the initCinematicScroll()
-      call in js/app.js.
-   ========================================================= */
 
 @media (min-width: 1101px) {
 
-  /* (a) Philosophy — reveal the whole composition as one soft rise.
-     Neutralise the per-element data-reveal inside so it doesn't double-move
-     (id-specificity + !important beats the reveal classes / reveal-static). */
+  
   html.js-cinematic #philosophy [data-reveal] {
     opacity: 1 !important;
     transform: none !important;
@@ -3819,7 +3361,7 @@ body { background: var(--bg-deep); }
   }
 }
 
-/* Safety: if motion is reduced, never leave philosophy hidden. */
+
 @media (prefers-reduced-motion: reduce) {
   html.js-cinematic #philosophy .philo__inner {
     opacity: 1 !important;
@@ -3830,10 +3372,7 @@ body { background: var(--bg-deep); }
 
 
 
-/* ===== Tilda color/font guard =====
-   This layer is intentionally last. It blocks Tilda theme typography/colors,
-   but mirrors the original MALEA design tokens instead of repainting
-   everything into one generic color/font. */
+
 html, body, #allrecords, .t-records {
   background: var(--bg-main) !important;
 }
@@ -3892,7 +3431,7 @@ html, body, #allrecords, .t-records {
   color: var(--ink-faint) !important;
 }
 
-/* Explicit non-:where selectors for Tilda themes that use #allrecords h1/h2/a rules. */
+
 #allrecords .malea-tilda .intro__mark,
 #allrecords .malea-tilda .hero__title,
 #allrecords .malea-tilda .nav__logo,

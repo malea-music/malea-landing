@@ -24,12 +24,12 @@
 
 | Файл | Размер, bytes |
 |---|---:|
-| parts/01-css-tokens-base.html | 10260 |
-| parts/02-css-nav-modal-components.html | 22723 |
-| parts/03-css-screens.html | 50430 |
-| parts/04-css-motion-tablets.html | 20976 |
-| parts/05-css-ipad-mobile.html | 27485 |
-| parts/06-css-final-tilda-color-font-guard.html | 20622 |
+| parts/01-css-tokens-base.html | 8530 |
+| parts/02-css-nav-modal-components.html | 21039 |
+| parts/03-css-screens.html | 44334 |
+| parts/04-css-motion-tablets.html | 13996 |
+| parts/05-css-ipad-mobile.html | 10593 |
+| parts/06-css-final-tilda-color-font-guard.html | 10296 |
 | parts/07-html-nav-opening-philosophy.html | 6673 |
 | parts/08-html-live-player-performance-art.html | 12812 |
 | parts/09-html-musicians-reviews-egypt-formats.html | 14222 |

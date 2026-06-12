@@ -22,8 +22,21 @@ function bytes(text) {
   return Buffer.byteLength(text, 'utf8');
 }
 
+function stripCssComments(css) {
+  return css.replace(/\/\*[\s\S]*?\*\//g, '').trim();
+}
+
+function sanitizeCssForTilda(css) {
+  return stripCssComments(css)
+    // Tilda's HTML validator can treat CSS comments/selectors with angle
+    // brackets as real HTML tags inside custom-code blocks. Direct-child
+    // combinators are not essential for this export, so make CSS angle-free.
+    .replace(/\s*>\s*/g, ' ')
+    .trim();
+}
+
 function stylePart(id, title, css) {
-  return `<!-- MALEA / Tilda export / ${title} -->\n<style id="${id}">\n${css.trim()}\n</style>\n`;
+  return `<!-- MALEA / Tilda export / ${title} -->\n<style id="${id}">\n${sanitizeCssForTilda(css)}\n</style>\n`;
 }
 
 function scriptPart(id, title, js) {

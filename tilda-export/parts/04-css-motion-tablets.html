@@ -1,10 +1,5 @@
 <!-- MALEA / Tilda export / 04 / motion + tablets -->
 <style id="malea-tilda-css-04-motion-tablets">
-/* ===== 06-motion.css ===== */
-/* =========================================================
-   MALEA · Motion — slow, soft, breathing reveals
-   ========================================================= */
-
 [data-reveal] {
   opacity: 0;
   transform: translateY(28px);
@@ -43,9 +38,7 @@
 }
 [data-reveal="scale"].is-in { opacity: 1; transform: scale(1); filter: blur(0); }
 
-/* Cinematic depth reveal for the three MALEA big-quote screens.
-   Uses the same JS trigger as regular [data-reveal], but starts farther back:
-   smaller, lower, blurred, dimmed and slightly tilted toward the viewer. */
+
 [data-reveal="depth-quote"] {
   opacity: 0;
   transform: perspective(980px) translate3d(0, 46px, -190px) rotateX(9deg) scale(.84);
@@ -132,9 +125,7 @@
   }
 }
 
-/* Escape hatch: applied by reveal.js when the environment cannot run
-   transitions / IntersectionObserver. Reaches the visible end-state with
-   NO transition so content can never stay stuck hidden. */
+
 .reveal-static [data-reveal],
 .reveal-static [data-reveal="line"],
 .reveal-static [data-reveal="scale"] {
@@ -153,31 +144,13 @@
 }
 
 
-/* ===== 07-tablet-landscape.css ===== */
-/* =========================================================
-   MALEA · Landscape tablets (iPad mini / iPad / Air / Pro)
-   Targets touch tablets held horizontally — wide but short
-   viewports. The desktop compositions already apply here
-   (portrait-only stacking is scoped out in 05-screens.css);
-   this layer only tightens the vertical rhythm so full-height
-   split screens breathe correctly on a short viewport.
 
-   Devices (landscape CSS px, width × height):
-     iPad mini 8.3"    1133 × 744
-     iPad 10.2/10.9"   1080 × 810
-     iPad Air 10.9"    1180 × 820
-     iPad Pro 11"      1194 × 834
-     iPad Pro 12.9"    1366 × 1024
 
-   (pointer: coarse) keeps this off real desktops/laptops that
-   share the same width range — only touch devices match.
-   ========================================================= */
 
 @media (min-width: 1024px) and (max-width: 1366px)
    and (orientation: landscape) and (pointer: coarse) {
 
-  /* Denser vertical rhythm for short viewport height — the
-     desktop floors (100–220px) are too tall at 744–1024px. */
+  
   :root {
     --vr-standard:     clamp(64px, 9vh, 120px);
     --vr-dense:        clamp(46px, 7vh, 88px);
@@ -185,14 +158,11 @@
     --vr-transitional: clamp(44px, 5vh, 80px);
   }
 
-  /* Full-height split screens (hero / final): trim the oversized
-     block padding so two-column content fits within 100svh. */
+  
   .hero__text,
   .final__text { padding-block: clamp(56px, 9vh, 110px); }
 
-  /* Philosophy → ordinary-rhythm section.
-     Base composition is a full-height centred screen; on horizontal iPads it
-     should read as a landing section in the same cadence as Live / Player. */
+  
   #philosophy {
     display: block;
     min-height: 0;
@@ -202,15 +172,11 @@
     padding-block: 0;
   }
 
-  /* Philosophy (centred two-column) — tighten the column gap;
-     Live image band — shorter gap to its text on a short viewport. */
+  
   .philo__inner { gap: clamp(28px, 4vw, 48px); }
   .live__media { margin-bottom: clamp(72px, 8vh, 112px); }
 
-  /* Pull-quotes → ordinary-rhythm sections.
-     On landscape tablets the quotes must not behave as independent screens:
-     their top/bottom air follows the same tablet section rhythm as the rest of
-     the landing, while the quote itself remains a centred editorial accent. */
+  
   .quote-screen {
     min-height: 0;
     padding-block: var(--vr-standard);
@@ -232,16 +198,14 @@
     margin: 0 auto clamp(22px, 3vh, 32px);
     background: var(--gold-soft);
   }
-  /* Last quote: Portfolio above already contributes its own section bottom
-     rhythm, while the following Final starts image-led. Rebalance only this
-     junction so the quote does not read as a separate screen or as a spacer. */
+  
   .quote-screen--wide {
     margin-block: 0;
     padding-top: clamp(24px, 3.5vh, 44px);
     padding-bottom: var(--vr-standard);
   }
 
-  /* ===== 13 · FORMATS — tighter rhythm, taller images ===== */
+  
   .fmt__line {
     padding: clamp(28px, 4vh, 40px) 0;
     column-gap: clamp(28px, 3vw, 40px);
@@ -251,46 +215,24 @@
   .fmt__line-summary { margin-bottom: clamp(14px, 1.6vw, 20px); }
   .fmt__line-spec { padding: var(--s-2) 0; gap: var(--s-4); }
 
-  /* ===== 14 · INTEGRATION — tighter padding and type ===== */
+  
   .fi-panel {
     padding: clamp(22px, 3vh, 32px) clamp(16px, 2vw, 28px) clamp(26px, 3.5vh, 40px);
   }
   .fi-title { font-size: clamp(18px, 1.8vw, 24px); margin-bottom: var(--s-3); }
   .fi-rule { margin-bottom: var(--s-3); }
-  /* Was clamp(13px,1.2vw,15px) — matched the old 15px body floor. After the
-     body bump (now 16–18px) it read NOTICEABLY smaller than every other
-     paragraph. Track --fs-body so the panel copy equals the rest of the text. */
+  
   .fi-desc { font-size: var(--fs-body); }
   .fi-tag { margin-top: var(--s-4); }
 }
 
 
-/* ===== 08-tablet-portrait.css ===== */
-/* =========================================================
-   MALEA · Portrait tablets — full composition pass
-   ---------------------------------------------------------
-   Authoritative layer for tablets held vertically: narrow but
-   tall canvases (744–1024 wide). Loaded last, so it overrides
-   both the phone rules (≤760 — needed for iPad mini at 744px,
-   which sits below the mobile breakpoint) and the legacy
-   portrait baseline in 05-screens. One coherent design here.
 
-   Devices (portrait CSS px, width × height):
-     iPad mini 8.3"    744 × 1133
-     iPad 10.2/10.9"   810 × 1080  ·  820 × 1180 (Air)
-     iPad Pro 11"      834 × 1194
-     iPad Pro 12.9"   1024 × 1366
 
-   Intent: editorial single-column flow for split screens
-   (image as a calm full-bleed band, copy inset and breathing),
-   two-up grids where the medium reads well at this width
-   (videos, musicians, quotes, timeline), generous but
-   disciplined vertical rhythm, wider measures than on phone.
-   ========================================================= */
 
 @media (orientation: portrait) and (min-width: 700px) and (max-width: 1024px) {
 
-  /* ---- Rhythm & gutters, retuned for a tall portrait canvas ---- */
+  
   :root {
     --page-x:       clamp(48px, 7vw, 88px);
     --vr-standard:  clamp(92px, 11vh, 148px);
@@ -298,15 +240,14 @@
     --vr-generous:  clamp(116px, 13vh, 176px);
   }
 
-  /* Reclaim section padding from the phone overrides (which set it
-     explicitly) so the portrait rhythm above actually applies. */
+  
   .pad-block            { padding-block: var(--vr-standard); }
   .pad-block--dense     { padding-block: var(--vr-dense); }
   .pad-block--generous  { padding-block: var(--vr-generous); }
 
   .final__media { min-height: clamp(380px, 50vh, 560px); }
 
-  /* ===== 02 · HERO — full-screen stacked composition ===== */
+  
   #hero { grid-template-columns: 1fr; grid-template-rows: 1fr auto; }
   .hero__media { order: -1; min-height: 0; }
   .hero__media::after {
@@ -319,7 +260,7 @@
   }
   .hero__lede { max-width: 52ch; }
 
-  /* ===== 03 · IDENTITY ================================= */
+  
   .identity__inner {
     grid-template-columns: 1fr;
     gap: clamp(44px, 6vh, 76px);
@@ -331,13 +272,13 @@
   }
   .identity__body { max-width: none; }
 
-  /* ===== 04 · PHILOSOPHY =============================== */
-  /* Stack heading over copy, centred. */
+  
+  
   .philo__inner { grid-template-columns: 1fr; gap: clamp(32px, 4vh, 56px); }
   .philo__heading { white-space: normal; text-align: center; }
   .philo__text p { max-width: 52ch; margin-inline: auto; }
 
-  /* ===== 05 · LIVE ===================================== */
+  
   .live__media { margin-bottom: clamp(36px, 4vh, 60px); }
   .live-text-inner {
     grid-template-columns: 1fr;
@@ -350,7 +291,7 @@
   .live-text-left  { grid-column: auto; grid-row: auto; padding-right: 0; text-align: center; }
   .live__text { margin-inline: auto; }
   .live-text-right { grid-column: auto; grid-row: auto; padding-left: 0; }
-  /* Formats become a centred 2×2 grid */
+  
   .live-formats-label {
     text-align: center;
     font-family: var(--font-display);
@@ -365,10 +306,8 @@
   .live-format-row:hover { padding-left: 0; }
   .live-text-btn { grid-column: 1 / -1; grid-row: auto; align-self: auto; margin-top: var(--s-6); margin-bottom: 0; text-align: center; }
 
-  /* ===== 06 · QUOTE sections =========================== */
-  /* Quotes are not tablet "screens": they sit in the same vertical cadence as
-     the rest of the landing sections, with no viewport-height floor. Phone and
-     mid-tablet refinement layers loaded later keep their tighter overrides. */
+  
+  
   .quote-screen {
     min-height: 0;
     padding-block: var(--vr-standard);
@@ -390,35 +329,33 @@
     margin: 0 auto clamp(24px, 3vh, 34px);
     background: var(--gold-soft);
   }
-  /* Last quote: Portfolio already has a full section bottom rhythm above it,
-     Final is image-led below it. Keep the quote in-flow, but make this edge
-     transition visually even on the large portrait iPad band. */
+  
   .quote-screen--wide {
     margin-block: 0;
     padding-top: clamp(20px, 2.8vh, 40px);
     padding-bottom: var(--vr-standard);
   }
 
-  /* ===== 07 · PLAYER ================================== */
-  /* One stacked column, centred so cards keep a readable width. */
+  
+  
   .players {
     grid-template-columns: 1fr;
     max-width: 680px;
     margin-inline: auto;
   }
 
-  /* ===== 08 · PERFORMANCE ============================= */
+  
   .perf__grid { grid-template-columns: 1fr 1fr; }
 
-  /* ===== 09 · ART ===================================== */
+  
   #art { min-height: auto; }
   .art__grid { grid-template-columns: 1fr 1fr; }
 
-  /* ===== 10 · MUSICIANS =============================== */
-  /* 3 rows, each card horizontal (photo thumbnail | text). */
+  
+  
   .mus__grid {
     grid-template-columns: 1fr;
-    max-width: 760px;           /* tidy centred column; rows stay balanced on wide iPads */
+    max-width: 760px;           
     margin-inline: auto;
     gap: clamp(28px, 3.5vw, 48px);
   }
@@ -429,7 +366,7 @@
   }
   .mus__photo {
     width: clamp(180px, 28vw, 260px);
-    aspect-ratio: 4/5;          /* brand portrait crop, matches desktop */
+    aspect-ratio: 4/5;          
     flex-shrink: 0;
     margin-bottom: 0;
   }
@@ -437,16 +374,15 @@
   .mus__name { font-size: clamp(24px, 3vw, 32px); }
   .mus__desc { max-width: 42ch; }
 
-  /* ===== 11 · REVIEWS ================================= */
+  
   .carousel { aspect-ratio: 16 / 10; }
   .rev__quotes {
     grid-template-columns: 1fr 1fr;
     column-gap: clamp(28px, 4vw, 48px);
   }
 
-  /* ===== 12 · EGYPT ================================== */
-  /* Video spans the full content width — its edges line up with the text/timeline
-     below, restoring the rhythm; max-height tames the vertical clip on tall tablets. */
+  
+  
   .egypt__grid { grid-template-columns: 1fr; gap: clamp(44px, 6vh, 72px); align-items: stretch; }
   .egypt__media { width: 100%; max-width: none; margin-inline: 0; }
   .egypt-video-preview { height: auto; min-height: 0; aspect-ratio: 4 / 5; max-height: 62vh; }
@@ -455,9 +391,8 @@
   .egypt__text { max-width: 64ch; }
   .egypt__concl { margin-top: 0; }
 
-  /* ===== 13 · FORMATS =============================== */
-  /* Keep the 2-column image | copy layout, just more compact;
-     hide the running numbers and collapse the copy to one column. */
+  
+  
   .fmt__line {
     grid-template-columns: minmax(280px, 48%) minmax(0, 1fr);
     padding: clamp(28px, 3.5vh, 42px) 0;
@@ -471,9 +406,8 @@
   .fmt__line-summary { margin-bottom: clamp(14px, 1.6vw, 20px); }
   .fmt__line-spec { gap: var(--s-4); padding: var(--s-2) 0; }
 
-  /* ===== 14 · INTEGRATION (fi-panels) ============== */
-  /* Panels stack vertically (1 col), but each panel keeps a
-     2-column inside: title + tag | description. */
+  
+  
   .fi-panel {
     display: grid;
     grid-template-columns: minmax(280px, 48%) minmax(0, 1fr);
@@ -499,16 +433,11 @@
   }
   .fi-desc { grid-column: 2; grid-row: 1 / 3; align-self: center; }
 
-  /* ===== 15 · WHY ================================== */
-  /* Portrait-tablet why styling (2-col args + 52% image band) lives in
-     05-screens.css so a single rule governs up to 1100px without conflict. */
+  
+  
 
-  /* ===== 16 · PORTFOLIO =========================== */
-  /* Keep all 3 columns on iPad portrait. Tightened locally (padding,
-     type, row height) so they fit the wide portrait content width —
-     the global --page-x rhythm is left untouched. Collage band stays
-     hidden (it's the phone-only fallback). clamp(…vw…) scales the
-     compression from iPad mini (744) up to iPad Pro (1024). */
+  
+  
   .pf__media { display: none; }
   .pm-grid { grid-template-columns: 1fr 1fr 1fr; }
   .pm-col {
@@ -526,9 +455,9 @@
     hyphens: auto;
   }
   .pm-event-type, .pm-partner-role, .pm-upcoming-ctx { font-size: clamp(10px, 1.2vw, 12px); }
-  .pm-partner--spacer { display: flex; }  /* re-enable row alignment in 3-col */
+  .pm-partner--spacer { display: flex; }  
 
-  /* ===== 17 · FINAL =============================== */
+  
   #final-experience { grid-template-columns: 1fr; }
   .final__media {
     order: -1;

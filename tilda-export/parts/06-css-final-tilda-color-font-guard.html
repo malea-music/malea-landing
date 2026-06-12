@@ -1,34 +1,8 @@
 <!-- MALEA / Tilda export / 06 / final layers + Tilda color/font guard -->
 <style id="malea-tilda-css-06-final-guard">
-/* ===== 12-unified-bg.css ===== */
-/* =========================================================
-   MALEA · 12 · Unified background (seamless)
-   ---------------------------------------------------------
-   ONE continuous deep field for the whole page so section
-   boundaries never show as a background "seam":
-
-   · body paints the uniform field (--bg-deep, like screen 2) —
-     it spans the entire page, so there are no per-section edges.
-   · .site-atmosphere becomes a fixed, transparent overlay that
-     only adds a whisper of radial depth (so it isn't dead-flat);
-     being fixed, it's identical in every viewport → no transition
-     is visible while scrolling.
-   · All sections stay transparent (Hero's solid bg-deep now equals
-     the field → no edge).
-   · Per-section colour auras are turned OFF — they used to glow on
-     some sections and not others, which read as "patchwork" and
-     made boundaries visible. The ONLY glow kept is on the
-     pull-quotes (one intentional accent).
-
-   ►  TO ROLL BACK: remove this file's <link> in index.html.
-   ========================================================= */
-
-/* Uniform field across the whole page (no seams, any height). */
 body { background: var(--bg-deep); }
 
-/* Atmosphere = fixed, transparent depth overlay (no solid base → the
-   body field shows through uniformly; the radials frame each viewport
-   identically, so they don't mark section transitions). */
+
 .site-atmosphere {
   position: fixed;
   inset: 0;
@@ -39,24 +13,14 @@ body { background: var(--bg-deep); }
     radial-gradient(ellipse 130% 80% at 50% 115%, rgba(94, 141, 190, .05) 0%, transparent 50%);
 }
 
-/* Section colour auras OFF — except the pull-quotes. */
+
 #identity .aura,
 #philosophy .aura,
 #live .aura,
 #player .aura,
 #integration .aura { background: none; }
 
-/* ---------------------------------------------------------
-   Section-specific background OVERLAYS off — these were the
-   remaining visible "seams" at section boundaries:
-   · #philosophy::before  → top-highlight band (Identity→Philosophy)
-   · .quote-screen::before → top/bottom radials (every quote edge)
-   · #art background       → its own blue/violet radials (Performance→Art)
-   · #egypt background + ::before → radials + grid texture (after quote 2)
-   Each section now shows ONLY the uniform field → no transition.
-   The pull-quotes keep their soft centred .aura glow (it fades to
-   transparent before the edges, so it doesn't create a seam).
-   --------------------------------------------------------- */
+
 #philosophy::before { display: none; }
 .quote-screen::before { display: none; }
 #art   { background: transparent; }
@@ -64,55 +28,16 @@ body { background: var(--bg-deep); }
 #egypt::before { display: none; }
 
 
-/* ===== 13-opening-desktop.css ===== */
-/* =========================================================
-   MALEA · 13 · Cinematic opening DECK
-   ---------------------------------------------------------
-   A wheel/key-triggered, TIME-BASED cinematic chain across the opening
-   screens: INTRO → HERO → IDENTITY on desktop / landscape tablets,
-   and INTRO → HERO only on portrait tablets / mobile.
-   Each forward step: the next screen rises softly from depth while the
-   current one recedes toward the viewer. Reverse is symmetric. After the
-   last deck screen a normal scroll releases to the rest of the page
-   (Philosophy, Live, … are ordinary scroll sections — no cinematic).
 
-   Adapted from the motion-lab "opening pair" technique, generalised to an
-   N-screen deck and tuned for a deep, expensive, cinematic feel.
 
-   Architecture:
-      · #intro…#identity are wrapped in <div class="opening-stage"> and each
-        carries the `op-layer` class.
-      · By default (no JS / unsupported viewport / reduced-motion) the wrapper is
-        `display: contents` → it vanishes and the three sections behave as
-         the normal sections they always were. Reduced-motion keeps this inert.
-     · Only when js/modules/opening.js sets <html class="js-opening">
-        (desktop/fine pointer OR touch tablet/mobile + motion allowed) does the wrapper become a
-       1-viewport stage with deck sections as stacked absolute layers,
-       and the JS drives a class-based, time-based chained transition.
 
-   State classes (set by JS, direction-agnostic):
-     .op-layer              → hidden in depth (resting non-current)
-     .op-layer.is-current   → fully resolved, visible
-     .op-layer.is-leaving   → receding toward the viewer (during a step)
-     html.opening-anim      → enables the transition while a step runs
 
-   Visual model (GPU: transform / opacity / filter only):
-     incoming (rising from depth): opacity 0→1 · scale .94→1 · ty 22→0 · blur 4→0 · veil .58→0
-     leaving  (toward the viewer): opacity 1→0 · scale 1→1.014 · blur 0→1.2 · veil 0→.40
-
-   ►  TO ROLL BACK: remove this file's <link> in index.html AND the
-      initOpening() call in js/app.js. (Optionally unwrap .opening-stage
-      and drop the op-layer classes.) Removing the link alone already
-      restores the normal section layout — the JS guard checks the CSS.
-   ========================================================= */
-
-/* Inert by default — wrapper has no box; the sections flow as before. */
 .opening-stage { display: contents; }
 
-/* Tunables (only consumed under .js-opening). */
+
 :root {
   --op-dur: 1500ms;
-  --op-ease: cubic-bezier(0.33, 0, 0.18, 1); /* symmetric, NOT front-loaded */
+  --op-ease: cubic-bezier(0.33, 0, 0.18, 1); 
 }
 
 @media (min-width: 1101px),
@@ -120,7 +45,7 @@ body { background: var(--bg-deep); }
        (orientation: portrait) and (min-width: 700px) and (max-width: 1024px) and (pointer: coarse),
        (max-width: 760px) and (pointer: coarse) {
 
-  /* ---- Stage: exactly one viewport, clips the stacked layers ---- */
+  
   html.js-opening .opening-stage {
     display: block;
     position: relative;
@@ -130,8 +55,8 @@ body { background: var(--bg-deep); }
     z-index: 2;
   }
 
-  /* ---- Layers: the first three screens stacked absolutely inside the stage ---- */
-  html.js-opening #opening >.op-layer {
+  
+  html.js-opening #opening .op-layer {
     position: absolute;
     inset: 0;
     min-height: 0;
@@ -140,75 +65,68 @@ body { background: var(--bg-deep); }
     transform-origin: 50% 58%;
     will-change: transform, opacity, filter;
     backface-visibility: hidden;
-    /* Default = hidden "depth" state (every non-current layer). */
+    
     opacity: 0;
     transform: scale(0.94) translateY(22px);
     filter: blur(4px);
   }
 
-  /* ---- Dark veil → the "emergence from darkness/depth" ---- */
-  html.js-opening #opening >.op-layer::after {
+  
+  html.js-opening #opening .op-layer::after {
     content: "";
     position: absolute;
     inset: 0;
     background: #000;
-    opacity: 0.58;            /* non-current = veiled (deep) */
+    opacity: 0.58;            
     pointer-events: none;
-    z-index: 6;               /* above this layer's own content */
+    z-index: 6;               
     will-change: opacity;
     backface-visibility: hidden;
   }
 
-  /* ---- Current (visible, fully resolved) layer ---- */
-  html.js-opening #opening >.op-layer.is-current {
+  
+  html.js-opening #opening .op-layer.is-current {
     opacity: 1;
     transform: none;
     filter: none;
     z-index: 4;
   }
-  html.js-opening #opening >.op-layer.is-current::after { opacity: 0; }
+  html.js-opening #opening .op-layer.is-current::after { opacity: 0; }
 
-  /* ---- Leaving layer: recedes toward the viewer (scale up + soft blur) ---- */
-  html.js-opening #opening >.op-layer.is-leaving {
+  
+  html.js-opening #opening .op-layer.is-leaving {
     opacity: 0;
     transform: scale(1.014);
     filter: blur(1.2px);
     z-index: 3;
   }
-  html.js-opening #opening >.op-layer.is-leaving::after { opacity: 0.40; }
+  html.js-opening #opening .op-layer.is-leaving::after { opacity: 0.40; }
 
-  /* ---- Enable transitions only while a step is running ---- */
-  html.js-opening.opening-anim #opening >.op-layer {
+  
+  html.js-opening.opening-anim #opening .op-layer {
     transition:
       transform var(--op-dur) var(--op-ease),
       opacity   var(--op-dur) var(--op-ease),
       filter    var(--op-dur) var(--op-ease);
   }
-  html.js-opening.opening-anim #opening >.op-layer::after {
+  html.js-opening.opening-anim #opening .op-layer::after {
     transition: opacity var(--op-dur) var(--op-ease);
   }
 
-  /* =======================================================
-     Per-screen fit: each layer must read as a full screen.
-     INTRO / HERO already fill & centre themselves.
-     IDENTITY is a content (pad-block) section — centre it vertically
-     inside the 1-viewport layer and drop the block padding.
-     ======================================================= */
-  html.js-opening #opening >#identity.op-layer {
+  
+  html.js-opening #opening #identity.op-layer {
     display: grid;
     place-content: center;
     padding-block: 0;
   }
 
-  /* IDENTITY's portrait drives its height; cap it so the composition always
-     fits one viewport (it otherwise overflows on ~768px-tall desktops). */
-  html.js-opening #opening >#identity.op-layer .identity__portrait {
+  
+  html.js-opening #opening #identity.op-layer .identity__portrait {
     max-height: 76vh;
   }
 }
 
-/* Portrait tablets + mobile: the cinematic deck ends on HERO. IDENTITY must return to
-   normal page flow directly after the one-viewport opening stage. */
+
 @media ((max-width: 760px) and (pointer: coarse)),
        ((orientation: portrait) and (min-width: 700px) and (max-width: 1024px) and (pointer: coarse)) {
   html.js-opening .opening-stage {
@@ -221,14 +139,14 @@ body { background: var(--bg-deep); }
     overscroll-behavior: none;
   }
 
-  html.js-opening #opening >#intro.op-layer,
-  html.js-opening #opening >#hero.op-layer {
+  html.js-opening #opening #intro.op-layer,
+  html.js-opening #opening #hero.op-layer {
     height: 100vh;
     height: 100lvh;
     height: 100dvh;
   }
 
-  html.js-opening #opening >#identity.op-layer {
+  html.js-opening #opening #identity.op-layer {
     position: relative;
     inset: auto;
     display: block;
@@ -242,71 +160,41 @@ body { background: var(--bg-deep); }
     padding-block: var(--vr-standard);
   }
 
-  html.js-opening #opening >#identity.op-layer::after { display: none; }
+  html.js-opening #opening #identity.op-layer::after { display: none; }
 
-  html.js-opening #opening >#identity.op-layer .identity__inner {
+  html.js-opening #opening #identity.op-layer .identity__inner {
     align-items: center;
   }
 }
 
-/* ---- Accessibility: never run the cinematic if motion is reduced ---- */
+
 @media (prefers-reduced-motion: reduce) {
   .opening-stage { display: contents; }
 }
 
 
-/* ===== 14-desktop-rhythm.css ===== */
-/* =========================================================
-   MALEA · 14 · Desktop section rhythm  (DESKTOP only, ≥1101px)
-   ---------------------------------------------------------
-   Brings the post-deck stretch into the landing's unified section
-   rhythm. After the cinematic deck ends on "Голос космоса" (identity),
-   the following screens must read as ORDINARY sections, not separate
-   full-height screens.
 
-   · #philosophy ("Новому времени — новое искусство") was a full-screen
-     centred composition (display:grid; place-items:center; min-height:
-     100svh). Here it flows as a normal section with the standard
-     `--vr-standard` block rhythm — exactly like identity / performance /
-     art / live, so identity → philosophy → live read in one cadence.
-   · #live is already `.pad-block` (standard rhythm) — left as is.
-   · .quote-screen (all three pull-quotes) were full-height screens
-     (min-height:92svh). Here they flow as ordinary sections with the same
-     `--vr-standard` block rhythm — so the gap before/after each quote
-     matches the cadence of every other section.
 
-   Scope is strictly ≥1101px. Tablets / mobile (≤1100) keep their own
-   philosophy / quote handling untouched (tuned separately).
-
-   ►  TO ROLL BACK: remove this file's <link> in index.html.
-   ========================================================= */
 
 @media (min-width: 1101px) {
-  /* Philosophy → normal-rhythm section (was a full-screen centred block). */
+  
   #philosophy {
     display: block;
     min-height: 0;
     padding-block: var(--vr-standard);
   }
-  /* Rhythm now comes from the section padding above — drop the inner block
-     padding so spacing matches every other section (no double inset). */
+  
   #philosophy .philo__inner {
     padding-block: 0;
   }
 
-  /* Pull-quotes → ordinary-rhythm sections (were full-height screens).
-     Keeps the centred quote composition; spacing before/after now equals the
-     standard section rhythm. */
+  
   .quote-screen {
     min-height: 0;
     padding-block: var(--vr-standard);
   }
 
-  /* …and they emerge SOFTLY FROM DEPTH on scroll-in, so the accent feels alive
-     and harmonises with the deck / philosophy depth language. Reuses the global
-     data-reveal (already on every .bigquote) — just a deeper start + the deck's
-     easing. The .is-in override needs higher specificity than the base reveal so
-     the quote actually resolves to its resting state. */
+  
   .quote-screen .bigquote[data-reveal] {
     transform: translateY(34px) scale(0.965);
     filter: blur(7px);
@@ -323,31 +211,12 @@ body { background: var(--bg-deep); }
 }
 
 
-/* ===== 15-cinematic-scroll-desktop.css ===== */
-/* =========================================================
-   MALEA · 15 · Cinematic scroll reveal — PHILOSOPHY  (DESKTOP only, ≥1101px)
-   ---------------------------------------------------------
-   PHILOSOPHY ("Новому времени — новое искусство") — a soft ONE-SHOT reveal:
-   the whole composition rises gently from depth as it scrolls into view after
-   the cinematic deck, so the hand-off from the deck doesn't feel abrupt
-   (a gentle "появление", NOT a screen-swap). Same depth language as the deck
-   (rise from depth · soft blur clear · deck easing). Driven by
-   js/modules/cinematic-scroll.js (toggles #philosophy.op-appear).
 
-   Gated behind <html class="js-cinematic"> (set by the JS only on desktop with
-   motion allowed). Without it (no-JS / reduced-motion / ≤1100) nothing applies
-   and the composition shows normally — tablet / mobile are untouched, and the
-   content is NEVER left stuck hidden.
 
-   ►  TO ROLL BACK: remove this file's <link> AND the initCinematicScroll()
-      call in js/app.js.
-   ========================================================= */
 
 @media (min-width: 1101px) {
 
-  /* (a) Philosophy — reveal the whole composition as one soft rise.
-     Neutralise the per-element data-reveal inside so it doesn't double-move
-     (id-specificity + !important beats the reveal classes / reveal-static). */
+  
   html.js-cinematic #philosophy [data-reveal] {
     opacity: 1 !important;
     transform: none !important;
@@ -372,7 +241,7 @@ body { background: var(--bg-deep); }
   }
 }
 
-/* Safety: if motion is reduced, never leave philosophy hidden. */
+
 @media (prefers-reduced-motion: reduce) {
   html.js-cinematic #philosophy .philo__inner {
     opacity: 1 !important;
@@ -383,10 +252,7 @@ body { background: var(--bg-deep); }
 
 
 
-/* ===== Tilda color/font guard =====
-   This layer is intentionally last. It blocks Tilda theme typography/colors,
-   but mirrors the original MALEA design tokens instead of repainting
-   everything into one generic color/font. */
+
 html, body, #allrecords, .t-records {
   background: var(--bg-main) !important;
 }
@@ -445,7 +311,7 @@ html, body, #allrecords, .t-records {
   color: var(--ink-faint) !important;
 }
 
-/* Explicit non-:where selectors for Tilda themes that use #allrecords h1/h2/a rules. */
+
 #allrecords .malea-tilda .intro__mark,
 #allrecords .malea-tilda .hero__title,
 #allrecords .malea-tilda .nav__logo,

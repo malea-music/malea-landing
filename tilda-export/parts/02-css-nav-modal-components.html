@@ -1,10 +1,5 @@
 <!-- MALEA / Tilda export / 02 / nav + modal + components -->
 <style id="malea-tilda-css-02-nav-modal-components">
-/* ===== 02-nav.css ===== */
-/* =========================================================
-   MALEA · Navigation (desktop bar + mobile overlay)
-   ========================================================= */
-
 .nav {
   position: fixed;
   top: 0;
@@ -94,14 +89,14 @@ html.opening-nav-visible .nav { transform: translateY(0); opacity: 1; }
 }
 .nav__burger:hover span { background: var(--gold); }
 
-/* ---- Mobile overlay menu ---- */
+
 .menu {
   position: fixed;
   inset: 0;
   z-index: var(--z-menu);
   display: flex;
   flex-direction: column;
-  padding-inline: 0;             /* zones self-centre to the --content column */
+  padding-inline: 0;             
   padding-block:
     max(var(--s-4), env(safe-area-inset-top))
     max(var(--s-6), env(safe-area-inset-bottom));
@@ -126,21 +121,21 @@ html.opening-nav-visible .nav { transform: translateY(0); opacity: 1; }
   background: radial-gradient(ellipse at 50% 46%, transparent 56%, rgba(4,8,18,.55) 100%);
 }
 
-/* — top bar — */
+
 .menu__top {
   position: relative; z-index: 2; flex: 0 0 auto;
   width: var(--content); max-width: var(--content-max);
   margin-inline: auto; margin-bottom: clamp(20px, 4vh, 48px);
   display: flex; align-items: center; justify-content: space-between;
 }
-/* logo is a pixel-clone of .nav__logo so it doesn't shift on open */
+
 .menu__logo {
   font-family: var(--font-display);
   font-size: clamp(20px, 2vw, 26px);
   letter-spacing: .20em; padding-left: .20em;
   color: var(--gold);
 }
-/* same 40px footprint as the burger → close sits exactly where it was */
+
 .menu__close {
   position: relative; width: 40px; height: 40px;
   border-radius: 50%;
@@ -158,12 +153,12 @@ html.opening-nav-visible .nav { transform: translateY(0); opacity: 1; }
 .menu__close::after  { transform: translate(-50%, -50%) rotate(-45deg); }
 .menu__close:hover::before, .menu__close:hover::after { background: var(--gold); }
 
-/* — navigation list (editorial, numbered, ruled) — */
+
 .menu__links {
   position: relative; z-index: 2;
   flex: 0 1 auto; min-height: 0;
   width: var(--content); max-width: var(--content-max);
-  margin: auto;                  /* centre in free space (vertical) + content column */
+  margin: auto;                  
   display: flex; flex-direction: column;
 }
 .menu__links a {
@@ -215,7 +210,7 @@ html.opening-nav-visible .nav { transform: translateY(0); opacity: 1; }
 .menu__links a:hover .menu__arrow,
 .menu__links a:focus-visible .menu__arrow { opacity: 1; transform: translateX(0); }
 
-/* staggered entrance — transform/opacity only, so colour stays snappy */
+
 .menu.is-open .menu__links a { opacity: 1; transform: none; }
 .menu.is-open .menu__links a:nth-child(1) { transition-delay: .12s; }
 .menu.is-open .menu__links a:nth-child(2) { transition-delay: .18s; }
@@ -223,7 +218,7 @@ html.opening-nav-visible .nav { transform: translateY(0); opacity: 1; }
 .menu.is-open .menu__links a:nth-child(4) { transition-delay: .30s; }
 .menu.is-open .menu__links a:nth-child(5) { transition-delay: .36s; }
 
-/* — footer: CTA + contacts — */
+
 .menu__foot {
   position: relative; z-index: 2; flex: 0 0 auto;
   width: var(--content); max-width: var(--content-max);
@@ -240,21 +235,17 @@ html.opening-nav-visible .nav { transform: translateY(0); opacity: 1; }
 }
 
 @media (max-width: 980px) {
-  /* Nav stays hidden on the intro (first screen) and reveals on scroll (from the
-     hero) via the .is-visible class — no forced visibility here. Keep the safe-area
-     top inset so the bar/logo align with the menu once it appears. */
+  
   .nav { padding-top: max(var(--s-4), env(safe-area-inset-top)); }
   .nav__links, .nav__cta { display: none; }
   .nav__burger { display: flex; }
 }
 
 
-/* ===== 03-modal.css ===== */
-/* =========================================================
-   MALEA · Modals (invite form + vertical video lightbox)
-   ========================================================= */
 
-/* ---- Invite / form modal ---- */
+
+
+
 .modal {
   position: fixed;
   inset: 0;
@@ -321,7 +312,7 @@ html.opening-nav-visible .nav { transform: translateY(0); opacity: 1; }
 .modal__close::after { transform: translate(-50%, -50%) rotate(-45deg); }
 .modal__close:hover::before, .modal__close:hover::after { background: var(--gold); }
 
-/* ---- Vertical video lightbox ---- */
+
 .video-modal {
   position: fixed;
   inset: 0;
@@ -371,13 +362,10 @@ html.opening-nav-visible .nav { transform: translateY(0); opacity: 1; }
 }
 
 
-/* ===== 04-components.css ===== */
-/* =========================================================
-   MALEA · Shared components
-   video-frame · audio player · marquee · media placeholder
-   ========================================================= */
 
-/* ---------- Adaptive video frame ---------- */
+
+
+
 .video-frame {
   position: relative;
   width: 100%;
@@ -409,7 +397,7 @@ html.opening-nav-visible .nav { transform: translateY(0); opacity: 1; }
   letter-spacing: .01em;
 }
 
-/* ---------- Image placeholder (drop real art here) ---------- */
+
 .ph {
   position: relative;
   width: 100%;
@@ -423,7 +411,7 @@ html.opening-nav-visible .nav { transform: translateY(0); opacity: 1; }
 }
 .ph img { width: 100%; height: 100%; object-fit: cover; }
 
-/* ---------- Audio player ---------- */
+
 .players {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -566,7 +554,7 @@ html.opening-nav-visible .nav { transform: translateY(0); opacity: 1; }
 }
 .ptrack__time .cur { color: var(--gold-soft); font-weight: 400; }
 
-/* waveform / seek */
+
 .wave {
   grid-area: wave;
   position: relative;
@@ -641,7 +629,7 @@ html.opening-nav-visible .nav { transform: translateY(0); opacity: 1; }
 }
 .ptrack.is-playing .ptrack__desc { opacity: .92; }
 
-/* ---------- Marquee (tags) ---------- */
+
 .marquee {
   position: relative;
   overflow: hidden;
