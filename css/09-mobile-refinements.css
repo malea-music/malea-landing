@@ -88,6 +88,12 @@
   #reviews,
   #philosophy { padding-block: clamp(44px, 6vh, 64px); }
 
+  /* identity in the opening-deck gets --vr-standard (~100-180px) from
+     13-opening-desktop.css → override to match the uniform mobile rhythm. */
+  html.js-opening #opening >#identity.op-layer {
+    padding-block: clamp(44px, 6vh, 64px);
+  }
+
   /* Pull-quotes & Philosophy are LOW-DENSITY blocks (a one-line quote, a short
      statement). At the standard section padding their own air stacks with the
      neighbours' → ~100–120px around very little content = looks gigantic. Give
@@ -195,4 +201,7 @@
   /* Hide the desktop heading, show the mobile one placed before .live__media */
   .live__heading--desktop { display: none; }
   .live__heading--mobile { display: block; }
+
+  /* Hide the gold rule below the image on mobile (it's between heading and text) */
+  .live-rule { display: none; }
 }
