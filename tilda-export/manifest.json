@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-12T11:10:01.978Z",
+  "generatedAt": "2026-06-12T11:28:54.122Z",
   "publicBase": "https://events.malea-soundhealing.com",
   "parts": [
     {
@@ -24,7 +24,7 @@
     },
     {
       "file": "parts/06-css-final-tilda-color-font-guard.html",
-      "bytes": 18150
+      "bytes": 20622
     },
     {
       "file": "parts/07-html-nav-opening-philosophy.html",

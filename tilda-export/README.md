@@ -29,7 +29,7 @@
 | parts/03-css-screens.html | 50430 |
 | parts/04-css-motion-tablets.html | 20976 |
 | parts/05-css-ipad-mobile.html | 27485 |
-| parts/06-css-final-tilda-color-font-guard.html | 18150 |
+| parts/06-css-final-tilda-color-font-guard.html | 20622 |
 | parts/07-html-nav-opening-philosophy.html | 6673 |
 | parts/08-html-live-player-performance-art.html | 12812 |
 | parts/09-html-musicians-reviews-egypt-formats.html | 14222 |

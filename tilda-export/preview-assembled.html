@@ -3831,42 +3831,94 @@ body { background: var(--bg-deep); }
 
 
 /* ===== Tilda color/font guard =====
-   This layer is intentionally last and uses !important only to prevent Tilda
-   theme styles from recoloring MALEA text or replacing MALEA typography. */
+   This layer is intentionally last. It blocks Tilda theme typography/colors,
+   but mirrors the original MALEA design tokens instead of repainting
+   everything into one generic color/font. */
 html, body, #allrecords, .t-records {
   background: var(--bg-main) !important;
 }
 
-#allrecords .malea-tilda,
-#allrecords .malea-tilda :where(div, section, article, header, footer, nav, figure, figcaption, blockquote, ul, ol, li, p, span, a, button, label, input, textarea) {
+#allrecords .malea-tilda {
   font-family: var(--font-body) !important;
   color: var(--ink) !important;
 }
 
-#allrecords .malea-tilda :where(h1, h2, h3, h4),
-#allrecords .malea-tilda :where(.intro__mark, .hero__title, .shead__title, .identity__title, .philo__heading, .live__heading, .player__heading, .heading, .slots__head, .final__heading, .display, .title) {
-  font-family: var(--font-display) !important;
-  color: var(--ink) !important;
+#allrecords .malea-tilda :where(div, section, article, header, footer, nav, figure, figcaption, blockquote, ul, ol, li, p, span, a, button, label, input, textarea, h1, h2, h3, h4) {
+  font-family: inherit !important;
+  color: inherit !important;
 }
 
-#allrecords .malea-tilda :where(.bigquote__text, .bigquote__attr, .rev__q p) {
+#allrecords .malea-tilda :where(.intro__mark, .hero__title, .nav__logo, .menu__logo, .display, .heading, .title, .shead__title, .identity__title, .philo__heading, .live__heading, .player__heading, .live-format-name, .menu__label, .ptrack__name, .mus__name, .rev__states-list li, .fmt__line-label, .slots__head, .fi-title, .why__arg h4, .pm-event-name, .pm-partner-name, .pm-upcoming-name, .final__heading, h1, h2, h3, h4) {
+  font-family: var(--font-display) !important;
+}
+
+#allrecords .malea-tilda :where(.bigquote__text, .bigquote__attr) {
   font-family: var(--font-quote) !important;
 }
 
-#allrecords .malea-tilda :where(.overline, .btn--gold, .btn--gold span, .nav__logo, .menu__logo, .menu__num, .fmt__line-num, .pm-col-num, .media-caption__idx, .n, .footer__rows a, .footer__copy, .mus__role, .fi-tag) {
+#allrecords .malea-tilda :where(.overline, .btn, .link-arrow, .menu__num, .fmt__line-num, .live-format-num, .media-caption__idx, .identity__list .n, .rev__states-list .n, .egypt__timeline li::before, .pm-col-num, .pm-col-title, .mus__role, .fi-tag, .ptrack__time .cur) {
+  font-family: var(--font-body) !important;
+}
+
+#allrecords .malea-tilda :where(.intro__mark, .hero__title, .nav__logo, .menu__logo, .btn--gold, .btn--gold span, .fmt__line-num) {
   color: var(--gold) !important;
 }
 
-#allrecords .malea-tilda :where(.shead__sub, .identity__sub, .player__sub, .live-formats-label, .ptrack__time, .fmt__line-spec span, .pm-event-type, .pm-partner-role, .pm-upcoming-ctx) {
+#allrecords .malea-tilda :where(.overline, .menu__num, .identity__sub, .identity__list .n, .player__sub, .shead__sub, .live-formats-label, .live-format-num, .media-caption__idx, .bigquote__attr, .rev__states-list .n, .egypt__timeline li::before, .fmt__line-spec span, .mus__role, .pm-col-num, .pm-col-title, .fi-tag, .ptrack__time .cur) {
   color: var(--gold-soft) !important;
 }
 
-#allrecords .malea-tilda :where(.hero__lede, .philo__text p, .live__text, .ptrack__desc, .shead__text, .egypt__text, .egypt__concl p, .fmt__line-summary, .fmt__line-spec p, .fi-desc, .why__arg p, .final__body p, .modal__text p) {
+#allrecords .malea-tilda :where(.intro__sub, .hero__lede, .subtitle, .lede, .menu__label, .philo__text, .philo__text p, .live__text, .live-format-name, .ptrack__desc, .media-caption__name, .shead__text, .identity__list li, .rev__states-list li, .rev__q p, .egypt__text, .fmt__line-summary, .fmt__line-spec p, .fi-desc, .why__arg p, .pm-event-name, .pm-partner-name, .pm-upcoming-name, .final__body, .final__body p, .modal__text, .modal__text p, .footer__row, .footer__row a) {
   color: var(--ink-soft) !important;
 }
 
+#allrecords .malea-tilda :where(.nav__links a, .ptrack__time, .egypt__concl, .egypt__concl p, .pm-event-type, .pm-partner-role, .pm-upcoming-ctx) {
+  color: var(--ink-muted) !important;
+}
+
+#allrecords .malea-tilda :where(.shead__title, .identity__title, .philo__heading, .live__heading, .bigquote__text, .player__heading, .heading, .fmt__line-label, .slots__head, .fi-title, .why__arg h4, .final__heading) {
+  color: var(--ink) !important;
+}
+
+#allrecords .malea-tilda :where(.pm-event:hover .pm-event-name, .pm-partner:hover .pm-partner-name, .pm-upcoming:hover .pm-upcoming-name) {
+  color: var(--gold-soft) !important;
+}
+
 #allrecords .malea-tilda :where(.footer__sep) {
+  color: var(--gold-line) !important;
+}
+
+#allrecords .malea-tilda :where(.footer__copy) {
   color: var(--ink-faint) !important;
+}
+
+/* Explicit non-:where selectors for Tilda themes that use #allrecords h1/h2/a rules. */
+#allrecords .malea-tilda .intro__mark,
+#allrecords .malea-tilda .hero__title,
+#allrecords .malea-tilda .nav__logo,
+#allrecords .malea-tilda .menu__logo {
+  font-family: var(--font-display) !important;
+  color: var(--gold) !important;
+}
+
+#allrecords .malea-tilda .menu__label {
+  font-family: var(--font-display) !important;
+  color: var(--ink-soft) !important;
+}
+
+#allrecords .malea-tilda .footer__row,
+#allrecords .malea-tilda .footer__row a {
+  font-family: var(--font-body) !important;
+  color: var(--ink-soft) !important;
+}
+
+#allrecords .malea-tilda .footer__copy {
+  font-family: var(--font-body) !important;
+  color: var(--ink-faint) !important;
+}
+
+#allrecords .malea-tilda .footer__sep {
+  color: var(--gold-line) !important;
 }
 
 #allrecords .malea-tilda :where(a, button, .btn, .carousel__btn, .ptrack__play, .nav__burger, .menu__close, .modal__close, .video-modal__close) {
