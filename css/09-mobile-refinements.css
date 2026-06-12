@@ -1,6 +1,21 @@
 /* =========================================================
    MALEA · 09 · Mobile refinements  —  PHONES ONLY (≤760px)
    ---------------------------------------------------------
+   Also holds the .live__heading desktop/mobile visibility
+   toggle (global, not inside the media query).
+   ========================================================= */
+
+/* ---------- Live heading: mobile vs desktop visibility ---------- */
+/* The mobile heading (.live__heading--mobile) sits before .live__media
+   in the DOM; the desktop heading stays inside .live-text-left.
+   Only one is visible at a time — the other is display:none so
+   IntersectionObserver and [data-reveal] are inert on the hidden copy. */
+.live__heading--mobile { display: none; }   /* hidden on desktop */
+.live__heading--desktop { display: block; }  /* shown on desktop */
+
+/* =========================================================
+   MALEA · 09 · Mobile refinements  —  PHONES ONLY (≤760px)
+   ---------------------------------------------------------
    Self-contained mobile-only polish layer, loaded LAST so it
    wins purely by cascade order (no !important needed).
 
@@ -70,7 +85,8 @@
      ~51px each side → ~102px between sections (vs 168). */
   .pad-block,
   #art,
-  #reviews { padding-block: clamp(44px, 6vh, 64px); }
+  #reviews,
+  #philosophy { padding-block: clamp(44px, 6vh, 64px); }
 
   /* Pull-quotes & Philosophy are LOW-DENSITY blocks (a one-line quote, a short
      statement). At the standard section padding their own air stacks with the
@@ -93,7 +109,7 @@
      (the existing <br> then resolves the heading to a clean 2 lines), and
      give it the standard section rhythm via padding-block. */
   #philosophy { min-height: 0; }
-  #philosophy .philo__inner { padding-inline: 0; padding-block: var(--vr-block); }
+  #philosophy .philo__inner { padding-inline: 0; padding-block: 0; }
 
   /* ---------- Reviews heading: tidy the wrap ---------- */
   /* The desktop hard break (музыка<br>и…) re-wraps on the narrow column
@@ -174,3 +190,9 @@
      above) + larger bottom (replaces the Final's missing top padding). Result:
      even air before/after the quote. No margins. */
   .quote-screen--wide { margin-block: 0; padding-top: clamp(6px, 1.1vh, 12px); padding-bottom: clamp(60px, 9vh, 86px); }
+
+  /* ---------- Live: heading above image (mobile only) ---------- */
+  /* Hide the desktop heading, show the mobile one placed before .live__media */
+  .live__heading--desktop { display: none; }
+  .live__heading--mobile { display: block; }
+}
