@@ -152,10 +152,15 @@
      mostly on the top, so the subject stays framed. */
   #final-experience .final__media { min-height: 46vh; }
   /* Raise the photo ~10% within the frame (show a slightly lower slice of the
-     portrait): object-position Y 65% → 75%. scale(1.05) zooms the photo ~5%
-     inside the frame (clipped by the media box). */
+     portrait): object-position Y 65% → 75%. Remove transform:scale() because
+     it creates a GPU compositor layer that can leave a 1px sub-pixel seam
+     against the ::after overlay at the bottom edge. Without scale, the photo
+     fills exactly 100% of the container — same visual crop, no seam. */
   #final-experience .final__media { overflow: hidden; }
-  #final-experience .final__media img { object-position: 50% 75%; transform: scale(1.05); }
+  #final-experience .final__media img {
+    object-position: 50% 75%;
+    transform: none;
+  }
   /* The text block kept the desktop 14vh (~118px) block padding → an ~111px
      void between the photo and the "Создать опыт" heading, out of step with the
      mobile rhythm. Pull it onto the standard mobile section padding. */
