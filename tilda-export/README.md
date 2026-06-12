@@ -30,10 +30,10 @@
 | parts/04-css-motion-tablets.html | 20976 |
 | parts/05-css-ipad-mobile.html | 27485 |
 | parts/06-css-final-tilda-color-font-guard.html | 18150 |
-| parts/07-html-nav-opening-philosophy.html | 6667 |
+| parts/07-html-nav-opening-philosophy.html | 6673 |
 | parts/08-html-live-player-performance-art.html | 12812 |
 | parts/09-html-musicians-reviews-egypt-formats.html | 14222 |
-| parts/10-html-integration-final-modals.html | 13213 |
+| parts/10-html-integration-final-modals.html | 13223 |
 | parts/11-js-bundle.html | 29405 |
 
 Сгенерировано из текущих файлов `index.html`, `css/*.css`, `js/app.js` и `js/modules/*.js`.

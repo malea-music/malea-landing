@@ -60,6 +60,14 @@ function extractBlock(body, startNeedle, endNeedle, includeEnd = true) {
   return body.slice(start, includeEnd ? end + endNeedle.length : end);
 }
 
+function extractBefore(body, startNeedle, endNeedle) {
+  const start = body.indexOf(startNeedle);
+  if (start < 0) throw new Error(`Start block not found: ${startNeedle}`);
+  const end = body.indexOf(endNeedle, start);
+  if (end < 0) throw new Error(`End block not found: ${endNeedle}`);
+  return body.slice(start, end);
+}
+
 function buildCss() {
   const files = [
     ['00-tokens.css'],
@@ -139,10 +147,10 @@ function buildHtmlParts() {
 
   const atmosphere = extractBlock(body, '<!-- ============ ATMOSPHERIC CANVAS ============ -->', '<!-- ============ NAVIGATION ============ -->', false);
   const nav = extractBlock(body, '<!-- ============ NAVIGATION ============ -->', '</header>');
-  const menu = extractBlock(body, '<!-- ============ MOBILE MENU ============ -->', '</div>\n\n<main>', false).replace(/\n\s*<main>\s*$/i, '');
+  const menu = extractBefore(body, '<!-- ============ MOBILE MENU ============ -->', '\n\n<main>');
   const opening = extractBlock(body, '<!-- ============ OPENING STAGE', '</div><!-- /#opening (opening-stage) -->');
 
-  const modal = extractBlock(body, '<!-- ============ MODAL · invite ============ -->', '</div>\n\n<!-- ============ VIDEO MODAL', false);
+  const modal = extractBefore(body, '<!-- ============ MODAL · invite ============ -->', '<!-- ============ VIDEO MODAL');
   const videoModal = body.slice(
     body.indexOf('<!-- ============ VIDEO MODAL · vertical ============ -->'),
     body.lastIndexOf('</div>') + '</div>'.length,
