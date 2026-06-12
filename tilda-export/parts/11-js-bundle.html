@@ -1,0 +1,806 @@
+<!-- MALEA / Tilda export / 11 / bundled JS -->
+<script id="malea-tilda-js">
+(function () {
+'use strict';
+/* ===== js/modules/nav.js ===== */
+// MALEA · navigation — appears after scroll, mobile overlay,
+// managed anchor transitions, aria sync, resize guard.
+
+const MENU_TRANSITION_MS = 620; // slightly above CSS transition .6s
+const BREAKPOINT = 980;
+const NAV_OFFSET = 90; // px from top — ещё -10% для десктопа, аккуратный отступ
+
+function initNav() {
+  const nav = document.querySelector('#mainNav');
+  const burger = document.querySelector('[data-nav-burger]');
+  const menu = document.querySelector('#mobileMenu');
+  if (!nav) return;
+
+  // ── desktop scroll appearance ──────────────────────────────
+  // Reveal the nav only after the intro (≈ one full screen) — i.e. from the hero on.
+  const showAfter = () => window.innerHeight * 0.85;
+  const onScroll = () => {
+    const y = window.scrollY;
+    nav.classList.toggle('is-visible', y > showAfter());
+    nav.classList.toggle('is-solid', y > showAfter() + 40);
+  };
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  // ── menu helpers ───────────────────────────────────────────
+  const setMenuState = (open) => {
+    if (!menu) return;
+    menu.classList.toggle('is-open', open);
+    document.body.classList.toggle('is-scroll-locked', open);
+    burger?.setAttribute('aria-expanded', String(open));
+    menu.setAttribute('aria-hidden', String(!open));
+  };
+
+  const openMenu = () => setMenuState(true);
+  const closeMenu = () => setMenuState(false);
+
+  // toggle burger
+  burger?.addEventListener('click', () => {
+    const isOpen = menu?.classList.contains('is-open');
+    (isOpen ? closeMenu : openMenu)();
+  });
+
+  // close button
+  menu?.querySelector('[data-menu-close]')?.addEventListener('click', closeMenu);
+
+  // Escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && menu?.classList.contains('is-open')) closeMenu();
+  });
+
+  // ── managed anchor navigation ──────────────────────────────
+  // Intercept internal hash links inside the mobile menu.
+  // Prevents native hash jump which races with menu close transition.
+  const scrollToSection = (hash) => {
+    if (!hash || hash === '#') return;
+    const target = document.querySelector(hash);
+    if (!target) return;
+    const top = target.getBoundingClientRect().top + window.scrollY - NAV_OFFSET;
+    window.scrollTo({ top, behavior: 'smooth' });
+  };
+
+  // ── intercept all hash links (mobile + desktop) ──────────
+  // Desktop nav links also need managed scroll so the fixed header
+  // doesn't obscure the section heading.
+  document.querySelectorAll('a[href^="#"]').forEach((a) => {
+    // skip non-navigation links (e.g. "Политика конфиденциальности")
+    if (!a.closest('nav, .nav, .menu, .nav__links, .menu__links')) return;
+    a.addEventListener('click', (e) => {
+      e.preventDefault();
+      const hash = a.getAttribute('href');
+      if (!hash || hash === '#') return;
+      // close mobile menu first if open
+      if (menu?.classList.contains('is-open')) {
+        closeMenu();
+        setTimeout(() => {
+          scrollToSection(hash);
+          history.pushState(null, '', hash);
+        }, MENU_TRANSITION_MS);
+      } else {
+        scrollToSection(hash);
+        history.pushState(null, '', hash);
+      }
+    });
+  });
+
+  // ── resize guard: close overlay when crossing to desktop ───
+  const onResize = () => {
+    if (window.innerWidth > BREAKPOINT && menu?.classList.contains('is-open')) {
+      closeMenu();
+    }
+  };
+  window.addEventListener('resize', onResize, { passive: true });
+
+  // ── initial aria state for burger ──────────────────────────
+  burger?.setAttribute('aria-expanded', 'false');
+  if (menu) menu.setAttribute('aria-hidden', 'true');
+}
+
+
+/* ===== js/modules/modal.js ===== */
+// MALEA · invite/form modal — opened from every CTA
+function initModal() {
+  const modal = document.querySelector('#modalOverlay');
+  if (!modal) return;
+  const triggers = document.querySelectorAll('[data-modal-open]');
+
+  const open = () => {
+    modal.classList.add('is-open');
+    document.body.classList.add('is-scroll-locked');
+    modal.querySelector('[data-modal-close]')?.focus({ preventScroll: true });
+  };
+  const close = () => {
+    modal.classList.remove('is-open');
+    document.body.classList.remove('is-scroll-locked');
+  };
+
+  triggers.forEach((t) => t.addEventListener('click', (e) => { e.preventDefault(); open(); }));
+  modal.querySelectorAll('[data-modal-close]').forEach((b) => b.addEventListener('click', close));
+  modal.addEventListener('click', (e) => { if (e.target === modal) close(); });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.classList.contains('is-open')) close();
+  });
+}
+
+
+/* ===== js/modules/audio-player.js ===== */
+// MALEA · audio player — custom per-track players, single active source,
+// live waveform, seekable progress, time readout.
+function initAudioPlayer() {
+  const tracks = Array.from(document.querySelectorAll('[data-track]'));
+  if (!tracks.length) return;
+
+  const BARS = 64;
+  let current = null; // currently active track controller
+
+  const fmt = (s) => {
+    if (!isFinite(s) || s < 0) s = 0;
+    const m = Math.floor(s / 60);
+    const sec = Math.floor(s % 60);
+    return m + ':' + String(sec).padStart(2, '0');
+  };
+
+  // deterministic pseudo-waveform heights
+  const heights = (seed) => {
+    const out = [];
+    for (let i = 0; i < BARS; i++) {
+      const a = Math.sin((i + seed) * 0.5) * 0.5 + 0.5;
+      const b = Math.sin((i + seed) * 1.7) * 0.5 + 0.5;
+      const v = 0.22 + (a * 0.55 + b * 0.45) * 0.78;
+      out.push(Math.min(1, v));
+    }
+    return out;
+  };
+
+  tracks.forEach((el, idx) => {
+    const src = el.dataset.src;
+    const playBtn = el.querySelector('.ptrack__play');
+    const wave = el.querySelector('.wave');
+    const baseLayer = el.querySelector('.wave__layer--base');
+    const fillLayer = el.querySelector('.wave__layer--fill');
+    const danceLayer = el.querySelector('.wave__layer--dance');
+    const curEl = el.querySelector('.cur');
+    const durEl = el.querySelector('.dur');
+
+    // build bars
+    const hs = heights(idx * 7 + 3);
+    const mkBars = (layer) => {
+      const frag = document.createDocumentFragment();
+      hs.forEach((h) => {
+        const bar = document.createElement('span');
+        bar.className = 'wave__bar';
+        bar.style.height = (12 + h * 88) + '%';
+        bar.style.animationDelay = (Math.random() * -1.1) + 's';
+        frag.appendChild(bar);
+      });
+      layer.appendChild(frag);
+    };
+    mkBars(baseLayer);
+    mkBars(fillLayer);
+    if (danceLayer) mkBars(danceLayer);
+    fillLayer.style.clipPath = 'inset(0 100% 0 0)';
+
+    const audio = new Audio();
+    audio.preload = 'metadata';
+    audio.src = src;
+
+    const setProgress = (ratio) => {
+      const pct = Math.max(0, Math.min(1, ratio)) * 100;
+      fillLayer.style.clipPath = 'inset(0 ' + (100 - pct) + '% 0 0)';
+    };
+
+    const stop = () => {
+      audio.pause();
+      el.classList.remove('is-playing');
+    };
+
+    const play = () => {
+      if (current && current !== ctrl) current.stop();
+      current = ctrl;
+      el.classList.add('is-playing');
+      const p = audio.play();
+      if (p && p.catch) p.catch(() => { el.classList.remove('is-playing'); });
+    };
+
+    const ctrl = { stop };
+
+    playBtn.addEventListener('click', () => {
+      if (audio.paused) play(); else stop();
+    });
+
+    audio.addEventListener('loadedmetadata', () => {
+      if (durEl) durEl.textContent = fmt(audio.duration);
+    });
+    audio.addEventListener('timeupdate', () => {
+      if (audio.duration) setProgress(audio.currentTime / audio.duration);
+      if (curEl) curEl.textContent = fmt(audio.currentTime);
+    });
+    audio.addEventListener('ended', () => {
+      el.classList.remove('is-playing');
+      setProgress(0);
+      if (curEl) curEl.textContent = '0:00';
+    });
+    audio.addEventListener('error', () => {
+      el.classList.remove('is-playing');
+      if (durEl) durEl.textContent = '—:—';
+    });
+
+    // seek
+    const seek = (clientX) => {
+      const r = wave.getBoundingClientRect();
+      const ratio = (clientX - r.left) / r.width;
+      if (audio.duration) {
+        audio.currentTime = Math.max(0, Math.min(1, ratio)) * audio.duration;
+        setProgress(ratio);
+      }
+    };
+    wave.addEventListener('click', (e) => seek(e.clientX));
+  });
+}
+
+
+/* ===== js/modules/video-modal.js ===== */
+// MALEA · vertical video lightbox (Egypt). Injects iframe on open, clears on close.
+function initVideoModal() {
+  const modal = document.querySelector('[data-video-modal]');
+  if (!modal) return;
+  const frame = modal.querySelector('[data-video-modal-frame]');
+  const triggers = document.querySelectorAll('[data-video-modal-open]');
+  if (!frame || !triggers.length) return;
+
+  const open = (src) => {
+    frame.innerHTML =
+      '<iframe src="' + src + '" allow="autoplay; fullscreen; picture-in-picture; encrypted-media; gyroscope; accelerometer; clipboard-write; screen-wake-lock;" frameborder="0" allowfullscreen></iframe>';
+    modal.classList.add('is-open');
+    document.body.classList.add('is-scroll-locked');
+  };
+  const close = () => {
+    modal.classList.remove('is-open');
+    document.body.classList.remove('is-scroll-locked');
+    frame.innerHTML = '';
+  };
+
+  triggers.forEach((t) => t.addEventListener('click', () => {
+    const src = t.dataset.videoSrc;
+    if (src) open(src);
+  }));
+  modal.querySelectorAll('[data-video-modal-close]').forEach((b) => b.addEventListener('click', close));
+  modal.addEventListener('click', (e) => { if (e.target === modal) close(); });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.classList.contains('is-open')) close();
+  });
+}
+
+
+/* ===== js/modules/reviews-carousel.js ===== */
+// MALEA · reviews photo carousel — cyclic, autoplay, dots + arrows
+function initReviewsCarousel() {
+  const root = document.querySelector('[data-carousel]');
+  if (!root) return;
+  const slides = Array.from(root.querySelectorAll('.carousel__slide'));
+  const dots = Array.from(root.querySelectorAll('.carousel__dot'));
+  const prev = root.querySelector('[data-carousel-prev]');
+  const next = root.querySelector('[data-carousel-next]');
+  if (slides.length < 2) return;
+
+  let i = 0;
+  let timer = null;
+  const DELAY = 5200;
+
+  const go = (n) => {
+    i = (n + slides.length) % slides.length;
+    slides.forEach((s, k) => s.classList.toggle('is-active', k === i));
+    dots.forEach((d, k) => d.classList.toggle('is-active', k === i));
+  };
+  const start = () => { stop(); timer = setInterval(() => go(i + 1), DELAY); };
+  const stop = () => { if (timer) clearInterval(timer); };
+
+  prev?.addEventListener('click', () => { go(i - 1); start(); });
+  next?.addEventListener('click', () => { go(i + 1); start(); });
+  dots.forEach((d, k) => d.addEventListener('click', () => { go(k); start(); }));
+  root.addEventListener('mouseenter', stop);
+  root.addEventListener('mouseleave', start);
+
+  go(0);
+  start();
+}
+
+
+/* ===== js/modules/reveal.js ===== */
+// MALEA · reveal — fade/blur/line reveals on scroll, resilient to environments
+// where IntersectionObserver does not fire (e.g. some embedded preview panes).
+function initReveal() {
+  const els = Array.from(document.querySelectorAll('[data-reveal]'));
+  if (!els.length) return;
+
+  // revealAll also kills transitions via .reveal-static, so content appears
+  // even where CSS transitions are frozen (some embedded preview panes).
+  const revealAll = () => {
+    document.documentElement.classList.add('reveal-static');
+    els.forEach((el) => el.classList.add('is-in'));
+  };
+  const inView = (el) => {
+    const r = el.getBoundingClientRect();
+    const h = window.innerHeight || document.documentElement.clientHeight;
+    return r.top < h * 0.92 && r.bottom > 0;
+  };
+
+  if (!('IntersectionObserver' in window)) { revealAll(); return; }
+
+  let ioFired = false;
+  const io = new IntersectionObserver((entries) => {
+    ioFired = true;
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-in');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+
+  els.forEach((el) => io.observe(el));
+
+  // 1) reveal anything already visible on load (covers IO not firing immediately)
+  const revealVisible = () => els.forEach((el) => {
+    if (!el.classList.contains('is-in') && inView(el)) el.classList.add('is-in');
+  });
+  revealVisible();
+  requestAnimationFrame(revealVisible);
+
+  // 2) reveal on scroll/resize as an IO-independent fallback
+  let ticking = false;
+  const onScroll = () => {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => { revealVisible(); ticking = false; });
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll, { passive: true });
+
+  // 3) safety net: if the observer never fired at all, the environment can't
+  //    drive reveals (no IO and/or frozen transitions) — show everything.
+  setTimeout(() => { if (!ioFired) revealAll(); }, 900);
+}
+
+
+/* ===== js/modules/opening.js ===== */
+// MALEA · opening — cinematic DECK across the first screens (desktop + tablets).
+//
+//   Desktop / landscape tablets: INTRO → HERO → IDENTITY
+//   Portrait tablets / mobile:   INTRO → HERO, then normal scroll to IDENTITY
+//
+// (Philosophy → Live and beyond are normal scroll sections.)
+//
+// Each deliberate wheel/key step plays a fixed, time-based cinematic where the
+// next screen rises softly from depth while the current one recedes toward the
+// viewer (reverse is symmetric). After the last deck screen a normal scroll
+// releases to the rest of the page; scrolling back up at the top re-enters the
+// deck in reverse. On portrait tablets and mobile the deck intentionally ends at HERO.
+//
+// Time-based (NOT scroll-scrubbed) → a consistent, cinematic step regardless of
+// input device/speed. Activates ONLY on desktop/fine pointer OR touch tablets/mobile + motion allowed;
+// otherwise the wrapper is `display:contents` (css/13) and the sections behave
+// exactly as the normal stacked sections they always were.
+//
+// ROLL BACK: remove the initOpening() call in app.js and the layer-13 <link>.
+
+const SCREENS = ['intro', 'hero', 'identity'];
+
+const DURATION = 1500; // ms — must match --op-dur in css/13-opening-desktop.css
+const BUFFER = 140; // ms — settle margin after the visual finishes
+const SETTLE = 260; // ms — post-step cooldown so trackpad inertia can't auto-chain
+const NAV_REVEAL_DELAY = 460; // ms — let HERO start resolving before the nav fades/slides in
+
+function initOpening() {
+  const stage = document.getElementById('opening');
+  if (!stage) return;
+  const els = SCREENS.map((id) => document.getElementById(id));
+  if (els.some((el) => !el)) return;
+  const last = els.length - 1;
+
+  const root = document.documentElement;
+  const mqShortDeck = window.matchMedia('((max-width: 760px) and (pointer: coarse)), ((orientation: portrait) and (min-width: 700px) and (max-width: 1024px) and (pointer: coarse))');
+  const mqOpening = window.matchMedia('((min-width: 1101px) and (pointer: fine)), ((min-width: 1024px) and (max-width: 1366px) and (orientation: landscape) and (pointer: coarse)), ((orientation: portrait) and (min-width: 700px) and (max-width: 1024px) and (pointer: coarse)), ((max-width: 760px) and (pointer: coarse))');
+  const mqReduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+  let active = false;
+  let isAnimating = false;
+  let index = 0;
+  let settleUntil = 0;
+  let safety = null;
+  let stepToken = 0;
+  let navRevealTimer = null;
+  let touchStartY = 0;
+  let touchLastY = 0;
+  let touchCaptured = false;
+
+  const canActivate = () => mqOpening.matches && !mqReduce.matches;
+  const deckLast = () => (mqShortDeck.matches ? 1 : last);
+
+  function syncNavVisibility(i) {
+    if (navRevealTimer) { clearTimeout(navRevealTimer); navRevealTimer = null; }
+    root.classList.toggle('opening-nav-visible', i >= 1);
+  }
+
+  function scheduleNavVisibility(i, delay = 0) {
+    if (navRevealTimer) { clearTimeout(navRevealTimer); navRevealTimer = null; }
+    if (delay <= 0) { syncNavVisibility(i); return; }
+    root.classList.remove('opening-nav-visible');
+    navRevealTimer = setTimeout(() => {
+      navRevealTimer = null;
+      syncNavVisibility(i);
+    }, delay);
+  }
+
+  function setResting(i) {
+    els.forEach((el, k) => {
+      el.classList.toggle('is-current', k === i);
+      el.classList.remove('is-leaving');
+    });
+    syncNavVisibility(i);
+  }
+
+  function activate() {
+    if (active) return;
+    active = true;
+    isAnimating = false;
+    index = 0;
+    settleUntil = 0;
+    root.classList.add('js-opening');
+    setResting(0);
+    if (window.scrollY < 4) window.scrollTo(0, 0);
+  }
+
+  function normalizeDeckIndex() {
+    const max = deckLast();
+    if (index > max) {
+      index = max;
+      setResting(index);
+    }
+  }
+
+  function deactivate() {
+    if (!active) return;
+    active = false;
+    isAnimating = false;
+    if (safety) { clearTimeout(safety); safety = null; }
+    if (navRevealTimer) { clearTimeout(navRevealTimer); navRevealTimer = null; }
+    root.classList.remove('js-opening', 'opening-anim', 'opening-nav-visible');
+    els.forEach((el) => el.classList.remove('is-current', 'is-leaving'));
+  }
+
+  function finishStep(to, from) {
+    isAnimating = false;
+    safety = null;
+    root.classList.remove('opening-anim');
+    els[from].classList.remove('is-leaving');
+    els[to].classList.add('is-current');
+    els[to].classList.remove('is-leaving');
+    index = to;
+    scheduleNavVisibility(index);
+    settleUntil = Date.now() + SETTLE;
+  }
+
+  function step(to) {
+    if (isAnimating) return;
+    const from = index;
+    const max = deckLast();
+    if (to < 0 || to > max || to === from) return;
+    isAnimating = true;
+    scheduleNavVisibility(to, from === 0 && to === 1 ? NAV_REVEAL_DELAY : 0);
+    const token = ++stepToken;
+    // Two rAFs: guarantee the resting "pre" state is painted, THEN enable the
+    // transition and swap classes so the browser animates between the states.
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      if (!isAnimating || token !== stepToken) return; // superseded / already finished
+      root.classList.add('opening-anim');
+      els[to].classList.add('is-current');
+      els[to].classList.remove('is-leaving');
+      els[from].classList.remove('is-current');
+      els[from].classList.add('is-leaving');
+    }));
+    // Safety lives OUTSIDE rAF so a throttled/late rAF can never permanently
+    // lock isAnimating; the end-state is finalised deterministically.
+    if (safety) clearTimeout(safety);
+    safety = setTimeout(() => { if (token === stepToken) finishStep(to, from); }, DURATION + BUFFER);
+  }
+
+  // Deck roughly fills the viewport (we're sitting on the deck).
+  function deckFillsViewport() {
+    const vh = window.innerHeight || document.documentElement.clientHeight;
+    const r = stage.getBoundingClientRect();
+    return r.top <= vh * 0.45 && r.bottom > vh * 0.55;
+  }
+  // Deck is pinned at the very top (entry point for the reverse gesture).
+  function deckAtTop() {
+    const r = stage.getBoundingClientRect();
+    return r.top >= -10 && r.top <= 70;
+  }
+
+  function blockedNow() {
+    return isAnimating || Date.now() < settleUntil;
+  }
+
+  function tryForward() {
+    if (!blockedNow() && index < deckLast() && deckFillsViewport()) { step(index + 1); return true; }
+    return false;
+  }
+  function tryReverse() {
+    if (!blockedNow() && index > 0 && deckAtTop()) { step(index - 1); return true; }
+    return false;
+  }
+
+  function onWheel(e) {
+    if (!active) return;
+    if (isAnimating) { e.preventDefault(); return; }
+    const delta = e.deltaY;
+
+    if (delta > 0) {
+      // forward / release
+      if (index < deckLast()) {
+        if (deckFillsViewport()) {
+          e.preventDefault();
+          if (Date.now() >= settleUntil) step(index + 1);
+        }
+      }
+      // index === deckLast() → let the page scroll down (release to content).
+      return;
+    }
+    if (delta < 0) {
+      // reverse
+      if (index > 0) {
+        if (deckAtTop()) {
+          e.preventDefault();
+          if (Date.now() >= settleUntil) step(index - 1);
+        }
+      }
+      // index === 0 → nothing above; allow normal scroll.
+      return;
+    }
+  }
+
+  const TOUCH_THRESHOLD = 42;
+  const TOUCH_CAPTURE_THRESHOLD = 8;
+
+  function shouldCaptureTouch(dy) {
+    if (!active) return false;
+    if (isAnimating) return true;
+    if (Math.abs(dy) < TOUCH_CAPTURE_THRESHOLD) return false;
+
+    const swipingUp = dy < 0;
+    const swipingDown = dy > 0;
+
+    if (swipingUp && index < deckLast() && deckFillsViewport()) return true;
+    if (swipingDown && index > 0 && deckAtTop()) return true;
+    return false;
+  }
+
+  function onTouchStart(e) {
+    if (!active || !e.touches || e.touches.length !== 1) return;
+    touchStartY = e.touches[0].clientY;
+    touchLastY = touchStartY;
+    touchCaptured = false;
+  }
+
+  function onTouchMove(e) {
+    if (!active || !e.touches || e.touches.length !== 1) return;
+    touchLastY = e.touches[0].clientY;
+    const dy = touchLastY - touchStartY;
+
+    if (touchCaptured || shouldCaptureTouch(dy)) {
+      touchCaptured = true;
+      e.preventDefault();
+    }
+  }
+
+  function onTouchEnd(e) {
+    if (!active) return;
+    const dy = touchLastY - touchStartY;
+    const abs = Math.abs(dy);
+    touchStartY = 0;
+    touchLastY = 0;
+
+    if (!touchCaptured && abs < TOUCH_THRESHOLD) return;
+    if (abs < TOUCH_THRESHOLD) { touchCaptured = false; return; }
+
+    const swipedUp = dy < 0;
+    const swipedDown = dy > 0;
+    touchCaptured = false;
+
+    if (swipedUp && index < deckLast() && deckFillsViewport()) {
+      if (e.cancelable) e.preventDefault();
+      if (Date.now() >= settleUntil && !isAnimating) step(index + 1);
+    } else if (swipedDown && index > 0 && deckAtTop()) {
+      if (e.cancelable) e.preventDefault();
+      if (Date.now() >= settleUntil && !isAnimating) step(index - 1);
+    }
+  }
+
+  function onTouchCancel() {
+    touchStartY = 0;
+    touchLastY = 0;
+    touchCaptured = false;
+  }
+
+  const FWD_KEYS = ['ArrowDown', 'PageDown', ' ', 'Spacebar', 'End'];
+  const REV_KEYS = ['ArrowUp', 'PageUp', 'Home'];
+  function onKeydown(e) {
+    if (!active || blockedNow()) return;
+    const t = e.target;
+    if (t && (t.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName))) return;
+    if (FWD_KEYS.includes(e.key) && index < deckLast() && deckFillsViewport()) {
+      e.preventDefault();
+      step(index + 1);
+    } else if (REV_KEYS.includes(e.key) && index > 0 && deckAtTop()) {
+      e.preventDefault();
+      step(index - 1);
+    }
+  }
+
+  function evaluate() {
+    if (canActivate()) { activate(); normalizeDeckIndex(); }
+    else deactivate();
+  }
+
+  window.addEventListener('wheel', onWheel, { passive: false });
+  window.addEventListener('touchstart', onTouchStart, { passive: true });
+  window.addEventListener('touchmove', onTouchMove, { passive: false });
+  window.addEventListener('touchend', onTouchEnd, { passive: false });
+  window.addEventListener('touchcancel', onTouchCancel, { passive: true });
+  window.addEventListener('keydown', onKeydown, { passive: false });
+  const onMqChange = () => evaluate();
+  [mqOpening, mqShortDeck, mqReduce].forEach((mq) => {
+    if (mq.addEventListener) mq.addEventListener('change', onMqChange);
+    else if (mq.addListener) mq.addListener(onMqChange);
+  });
+
+  evaluate();
+
+  // Debug hook (no overlay) for verification in the preview.
+  window.__opening = {
+    getState: () => ({ active, isAnimating, index, screen: SCREENS[index] }),
+    forward: tryForward,
+    reverse: tryReverse,
+    step: (i) => step(i),
+  };
+}
+
+
+/* ===== js/modules/cinematic-scroll.js ===== */
+// MALEA · cinematic-scroll — desktop soft reveal for PHILOSOPHY.
+//
+// (a) PHILOSOPHY ("Новому времени — новое искусство"): a soft one-shot
+//     rise-from-depth reveal as it scrolls into view after the deck — a gentle
+//     "появление" (NOT a screen-swap) that harmonises with the cinematic deck.
+//
+// Activates ONLY on desktop (≥1101px) with motion allowed. Content is NEVER
+// left stuck hidden: without js-cinematic (no-JS / reduced-motion / ≤1100) the
+// philosophy composition shows normally (see css/15). Multiple independent
+// triggers (IO + scroll + timer) guarantee the reveal fires.
+
+function initCinematicScroll() {
+  const root = document.documentElement;
+  const philosophy = document.getElementById('philosophy');
+  if (!philosophy) return;
+
+  const mqDesktop = window.matchMedia('(min-width: 1101px)');
+  const mqReduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const canActivate = () => mqDesktop.matches && !mqReduce.matches;
+
+  let active = false;
+  let io = null;
+  let ticking = false;
+  let safety = null;
+
+  function reveal() {
+    if (philosophy.classList.contains('op-appear')) return;
+    philosophy.classList.add('op-appear');
+  }
+
+  // Reveal once it has genuinely scrolled into view (a bit past the bottom edge,
+  // so the soft rise actually plays on screen rather than off it).
+  function maybeReveal() {
+    if (!active || philosophy.classList.contains('op-appear')) return;
+    const vh = window.innerHeight || document.documentElement.clientHeight;
+    const r = philosophy.getBoundingClientRect();
+    if (r.top < vh * 0.85 && r.bottom > vh * 0.08) reveal();
+  }
+
+  function onScroll() {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => { ticking = false; maybeReveal(); });
+  }
+
+  function activate() {
+    if (active) return;
+    active = true;
+    root.classList.add('js-cinematic');
+
+    if ('IntersectionObserver' in window) {
+      io = new IntersectionObserver((entries) => {
+        entries.forEach((e) => { if (e.isIntersecting) { reveal(); if (io) io.unobserve(philosophy); } });
+      }, { threshold: 0.16, rootMargin: '0px 0px -8% 0px' });
+      io.observe(philosophy);
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll, { passive: true });
+    maybeReveal();
+    // Safety net: if nothing fired but it's actually on screen, reveal anyway.
+    safety = setInterval(() => {
+      if (!active) return;
+      if (philosophy.classList.contains('op-appear')) { clearInterval(safety); safety = null; return; }
+      maybeReveal();
+    }, 600);
+  }
+
+  function deactivate() {
+    if (!active) return;
+    active = false;
+    root.classList.remove('js-cinematic');
+    if (io) { io.disconnect(); io = null; }
+    if (safety) { clearInterval(safety); safety = null; }
+    window.removeEventListener('scroll', onScroll);
+    window.removeEventListener('resize', onScroll);
+    philosophy.classList.remove('op-appear');
+  }
+
+  function evaluate() { canActivate() ? activate() : deactivate(); }
+
+  [mqDesktop, mqReduce].forEach((mq) => {
+    if (mq.addEventListener) mq.addEventListener('change', evaluate);
+    else if (mq.addListener) mq.addListener(evaluate);
+  });
+  evaluate();
+
+  window.__cinematic = {
+    getState: () => ({ active, philoAppear: philosophy.classList.contains('op-appear') }),
+    reveal,
+  };
+}
+
+
+/* ===== js/app.js ===== */
+// MALEA · app entry — initialise every module safely and in isolation.
+
+
+
+
+
+
+
+
+function safeInit(name, fn) {
+  try {
+    if (typeof fn !== 'function') { console.warn('[MALEA] ' + name + ': init is not a function'); return; }
+    fn();
+    console.info('[MALEA] ' + name + ': initialized');
+  } catch (error) {
+    console.error('[MALEA] ' + name + ': failed', error);
+  }
+}
+
+function initApp() {
+  safeInit('nav', initNav);
+  safeInit('modal', initModal);
+  safeInit('audio-player', initAudioPlayer);
+  safeInit('video-modal', initVideoModal);
+  safeInit('reviews-carousel', initReviewsCarousel);
+  safeInit('reveal', initReveal);
+  safeInit('opening', initOpening);
+  safeInit('cinematic-scroll', initCinematicScroll);
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initApp, { once: true });
+} else {
+  initApp();
+}
+
+})();
+</script>

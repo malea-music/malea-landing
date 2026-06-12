@@ -1,0 +1,110 @@
+<!-- MALEA / Tilda export / 07-html-nav-opening-philosophy -->
+<div class="malea-tilda" data-malea-tilda-part="07-html-nav-opening-philosophy">
+<!-- ============ ATMOSPHERIC CANVAS ============ -->
+<div class="site-atmosphere" aria-hidden="true"></div>
+
+
+
+<!-- ============ NAVIGATION ============ -->
+<header class="nav" id="mainNav">
+  <div class="nav__inner">
+    <a class="nav__logo" href="#hero" aria-label="MALEA — наверх">MALEA</a>
+    <nav class="nav__links" aria-label="Главное меню">
+      <a href="#player">Музыка</a>
+      <a href="#performance">Перформанс</a>
+      <a href="#reviews">Отзывы</a>
+      <a href="#formats">Форматы</a>
+      <a href="#final-experience">Контакты</a>
+    </nav>
+    <div class="nav__cta">
+      <button class="btn btn--gold" type="button" data-modal-open><span>Пригласить на ивент</span></button>
+    </div>
+    <button class="nav__burger" type="button" data-nav-burger aria-label="Открыть меню">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- ============ MOBILE MENU ============ -->
+<div class="menu" id="mobileMenu" aria-hidden="true">
+  <div class="menu__bg"></div>
+  <div class="menu__top">
+    <a class="menu__logo" href="#hero">MALEA</a>
+    <button class="menu__close" type="button" data-menu-close aria-label="Закрыть меню"></button>
+  </div>
+  <nav class="menu__links" aria-label="Мобильное меню">
+    <a href="#player"><span class="menu__num">01</span><span class="menu__label">Музыка</span><span class="menu__arrow" aria-hidden="true"></span></a>
+    <a href="#performance"><span class="menu__num">02</span><span class="menu__label">Перформанс</span><span class="menu__arrow" aria-hidden="true"></span></a>
+    <a href="#reviews"><span class="menu__num">03</span><span class="menu__label">Отзывы</span><span class="menu__arrow" aria-hidden="true"></span></a>
+    <a href="#formats"><span class="menu__num">04</span><span class="menu__label">Форматы</span><span class="menu__arrow" aria-hidden="true"></span></a>
+    <a href="#final-experience"><span class="menu__num">05</span><span class="menu__label">Контакты</span><span class="menu__arrow" aria-hidden="true"></span></a>
+  </nav>
+  <div class="menu__foot">
+    <button class="btn btn--gold menu__cta-btn" type="button" data-modal-open><span>Пригласить на ивент</span></button>
+  </div>
+
+
+<!-- ============ OPENING STAGE (desktop/landscape: intro→hero→identity; portrait tablets/mobile: intro→hero) ============ -->
+<!-- Wrapper is `display:contents` by default → inert on no-JS/
+     reduced-motion. Becomes a 1-viewport stage only under html.js-opening
+     (set by js/modules/opening.js on desktop/tablets/mobile). See css/13-opening-desktop.css. -->
+<div id="opening" class="opening-stage">
+
+<!-- ============ 01 · INTRO ============ -->
+<section class="section full op-layer" id="intro">
+  <div>
+    <h1 class="intro__mark" data-reveal="scale">MALEA</h1>
+    <p class="intro__sub" data-reveal style="--reveal-delay:160ms">Сакральный артист. Искусство Нового времени.</p>
+  </div>
+</section>
+
+<!-- ============ 02 · HERO ============ -->
+<section class="section full op-layer" id="hero">
+  <div class="hero__text">
+    <span class="overline hero__overline" data-reveal>Сакральный артист</span>
+    <h2 class="hero__title" data-reveal style="--reveal-delay:80ms">MALEA</h2>
+    <p class="hero__lede" data-reveal style="--reveal-delay:160ms">Я создаю искусство Нового Времени — музыку, которая меняет состояние пространства</p>
+    <div data-reveal style="--reveal-delay:240ms">
+      <button class="btn btn--gold" type="button" data-modal-open><span>Пригласить на ивент</span></button>
+    </div>
+  </div>
+  <div class="hero__media" data-reveal="scale">
+    <img src="https://optim.tildacdn.com/tild6338-3961-4964-b065-323834393935/-/format/webp/_1__.png.webp" alt="MALEA на сцене" loading="eager">
+  </div>
+</section>
+
+<!-- ============ 03 · IDENTITY ============ -->
+<section class="section pad-block op-layer" id="identity">
+  <div class="aura"></div>
+  <div class="wrap identity__inner">
+      <div class="identity__portrait" data-reveal="scale">
+        <img src="https://optim.tildacdn.com/tild3833-3164-4330-a264-373038333131/-/format/webp/_2.png.webp" alt="Портрет MALEA" loading="lazy">
+      </div>
+      <div class="identity__body">
+        <h2 class="shead__title identity__title" data-reveal>Голос космоса</h2>
+        <p class="identity__sub" data-reveal style="--reveal-delay:140ms">Звуковой феномен — Сакральный проводник звука</p>
+        <ol class="identity__list" data-reveal style="--reveal-delay:200ms">
+          <li><span class="n">01</span><span>Автор исцеляющей музыки на частоте 432 Гц</span></li>
+          <li><span class="n">02</span><span>Создательница первого в России Art Digital Soundhealing концерта</span></li>
+          <li><span class="n">03</span><span>Терапевт звёзд и творцов</span></li>
+          <li><span class="n">04</span><span>Автор новаторского метода «Квантовые Трансформации»</span></li>
+        </ol>
+      </div>
+  </div>
+</section>
+
+</div><!-- /#opening (opening-stage) -->
+
+<section class="section full" id="philosophy">
+  <div class="aura"></div>
+  <div class="wrap">
+    <div class="philo__inner">
+      <h2 class="philo__heading" data-reveal>Новому времени —<br>новое искусство</h2>
+      <div class="philo__text">
+        <p data-reveal style="--reveal-delay:120ms">Работаю со&nbsp;звуком как с&nbsp;инструментом, который через&nbsp;живое переживание влияет на&nbsp;эмоции, тело и&nbsp;внутреннее состояние человека.</p>
+        <p data-reveal style="--reveal-delay:200ms">Моя музыка&nbsp;— это перезагрузка тела на&nbsp;клеточном уровне и&nbsp;всей энергосистемы, возвращение к&nbsp;целостности, соединение с&nbsp;глубинной силой.</p>
+      </div>
+    </div>
+  </div>
+</section>
+</div>
