@@ -151,11 +151,31 @@
      Pull it back ~10% (54vh). With object-position 50% 65% the crop lands
      mostly on the top, so the subject stays framed. */
   #final-experience .final__media { min-height: 46vh; }
+  /* Kill the 1px "pixel line" at the photo's bottom edge.
+     .final__media has a fractional height (46vh), so at dpr 2–3 its bottom
+     edge lands on a half-device-pixel → the clipped bottom row renders
+     semi-transparent. The fixed .site-atmosphere overlay (a blue radial
+     pinned to the bottom of the viewport) showed THROUGH that translucent
+     row as a faint, scroll-flickering seam ("просвечивается сквозь фон").
+     Paint the section + media with the solid field colour so there is no
+     transparency behind the edge for the atmosphere to bleed through.
+     --bg-deep == the body field, so this is visually identical to the
+     unified background — no new seam. */
+  #final-experience { background: var(--bg-deep); }
+  #final-experience .final__media { background: var(--bg-deep); }
   /* Raise the photo ~10% within the frame (show a slightly lower slice of the
-     portrait): object-position Y 65% → 75%. scale(1.05) zooms the photo ~5%
-     inside the frame (clipped by the media box). */
-  #final-experience .final__media { overflow: hidden; }
-  #final-experience .final__media img { object-position: 50% 75%; transform: scale(1.05); }
+     portrait): object-position Y 65% → 75%. Remove transform:scale() because
+     it creates a GPU compositor layer that can leave a 1px sub-pixel seam
+     against the ::after overlay at the bottom edge. Without scale, the photo
+     fills exactly 100% of the container — same visual crop, no seam. */
+  /* overflow must stay VISIBLE so .final__media::after can extend below the box
+     (see the bottom-cap overlay in 05-screens.css). The img is sized inset:0 to
+     the box, so nothing else overflows. */
+  #final-experience .final__media { overflow: visible; }
+  #final-experience .final__media img {
+    object-position: 50% 75%;
+    transform: none;
+  }
   /* The text block kept the desktop 14vh (~118px) block padding → an ~111px
      void between the photo and the "Создать опыт" heading, out of step with the
      mobile rhythm. Pull it onto the standard mobile section padding. */
