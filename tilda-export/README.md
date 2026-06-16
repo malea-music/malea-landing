@@ -25,7 +25,7 @@
 | Файл | Размер, bytes |
 |---|---:|
 | parts/01-css-tokens-base.html | 8530 |
-| parts/02-css-nav-modal-components.html | 21370 |
+| parts/02-css-nav-modal-components.html | 21125 |
 | parts/03-css-screens.html | 44299 |
 | parts/04-css-motion-tablets.html | 13996 |
 | parts/05-css-ipad-mobile.html | 10593 |

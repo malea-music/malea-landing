@@ -1,38 +1,4 @@
 <style>
-((orientation: portrait) and (min-width: 700px) and (max-width: 1024px) and (pointer: coarse)) {
-html.js-opening .opening-stage {
-height: auto;
-min-height: 0;
-padding-top: 100vh;
-padding-top: 100lvh;
-padding-top: 100dvh;
-overflow: hidden;
-overscroll-behavior: none;
-}
-html.js-opening #opening >#intro.op-layer,
-html.js-opening #opening >#hero.op-layer {
-height: 100vh;
-height: 100lvh;
-height: 100dvh;
-}
-html.js-opening #opening >#identity.op-layer {
-position: relative;
-inset: auto;
-display: block;
-height: auto;
-min-height: 0;
-overflow: visible;
-opacity: 1;
-transform: none;
-filter: none;
-z-index: 1;
-padding-block: var(--vr-standard);
-}
-html.js-opening #opening >#identity.op-layer::after { display: none; }
-html.js-opening #opening >#identity.op-layer .identity__inner {
-align-items: center;
-}
-}
 @media (prefers-reduced-motion: reduce) {
 .opening-stage { display: contents; }
 }

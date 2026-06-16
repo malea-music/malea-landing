@@ -1,9 +1,4 @@
 <style>
-.mus__desc { color: var(--ink-soft); font-size: var(--fs-body); line-height: 1.6; max-width: 32ch; }
-@media (min-width: 761px) and (max-width: 1366px) and (orientation: landscape) {
-.mus__name { font-size: clamp(18px, 1.8vw, 22px); }
-.mus__desc { max-width: none; }
-}
 @media (min-width: 761px) and (max-width: 1100px) and (orientation: portrait) {
 .mus__grid { grid-template-columns: 1fr 1fr; }
 }
@@ -1299,4 +1294,38 @@ max-height: 76vh;
 }
 }
 @media ((max-width: 760px) and (pointer: coarse)),
+((orientation: portrait) and (min-width: 700px) and (max-width: 1024px) and (pointer: coarse)) {
+html.js-opening .opening-stage {
+height: auto;
+min-height: 0;
+padding-top: 100vh;
+padding-top: 100lvh;
+padding-top: 100dvh;
+overflow: hidden;
+overscroll-behavior: none;
+}
+html.js-opening #opening >#intro.op-layer,
+html.js-opening #opening >#hero.op-layer {
+height: 100vh;
+height: 100lvh;
+height: 100dvh;
+}
+html.js-opening #opening >#identity.op-layer {
+position: relative;
+inset: auto;
+display: block;
+height: auto;
+min-height: 0;
+overflow: visible;
+opacity: 1;
+transform: none;
+filter: none;
+z-index: 1;
+padding-block: var(--vr-standard);
+}
+html.js-opening #opening >#identity.op-layer::after { display: none; }
+html.js-opening #opening >#identity.op-layer .identity__inner {
+align-items: center;
+}
+}
 </style>
