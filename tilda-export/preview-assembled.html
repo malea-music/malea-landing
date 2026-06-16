@@ -724,6 +724,22 @@ html.opening-nav-visible .nav { transform: translateY(0); opacity: 1; }
 
 @media (max-width: 760px) {
   .video-modal__close { top: -42px; }
+
+  
+  .modal__close {
+    top: 8px;
+    right: 8px;
+    width: 36px; height: 36px;
+    background: rgba(0,0,0,.45);
+    border-radius: 50%;
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+  }
+  .modal__close::before,
+  .modal__close::after {
+    width: 16px;
+    background: var(--ink);
+  }
 }
 
 

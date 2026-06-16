@@ -1,0 +1,170 @@
+<style>
+((orientation: portrait) and (min-width: 700px) and (max-width: 1024px) and (pointer: coarse)) {
+html.js-opening .opening-stage {
+height: auto;
+min-height: 0;
+padding-top: 100vh;
+padding-top: 100lvh;
+padding-top: 100dvh;
+overflow: hidden;
+overscroll-behavior: none;
+}
+html.js-opening #opening >#intro.op-layer,
+html.js-opening #opening >#hero.op-layer {
+height: 100vh;
+height: 100lvh;
+height: 100dvh;
+}
+html.js-opening #opening >#identity.op-layer {
+position: relative;
+inset: auto;
+display: block;
+height: auto;
+min-height: 0;
+overflow: visible;
+opacity: 1;
+transform: none;
+filter: none;
+z-index: 1;
+padding-block: var(--vr-standard);
+}
+html.js-opening #opening >#identity.op-layer::after { display: none; }
+html.js-opening #opening >#identity.op-layer .identity__inner {
+align-items: center;
+}
+}
+@media (prefers-reduced-motion: reduce) {
+.opening-stage { display: contents; }
+}
+.live__heading--mobile { display: none; }
+.live__heading--desktop { display: block; }
+@media (max-width: 760px) {
+:root {
+--fs-section: clamp(30px, 8vw, 36px);
+--fs-micro: 11px;
+--fs-body: 17px;
+--vr-dense: clamp(30px, 4vh, 48px);
+}
+#musicians .shead,
+#formats .shead,
+#why .shead,
+#portfolio .shead,
+.player__head,
+.egypt__header,
+.live__heading,
+.slots__head { text-align: left; }
+.shead__title,
+.slots__head,
+.player__heading,
+.live__heading,
+.final__heading,
+.egypt__header .heading,
+.philo__heading { line-height: 1.12; }
+.pad-block,
+#art,
+#reviews,
+#philosophy { padding-block: clamp(44px, 6vh, 64px); }
+html.js-opening #opening >#identity.op-layer {
+padding-block: clamp(44px, 6vh, 64px);
+}
+:root { --vr-block: clamp(20px, 3vh, 30px); }
+.quote-screen { min-height: 0; padding-block: clamp(40px, 6vh, 56px); }
+#philosophy { min-height: 0; }
+#philosophy .philo__inner { padding-inline: 0; padding-block: 0; }
+#reviews .shead__title br { display: none; }
+#reviews .shead__title { text-wrap: balance; }
+#formats .fmt__line-content { grid-template-columns: 1fr; }
+#formats .fmt__line-num { padding-top: 0; margin-bottom: var(--s-2); }
+.fmt__line { padding-block: clamp(22px, 3vw, 28px); }
+#final-experience .final__text > div:last-child { text-align: center; }
+#live .live__text { margin-bottom: 0; }
+#final-experience .final__media { min-height: 46vh; }
+#final-experience { background: var(--bg-deep); }
+#final-experience .final__media { background: var(--bg-deep); }
+#final-experience .final__media { overflow: visible; }
+#final-experience .final__media img {
+object-position: 50% 75%;
+transform: none;
+}
+#final-experience .final__text { padding-block: clamp(44px, 6vh, 64px); }
+#reviews .rev__states { margin-top: var(--vr-dense); }
+.bigquote__text { font-size: 26px; line-height: 1.26; font-weight: 300; letter-spacing: .015em; }
+.bigquote__attr { margin-top: clamp(14px, 2vh, 18px); font-size: 17px; letter-spacing: .2em; }
+.bigquote::before {
+content: "";
+display: block;
+width: 40px; height: 1px;
+margin: 0 auto clamp(20px, 3vh, 26px);
+background: var(--gold-soft);
+}
+.bigquote { max-width: 86vw; }
+.quote-screen--wide .bigquote { max-width: 90vw; }
+.quote-screen--wide { margin-block: 0; padding-top: clamp(6px, 1.1vh, 12px); padding-bottom: clamp(60px, 9vh, 86px); }
+.live__heading--desktop { display: none; }
+.live__heading--mobile { display: block; }
+.live-rule { display: none; }
+}
+@media (min-width: 1101px) {
+#philosophy {
+display: block;
+min-height: 0;
+padding-block: var(--vr-standard);
+}
+#philosophy .philo__inner {
+padding-block: 0;
+}
+.quote-screen {
+min-height: 0;
+padding-block: var(--vr-standard);
+}
+.quote-screen--wide {
+margin-block: 0;
+padding-top: clamp(16px, 2vh, 32px);
+padding-bottom: var(--vr-standard);
+}
+.quote-screen .bigquote[data-reveal] {
+transform: translateY(34px) scale(0.965);
+filter: blur(7px);
+transition:
+opacity   1150ms var(--op-ease),
+transform 1150ms var(--op-ease),
+filter    1150ms var(--op-ease);
+will-change: transform, opacity, filter;
+}
+.quote-screen .bigquote[data-reveal].is-in {
+transform: none;
+filter: none;
+}
+}
+@media (min-width: 1101px) {
+html.js-cinematic #philosophy [data-reveal] {
+opacity: 1 !important;
+transform: none !important;
+filter: none !important;
+transition: none !important;
+}
+html.js-cinematic #philosophy .philo__inner {
+opacity: 0;
+transform: translateY(32px) scale(0.97);
+filter: blur(6px);
+transform-origin: 50% 60%;
+transition:
+opacity   1200ms var(--op-ease),
+transform 1200ms var(--op-ease),
+filter    1200ms var(--op-ease);
+will-change: transform, opacity, filter;
+}
+html.js-cinematic #philosophy.op-appear .philo__inner {
+opacity: 1;
+transform: none;
+filter: none;
+}
+}
+@media (prefers-reduced-motion: reduce) {
+html.js-cinematic #philosophy .philo__inner {
+opacity: 1 !important;
+transform: none !important;
+filter: none !important;
+}
+}
+</style>
