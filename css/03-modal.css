@@ -59,6 +59,7 @@
   position: absolute;
   top: var(--s-4); right: var(--s-4);
   width: 40px; height: 40px;
+  z-index: calc(var(--z-modal) + 1);
 }
 .modal__close::before, .modal__close::after {
   content: ""; position: absolute; top: 50%; left: 50%;
@@ -117,12 +118,11 @@
 @media (max-width: 760px) {
   .video-modal__close { top: -42px; }
 
-  /* Move close button outside the card, fixed to viewport corner */
+  /* Close button pinned to viewport corner, above the card */
   .modal__close {
     position: fixed;
-    top: var(--s-3);
-    right: var(--s-3);
-    z-index: calc(var(--z-modal) + 1);
+    top: 0;
+    right: 0;
   }
   .modal__close::before,
   .modal__close::after {

@@ -2,10 +2,10 @@ MALEA → Tilda blocks (limit per block ~50000, target <=45000)
 Paste order on the Tilda page (top → bottom):
   all 01-styles-*  →  all 02-markup-*  →  03-script
 
-01-styles-01.html           45104 chars
+01-styles-01.html           45086 chars
 01-styles-02.html           45479 chars
 01-styles-03.html           3922 chars
-02-markup-01.html           37949 chars
+02-markup-01.html           37947 chars
 03-script.html              28252 chars
 
 Total blocks: 5
