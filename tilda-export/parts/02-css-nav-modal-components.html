@@ -302,7 +302,6 @@ html.opening-nav-visible .nav { transform: translateY(0); opacity: 1; }
   position: absolute;
   top: var(--s-4); right: var(--s-4);
   width: 40px; height: 40px;
-  z-index: calc(var(--z-modal) + 1);
 }
 .modal__close::before, .modal__close::after {
   content: ""; position: absolute; top: 50%; left: 50%;
@@ -363,9 +362,7 @@ html.opening-nav-visible .nav { transform: translateY(0); opacity: 1; }
 
   
   .modal__close {
-    position: fixed;
-    top: 0;
-    right: 0;
+    right: -8px;
   }
   .modal__close::before,
   .modal__close::after {

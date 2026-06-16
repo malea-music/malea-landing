@@ -59,7 +59,6 @@
   position: absolute;
   top: var(--s-4); right: var(--s-4);
   width: 40px; height: 40px;
-  z-index: calc(var(--z-modal) + 1);
 }
 .modal__close::before, .modal__close::after {
   content: ""; position: absolute; top: 50%; left: 50%;
@@ -118,11 +117,9 @@
 @media (max-width: 760px) {
   .video-modal__close { top: -42px; }
 
-  /* Close button pinned to viewport corner, above the card */
+  /* Slide close button partially outside card right edge to clear the title text */
   .modal__close {
-    position: fixed;
-    top: 0;
-    right: 0;
+    right: -8px;
   }
   .modal__close::before,
   .modal__close::after {

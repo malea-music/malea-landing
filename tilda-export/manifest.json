@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-16T17:05:08.213Z",
+  "generatedAt": "2026-06-16T17:17:25.312Z",
   "publicBase": "https://events.malea-soundhealing.com",
   "parts": [
     {
@@ -8,7 +8,7 @@
     },
     {
       "file": "parts/02-css-nav-modal-components.html",
-      "bytes": 21243
+      "bytes": 21173
     },
     {
       "file": "parts/03-css-screens.html",
@@ -40,7 +40,7 @@
     },
     {
       "file": "parts/10-html-integration-final-modals.html",
-      "bytes": 13213
+      "bytes": 13215
     },
     {
       "file": "parts/11-js-bundle.html",
