@@ -2121,7 +2121,6 @@ html.opening-nav-visible .nav { transform: translateY(0); opacity: 1; }
   grid-template-columns: 1.1fr 1.2fr 1fr;
   border-top: 1px solid var(--gold-line);
   border-bottom: 1px solid var(--gold-line);
-  margin-bottom: var(--vr-dense);
 }
 .pm-col {
   position: relative;
@@ -3312,6 +3311,13 @@ body { background: var(--bg-deep); }
   .quote-screen {
     min-height: 0;
     padding-block: var(--vr-standard);
+  }
+
+  
+  .quote-screen--wide {
+    margin-block: 0;
+    padding-top: clamp(16px, 2vh, 32px);
+    padding-bottom: var(--vr-standard);
   }
 
   

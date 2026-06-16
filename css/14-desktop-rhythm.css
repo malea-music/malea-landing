@@ -44,6 +44,19 @@
     padding-block: var(--vr-standard);
   }
 
+  /* Last quote (Коллаборации): Portfolio already contributes its own section
+     bottom padding (var(--vr-standard)/2) via the .pad-block class, while
+     Final below starts image-led with no top margin. Without a compensating
+     override the quote reads as a floating spacer — above gap ≈ portfolio
+     padding + quote padding (= var(--vr-standard)), below gap ≈ only quote
+     padding (= var(--vr-standard)/2). Asymmetric top-padding rebalances
+     the content-to-content air on both sides. */
+  .quote-screen--wide {
+    margin-block: 0;
+    padding-top: clamp(16px, 2vh, 32px);
+    padding-bottom: var(--vr-standard);
+  }
+
   /* …and they emerge SOFTLY FROM DEPTH on scroll-in, so the accent feels alive
      and harmonises with the deck / philosophy depth language. Reuses the global
      data-reveal (already on every .bigquote) — just a deeper start + the deck's
