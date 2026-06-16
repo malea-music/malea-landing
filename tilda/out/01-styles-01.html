@@ -623,6 +623,12 @@ width: 20px; height: 1px; background: var(--ink-soft);
 .video-modal__close::after { transform: translate(-50%, -50%) rotate(-45deg); }
 @media (max-width: 760px) {
 .video-modal__close { top: -42px; }
+.modal__close {
+position: fixed;
+top: var(--s-3);
+right: var(--s-3);
+z-index: calc(var(--z-modal) + 1);
+}
 .modal__close::before,
 .modal__close::after {
 background: var(--ink);

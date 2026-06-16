@@ -359,6 +359,14 @@ html.opening-nav-visible .nav { transform: translateY(0); opacity: 1; }
 
 @media (max-width: 760px) {
   .video-modal__close { top: -42px; }
+
+  
+  .modal__close {
+    position: fixed;
+    top: var(--s-3);
+    right: var(--s-3);
+    z-index: calc(var(--z-modal) + 1);
+  }
   .modal__close::before,
   .modal__close::after {
     background: var(--ink);
